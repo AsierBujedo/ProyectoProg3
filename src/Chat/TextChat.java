@@ -3,14 +3,17 @@ package Chat;
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
+
+import CustomLogger.CustomLogger;
+import CustomLogger.LEVEL;
+
 import java.net.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
 import java.awt.event.*;
 
 public class TextChat {
-	Locale l = Locale.getDefault();
+	CustomLogger logger = new CustomLogger();
 	ServerSocket serversocket = null;
 	Socket socket = null;
 	InputStream in;
@@ -23,19 +26,21 @@ public class TextChat {
 	static boolean connected;
 
 	public void InitChat(int PORT) {
-
+		logger.create("chatHost.log");
 		ChatWindow();
 
 		try {
 			serversocket = new ServerSocket(PORT);
 			socket = serversocket.accept(); // Aceptamos la conexión e iniciamos el servidor
 			chat.append("[SYSTEM]   Connected to " + socket.getInetAddress() + "\n");
+			logger.log(LEVEL.INFO, "Connected to " + socket.getInetAddress());
 			connected = true;
 			// Obtenemos el método de entrada y salida de datos.
 			inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			Outputpw = new PrintWriter(socket.getOutputStream(), true);
 			while (connected) {
 				chat.append("[REMOTO]   " + inputReader.readLine() + "\n");
+				logger.log(LEVEL.INFO, "RECEIVED: "+inputReader.readLine());
 			}
 			while (true) {
 				if (!connected) {
@@ -43,10 +48,14 @@ public class TextChat {
 					serversocket.close();
 					Outputpw.close();
 					inputReader.close();
+					logger.log(LEVEL.END, "Connection closed");
+					logger.close();
 				}
 			}
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			logger.log(LEVEL.ERROR, ex.toString());
+			logger.log(LEVEL.END, "Couldn´t establish connection");
+			logger.close();
 		}
 
 	}
@@ -61,20 +70,28 @@ public class TextChat {
 			public void keyTyped(KeyEvent e) {
 				if (e.getKeyChar() == KeyEvent.VK_ENTER) {
 					if (text.getText().equals("!clear")) {
+						logger.log(LEVEL.INFO, "!clear command issued by user");
 						chat.setText("");
 						text.setText("");
+						logger.log(LEVEL.INFO, "Chat cleared");
 					} else if (text.getText().equals("!time")) {
+						logger.log(LEVEL.INFO, "!time command issued by user");
 						DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 						chat.append("Current time: " + dtf.format(LocalDateTime.now()) + "\n");
 						text.setText("");
+						logger.log(LEVEL.INFO, "got the time!");
 					} else if (text.getText().equals("!close")) {
+						logger.log(LEVEL.INFO, "!close command issued by user");
 						frame.dispose();
 						Outputpw.println("Connection closed");
 						connected = false;
+						logger.log(LEVEL.END, "Connection closed");
+						logger.close();
 					} else {
 						chat.append("[Tú]   " + text.getText() + "\n");
 						if (connected) {
 							Outputpw.println(text.getText());
+							logger.log(LEVEL.INFO, "SENT: "+ text.getText());
 						}
 						text.setText("");
 					}

@@ -43,22 +43,23 @@ public class CustomLogger {
 	 * La gravedad está definida por el enum "LEVEL"
 	 */
 	public boolean log(LEVEL lvl, String str) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 		if (lvl == LEVEL.BEGIN) {
-			ps.println("[BEGIN]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[BEGIN]  " + str);
 		} else if (lvl == LEVEL.DONE) {
-			ps.println("[DONE]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[DONE]  " + str);
 		} else if (lvl == LEVEL.END) {
-			ps.println("[END]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[END]  " + str);
 		} else if (lvl == LEVEL.ERROR) {
-			ps.println("[ERROR]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[ERROR]  " + str);
 		} else if (lvl == LEVEL.INFO) {
-			ps.println("[INFO]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[INFO]  " + str);
 		} else if (lvl == LEVEL.OK) {
-			ps.println("[OK]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[OK]  " + str);
 		} else if (lvl == LEVEL.WARN) {
-			ps.println("[WARN]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[WARN]  " + str);
 		} else {
-			ps.println("[OTHER]  " + str);
+			ps.println("[" + dtf.format(LocalDateTime.now()) + "]" + "[OTHER]  " + str);
 		}
 		return true;
 	}
