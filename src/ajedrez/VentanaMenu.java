@@ -1,8 +1,9 @@
-package Ajedrez;
+package ajedrez;
 
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -11,8 +12,7 @@ import javax.swing.*;
 // Hay que decidir como vamos a hacer el menú. ¿Qué opciones va a tener?
 public class VentanaMenu extends JFrame {
 	
-	private Image imagenFondo;
-	private JTextField textNomUsuario;
+	protected JTextField textNomUsuario;
 	
 	public VentanaMenu() {		
 		Container cp = this.getContentPane();
@@ -26,9 +26,19 @@ public class VentanaMenu extends JFrame {
 		
 		cp.add(panel1, BorderLayout.NORTH);
 		
-		cp.setBackground(Color.BLACK);
-		this.setTitle("Ajedrez - Menú");
+		//cp.setBackground(Color.BLACK);
+		this.setTitle("Ajedrez");
 		this.setSize(960, 540);
+        this.setResizable(false); // No deja cambiar el tamaño de la ventana
+        
+        // Aquí asigno una imagen como icono de la ventan
+//		try {
+//            BufferedImage iconoVentana = ImageIO.read(getClass().getResource("xxxxx.png"));
+//            this.setIconImage(iconoVentana); // Asigna iconoVentana como icono de imagen de la ventana
+//        }  catch (Exception e) {
+//            System.out.println("Archivo bp.png no encontrado");
+//        }
+        
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	

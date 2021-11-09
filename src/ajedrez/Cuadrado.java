@@ -1,4 +1,4 @@
-package Ajedrez;
+package ajedrez;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -17,7 +17,11 @@ public class Cuadrado extends JComponent {
 	protected int xPos;
 	protected int yPos;
 	
-	// Constructor de la clase Cuadrado
+	// Constructor sin argumentos de la clase Cuadrado
+		public Cuadrado() {
+		}
+	
+	// Constructor con argumentos de la clase Cuadrado
 	public Cuadrado(int color, Tablero tablero, Pieza pieza, boolean piezaVisible, int xPos, int yPos) {
 		this.color = color;
 		this.tablero = tablero;
@@ -28,7 +32,6 @@ public class Cuadrado extends JComponent {
 	}
 	
 	// Getters
-	
 	public int getColor() {
 		return color;
 	}
@@ -80,43 +83,63 @@ public class Cuadrado extends JComponent {
 	
 	// Métodos propios de la clase Cuadrado
 	
-	// Método estaOcupado() para saber si el cuadrado está ocupado o no
+	// Método estaOcupado()
+	/** Asigna un valor no nulo a piezaCuadrado para indicar que el cudrado está ocupado por una pieza
+	 * @return Estado del cuadrado
+	 */
 	public boolean estaOcupado() {
 		return (this.piezaCuadrado != null);
 	}
 	
-	// Método establecerPieza() que hace visible la pieza para la cual se haya llamado la función 
-	public void establecerPieza(boolean b) {
+	// Método mostrarPieza()
+	/** Muestra o no una pieza dependiendo el parametro que recibe
+	 * @param b	Valor booleano
+	 */
+	public void mostrarPieza(boolean b) {
 		this.piezaVisible = b;
 	}
 	
-	// Método ponerPieza() que establece la posición de la pieza p
-	public void ponerPieza(Pieza p) {
-		this.piezaCuadrado = p;
+	// Método ponerPieza()
+	/** Coloca la pieza que recibe como argumento en el cuadrado
+	 * @param pieza	Objeto del tipo Pieza
+	 */
+	public void ponerPieza(Pieza pieza) {
+		this.piezaCuadrado = pieza;
 		// LLamar al método establecerPosición de la clase Pieza
 	}
 	
-	// Método eliminarPieza() que asigna null a la pieza a eliminar
+	// Método eliminarPieza()
+	/** Elimina la pieza del cuadrado
+	 * @return Pieza con valor nulo
+	 */
 	public Pieza eliminarPieza() {
-		Pieza p = this.piezaCuadrado;
-		this.piezaCuadrado = null;
-		return p;
+		Pieza pieza = this.piezaCuadrado; // Guarda en una nueva variable pieza del tipo Pieza la pieza que está ocupando el cuadrado 
+		this.piezaCuadrado = null; // Le asigna valor nulo a esa pieza
+		return pieza; // Devuelve la variable pieza con valor nulo
 	}
 	
-	// Método comerPieza() que elimina la pieza actual del cuadrado y la sustituye por la pieza que se la ha comido
-	public void comerPieza(Pieza p) {
+	// Método comerPieza() *****
+	/** Sustituye la pieza que está en el cuadrado por la pieza p que recibe como parámetro
+	 * @param pieza	Objeto del tipo Pieza que va a sustituir a la pieza del cuadrado
+	 */
+	public void comerPieza(Pieza pieza) {
 		Pieza piezaEnCuadrado = getPiezaCuadrado();
-		// Eliminar la piezaEnCuadrado blanca o negra de los ArrayLists de Piezas
-		this.piezaCuadrado = p;
+		 if (piezaEnCuadrado.getColor() == 0) tablero.piezasNegras.remove(pieza); // Si el color de la pieza es 0 (Negro) elimina la pieza del ArrayList de piezas Negras
+	     if (piezaEnCuadrado.getColor() == 1) tablero.piezasBlancas.remove(pieza); // Si el color de la pieza es 1 (Blanco) elimina la pieza del ArrayList de piezas Blancas
+	     this.piezaCuadrado = pieza;
 	}
 	
+	// Método paintComponent()
+	/**
+	 * 
+	 */
 	public void paintComponent(Graphics graf) {
-        super.paintComponent(graf);
+        super.paintComponent(graf); // ¿?
         
         if (this.color == 1) {
-        	graf.setColor(new Color(221,192,127));
+        	graf.setColor(new Color(238,238,210,255)); // El parámetro A (alfa) es un número entre 0.0 (totalmente transparente) y 1.0 (nada transparente)
         } else {
-        	graf.setColor(new Color(101,67,33));
+        	graf.setColor(new Color(118,150,86,255));
         }
         
         graf.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
@@ -125,7 +148,8 @@ public class Cuadrado extends JComponent {
         	piezaCuadrado.dibuja(graf);
         }
     }
-
+	
+	// Método hashCode() generado automáticamente por Eclipse
 	@Override
 	public int hashCode() {
 		final int prime = 31;

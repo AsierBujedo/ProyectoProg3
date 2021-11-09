@@ -1,4 +1,4 @@
-package Ajedrez;
+package ajedrez;
 
 
 public class VentanaJuego {
