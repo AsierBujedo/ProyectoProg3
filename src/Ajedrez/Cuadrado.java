@@ -3,6 +3,7 @@ package Ajedrez;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
 
 public class Cuadrado extends JComponent {
@@ -16,15 +17,17 @@ public class Cuadrado extends JComponent {
 	protected boolean piezaVisible;
 	protected int xPos;
 	protected int yPos;
+	protected JButton boton;
 	
 	// Constructor de la clase Cuadrado
-	public Cuadrado(int color, Tablero tablero, Pieza pieza, boolean piezaVisible, int xPos, int yPos) {
+	public Cuadrado(int color, Tablero tablero, Pieza pieza, boolean piezaVisible, int xPos, int yPos, JButton boton) {
 		this.color = color;
 		this.tablero = tablero;
 		this.piezaCuadrado = pieza;
 		this.piezaVisible = piezaVisible;
 		this.xPos = xPos;
 		this.yPos = yPos;
+		this.boton=boton;
 	}
 	
 	// Getters
@@ -53,6 +56,10 @@ public class Cuadrado extends JComponent {
 		return yPos;
 	}
 	
+	public JButton getBoton() {
+		return boton;
+	}
+	
 	// Setters
 	public void setColor(int color) {
 		this.color = color;
@@ -77,7 +84,9 @@ public class Cuadrado extends JComponent {
 	public void setyPos(int yPos) {
 		this.yPos = yPos;
 	}
-	
+	public void setBoton(JButton boton) {
+		this.boton=boton;
+	}
 	// Métodos propios de la clase Cuadrado
 	
 	// Método estaOcupado() para saber si el cuadrado está ocupado o no

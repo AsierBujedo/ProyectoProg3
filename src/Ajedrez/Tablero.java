@@ -19,6 +19,7 @@ public static JPanel TableroAjedrez() {
     	    
     		// Creamos un JButton que va ha ir tomando los valores de X e Y
     		final JButton jButton = new JButton(Casillas[y][x]);
+    		Cuadrado cuadrado=new Cuadrado(1, null, null, false, x, y, jButton);
     	    PanelTableroAjedrez.add(jButton);
     	    if((y+x+1)%2==0){
     	        // si cumple la condición, el botón será de color negro
@@ -27,6 +28,8 @@ public static JPanel TableroAjedrez() {
     	        // en caso contrario, el botón será de color blanco
     	        jButton.setBackground(Color.WHITE);
     	    }
+    	   // Icon i=new ImageIcon("src\\imagenes\\bpawn.png");
+    	   // jButton.setIcon(i);
     	}
     }
 
@@ -35,10 +38,6 @@ public static JPanel TableroAjedrez() {
     
     return PanelTableroAjedrez;
 }       
-
-
-
-
 
 
 public static void main(String[] args) {
