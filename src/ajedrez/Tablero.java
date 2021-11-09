@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.*;
 
-
 import javax.swing.*;
 
 public class Tablero extends JPanel {
@@ -104,10 +103,10 @@ public class Tablero extends JPanel {
 //    		final JButton jButton = new JButton(Casillas[y][x]);
 //    	    PanelTableroAjedrez.add(jButton);
 //    	    if((y+x+1)%2==0){
-//    	        // si cumple la condici√≥n, el bot√≥n ser√° de color negro
+//    	        // si cumple la condiciÛn, el botÛn ser· de color negro
 //    	        jButton.setBackground(Color.BLACK);
 //    	    }else{
-//    	        // en caso contrario, el bot√≥n ser√° de color blanco
+//    	        // en caso contrario, el botÛn ser· de color blanco
 //    	        jButton.setBackground(Color.WHITE);
 //    	    }
 //    	}

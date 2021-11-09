@@ -113,7 +113,7 @@ abstract public class Pieza {
 		return true;
 	}
 	
-	// Método getMovimeintosLegales() a implementar por las clases hijas
+	// Método getMovimientosLegales() a implementar por las clases hijas
 	/**
 	 * Método abstracto que devuelve los movimientos legales de la pieza
 	 * @param tablero

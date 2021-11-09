@@ -118,7 +118,7 @@ public class Cuadrado extends JComponent {
 		return pieza; // Devuelve la variable pieza con valor nulo
 	}
 	
-	// Método comerPieza() *****
+	// Método comerPieza()
 	/** Sustituye la pieza que está en el cuadrado por la pieza p que recibe como parámetro
 	 * @param pieza	Objeto del tipo Pieza que va a sustituir a la pieza del cuadrado
 	 */
