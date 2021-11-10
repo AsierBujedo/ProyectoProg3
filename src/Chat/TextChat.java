@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.event.*;
 
-public class TextChat {
+public class TextChat { //Creo todas las variables a usar durante el programa.
 	CustomLogger logger = new CustomLogger();
 	ServerSocket serversocket = null;
 	Socket socket = null;
@@ -26,11 +26,11 @@ public class TextChat {
 	static boolean connected;
 
 	public void InitChat(int PORT) {
-		logger.create("chatHost.log");
-		ChatWindow();
+		logger.create("chatHost.log"); //Creo el archivo del logger.
+		ChatWindow(); //LLamo a la ventana
 
 		try {
-			serversocket = new ServerSocket(PORT);
+			serversocket = new ServerSocket(PORT); //Inicio socket y me quedo escuchando a posibles conexiones
 			socket = serversocket.accept(); // Aceptamos la conexión e iniciamos el servidor
 			chat.append("[SYSTEM]   Connected to " + socket.getInetAddress() + "\n");
 			logger.log(LEVEL.INFO, "Connected to " + socket.getInetAddress());
