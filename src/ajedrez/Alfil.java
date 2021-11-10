@@ -12,6 +12,9 @@ public class Alfil extends Pieza{
 	@Override
 	public ArrayList<Cuadrado> getMovimientosLegales(Tablero tablero) {
 		// TODO Auto-generated method stub
+		ArrayList<Cuadrado> movimientos=new ArrayList<Cuadrado>();
+		int x=cuadradoActual.getX();
+		int y=cuadradoActual.getY();
 		return null;
 	}
 	
