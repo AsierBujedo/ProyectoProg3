@@ -12,7 +12,9 @@ public class Tablero extends JPanel {
 	protected Cuadrado[][] tablero; // [Fila], [Columna]
 	
 	//Aun faltan más atributos de la clase Tablero
-	
+	public Cuadrado[][] GetCuadrados() {
+		return tablero;
+	}
 	// Método inicializarTablero()
 	/**
 	 * Inicializa el tablero colocando todas las piezas
@@ -47,8 +49,8 @@ public class Tablero extends JPanel {
         
         // Inicialización de los peones
         for (int x = 0; x < 8; x++) { // La variable x es la columna en la que ponemos el peon
-            tablero[1][x].ponerPieza(new Peon(0, tablero[1][x], "negroPeon.png"));
-            tablero[6][x].ponerPieza(new Peon(1, tablero[6][x], "blancoPeon.png"));
+            tablero[1][x].ponerPieza(new Peon(0, tablero[1][x], "negroPeon.png", false));
+            tablero[6][x].ponerPieza(new Peon(1, tablero[6][x], "blancoPeon.png", false));
         }
         
         // Ahora hay que almacenar las piezas en sus ArrayList correspondientes
