@@ -30,10 +30,9 @@ public class Peon extends Pieza{
 				if(tablero.GetCuadrados()[y+2][x].estaOcupado()==false) {//casilla dos enfrente, solo si no se ha movido antes
 					movimientos.add(tablero.GetCuadrados()[y+1][x]);
 				}
-				
 			}
 		}
-		if(this.color==0) {//casos con los peones arriba (están "bajando")
+		if(this.color==1) {//casos con los peones arriba (están "bajando")
 			if(tablero.GetCuadrados()[y-1][x].estaOcupado()==false) {//casilla de enfrente
 				movimientos.add(tablero.GetCuadrados()[y+1][x]);
 			}
