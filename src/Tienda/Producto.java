@@ -7,9 +7,9 @@ public abstract class Producto implements Vendible {
 	protected String marca;
 	
 	// Constructor sin argumentos de la clase Producto
-		public Producto() {
-			super();
-		}
+	public Producto() {
+		super();
+	}
 		
 	// Constructor con argumentos de la clase Producto
 	public Producto(int codigoProd, String nombre, double precio, String marca) {
@@ -62,4 +62,5 @@ public abstract class Producto implements Vendible {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 }
