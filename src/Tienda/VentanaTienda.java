@@ -1,25 +1,25 @@
 package Tienda;
 
-import Chat.*;
-
 import static javax.swing.WindowConstants.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.RoundRectangle2D;
-
 import javax.swing.*;
+
 public class VentanaTienda {
 	static JMenuItem loginItem = new JMenuItem("Login");
+	static JMenuItem logoutItem = new JMenuItem("Logout");
+
 	public void InitWindow() {
 		Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
-		loginItem = new JMenuItem("Login");
 		JMenu atcliente = new JMenu("Atencion al cliente");
 		JMenuItem chat = new JMenuItem("Chat con un agente");
 		atcliente.add(chat);
 		JMenuBar bar = new JMenuBar();
 		menucliente.add(loginItem);
+		logoutItem.setEnabled(false);
+		menucliente.add(logoutItem);
 		bar.add(menucliente);
 		bar.add(atcliente);
 		JTabbedPane tabs = new JTabbedPane();
@@ -43,17 +43,28 @@ public class VentanaTienda {
 
 			}
 		});
-		
+
 		loginItem.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				new Login().doLogin();
-				
+
 			}
 		});
 
+		logoutItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				loginItem.setText("Login");
+				loginItem.setEnabled(true);
+				logoutItem.setEnabled(false);
+
+			}
+		});
 
 		main.paintComponents(null);
 		frame.setVisible(true);

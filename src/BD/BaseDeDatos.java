@@ -124,7 +124,7 @@ public class BaseDeDatos {
 			return rs.getString("USERNAME");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
+			return "Error";
 		}
 	}
 	

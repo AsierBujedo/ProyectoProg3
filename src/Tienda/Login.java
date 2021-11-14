@@ -1,7 +1,6 @@
 package Tienda;
 
 import static javax.swing.WindowConstants.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,7 +15,7 @@ public class Login {
 		JLabel user = new JLabel("Correo: ");
 		JTextField usertf = new JTextField(20);
 		JLabel pass = new JLabel("Contraseña: ");
-		JTextField passtf = new JTextField(20);
+		JPasswordField passtf = new JPasswordField(20);
 		JButton log = new JButton("Iniciar sesion");
 		JPanel panel = new JPanel();
 		JLabel loginlabel = new JLabel("¿Sin usuario? --->");
@@ -33,29 +32,36 @@ public class Login {
 		reg.add(loginlabel);
 		reg.add(regbutton);
 		frame.add(reg, BorderLayout.NORTH);
-		
+
 		log.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String username = bd.getUser(usertf.getText(), passtf.getText());
-				VentanaTienda.loginItem.setText(username);
-				VentanaTienda.loginItem.setEnabled(false);
-				bd.closeDB();
-				frame.dispose();
-				
+				String username = bd.getUser(usertf.getText(), String.valueOf(passtf.getPassword()));
+				if (!username.equals("Error")) {
+					VentanaTienda.loginItem.setText(username);
+					VentanaTienda.loginItem.setEnabled(false);
+					VentanaTienda.logoutItem.setEnabled(true);
+					bd.closeDB();
+					frame.dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Incorrect mail or password","Login error", 0);
+					frame.dispose();
+					doLogin();
+				}
+
 			}
 		});
-		
+
 		regbutton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame();
 				JLabel user = new JLabel("Correo: ");
 				JTextField usertf = new JTextField(20);
 				JLabel pass = new JLabel("Contraseña: ");
-				JTextField passtf = new JTextField(20);
+				JPasswordField passtf = new JPasswordField(20);
 				JLabel username = new JLabel("Nombre de usuario: ");
 				JTextField usernametf = new JTextField(20);
 				JButton log = new JButton("Enviar");
@@ -77,32 +83,29 @@ public class Login {
 				reg.add(loginlabel);
 				reg.add(regbutton);
 				frame.add(reg, BorderLayout.NORTH);
-				
+
 				log.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						bd.addUser(usernametf.getText(), usertf.getText(), passtf.getText());
+						bd.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()));
 						frame.dispose();
-						
+
 					}
 				});
-				
-				
+
 				frame.setTitle("Registro de usuarios");
 				frame.setSize(400, 300);
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				
+
 			}
 		});
-		
-		
-		
+
 		frame.setTitle("Login");
 		frame.setSize(350, 300);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
-	
+
 }
