@@ -4,6 +4,7 @@ import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import CustomLogger.*;
+import Tienda.VentanaTienda;
 import java.net.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,7 +35,7 @@ public class TextChatClient {
 			inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			Outputpw = new PrintWriter(socket.getOutputStream(), true);
 			while (connected) {
-				chat.append("[REMOTO]   " + inputReader.readLine() + "\n");
+				chat.append("[AGENTE]   " + inputReader.readLine() + "\n");
 				logger.log(LEVEL.INFO, "RECEIVED: "+inputReader.readLine());
 			}
 			while (true) {
@@ -96,14 +97,11 @@ public class TextChatClient {
 		});
 
 
-		frame.setTitle("Chat del juego");
+		frame.setTitle("Chat con un agente");
 		frame.setSize(300, 350);
+		frame.setResizable(false);
+		frame.setIconImage(VentanaTienda.icon);
 		frame.setDefaultCloseOperation(1);
 		frame.setVisible(true);
-	}
-
-	public static void main(String[] args) {
-		String HOST = JOptionPane.showInputDialog("ENTER HOST", "localhost");
-		new TextChatClient().InitChat(HOST, 6666);
 	}
 }

@@ -3,10 +3,9 @@ package Chat;
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
-
 import CustomLogger.CustomLogger;
 import CustomLogger.LEVEL;
-
+import Tienda.VentanaTienda;
 import java.net.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -39,7 +38,7 @@ public class TextChat { //Creo todas las variables a usar durante el programa.
 			inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			Outputpw = new PrintWriter(socket.getOutputStream(), true);
 			while (connected) {
-				chat.append("[REMOTO]   " + inputReader.readLine() + "\n");
+				chat.append("[CLIENTE]   " + inputReader.readLine() + "\n");
 				logger.log(LEVEL.INFO, "RECEIVED: "+inputReader.readLine());
 			}
 			while (true) {
@@ -101,13 +100,12 @@ public class TextChat { //Creo todas las variables a usar durante el programa.
 		});
 		
 
-		frame.setTitle("Chat del juego");
+		frame.setTitle("Chat con cliente");
 		frame.setSize(300, 350);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(1);
 		frame.setVisible(true);
+		frame.setIconImage(VentanaTienda.icon);
 	}
 
-	public static void main(String[] args) {
-		new TextChat().InitChat(6666);
-	}
 }

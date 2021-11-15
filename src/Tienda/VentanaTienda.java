@@ -5,21 +5,35 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import Utils.RoundedBorder;
+
 public class VentanaTienda {
 	static JMenuItem loginItem = new JMenuItem("Login");
 	static JMenuItem logoutItem = new JMenuItem("Logout");
-
+	static JMenu atcliente = new JMenu("Atencion al cliente");
+	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
+	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public void InitWindow() {
-		Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
 		JMenu atcliente = new JMenu("Atencion al cliente");
+		personalArea.setBorder(new RoundedBorder(7));
+		atcliente.setBorder(new RoundedBorder(7));
 		JMenuItem chat = new JMenuItem("Chat con un agente");
+		JMenuItem chatServerP = new JMenuItem("Iniciar chat (modo servidor)");
+		chat.setBorder(new RoundedBorder(7));
+		chatServerP.setBorder(new RoundedBorder(7));
 		atcliente.add(chat);
+		atcliente.add(chatServerP);
 		JMenuBar bar = new JMenuBar();
+		loginItem.setBorder(new RoundedBorder(7));
 		menucliente.add(loginItem);
 		logoutItem.setEnabled(false);
+		logoutItem.setBorder(new RoundedBorder(7));
 		menucliente.add(logoutItem);
+		menucliente.setBorder(new RoundedBorder(7));
+		personalArea.setEnabled(false);
+		menucliente.add(personalArea);
 		bar.add(menucliente);
 		bar.add(atcliente);
 		JTabbedPane tabs = new JTabbedPane();
@@ -33,14 +47,20 @@ public class VentanaTienda {
 		tabs.add("Ropa", new JScrollPane(ropa));
 		tabs.add("Videojuegos", new JScrollPane(videojuego));
 		tabs.add("Cesta", new JScrollPane(cesta));
+		tabs.setBorder(new RoundedBorder(7));
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
 		chat.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Chat.TextChatClient().InitChat("localhost", 6666);
-
+				Thread hilochat = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						new Chat.TextChatClient().InitChat("localhost", 6666);
+					}
+				});
+				hilochat.start();
 			}
 		});
 
@@ -62,9 +82,26 @@ public class VentanaTienda {
 				loginItem.setText("Login");
 				loginItem.setEnabled(true);
 				logoutItem.setEnabled(false);
+				personalArea.setEnabled(false);
 
 			}
 		});
+		
+		chatServerP.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread hilochat = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						new Chat.TextChat().InitChat(6666);
+					}
+				});
+				hilochat.start();
+				
+			}
+		});
+
 
 		main.paintComponents(null);
 		frame.setVisible(true);
@@ -72,8 +109,9 @@ public class VentanaTienda {
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(1000, 900);
 		frame.setIconImage(icon);
-
+		
 	}
+	
 
 	public static void main(String[] args) {
 		new VentanaTienda().InitWindow();

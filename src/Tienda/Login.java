@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import BD.*;
+import Utils.RoundedBorder;
 
 public class Login {
 
@@ -14,9 +15,12 @@ public class Login {
 		JFrame frame = new JFrame();
 		JLabel user = new JLabel("Correo: ");
 		JTextField usertf = new JTextField(20);
+		usertf.setBorder(new RoundedBorder(7));
 		JLabel pass = new JLabel("Contraseña: ");
 		JPasswordField passtf = new JPasswordField(20);
+		passtf.setBorder(new RoundedBorder(7));
 		JButton log = new JButton("Iniciar sesion");
+		log.setBorder(new RoundedBorder(7));
 		JPanel panel = new JPanel();
 		JLabel loginlabel = new JLabel("¿Sin usuario? --->");
 		panel.setLayout(new GridLayout(2, 1));
@@ -28,6 +32,7 @@ public class Login {
 		frame.add(log, BorderLayout.SOUTH);
 		JPanel reg = new JPanel();
 		JButton regbutton = new JButton("Registro");
+		regbutton.setBorder(new RoundedBorder(7));
 		reg.setLayout(new GridLayout(1, 2));
 		reg.add(loginlabel);
 		reg.add(regbutton);
@@ -42,6 +47,7 @@ public class Login {
 					VentanaTienda.loginItem.setText(username);
 					VentanaTienda.loginItem.setEnabled(false);
 					VentanaTienda.logoutItem.setEnabled(true);
+					VentanaTienda.personalArea.setEnabled(true);
 					bd.closeDB();
 					frame.dispose();
 				} else {
@@ -60,11 +66,15 @@ public class Login {
 				JFrame frame = new JFrame();
 				JLabel user = new JLabel("Correo: ");
 				JTextField usertf = new JTextField(20);
+				usertf.setBorder(new RoundedBorder(7));
 				JLabel pass = new JLabel("Contraseña: ");
 				JPasswordField passtf = new JPasswordField(20);
+				passtf.setBorder(new RoundedBorder(7));
 				JLabel username = new JLabel("Nombre de usuario: ");
 				JTextField usernametf = new JTextField(20);
+				usernametf.setBorder(new RoundedBorder(7));
 				JButton log = new JButton("Enviar");
+				log.setBorder(new RoundedBorder(7));
 				JPanel panel = new JPanel();
 				JLabel loginlabel = new JLabel("¿Todavia sin usuario?");
 				panel.setLayout(new GridLayout(3, 1));
@@ -78,6 +88,7 @@ public class Login {
 				frame.add(log, BorderLayout.SOUTH);
 				JPanel reg = new JPanel();
 				JButton regbutton = new JButton("Rellena todos los campos");
+				regbutton.setBorder(new RoundedBorder(7));
 				regbutton.setEnabled(false);
 				reg.setLayout(new GridLayout(1, 2));
 				reg.add(loginlabel);
@@ -95,17 +106,21 @@ public class Login {
 				});
 
 				frame.setTitle("Registro de usuarios");
-				frame.setSize(400, 300);
+				frame.setSize(400, 225);
+				frame.setResizable(false);
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				frame.setIconImage(VentanaTienda.icon);
 
 			}
 		});
-
+		
 		frame.setTitle("Login");
-		frame.setSize(350, 300);
+		frame.setSize(400, 185);
+		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		frame.setIconImage(VentanaTienda.icon);
 	}
 
 }
