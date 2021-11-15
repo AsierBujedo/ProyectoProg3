@@ -62,4 +62,12 @@ public abstract class Producto implements Vendible {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	@Override
+	public String toString() {
+		return "Producto: cod.=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + "€, marca=" + marca
+				+ "]";
+	}
+	
+	
 }
