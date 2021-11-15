@@ -116,6 +116,18 @@ public class BaseDeDatos {
 			return false;
 		}
 	}
+	
+	public String getUser(String MAIL, String PASS) {
+		try {
+			pstmt = con.prepareStatement("SELECT USERNAME FROM USERS WHERE MAIL = '"+MAIL+"' AND PASS = '"+PASS+"'" );
+			ResultSet rs = pstmt.executeQuery();
+			return rs.getString("USERNAME");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "Error";
+		}
+	}
+	
 
 	public boolean editUser(COLS COL, String MAIL, String PASS, String NEW) {
 
@@ -142,6 +154,7 @@ public class BaseDeDatos {
 		bd.InitDB();
 
 		// COLOCAR AQUÍ LAS PRUEBAS CON LA BASE DE DATOS
+
 		
 		bd.closeDB();
 

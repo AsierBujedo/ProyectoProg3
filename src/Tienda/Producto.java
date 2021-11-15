@@ -5,12 +5,12 @@ public abstract class Producto implements Vendible {
 	protected String nombre;
 	protected double precio;
 	protected String marca;
-	
+
 	// Constructor sin argumentos de la clase Producto
-		public Producto() {
-			super();
-		}
-		
+	public Producto() {
+		super();
+	}
+
 	// Constructor con argumentos de la clase Producto
 	public Producto(int codigoProd, String nombre, double precio, String marca) {
 		super();
@@ -19,7 +19,7 @@ public abstract class Producto implements Vendible {
 		this.precio = precio;
 		this.marca = marca;
 	}
-	
+
 	// Constructor copia de la clase Producto
 	public Producto(Producto p) {
 		super();
@@ -28,20 +28,20 @@ public abstract class Producto implements Vendible {
 		this.precio = p.precio;
 		this.marca = p.marca;
 	}
-	
+
 	// Getters
 	public int getCodigoProd() {
 		return codigoProd;
 	}
-	
+
 	public double getPrecio() {
 		return precio;
 	}
-	
+
 	public String getMarca() {
 		return marca;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -54,20 +54,20 @@ public abstract class Producto implements Vendible {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	
+
 	public void setCodigoProd(int codigoProd) {
 		this.codigoProd = codigoProd;
 	}
-	
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
 	@Override
 	public String toString() {
-		return "Producto: cod.=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + "€, marca=" + marca
+		return "Producto: cod.=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + "ï¿½, marca=" + marca
 				+ "]";
 	}
-	
-	
+
+
 }
