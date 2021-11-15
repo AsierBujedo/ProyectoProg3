@@ -47,6 +47,7 @@ public class VentanaTienda {
 		tabs.add("Ropa", new JScrollPane(ropa));
 		tabs.add("Videojuegos", new JScrollPane(videojuego));
 		tabs.add("Cesta", new JScrollPane(cesta));
+		tabs.add("Tabla Prov.", new JScrollPane(PanelTabla.getPanelTabla()));
 		tabs.setBorder(new RoundedBorder(7));
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);

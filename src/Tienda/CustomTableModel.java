@@ -1,29 +1,29 @@
 package Tienda;
 
+import java.util.ArrayList;
+
 import javax.swing.table.AbstractTableModel;
 
 @SuppressWarnings("serial")
 class CustomTableModel extends AbstractTableModel{
-	String[] nomColumnas = {"Columna 1", "Columna 2", "Columna 3"};
-	Object[][] datos= {
-		    {"Asier", "Bujedo", "AB"},
-			{"Eduardo", "Larrinaga", "EL"},
-			{"Iker", "López", "IL"},
-			{"Mikel", "Lambarri", "ML"},
-		    }; 
-	// Siendo el atributo datos un Array bidimiensional
-	//ArrayList<Object> datos = new ArrayList<Object>(); // Tipo de objeto Object provisional hasta elección de tipo
+	String[] nomColumnas;
+	ArrayList<DatoParaTabla> datos = new ArrayList<DatoParaTabla>();
 	
+	// Constructor provisional
+	public CustomTableModel(String[] nomColumnas, ArrayList<DatoParaTabla> datos) {
+		super();
+		this.nomColumnas = nomColumnas;
+		this.datos = datos;
+	}
 	
 	/*
 	 * Método propio del modelo: Devuelve el número de filas
 	 */
 	@Override
 	public int getRowCount() {
-		return datos.length; // Siendo el atributo datos un Array bidimiensional
-		//return datos.size(); Esto si usamos un ArrayList
+		return datos.size();
 	}
-	
+
 	/*
 	 * Método propio del modelo: Devuelve el número de columnas
 	 */
@@ -37,14 +37,20 @@ class CustomTableModel extends AbstractTableModel{
 	 */
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		return datos[rowIndex][columnIndex]; // Siendo el atributo datos un Array bidimiensional
-		//return datos.get(rowIndex).getXXXX(columnIndex); Esto si usamos un ArrayList
+		return datos.get(rowIndex).getValor(columnIndex);
 	}
 	
 	/*
-	 * Método propio del modelo:Devuelve el nombre de la columna
+	 * Método propio del modelo: Devuelve el nombre de la columna
 	 */
 	public String getColumnName(int columnIndex) {
         return nomColumnas[columnIndex];
+    }
+	/*
+	 * Método propio del modelo: 
+	 */
+	public void setValueAt(Object valor, int row, int col) {
+        datos.get(row).setValor( valor, col );
+//        fireTableCellUpdated(row, col);  // Notifica a escuchadores de cambio de celda
     }
 }
