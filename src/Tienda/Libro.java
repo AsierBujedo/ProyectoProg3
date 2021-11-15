@@ -64,5 +64,11 @@ public class Libro extends Producto {
 	public void setTapaDura(boolean tapaDura) {
 		this.tapaDura = tapaDura;
 	}
+
+	@Override
+	public String toString() {
+		return "Libro [autor=" + autor + ", editorial=" + editorial + ", color=" + color + ", tapaDura=" + tapaDura
+				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+	}
 	
 }

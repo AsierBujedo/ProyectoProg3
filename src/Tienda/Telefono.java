@@ -73,5 +73,12 @@ public class Telefono extends Producto {
 	public void setmAh(int mAh) {
 		this.mAh = mAh;
 	}
+
+	@Override
+	public String toString() {
+		return "Telefono [modelo=" + modelo + ", almacenamiento=" + almacenamiento + ", RAM=" + RAM + ", Hz=" + Hz
+				+ ", mAh=" + mAh + ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio
+				+ ", marca=" + marca + "]";
+	}
 	
 }

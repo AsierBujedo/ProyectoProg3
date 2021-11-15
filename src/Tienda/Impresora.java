@@ -52,5 +52,11 @@ public class Impresora extends Producto {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+
+	@Override
+	public String toString() {
+		return "Impresora [modelo=" + modelo + ", esColor=" + esColor + ", esLaser=" + esLaser + ", codigoProd="
+				+ codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+	}
 	
 }

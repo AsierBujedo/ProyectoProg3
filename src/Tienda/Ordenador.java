@@ -60,5 +60,11 @@ public class Ordenador extends Producto {
 	public void setMemGraf(int memGraf) {
 		this.memGraf = memGraf;
 	}
+
+	@Override
+	public String toString() {
+		return "Ordenador [modelo=" + modelo + ", memInterna=" + memInterna + ", RAM=" + RAM + ", memGraf=" + memGraf
+				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+	}
 	
 }

@@ -12,6 +12,8 @@ public class Login {
 	public void doLogin() {
 		BaseDeDatos bd = new BaseDeDatos();
 		bd.InitDB();
+		
+		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JLabel user = new JLabel("Correo: ");
 		JTextField usertf = new JTextField(20);
