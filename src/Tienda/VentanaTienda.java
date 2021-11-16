@@ -103,7 +103,6 @@ public class VentanaTienda {
 		});
 
 
-		main.paintComponents(null);
 		frame.setVisible(true);
 		frame.setTitle("Emai");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
