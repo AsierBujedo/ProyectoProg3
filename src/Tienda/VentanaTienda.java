@@ -14,6 +14,9 @@ public class VentanaTienda {
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public void InitWindow() {
+		
+		
+		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
 		JMenu atcliente = new JMenu("Atencion al cliente");
@@ -47,10 +50,12 @@ public class VentanaTienda {
 		tabs.add("Ropa", new JScrollPane(ropa));
 		tabs.add("Videojuegos", new JScrollPane(videojuego));
 		tabs.add("Cesta", new JScrollPane(cesta));
+		tabs.add("Tabla Prov.", new JScrollPane(PanelTabla.getPanelTabla()));
 		tabs.setBorder(new RoundedBorder(7));
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
-		chat.addActionListener(new ActionListener() {
+		
+		chat.addActionListener(new ActionListener() {	//Accion de chat con un agente
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +69,7 @@ public class VentanaTienda {
 			}
 		});
 
-		loginItem.addActionListener(new ActionListener() {
+		loginItem.addActionListener(new ActionListener() {	//Accion de inicio de sesion
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -74,7 +79,7 @@ public class VentanaTienda {
 			}
 		});
 
-		logoutItem.addActionListener(new ActionListener() {
+		logoutItem.addActionListener(new ActionListener() {	//Accion de cerrado de sesion
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -87,7 +92,7 @@ public class VentanaTienda {
 			}
 		});
 		
-		chatServerP.addActionListener(new ActionListener() {
+		chatServerP.addActionListener(new ActionListener() {  //Accion de chat, modo servidor
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {

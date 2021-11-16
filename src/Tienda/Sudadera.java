@@ -66,5 +66,11 @@ public class Sudadera extends Producto {
 	public void setPaisMadeIn(Pais paisMadeIn) {
 		this.paisMadeIn = paisMadeIn;
 	}
+
+	@Override
+	public String toString() {
+		return "Sudadera [talla=" + talla + ", color=" + color + ", capucha=" + capucha + ", paisMadeIn=" + paisMadeIn
+				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+	}
 	
 }

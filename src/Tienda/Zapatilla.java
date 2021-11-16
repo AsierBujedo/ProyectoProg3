@@ -64,5 +64,11 @@ public class Zapatilla extends Producto {
 	public void setPaisMadeIn(Pais paisMadeIn) {
 		this.paisMadeIn = paisMadeIn;
 	}
+
+	@Override
+	public String toString() {
+		return "Zapatilla [modelo=" + modelo + ", talla=" + talla + ", color=" + color + ", paisMadeIn=" + paisMadeIn
+				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+	}
 	
 }
