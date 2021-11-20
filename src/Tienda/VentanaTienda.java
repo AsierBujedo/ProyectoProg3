@@ -3,19 +3,30 @@ package Tienda;
 import static javax.swing.WindowConstants.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 import Utils.RoundedBorder;
 
+/**
+ * @author GR08 Clase VentanaTienda, es la clase principal, contiene la ventana
+ *         principal. Esta clase cuenta con el método main().
+ */
 public class VentanaTienda {
 	static JMenuItem loginItem = new JMenuItem("Login");
 	static JMenuItem logoutItem = new JMenuItem("Logout");
 	static JMenu atcliente = new JMenu("Atencion al cliente");
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
+
 	public void InitWindow() {
-		
-		
+
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
@@ -44,7 +55,7 @@ public class VentanaTienda {
 		JPanel main = new JPanel();
 		JPanel ropa = new JPanel();
 		JPanel videojuego = new JPanel();
-		JPanel cesta = new JPanel();
+		JPanel cesta = new Cesta().panelCesta();
 		tabs.add("Principal", new JScrollPane(main));
 		tabs.add("Electronica", new JScrollPane(elect));
 		tabs.add("Ropa", new JScrollPane(ropa));
@@ -55,7 +66,7 @@ public class VentanaTienda {
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
 		
-		chat.addActionListener(new ActionListener() {	//Accion de chat con un agente
+		chat.addActionListener(new ActionListener() { // Accion de chat con un agente
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -68,8 +79,7 @@ public class VentanaTienda {
 				hilochat.start();
 			}
 		});
-
-		loginItem.addActionListener(new ActionListener() {	//Accion de inicio de sesion
+		loginItem.addActionListener(new ActionListener() { // Accion de inicio de sesion
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +89,7 @@ public class VentanaTienda {
 			}
 		});
 
-		logoutItem.addActionListener(new ActionListener() {	//Accion de cerrado de sesion
+		logoutItem.addActionListener(new ActionListener() { // Accion de cerrado de sesion
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -91,9 +101,9 @@ public class VentanaTienda {
 
 			}
 		});
-		
-		chatServerP.addActionListener(new ActionListener() {  //Accion de chat, modo servidor
-			
+
+		chatServerP.addActionListener(new ActionListener() { // Accion de chat, modo servidor
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Thread hilochat = new Thread(new Runnable() {
@@ -103,21 +113,41 @@ public class VentanaTienda {
 					}
 				});
 				hilochat.start();
-				
+
 			}
 		});
 
+		tabs.addKeyListener(new KeyAdapter() {
 
+			@Override
+			public void keyTyped(KeyEvent e) {
+				System.out.println(e.getKeyCode());
+				if (e.getKeyChar() == KeyEvent.VK_L) {
+					JOptionPane.showMessageDialog(null, "Cargando datos de prueba...", "Carga de datos", 1);
+					try {
+						FileInputStream fis = new FileInputStream(new File("datos.dat"));
+						ObjectInputStream ois = new ObjectInputStream(fis);
+						Cesta.cesta = (ArrayList<Producto>) ois.readObject();
+					} catch (IOException | ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 		frame.setVisible(true);
 		frame.setTitle("Emai");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(1000, 900);
 		frame.setIconImage(icon);
-		
-	}
-	
 
+	}
+
+	/**
+	 * Método main(). Ésta clase es la única que cuenta con uno.
+	 */
 	public static void main(String[] args) {
 		new VentanaTienda().InitWindow();
+
 	}
 }

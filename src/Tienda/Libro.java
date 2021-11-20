@@ -14,14 +14,15 @@ public class Libro extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Libro
-	public Libro(String autor, String editorial, Color color, boolean tapaDura) {
-		super();
+	public Libro(int codigoProd, String nombre, double precio, String marca, String autor, String editorial,
+			Color color, boolean tapaDura) {
+		super(codigoProd, nombre, precio, marca);
 		this.autor = autor;
 		this.editorial = editorial;
 		this.color = color;
 		this.tapaDura = tapaDura;
 	}
-	
+
 	// Constructor copia de la clase Libro
 	public Libro(Libro l) {
 		super();

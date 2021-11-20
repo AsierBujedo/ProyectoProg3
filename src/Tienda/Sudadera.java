@@ -14,14 +14,15 @@ public class Sudadera extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Sudadera
-	public Sudadera(Talla talla, Color color, boolean capucha, Pais paisMadeIn) {
-		super();
+	public Sudadera(int codigoProd, String nombre, double precio, String marca, Talla talla, Color color,
+			boolean capucha, Pais paisMadeIn) {
+		super(codigoProd, nombre, precio, marca);
 		this.talla = talla;
 		this.color = color;
 		this.capucha = capucha;
 		this.paisMadeIn = paisMadeIn;
 	}
-	
+
 	// Constructor copia de la clase Sudadera
 	public Sudadera(Sudadera s) {
 		super();

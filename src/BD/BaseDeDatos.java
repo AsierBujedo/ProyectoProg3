@@ -24,6 +24,8 @@ public class BaseDeDatos {
 			stmt.executeUpdate(
 					"CREATE TABLE USER_STATS (PLAYED int DEFAULT 0, WON int DEFAULT 0, USER_ID int NOT NULL, FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID))");
 
+			stmt.executeUpdate(
+					"INSERT INTO USERS VALUES('ADMIN', 112233, 445566, 0)");
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

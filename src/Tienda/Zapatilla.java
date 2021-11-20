@@ -14,14 +14,15 @@ public class Zapatilla extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Zapatilla
-	public Zapatilla(String modelo, double talla, Color color, Pais paisMadeIn) {
-		super();
+	public Zapatilla(int codigoProd, String nombre, double precio, String marca, String modelo, double talla,
+			Color color, Pais paisMadeIn) {
+		super(codigoProd, nombre, precio, marca);
 		this.modelo = modelo;
 		this.talla = talla;
 		this.color = color;
 		this.paisMadeIn = paisMadeIn;
 	}
-	
+
 	// Constructor copia de la clase Zapatilla
 	public Zapatilla(Zapatilla z) {
 		super();

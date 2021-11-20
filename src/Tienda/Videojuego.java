@@ -13,15 +13,16 @@ public class Videojuego extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Videojuego
-	public Videojuego(String nombre, int anyo, String desarrollador, boolean esDigital, int tamanyo) {
-		super();
-		this.nombre = nombre;
+	public Videojuego(int codigoProd, String nombre, double precio, String marca, String nombre2, int anyo,
+			String desarrollador, boolean esDigital, int tamanyo) {
+		super(codigoProd, nombre, precio, marca);
+		nombre = nombre2;
 		this.anyo = anyo;
 		this.desarrollador = desarrollador;
 		this.esDigital = esDigital;
 		this.tamanyo = tamanyo;
 	}
-	
+
 	// Constructor copia de la clase Videojuego
 	public Videojuego(Videojuego v) {
 		super();

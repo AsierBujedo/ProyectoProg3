@@ -11,15 +11,16 @@ public class Ordenador extends Producto {
 		super();
 	}
 	
-	// Constructor con argumentos de la clase Ordenador
-	public Ordenador(String modelo, int memInterna, int rAM, int memGraf) {
-		super();
+	// Constructor con argumentos de la clase Ordenador	
+	public Ordenador(int codigoProd, String nombre, double precio, String marca, String modelo, int memInterna, int rAM,
+			int memGraf) {
+		super(codigoProd, nombre, precio, marca);
 		this.modelo = modelo;
 		this.memInterna = memInterna;
 		RAM = rAM;
 		this.memGraf = memGraf;
 	}
-	
+
 	// Constructor copia de la clase Ordenador
 	public Ordenador(Ordenador o) {
 		super();

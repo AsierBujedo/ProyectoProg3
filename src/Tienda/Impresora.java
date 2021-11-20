@@ -12,13 +12,14 @@ public class Impresora extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Impresora
-	public Impresora(String modelo, boolean esColor, boolean esLaser) {
-		super();
+	public Impresora(int codigoProd, String nombre, double precio, String marca, String modelo, boolean esColor,
+			boolean esLaser) {
+		super(codigoProd, nombre, precio, marca);
 		this.modelo = modelo;
 		this.esColor = esColor;
 		this.esLaser = esLaser;
 	}
-	
+
 	// Constructor copia de la clase Impresora
 	public Impresora(Impresora i) {
 		super();

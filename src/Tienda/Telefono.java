@@ -13,15 +13,16 @@ public class Telefono extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Telefono
-	public Telefono(String modelo, int almacenamiento, int rAM, int hz, int mAh) {
-		super();
+	public Telefono(int codigoProd, String nombre, double precio, String marca, String modelo, int almacenamiento,
+			int rAM, int hz, int mAh) {
+		super(codigoProd, nombre, precio, marca);
 		this.modelo = modelo;
 		this.almacenamiento = almacenamiento;
 		RAM = rAM;
 		Hz = hz;
 		this.mAh = mAh;
 	}
-	
+
 	// Constructor copia de la clase Telefono
 	public Telefono(Telefono t) {
 		super();

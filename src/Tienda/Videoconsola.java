@@ -15,9 +15,9 @@ public class Videoconsola extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Videoconsola
-	public Videoconsola(String modelo, int almacenamiento, int rAM, int memGraf, boolean esPortatil,
-			boolean versionDigital, boolean internetConex) {
-		super();
+	public Videoconsola(int codigoProd, String nombre, double precio, String marca, String modelo, int almacenamiento,
+			int rAM, int memGraf, boolean esPortatil, boolean versionDigital, boolean internetConex) {
+		super(codigoProd, nombre, precio, marca);
 		this.modelo = modelo;
 		this.almacenamiento = almacenamiento;
 		RAM = rAM;
@@ -26,7 +26,7 @@ public class Videoconsola extends Producto {
 		this.versionDigital = versionDigital;
 		this.internetConex = internetConex;
 	}
-	
+
 	// Constructor copia de la clase Videoconsola
 	public Videoconsola(Videoconsola v) {
 		super();
