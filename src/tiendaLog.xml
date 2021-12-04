@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-12-04T12:02:33.227754500Z</date>
+  <millis>1638619353227</millis>
+  <nanos>754500</nanos>
+  <sequence>0</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-04T12:02:33.537704700Z</date>
+  <millis>1638619353537</millis>
+  <nanos>704700</nanos>
+  <sequence>1</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Ventana inicializada</message>
+</record>
+<record>
+  <date>2021-12-04T12:02:34.924636700Z</date>
+  <millis>1638619354924</millis>
+  <nanos>636700</nanos>
+  <sequence>2</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda$6</class>
+  <method>windowClosing</method>
+  <thread>19</thread>
+  <message>Cerrando ventana</message>
+</record>
+</log>

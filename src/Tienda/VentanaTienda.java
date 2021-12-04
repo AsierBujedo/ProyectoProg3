@@ -9,6 +9,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 
@@ -24,6 +27,7 @@ public class VentanaTienda {
 	static JMenu atcliente = new JMenu("Atencion al cliente");
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
+	static Logger logger;
 
 	public void InitWindow() {
 
@@ -76,6 +80,7 @@ public class VentanaTienda {
 						new Chat.TextChatClient().InitChat("localhost", 6666);
 					}
 				});
+				logger.log(Level.INFO, "Iniciando chat");
 				hilochat.start();
 			}
 		});
@@ -83,8 +88,8 @@ public class VentanaTienda {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				new Login().doLogin();
+				logger.log(Level.INFO, "Inicio de sesion");
 
 			}
 		});
@@ -98,6 +103,7 @@ public class VentanaTienda {
 				loginItem.setEnabled(true);
 				logoutItem.setEnabled(false);
 				personalArea.setEnabled(false);
+				logger.log(Level.INFO, "Cerrado de sesion");
 
 			}
 		});
@@ -130,9 +136,16 @@ public class VentanaTienda {
 						Cesta.cesta = (ArrayList<Producto>) ois.readObject();
 					} catch (IOException | ClassNotFoundException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						logger.log(Level.SEVERE, "Error al cargar datos");
 					}
 				}
+			}
+		
+		});
+		frame.addWindowListener(new WindowAdapter() {
+
+			public void windowClosing(WindowEvent e) {
+				logger.log(Level.INFO, "Cerrando ventana");
 			}
 		});
 		frame.setVisible(true);
@@ -147,7 +160,14 @@ public class VentanaTienda {
 	 * Método main(). Ésta clase es la única que cuenta con uno.
 	 */
 	public static void main(String[] args) {
+		try {
+		logger=Logger.getLogger("logger");
+		logger.addHandler(new FileHandler("tiendaLog.xml"));
+		}catch(Exception e) {
+		}
+		logger.log(Level.INFO, "Logger inicializado");
 		new VentanaTienda().InitWindow();
+		logger.log(Level.INFO, "Ventana inicializada");
 
 	}
 }

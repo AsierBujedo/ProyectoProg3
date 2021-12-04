@@ -1,5 +1,7 @@
 package Tienda;
 
+import java.util.logging.Level;
+
 public class PersonaPrueba implements DatoParaTabla {
 	protected String nombre;
 	protected String apellido;
@@ -52,7 +54,7 @@ public class PersonaPrueba implements DatoParaTabla {
 	    	}
     	} catch (Exception e) {
     		// Error en conversión. Intentando asignar un tipo incorrecto
-    		e.printStackTrace();
+    		VentanaTienda.logger.log(Level.SEVERE, "Error al poner un valor");
     	}	
 	}
 }
