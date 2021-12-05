@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-12-04T12:02:33.227754500Z</date>
-  <millis>1638619353227</millis>
-  <nanos>754500</nanos>
+  <date>2021-12-05T08:52:46.071162700Z</date>
+  <millis>1638694366071</millis>
+  <nanos>162700</nanos>
   <sequence>0</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Logger inicializado</message>
 </record>
 <record>
-  <date>2021-12-04T12:02:33.537704700Z</date>
-  <millis>1638619353537</millis>
-  <nanos>704700</nanos>
+  <date>2021-12-05T08:52:46.348157200Z</date>
+  <millis>1638694366348</millis>
+  <nanos>157200</nanos>
   <sequence>1</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>Ventana inicializada</message>
 </record>
 <record>
-  <date>2021-12-04T12:02:34.924636700Z</date>
-  <millis>1638619354924</millis>
-  <nanos>636700</nanos>
+  <date>2021-12-05T08:52:50.862811700Z</date>
+  <millis>1638694370862</millis>
+  <nanos>811700</nanos>
   <sequence>2</sequence>
   <logger>logger</logger>
   <level>INFO</level>

@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import javax.swing.*;
 
+import BD.BaseDeDatos;
 import Utils.RoundedBorder;
 
 /**
@@ -146,6 +147,10 @@ public class VentanaTienda {
 
 			public void windowClosing(WindowEvent e) {
 				logger.log(Level.INFO, "Cerrando ventana");
+			}
+			public void windowOpened(WindowEvent e) {
+				BaseDeDatos bd = new BaseDeDatos();
+				bd.InitDB();
 			}
 		});
 		frame.setVisible(true);

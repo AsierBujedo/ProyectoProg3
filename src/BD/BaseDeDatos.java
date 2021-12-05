@@ -15,15 +15,18 @@ public class BaseDeDatos {
 		 * de lo contrario devolverá un false.
 		 */
 		try {
-			con = DriverManager.getConnection("jdbc:sqlite:ajedrez.db");
+			con = DriverManager.getConnection("jdbc:sqlite:tienda.db");
 			stmt = con.createStatement();
 			stmt.executeUpdate("DROP TABLE IF EXISTS USERS");
-			stmt.executeUpdate("DROP TABLE IF EXISTS USER_STATS");
+			stmt.executeUpdate("DROP TABLE IF EXISTS PRODUCTOS");
+			stmt.executeUpdate("DROP TABLE IF EXISTS COMPRA");
+
 			stmt.executeUpdate(
 					"CREATE TABLE USERS (USERNAME string NOT NULL, MAIL string NOT NULL, PASS string NOT NULL, USER_ID int PRIMARY KEY NOT NULL)");
 			stmt.executeUpdate(
-					"CREATE TABLE USER_STATS (PLAYED int DEFAULT 0, WON int DEFAULT 0, USER_ID int NOT NULL, FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID))");
-
+					"CREATE TABLE PRODUCTOS (CODIGO_PROD int NOT NULL, NOMBRE string, PRECIO double, MARCA, string, ID int PRIMARY KEY NOT NULL)");
+			stmt.executeUpdate(
+					"CREATE TABLE COMPRA (USER_ID int NOT NULL, CODIGO_PROD int NOT NULL, CANTIDAD int, FECHA bigint, FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID), FOREIGN KEY (CODIGO_PROD) REFERENCES PRODUCTOS (CODIGO_PROD))");
 			stmt.executeUpdate(
 					"INSERT INTO USERS VALUES('ADMIN', 112233, 445566, 0)");
 			return true;
