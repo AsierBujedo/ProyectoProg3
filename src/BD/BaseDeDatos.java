@@ -8,7 +8,7 @@ import Tienda.*;
 
 public class BaseDeDatos {
 	private static Connection con;
-	private Statement stmt;
+	private static Statement stmt;
 	private static PreparedStatement pstmt;
 	private static int USER_IDS = 1;
 	
@@ -16,7 +16,7 @@ public class BaseDeDatos {
 	 * @return True si todo va bien, false si hay algún error
 	 */
 	// Este método deberá ejecutarse antes de comenzar a usar la base de datos
-	public boolean InitDB() {
+	public static boolean InitDB() {
 		try {
 			con = DriverManager.getConnection("jdbc:sqlite:tienda.db");
 			stmt = con.createStatement();
@@ -26,8 +26,9 @@ public class BaseDeDatos {
 
 			stmt.executeUpdate(
 					"CREATE TABLE USER (USER_ID int PRIMARY KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) NOT NULL, PASS varchar(100) NOT NULL)");
-			stmt.executeUpdate(
-					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100)");
+//			stmt.executeUpdate(
+//					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100)");
+			//Error con la creación de esta tabla. "incomplete input".
 			stmt.executeUpdate(
 					"CREATE TABLE COMPRA (USER_ID int NOT NULL, COD_PRODUCTO int NOT NULL, CANTIDAD int, FECHA bigint, FOREIGN KEY (USER_ID) REFERENCES USER (USER_ID), FOREIGN KEY (COD_PRODUCTO) REFERENCES PRODUCTO (COD_PRODUCTO))");
 			stmt.executeUpdate(
@@ -44,7 +45,7 @@ public class BaseDeDatos {
 	 * @param name Nombre de la columna a añadir
 	 * @return True si la columna se añade correctamente, false si hay algún error
 	 */
-	public boolean addColumn(TABLES TABLE, String name) {
+	public static boolean addColumn(TABLES TABLE, String name) {
 		/*
 		 * Este método, crea una nueva columna en la tabla "TABLE", puede llamarse en
 		 * cualquier momento (mientras la base de datos esté iniciada), el valor de
@@ -66,7 +67,7 @@ public class BaseDeDatos {
 	 * @return True si la columna se borra correctamente, false si es una columna por defecto o hay algún error
 	 */
 	// No se podrán borrar las columnas por defecto
-	public boolean removeColumn(TABLES TABLE, String COLUMN) {
+	public static boolean removeColumn(TABLES TABLE, String COLUMN) {
 		try {
 			if (!COLUMN.equals(COLS.USERNAME.toString()) || !COLUMN.equals(COLS.MAIL.toString()) || !COLUMN.equals(COLS.PASS.toString()) || COLUMN.equals("PLAYED") || COLUMN.equals("WON")) {
 				pstmt = con.prepareStatement("ALTER TABLE " + TABLE.toString() + " DROP " + COLUMN);
@@ -88,7 +89,7 @@ public class BaseDeDatos {
 	 * @return True si el usuario elimina correctamente, false si hay algún error
 	 */
 	// El usuario se identifica por su dirección de correo electrónico y su contraseña, no por su identificativo único
-	public boolean removeUser(String MAIL, String PASS) {
+	public static boolean removeUser(String MAIL, String PASS) {
 		try {
 			pstmt = con.prepareStatement("DELETE FROM USER WHERE MAIL = '" + MAIL + "' AND PASS = '" + PASS + "'");
 			pstmt.executeUpdate();
@@ -107,7 +108,7 @@ public class BaseDeDatos {
 	 * @return True si el usuario se añade correctamente, false si hay algún error
 	 */
 	// Automáticamente se le asigna un ID como código identificativo único, su PRIMARY KEY
-	public boolean addUser(String USERNAME, String MAIL, String PASS) {
+	public static boolean addUser(String USERNAME, String MAIL, String PASS) {
 		try {
 			pstmt = con.prepareStatement("INSERT INTO USER (USERNAME, MAIL, PASS, USER_ID) VALUES ('" + USERNAME
 					+ "','" + MAIL + "','" + PASS + "','" + USER_IDS + "')");
@@ -124,7 +125,7 @@ public class BaseDeDatos {
 	 * @return True si la conexión se cierra correctamente, false si hay algún error
 	 */
 	// Deberá cerrarse siempre la conexion con la base de datos mediante este método
-	public boolean closeDB() {
+	public static boolean closeDB() {
 		try {
 			con.close();
 			return true;
@@ -139,7 +140,7 @@ public class BaseDeDatos {
 	 * @param PASS Contraseña del usuario
 	 * @return "Nombre de usuario", "Error" si hay algún error
 	 */
-	public String getUser(String MAIL, String PASS) {
+	public static String getUser(String MAIL, String PASS) {
 		try {
 			pstmt = con.prepareStatement("SELECT USERNAME FROM USER WHERE MAIL = '"+MAIL+"' AND PASS = '"+PASS+"'" );
 			ResultSet rs = pstmt.executeQuery();
@@ -158,7 +159,7 @@ public class BaseDeDatos {
 	 * @return True si el cambio es efectivo, false si hay algún error
 	 */
 	// Se permite el cambio de nombre de usuario, mail y/o password
-	public boolean editUser(COLS COL, String MAIL, String PASS, String NEW) {
+	public static boolean editUser(COLS COL, String MAIL, String PASS, String NEW) {
 		try {
 			pstmt = con.prepareStatement("UPDATE USER SET " + COL.toString() + "= '" + NEW + "' WHERE MAIL = '" + MAIL
 					+ "' AND PASS = '" + PASS + "'");

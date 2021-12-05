@@ -8,7 +8,6 @@ import BD.*;
 import Utils.RoundedBorder;
 
 public class Login {
-
 	public void doLogin() {
 		BaseDeDatos bd = new BaseDeDatos();
 		bd.InitDB();

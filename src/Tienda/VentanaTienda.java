@@ -5,9 +5,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 import BD.BaseDeDatos;
+import Utils.OtherUtils;
 import Utils.RoundedBorder;
 
 /**
@@ -28,9 +31,10 @@ public class VentanaTienda {
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
+	public static BaseDeDatos bd = new BaseDeDatos();
 
 	public void InitWindow() {
-
+		bd.InitDB();
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
@@ -65,24 +69,27 @@ public class VentanaTienda {
 		// Nombres de la columnas
 		String[] nomColumnas = {"Cod_Producto", "Nombre", "Precio", "Marca"};
 		// Datos de la tabla
-		ArrayList<Producto> productos = BaseDeDatos.getProductos();
+		
+		//El siguiente métdodo, y, por tanto, las zonas comentadas no pueden usarse
+		//hasta solucionarse el error en BaseDeDatos(29).
+		//ArrayList<Producto> productos = bd.getProductos();
 		
 		// Una colección por cada temática de producto
 		ArrayList<DatoParaTabla> prodElectronica = new ArrayList<DatoParaTabla>();
 		ArrayList<DatoParaTabla> prodRopa = new ArrayList<DatoParaTabla>();
 		ArrayList<DatoParaTabla> prodHobby = new ArrayList<DatoParaTabla>();
 		
-		for (Producto p : productos) {
-			if (p instanceof Impresora || p instanceof Ordenador || p instanceof Telefono) {
-				prodElectronica.add(p);
-			}
-			else if (p instanceof Pantalon || p instanceof Sudadera || p instanceof Zapatilla) {
-				prodRopa.add(p);
-			}
-			else if (p instanceof Libro || p instanceof Videoconsola || p instanceof Videojuego) {
-				prodHobby.add(p);
-			}
-		}
+//		for (Producto p : productos) {
+//			if (p instanceof Impresora || p instanceof Ordenador || p instanceof Telefono) {
+//				prodElectronica.add(p);
+//			}
+//			else if (p instanceof Pantalon || p instanceof Sudadera || p instanceof Zapatilla) {
+//				prodRopa.add(p);
+//			}
+//			else if (p instanceof Libro || p instanceof Videoconsola || p instanceof Videojuego) {
+//				prodHobby.add(p);
+//			}
+//		}
 		
 //		tabs.add("Electronica", new JScrollPane(elect));
 		tabs.add("Electronica", new JScrollPane(PanelTabla.getPanelTabla(nomColumnas, prodElectronica)));
@@ -108,7 +115,7 @@ public class VentanaTienda {
 				Thread hilochat = new Thread(new Runnable() {
 					@Override
 					public void run() {
-						new Chat.TextChatClient().InitChat("localhost", 6666);
+						new Chat.TextChatClient().InitChat(OtherUtils.prop.getProperty("CLIENT-IP-DESTINATION"), Integer.valueOf(OtherUtils.prop.getProperty("CLIENT-PORT")));
 					}
 				});
 				logger.log(Level.INFO, "Iniciando chat");
@@ -146,7 +153,7 @@ public class VentanaTienda {
 				Thread hilochat = new Thread(new Runnable() {
 					@Override
 					public void run() {
-						new Chat.TextChat().InitChat(6666);
+						new Chat.TextChat().InitChat(Integer.valueOf(OtherUtils.prop.getProperty("HOST-PORT")));
 					}
 				});
 				hilochat.start();
@@ -179,14 +186,13 @@ public class VentanaTienda {
 				logger.log(Level.INFO, "Cerrando ventana");
 			}
 			public void windowOpened(WindowEvent e) {
-				BaseDeDatos bd = new BaseDeDatos();
-				bd.InitDB();
+				logger.log(Level.INFO, "Abriendo ventana. Abriendo conexión con la base de datos");
 			}
 		});
 		frame.setVisible(true);
 		frame.setTitle("Emai");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		frame.setSize(1000, 900);
+		frame.setSize(Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-WIDTH")), Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-HEIGHT")));
 		frame.setIconImage(icon);
 
 	}
@@ -199,6 +205,7 @@ public class VentanaTienda {
 		}catch(Exception e) {
 		}
 		logger.log(Level.INFO, "Logger inicializado");
+		OtherUtils.restartProperties();
 		new VentanaTienda().InitWindow();
 		logger.log(Level.INFO, "Ventana inicializada");
 

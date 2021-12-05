@@ -27,12 +27,12 @@ public class Cesta {
 			@SuppressWarnings("resource")
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			ArrayList<Producto> list = new ArrayList<Producto>();
-			list.add(new Libro(123, "La casa de los espíritus", 19.99, "Editorial", "Isabel Allende", "Editorial",
+			list.add(new Libro("L123", "La casa de los espíritus", 19.99, "Editorial", 123, "Isabel Allende", "Editorial",
 					Color.BLUE, true));
-			list.add(new Libro(124, "Harry Potter", 24.99, "Editorial", "J. K. Rowling", "Editorial", Color.RED, true));
-			list.add(new Ordenador(223, "Lenovo Ideapad", 500.00, "Lenovo", "Ideapad 2", 500, 8, 2));
-			list.add(new Zapatilla(323, "Nike Air", 99.99, "Nike", null, 42.00, Color.BLACK, Pais.CHINA));
-			list.add(new Sudadera(423, "Sudadera", 22.99, "Billabong", Talla.M, Color.GREEN, true, Pais.CHINA));
+			list.add(new Libro("L124", "Harry Potter", 24.99, "Editorial", 124, "J. K. Rowling", "Editorial", Color.RED, true));
+			list.add(new Ordenador("O223", "Lenovo Ideapad", 500.00, "Lenovo", 223, "Ideapad 2", 500, 8, 2));
+			list.add(new Zapatilla("Z323", "Nike Air", 99.99, "Nike", 323, null, 42.00, Color.BLACK, Pais.CHINA));
+			list.add(new Sudadera("Z423", "Sudadera", 22.99, "Billabong", 423, Talla.M, Color.GREEN, true, Pais.CHINA));
 			oos.writeObject(list);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

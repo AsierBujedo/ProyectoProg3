@@ -4,3 +4,4 @@ chatClientLog.log
 src/BD/BaseDeDatos.class
 src/BD/COLS.class
 src/BD/TABLES.class
+*.xml
