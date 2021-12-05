@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -56,17 +55,48 @@ public class VentanaTienda {
 		bar.add(menucliente);
 		bar.add(atcliente);
 		JTabbedPane tabs = new JTabbedPane();
-		JPanel elect = new JPanel();
 		JPanel main = new JPanel();
+		JPanel elect = new JPanel();
 		JPanel ropa = new JPanel();
-		JPanel videojuego = new JPanel();
+		JPanel hobby = new JPanel();
 		JPanel cesta = new Cesta().panelCesta();
-		tabs.add("Principal", new JScrollPane(main));
-		tabs.add("Electronica", new JScrollPane(elect));
-		tabs.add("Ropa", new JScrollPane(ropa));
-		tabs.add("Videojuegos", new JScrollPane(videojuego));
+		tabs.add("Principal", new JScrollPane(main));		
+		
+		// Nombres de la columnas
+		String[] nomColumnas = {"Cod_Producto", "Nombre", "Precio", "Marca"};
+		// Datos de la tabla
+		ArrayList<Producto> productos = BaseDeDatos.getProductos();
+		
+		// Una colección por cada temática de producto
+		ArrayList<DatoParaTabla> prodElectronica = new ArrayList<DatoParaTabla>();
+		ArrayList<DatoParaTabla> prodRopa = new ArrayList<DatoParaTabla>();
+		ArrayList<DatoParaTabla> prodHobby = new ArrayList<DatoParaTabla>();
+		
+		for (Producto p : productos) {
+			if (p instanceof Impresora || p instanceof Ordenador || p instanceof Telefono) {
+				prodElectronica.add(p);
+			}
+			else if (p instanceof Pantalon || p instanceof Sudadera || p instanceof Zapatilla) {
+				prodRopa.add(p);
+			}
+			else if (p instanceof Libro || p instanceof Videoconsola || p instanceof Videojuego) {
+				prodHobby.add(p);
+			}
+		}
+		
+//		tabs.add("Electronica", new JScrollPane(elect));
+		tabs.add("Electronica", new JScrollPane(PanelTabla.getPanelTabla(nomColumnas, prodElectronica)));
+		
+//		tabs.add("Ropa", new JScrollPane(ropa));
+		tabs.add("Ropa", new JScrollPane(PanelTabla.getPanelTabla(nomColumnas, prodRopa)));
+		
+//		tabs.add("Hobby", new JScrollPane(hobby));
+		tabs.add("Hobby", new JScrollPane(PanelTabla.getPanelTabla(nomColumnas, prodHobby)));
+		
 		tabs.add("Cesta", new JScrollPane(cesta));
-		tabs.add("Tabla Prov.", new JScrollPane(PanelTabla.getPanelTabla()));
+		
+//		tabs.add("Tabla Prov.", new JScrollPane(PanelTabla.getPanelTabla()));
+		
 		tabs.setBorder(new RoundedBorder(7));
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
@@ -161,9 +191,7 @@ public class VentanaTienda {
 
 	}
 
-	/**
-	 * Método main(). Ésta clase es la única que cuenta con uno.
-	 */
+	// Esta es la única clase que cuenta con un método main()
 	public static void main(String[] args) {
 		try {
 		logger=Logger.getLogger("logger");

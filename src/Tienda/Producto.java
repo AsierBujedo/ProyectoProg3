@@ -2,15 +2,15 @@ package Tienda;
 
 import java.io.Serializable;
 
-public abstract class Producto implements Vendible, Comparable<Producto>, Serializable {
+public abstract class Producto implements Vendible, Comparable<Producto>, Serializable, DatoParaTabla {
 
 	private static final long serialVersionUID = 1L;
 	public static int cont = 1;
 	protected String codigoProducto;
-	protected int ID;
 	protected String nombre;
 	protected double precio;
 	protected String marca;
+	protected int ID;
 	
 
 	// Constructor sin argumentos de la clase Producto
@@ -31,17 +31,15 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 		cont++;
 	}
 
-	// Constructor copia de la clase Producto
-	public Producto(Producto p) {
-		super();
-		this.ID = cont;
-		this.nombre = p.nombre;
-		this.precio = p.precio;
-		this.marca = p.marca;
-		cont++;
-	}
-
 	// Getters
+	public String getCodigoProducto() {
+		return codigoProducto;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
 	public double getPrecio() {
 		return precio;
 	}
@@ -49,16 +47,20 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 	public String getMarca() {
 		return marca;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
 	
 	public int getID() {
 		return ID;
 	}
 
 	// Setters
+	public void setCodigoProducto(String codigoProducto) {
+		this.codigoProducto = codigoProducto;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
@@ -67,17 +69,14 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 		this.marca = marca;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	@Override
 	public String toString() {
-		return "Producto [Producto: ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+		return "Producto: [codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", precio=" + precio + ", marca="
+				+ marca + ", ID=" + ID + "]";
 	}	
 
-	/**Implementación de la interfaz Comparable<Producto>.
-	 * Compara por precio de menor a mayor.
+	/**Implementación de la interfaz Comparable<Producto>
+	 * Compara por precio de menor a mayor
 	 * @param Producto p
 	 * @return Integer
 	 */

@@ -1,5 +1,8 @@
 package Tienda;
 
+import java.util.logging.Level;
+
+@SuppressWarnings("serial")
 public class Videoconsola extends Producto {
 	protected String modelo;
 	protected int almacenamiento;
@@ -9,15 +12,17 @@ public class Videoconsola extends Producto {
 	protected boolean versionDigital;
 	protected boolean internetConex;
 	
-	// Constructor sin argumentos de la clase Videoconsola
 	public Videoconsola() {
 		super();
 	}
 	
-	// Constructor con argumentos de la clase Videoconsola
-	public Videoconsola(int ID, String nombre, double precio, String marca, String modelo, int almacenamiento,
+	public Videoconsola(String codigoProducto, String nombre, double precio, String marca, int ID) {
+		super(codigoProducto, nombre, precio, marca, ID);
+	}
+
+	public Videoconsola(String codigoProducto, String nombre, double precio, String marca, int ID, String modelo, int almacenamiento,
 			int rAM, int memGraf, boolean esPortatil, boolean versionDigital, boolean internetConex) {
-		super(ID, nombre, precio, marca);
+		super(codigoProducto, nombre, precio, marca, ID);
 		this.modelo = modelo;
 		this.almacenamiento = almacenamiento;
 		RAM = rAM;
@@ -89,7 +94,34 @@ public class Videoconsola extends Producto {
 	public String toString() {
 		return "Videoconsola: [modelo=" + modelo + ", almacenamiento=" + almacenamiento + ", RAM=" + RAM + ", memGraf="
 				+ memGraf + ", esPortatil=" + esPortatil + ", versionDigital=" + versionDigital + ", internetConex="
-				+ internetConex + ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+				+ internetConex + ", codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", precio=" + precio
+				+ ", marca=" + marca + ", ID=" + ID + "]";
+	}
+	
+	@Override
+	public Object getValor(int col) {
+		switch (col) {
+    	case 0: { return codigoProducto; }
+    	case 1: { return nombre; }
+    	case 2: { return precio; }
+    	case 3: { return marca; }
+	}
+		return null;
+	}
+
+	@Override
+	public void setValor(Object valor, int col) {
+		try {
+	    	switch (col) {
+		    	case 0: { codigoProducto = (String) valor; break; }
+		    	case 1: { nombre = (String) valor; break; }
+		    	case 2: { precio = (double) valor; break; }
+		    	case 3: { marca = (String) valor; break; }
+	    	}
+    	} catch (Exception e) {
+    		// Error en conversión, intentando asignar un tipo incorrecto
+    		VentanaTienda.logger.log(Level.SEVERE, "Error al establecer un valor");		
+    	}
 	}
 	
 }

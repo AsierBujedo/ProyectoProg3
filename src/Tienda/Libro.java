@@ -1,22 +1,26 @@
 package Tienda;
 
 import java.awt.Color;
+import java.util.logging.Level;
 
+@SuppressWarnings("serial")
 public class Libro extends Producto {
 	protected String autor;
 	protected String editorial;
 	protected Color color;
 	protected boolean tapaDura;
 	
-	// Constructor sin argumentos de la clase Libro
 	public Libro() {
 		super();
 	}
 	
-	// Constructor con argumentos de la clase Libro
-	public Libro(int ID, String nombre, double precio, String marca, String autor, String editorial,
+	public Libro(String codigoProducto, String nombre, double precio, String marca, int ID) {
+		super(codigoProducto, nombre, precio, marca, ID);
+	}
+
+	public Libro(String codigoProducto, String nombre, double precio, String marca, int ID, String autor, String editorial,
 			Color color, boolean tapaDura) {
-		super(ID, nombre, precio, marca);
+		super(codigoProducto, nombre, precio, marca, ID);
 		this.autor = autor;
 		this.editorial = editorial;
 		this.color = color;
@@ -60,7 +64,34 @@ public class Libro extends Producto {
 	@Override
 	public String toString() {
 		return "Libro: [autor=" + autor + ", editorial=" + editorial + ", color=" + color + ", tapaDura=" + tapaDura
-				+ ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+				+ ", codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", precio=" + precio + ", marca="
+				+ marca + ", ID=" + ID + "]";
+	}
+	
+	@Override
+	public Object getValor(int col) {
+		switch (col) {
+    	case 0: { return codigoProducto; }
+    	case 1: { return nombre; }
+    	case 2: { return precio; }
+    	case 3: { return marca; }
+	}
+		return null;
+	}
+
+	@Override
+	public void setValor(Object valor, int col) {
+		try {
+	    	switch (col) {
+		    	case 0: { codigoProducto = (String) valor; break; }
+		    	case 1: { nombre = (String) valor; break; }
+		    	case 2: { precio = (double) valor; break; }
+		    	case 3: { marca = (String) valor; break; }
+	    	}
+    	} catch (Exception e) {
+    		// Error en conversión, intentando asignar un tipo incorrecto
+    		VentanaTienda.logger.log(Level.SEVERE, "Error al establecer un valor");		
+    	}
 	}
 	
 }
