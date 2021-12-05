@@ -1,5 +1,5 @@
 package BD;
 
 public enum TABLES {
-	USERS, USER_STATS;
+	USER, PRODUCTO, COMPRA;
 }

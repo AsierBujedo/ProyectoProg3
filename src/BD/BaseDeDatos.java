@@ -1,6 +1,10 @@
 package BD;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+
+import Tienda.*;
 
 public class BaseDeDatos {
 	private static Connection con;
@@ -17,21 +21,21 @@ public class BaseDeDatos {
 		try {
 			con = DriverManager.getConnection("jdbc:sqlite:tienda.db");
 			stmt = con.createStatement();
-			stmt.executeUpdate("DROP TABLE IF EXISTS USERS");
-			stmt.executeUpdate("DROP TABLE IF EXISTS PRODUCTOS");
+			stmt.executeUpdate("DROP TABLE IF EXISTS USER");
+			stmt.executeUpdate("DROP TABLE IF EXISTS PRODUCTO");
 			stmt.executeUpdate("DROP TABLE IF EXISTS COMPRA");
 
 			stmt.executeUpdate(
-					"CREATE TABLE USERS (USERNAME string NOT NULL, MAIL string NOT NULL, PASS string NOT NULL, USER_ID int PRIMARY KEY NOT NULL)");
+					"CREATE TABLE USER (USER_ID int PRIMARY KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) NOT NULL, PASS varchar(100) NOT NULL)");
 			stmt.executeUpdate(
-					"CREATE TABLE PRODUCTOS (CODIGO_PROD int NOT NULL, NOMBRE string, PRECIO double, MARCA, string, ID int PRIMARY KEY NOT NULL)");
+					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100)");
 			stmt.executeUpdate(
-					"CREATE TABLE COMPRA (USER_ID int NOT NULL, CODIGO_PROD int NOT NULL, CANTIDAD int, FECHA bigint, FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID), FOREIGN KEY (CODIGO_PROD) REFERENCES PRODUCTOS (CODIGO_PROD))");
+					"CREATE TABLE COMPRA (USER_ID int NOT NULL, COD_PRODUCTO int NOT NULL, CANTIDAD int, FECHA bigint, FOREIGN KEY (USER_ID) REFERENCES USER (USER_ID), FOREIGN KEY (COD_PRODUCTO) REFERENCES PRODUCTO (CODIGO_PRODUCTO))");
 			stmt.executeUpdate(
-					"INSERT INTO USERS VALUES('ADMIN', 112233, 445566, 0)");
+					"INSERT INTO USER VALUES(0, 'ADMIN', '123@GMAIL.COM', 445566)");
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 	}
@@ -47,7 +51,7 @@ public class BaseDeDatos {
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 	}
@@ -69,7 +73,7 @@ public class BaseDeDatos {
 				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 	}
@@ -82,11 +86,11 @@ public class BaseDeDatos {
 		 */
 
 		try {
-			pstmt = con.prepareStatement("DELETE FROM USERS WHERE MAIL = '" + MAIL + "' AND PASS = '" + PASS + "'");
+			pstmt = con.prepareStatement("DELETE FROM USER WHERE MAIL = '" + MAIL + "' AND PASS = '" + PASS + "'");
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 
@@ -94,18 +98,18 @@ public class BaseDeDatos {
 
 	public boolean addUser(String USERNAME, String MAIL, String PASS) {
 		/*
-		 * Método que permite añadir un nuevo usuario a la tabla "USERS" . Se recibe su
+		 * Método que permite añadir un nuevo usuario a la tabla "USER" . Se recibe su
 		 * nombre, mail y correo, automáticamente se le asigna un ID como código
 		 * identificativo único, esta es su PRIMARY KEY.
 		 */
 		try {
-			pstmt = con.prepareStatement("INSERT INTO USERS (USERNAME, MAIL, PASS, USER_ID) VALUES ('" + USERNAME
+			pstmt = con.prepareStatement("INSERT INTO USER (USERNAME, MAIL, PASS, USER_ID) VALUES ('" + USERNAME
 					+ "','" + MAIL + "','" + PASS + "','" + USER_IDS + "')");
 			pstmt.executeUpdate();
 			USER_IDS++;
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 	}
@@ -117,18 +121,18 @@ public class BaseDeDatos {
 			con.close();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 	}
 	
 	public String getUser(String MAIL, String PASS) {
 		try {
-			pstmt = con.prepareStatement("SELECT USERNAME FROM USERS WHERE MAIL = '"+MAIL+"' AND PASS = '"+PASS+"'" );
+			pstmt = con.prepareStatement("SELECT USERNAME FROM USER WHERE MAIL = '"+MAIL+"' AND PASS = '"+PASS+"'" );
 			ResultSet rs = pstmt.executeQuery();
 			return rs.getString("USERNAME");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return "Error";
 		}
 	}
@@ -137,19 +141,19 @@ public class BaseDeDatos {
 	public boolean editUser(COLS COL, String MAIL, String PASS, String NEW) {
 
 		/*
-		 * Este método permite editar un usuario de la tabla "USERS" mediante el enum
+		 * Este método permite editar un usuario de la tabla "USER" mediante el enum
 		 * "COLS", se permite el cambio de nombre de usuario, mail y/o la password. Si
 		 * el cambio es efectivo, recibiremos true, de lo contrario, el método devolverá
 		 * false.
 		 */
 
 		try {
-			pstmt = con.prepareStatement("UPDATE USERS SET " + COL.toString() + "= '" + NEW + "' WHERE MAIL = '" + MAIL
+			pstmt = con.prepareStatement("UPDATE USER SET " + COL.toString() + "= '" + NEW + "' WHERE MAIL = '" + MAIL
 					+ "' AND PASS = '" + PASS + "'");
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
 	}
@@ -163,5 +167,30 @@ public class BaseDeDatos {
 		
 		bd.closeDB();
 
+	}
+	
+	public static ArrayList<Producto> getProductos() {
+		try {
+			ArrayList<Producto> productos = new ArrayList();
+			pstmt = con.prepareStatement("SELECT * FROM PRODUCTO");
+			ResultSet rs = pstmt.executeQuery();
+			
+			while( rs.next() ) {
+				String id = rs.getString("PRODUCTO_ID");
+				String nombre = rs.getString("NOMBRE");
+				double precio = rs.getDouble("PRECIO");
+				String marca = rs.getString("MARCA");
+				
+				if (id.contains("L")) {
+//					productos.add( new Libro(id, nombre, precio, marca) );
+				} 
+				
+			}
+			
+			return productos;
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
 	}
 }

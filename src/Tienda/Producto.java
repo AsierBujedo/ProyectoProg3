@@ -6,11 +6,12 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 
 	private static final long serialVersionUID = 1L;
 	public static int cont = 1;
-	protected int codigoProd;
+	protected String codigoProducto;
+	protected int ID;
 	protected String nombre;
 	protected double precio;
 	protected String marca;
-	protected int ID;
+	
 
 	// Constructor sin argumentos de la clase Producto
 	public Producto() {		
@@ -20,9 +21,9 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 	}
 
 	// Constructor con argumentos de la clase Producto
-	public Producto(int codigoProd, String nombre, double precio, String marca) {
+	public Producto(String codigoProducto, String nombre, double precio, String marca, int ID) {
 		super();
-		this.codigoProd = codigoProd;
+		this.codigoProducto = codigoProducto;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.marca = marca;
@@ -33,19 +34,14 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 	// Constructor copia de la clase Producto
 	public Producto(Producto p) {
 		super();
-		this.codigoProd = p.codigoProd;
+		this.ID = cont;
 		this.nombre = p.nombre;
 		this.precio = p.precio;
 		this.marca = p.marca;
-		this.ID = cont;
 		cont++;
 	}
 
 	// Getters
-	public int getCodigoProd() {
-		return codigoProd;
-	}
-
 	public double getPrecio() {
 		return precio;
 	}
@@ -71,20 +67,14 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 		this.marca = marca;
 	}
 
-	public void setCodigoProd(int codigoProd) {
-		this.codigoProd = codigoProd;
-	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
 	@Override
 	public String toString() {
-		return "Producto: cod.=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + "ï¿½, marca=" + marca
-				+ "ID: "+ ID +" ]";
-	}
-	
+		return "Producto [Producto: ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+	}	
 
 	/**Implementación de la interfaz Comparable<Producto>.
 	 * Compara por precio de menor a mayor.
@@ -99,6 +89,4 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 		   else  
 		      return -1;  
 		}
-
-
 }

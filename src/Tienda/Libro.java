@@ -14,22 +14,13 @@ public class Libro extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Libro
-	public Libro(int codigoProd, String nombre, double precio, String marca, String autor, String editorial,
+	public Libro(int ID, String nombre, double precio, String marca, String autor, String editorial,
 			Color color, boolean tapaDura) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		this.autor = autor;
 		this.editorial = editorial;
 		this.color = color;
 		this.tapaDura = tapaDura;
-	}
-
-	// Constructor copia de la clase Libro
-	public Libro(Libro l) {
-		super();
-		this.autor = l.autor;
-		this.editorial = l.editorial;
-		this.color = l.color;
-		this.tapaDura = l.tapaDura;
 	}
 	
 	//Getters
@@ -68,8 +59,8 @@ public class Libro extends Producto {
 
 	@Override
 	public String toString() {
-		return "Libro [autor=" + autor + ", editorial=" + editorial + ", color=" + color + ", tapaDura=" + tapaDura
-				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+		return "Libro: [autor=" + autor + ", editorial=" + editorial + ", color=" + color + ", tapaDura=" + tapaDura
+				+ ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }

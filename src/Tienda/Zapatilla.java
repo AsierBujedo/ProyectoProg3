@@ -14,22 +14,13 @@ public class Zapatilla extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Zapatilla
-	public Zapatilla(int codigoProd, String nombre, double precio, String marca, String modelo, double talla,
+	public Zapatilla(int ID, String nombre, double precio, String marca, String modelo, double talla,
 			Color color, Pais paisMadeIn) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		this.modelo = modelo;
 		this.talla = talla;
 		this.color = color;
 		this.paisMadeIn = paisMadeIn;
-	}
-
-	// Constructor copia de la clase Zapatilla
-	public Zapatilla(Zapatilla z) {
-		super();
-		this.modelo = z.modelo;
-		this.talla = z.talla;
-		this.color = z.color;
-		this.paisMadeIn = z.paisMadeIn;
 	}
 	
 	//Getters
@@ -69,7 +60,7 @@ public class Zapatilla extends Producto {
 	@Override
 	public String toString() {
 		return "Zapatilla [modelo=" + modelo + ", talla=" + talla + ", color=" + color + ", paisMadeIn=" + paisMadeIn
-				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+				+ ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }

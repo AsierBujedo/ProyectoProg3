@@ -13,21 +13,13 @@ public class Pantalon extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Pantalon
-	public Pantalon(Talla talla, Color color, Pais paisMadeIn) {
-		super();
+	public Pantalon(int ID, String nombre, double precio, String marca, Talla talla, Color color, Pais paisMadeIn) {
+		super(ID, nombre, precio, marca);
 		this.talla = talla;
 		this.color = color;
 		this.paisMadeIn = paisMadeIn;
 	}
-	
-	// Constructor copia de la clase Pantalon
-	public Pantalon(Pantalon p) {
-		super();
-		this.talla = p.talla;
-		this.color = p.color;
-		this.paisMadeIn = p.paisMadeIn;
-	}
-	
+
 	//Getters
 	public Talla getTalla() {
 		return talla;
@@ -46,7 +38,6 @@ public class Pantalon extends Producto {
 		this.talla = talla;
 	}
 
-
 	public void setColor(Color color) {
 		this.color = color;
 	}
@@ -57,8 +48,8 @@ public class Pantalon extends Producto {
 
 	@Override
 	public String toString() {
-		return "Pantalon [talla=" + talla + ", color=" + color + ", paisMadeIn=" + paisMadeIn + ", codigoProd="
-				+ codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+		return "Pantalon: [talla=" + talla + ", color=" + color + ", paisMadeIn=" + paisMadeIn + ", ID=" + ID
+				+ ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }

@@ -14,22 +14,13 @@ public class Sudadera extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Sudadera
-	public Sudadera(int codigoProd, String nombre, double precio, String marca, Talla talla, Color color,
+	public Sudadera(int ID, String nombre, double precio, String marca, Talla talla, Color color,
 			boolean capucha, Pais paisMadeIn) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		this.talla = talla;
 		this.color = color;
 		this.capucha = capucha;
 		this.paisMadeIn = paisMadeIn;
-	}
-
-	// Constructor copia de la clase Sudadera
-	public Sudadera(Sudadera s) {
-		super();
-		this.talla = s.talla;
-		this.color = s.color;
-		this.capucha = s.capucha;
-		this.paisMadeIn = s.paisMadeIn;
 	}
 	
 	//Getters
@@ -70,8 +61,8 @@ public class Sudadera extends Producto {
 
 	@Override
 	public String toString() {
-		return "Sudadera [talla=" + talla + ", color=" + color + ", capucha=" + capucha + ", paisMadeIn=" + paisMadeIn
-				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+		return "Sudadera: [talla=" + talla + ", color=" + color + ", capucha=" + capucha + ", paisMadeIn=" + paisMadeIn
+				+ ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }

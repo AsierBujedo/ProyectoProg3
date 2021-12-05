@@ -13,24 +13,14 @@ public class Telefono extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Telefono
-	public Telefono(int codigoProd, String nombre, double precio, String marca, String modelo, int almacenamiento,
+	public Telefono(int ID, String nombre, double precio, String marca, String modelo, int almacenamiento,
 			int rAM, int hz, int mAh) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		this.modelo = modelo;
 		this.almacenamiento = almacenamiento;
 		RAM = rAM;
 		Hz = hz;
 		this.mAh = mAh;
-	}
-
-	// Constructor copia de la clase Telefono
-	public Telefono(Telefono t) {
-		super();
-		this.modelo = t.modelo;
-		this.almacenamiento = t.almacenamiento;
-		RAM = t.RAM;
-		Hz = t.Hz;
-		this.mAh = t.mAh;
 	}
 
 	//Getters
@@ -77,9 +67,9 @@ public class Telefono extends Producto {
 
 	@Override
 	public String toString() {
-		return "Telefono [modelo=" + modelo + ", almacenamiento=" + almacenamiento + ", RAM=" + RAM + ", Hz=" + Hz
-				+ ", mAh=" + mAh + ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio
-				+ ", marca=" + marca + "]";
+		return "Telefono: [modelo=" + modelo + ", almacenamiento=" + almacenamiento + ", RAM=" + RAM + ", Hz=" + Hz
+				+ ", mAh=" + mAh + ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca
+				+ "]";
 	}
 	
 }

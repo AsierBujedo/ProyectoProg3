@@ -12,20 +12,12 @@ public class Impresora extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Impresora
-	public Impresora(int codigoProd, String nombre, double precio, String marca, String modelo, boolean esColor,
+	public Impresora(int ID, String nombre, double precio, String marca, String modelo, boolean esColor,
 			boolean esLaser) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		this.modelo = modelo;
 		this.esColor = esColor;
 		this.esLaser = esLaser;
-	}
-
-	// Constructor copia de la clase Impresora
-	public Impresora(Impresora i) {
-		super();
-		this.modelo = i.modelo;
-		this.esColor = i.esColor;
-		this.esLaser = i.esLaser;
 	}
 
 	// Getters
@@ -56,8 +48,8 @@ public class Impresora extends Producto {
 
 	@Override
 	public String toString() {
-		return "Impresora [modelo=" + modelo + ", esColor=" + esColor + ", esLaser=" + esLaser + ", codigoProd="
-				+ codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+		return "Impresora: [modelo=" + modelo + ", esColor=" + esColor + ", esLaser=" + esLaser + ", ID=" + ID
+				+ ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }

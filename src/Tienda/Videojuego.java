@@ -13,24 +13,14 @@ public class Videojuego extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Videojuego
-	public Videojuego(int codigoProd, String nombre, double precio, String marca, String nombre2, int anyo,
+	public Videojuego(int ID, String nombre, double precio, String marca, String nombre2, int anyo,
 			String desarrollador, boolean esDigital, int tamanyo) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		nombre = nombre2;
 		this.anyo = anyo;
 		this.desarrollador = desarrollador;
 		this.esDigital = esDigital;
 		this.tamanyo = tamanyo;
-	}
-
-	// Constructor copia de la clase Videojuego
-	public Videojuego(Videojuego v) {
-		super();
-		this.nombre = v.nombre;
-		this.anyo = v.anyo;
-		this.desarrollador = v.desarrollador;
-		this.esDigital = v.esDigital;
-		this.tamanyo = v.tamanyo;
 	}
 
 	//Getters
@@ -77,9 +67,8 @@ public class Videojuego extends Producto {
 
 	@Override
 	public String toString() {
-		return "Videojuego [nombre=" + nombre + ", anyo=" + anyo + ", desarrollador=" + desarrollador + ", esDigital="
-				+ esDigital + ", tamanyo=" + tamanyo + ", codigoProd=" + codigoProd + ", precio=" + precio + ", marca="
-				+ marca + "]";
+		return "Videojuego: [nombre=" + nombre + ", anyo=" + anyo + ", desarrollador=" + desarrollador + ", esDigital="
+				+ esDigital + ", tamanyo=" + tamanyo + ", ID=" + ID + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }

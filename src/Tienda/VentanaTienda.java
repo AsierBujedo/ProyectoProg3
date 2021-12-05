@@ -28,7 +28,7 @@ public class VentanaTienda {
 	static JMenu atcliente = new JMenu("Atencion al cliente");
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
-	static Logger logger;
+	public static Logger logger;
 
 	public void InitWindow() {
 

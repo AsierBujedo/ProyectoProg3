@@ -15,9 +15,9 @@ public class Videoconsola extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Videoconsola
-	public Videoconsola(int codigoProd, String nombre, double precio, String marca, String modelo, int almacenamiento,
+	public Videoconsola(int ID, String nombre, double precio, String marca, String modelo, int almacenamiento,
 			int rAM, int memGraf, boolean esPortatil, boolean versionDigital, boolean internetConex) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		this.modelo = modelo;
 		this.almacenamiento = almacenamiento;
 		RAM = rAM;
@@ -25,18 +25,6 @@ public class Videoconsola extends Producto {
 		this.esPortatil = esPortatil;
 		this.versionDigital = versionDigital;
 		this.internetConex = internetConex;
-	}
-
-	// Constructor copia de la clase Videoconsola
-	public Videoconsola(Videoconsola v) {
-		super();
-		this.modelo = v.modelo;
-		this.almacenamiento = v.almacenamiento;
-		RAM = v.RAM;
-		this.memGraf = v.memGraf;
-		this.esPortatil = v.esPortatil;
-		this.versionDigital = v.versionDigital;
-		this.internetConex = v.internetConex;
 	}
 
 	//Getters
@@ -99,10 +87,9 @@ public class Videoconsola extends Producto {
 
 	@Override
 	public String toString() {
-		return "Videoconsola [modelo=" + modelo + ", almacenamiento=" + almacenamiento + ", RAM=" + RAM + ", memGraf="
+		return "Videoconsola: [modelo=" + modelo + ", almacenamiento=" + almacenamiento + ", RAM=" + RAM + ", memGraf="
 				+ memGraf + ", esPortatil=" + esPortatil + ", versionDigital=" + versionDigital + ", internetConex="
-				+ internetConex + ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio
-				+ ", marca=" + marca + "]";
+				+ internetConex + ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }

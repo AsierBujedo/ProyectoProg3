@@ -12,22 +12,13 @@ public class Ordenador extends Producto {
 	}
 	
 	// Constructor con argumentos de la clase Ordenador	
-	public Ordenador(int codigoProd, String nombre, double precio, String marca, String modelo, int memInterna, int rAM,
+	public Ordenador(int ID, String nombre, double precio, String marca, String modelo, int memInterna, int rAM,
 			int memGraf) {
-		super(codigoProd, nombre, precio, marca);
+		super(ID, nombre, precio, marca);
 		this.modelo = modelo;
 		this.memInterna = memInterna;
 		RAM = rAM;
 		this.memGraf = memGraf;
-	}
-
-	// Constructor copia de la clase Ordenador
-	public Ordenador(Ordenador o) {
-		super();
-		this.modelo = o.modelo;
-		this.memInterna = o.memInterna;
-		RAM = o.RAM;
-		this.memGraf = o.memGraf;
 	}
 	
 	//Getters
@@ -64,8 +55,8 @@ public class Ordenador extends Producto {
 
 	@Override
 	public String toString() {
-		return "Ordenador [modelo=" + modelo + ", memInterna=" + memInterna + ", RAM=" + RAM + ", memGraf=" + memGraf
-				+ ", codigoProd=" + codigoProd + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
+		return "Ordenador: [modelo=" + modelo + ", memInterna=" + memInterna + ", RAM=" + RAM + ", memGraf=" + memGraf
+				+ ", ID=" + ID + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + "]";
 	}
 	
 }
