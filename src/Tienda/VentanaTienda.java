@@ -35,6 +35,7 @@ public class VentanaTienda {
 
 	public void InitWindow() {
 		bd.InitDB();
+		
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
@@ -122,6 +123,7 @@ public class VentanaTienda {
 				hilochat.start();
 			}
 		});
+		
 		loginItem.addActionListener(new ActionListener() { // Accion de inicio de sesion
 
 			@Override
@@ -180,6 +182,7 @@ public class VentanaTienda {
 			}
 		
 		});
+		
 		frame.addWindowListener(new WindowAdapter() {
 
 			public void windowClosing(WindowEvent e) {

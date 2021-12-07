@@ -2,22 +2,34 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-12-05T08:52:46.071162700Z</date>
-  <millis>1638694366071</millis>
-  <nanos>162700</nanos>
+  <date>2021-12-07T19:39:35.713878500Z</date>
+  <millis>1638905975713</millis>
+  <nanos>878500</nanos>
   <sequence>0</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda</class>
-  <method>main</method>
+  <method>iniciaLog</method>
   <thread>1</thread>
   <message>Logger inicializado</message>
 </record>
 <record>
-  <date>2021-12-05T08:52:46.348157200Z</date>
-  <millis>1638694366348</millis>
-  <nanos>157200</nanos>
+  <date>2021-12-07T19:39:35.764744400Z</date>
+  <millis>1638905975764</millis>
+  <nanos>744400</nanos>
   <sequence>1</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Utils.OtherUtils</class>
+  <method>restartProperties</method>
+  <thread>1</thread>
+  <message>PROPERTIES SUCCESFULLY LOADED</message>
+</record>
+<record>
+  <date>2021-12-07T19:39:36.134676800Z</date>
+  <millis>1638905976134</millis>
+  <nanos>676800</nanos>
+  <sequence>2</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda</class>
@@ -26,10 +38,22 @@
   <message>Ventana inicializada</message>
 </record>
 <record>
-  <date>2021-12-05T08:52:50.862811700Z</date>
-  <millis>1638694370862</millis>
-  <nanos>811700</nanos>
-  <sequence>2</sequence>
+  <date>2021-12-07T19:39:36.182400700Z</date>
+  <millis>1638905976182</millis>
+  <nanos>400700</nanos>
+  <sequence>3</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda$6</class>
+  <method>windowOpened</method>
+  <thread>19</thread>
+  <message>Abriendo ventana. Abriendo conexión con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-07T19:39:48.957117100Z</date>
+  <millis>1638905988957</millis>
+  <nanos>117100</nanos>
+  <sequence>4</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda$6</class>

@@ -25,7 +25,7 @@ public class OtherUtils {
 	 * @param start
 	 * @return Producto
 	 */
-	public Producto buscarEnLista(ArrayList<Producto> list, int codigo, int start) {
+	public static Producto buscarEnLista(ArrayList<Producto> list, int codigo, int start) {
 		int cont = start;
 		if (list == null || cont >= list.size() || cont < 0) {
 			System.err.println("Nada que hacer");
@@ -47,7 +47,7 @@ public class OtherUtils {
 	 * @param list
 	 * @return ArrayList<Producto>
 	 */
-	public ArrayList<Producto> ordenaLista(ArrayList<Producto> list) {
+	public static ArrayList<Producto> ordenaLista(ArrayList<Producto> list) {
 		TreeSet<Producto> set = new TreeSet<Producto>();
 		ArrayList<Producto> ret = new ArrayList<Producto>();
 		for (Producto p : list) {
