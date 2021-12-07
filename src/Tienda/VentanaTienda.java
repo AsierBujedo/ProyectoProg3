@@ -196,15 +196,18 @@ public class VentanaTienda {
 		frame.setIconImage(icon);
 
 	}
+	public static void iniciaLog() {
+		try {
+			logger=Logger.getLogger("logger");
+			logger.addHandler(new FileHandler("tiendaLog.xml"));
+			}catch(Exception e) {
+			}
+			logger.log(Level.INFO, "Logger inicializado");
+	}
 
 	// Esta es la única clase que cuenta con un método main()
 	public static void main(String[] args) {
-		try {
-		logger=Logger.getLogger("logger");
-		logger.addHandler(new FileHandler("tiendaLog.xml"));
-		}catch(Exception e) {
-		}
-		logger.log(Level.INFO, "Logger inicializado");
+		iniciaLog();
 		OtherUtils.restartProperties();
 		new VentanaTienda().InitWindow();
 		logger.log(Level.INFO, "Ventana inicializada");
