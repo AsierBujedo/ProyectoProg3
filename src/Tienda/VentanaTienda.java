@@ -64,7 +64,7 @@ public class VentanaTienda {
 		JPanel elect = new JPanel();
 		JPanel ropa = new JPanel();
 		JPanel hobby = new JPanel();
-		JPanel cesta = new Cesta().panelCesta();
+		JPanel cesta = new Cesta().panelCesta();		
 		tabs.add("Principal", new JScrollPane(main));		
 		
 		// Nombres de la columnas
@@ -101,6 +101,8 @@ public class VentanaTienda {
 //		tabs.add("Hobby", new JScrollPane(hobby));
 		tabs.add("Hobby", new JScrollPane(PanelTabla.getPanelTabla(nomColumnas, prodHobby)));
 		
+		// La adición de la JTable a la pestaña cesta es provisional, aun hay que mirarlo bien 
+		cesta.add(PanelTabla.getPanelTabla(nomColumnas, null));
 		tabs.add("Cesta", new JScrollPane(cesta));
 		
 //		tabs.add("Tabla Prov.", new JScrollPane(PanelTabla.getPanelTabla()));
