@@ -102,7 +102,7 @@ public class VentanaTienda {
 		tabs.add("Hobby", new JScrollPane(PanelTabla.getPanelTabla(nomColumnas, prodHobby)));
 		
 		// La adición de la JTable a la pestaña cesta es provisional, aun hay que mirarlo bien 
-		cesta.add(PanelTabla.getPanelTabla(nomColumnas, null));
+		cesta.add(PanelTabla.getPanelTabla(nomColumnas, new ArrayList<DatoParaTabla>()));
 		tabs.add("Cesta", new JScrollPane(cesta));
 		
 //		tabs.add("Tabla Prov.", new JScrollPane(PanelTabla.getPanelTabla()));

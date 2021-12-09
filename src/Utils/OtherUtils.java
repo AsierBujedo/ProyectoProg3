@@ -29,6 +29,7 @@ public class OtherUtils {
 		int cont = start;
 		if (list == null || cont >= list.size() || cont < 0) {
 			System.err.println("Nada que hacer");
+			return null;
 		} else {
 			if (list.get(cont).getID() == codigo) {
 				return list.get(cont);
@@ -37,7 +38,6 @@ public class OtherUtils {
 				return buscarEnLista(list, codigo, cont);
 			}
 		}
-		return null;
 	}
 
 	/**

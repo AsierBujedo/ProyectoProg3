@@ -27,7 +27,7 @@ public class BaseDeDatos {
 			stmt.executeUpdate(
 					"CREATE TABLE USER (USER_ID int PRIMARY KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) NOT NULL, PASS varchar(100) NOT NULL)");
 //			stmt.executeUpdate(
-//					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100)");
+//				"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100)");
 			//Error con la creación de esta tabla. "incomplete input".
 			stmt.executeUpdate(
 					"CREATE TABLE COMPRA (USER_ID int NOT NULL, COD_PRODUCTO int NOT NULL, CANTIDAD int, FECHA bigint, FOREIGN KEY (USER_ID) REFERENCES USER (USER_ID), FOREIGN KEY (COD_PRODUCTO) REFERENCES PRODUCTO (COD_PRODUCTO))");
