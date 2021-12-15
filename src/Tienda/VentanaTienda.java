@@ -64,11 +64,22 @@ public class VentanaTienda {
 		JPanel elect = new JPanel();
 		JPanel ropa = new JPanel();
 		JPanel hobby = new JPanel();
+		
+		JButton anyadirACesta = new JButton("Añadir a la cesta");
+		anyadirACesta.setBackground(new Color(65,204,155));
+		anyadirACesta.setFont(new Font("Arial", Font.BOLD, 15));
+		anyadirACesta.setForeground(Color.WHITE);
+		anyadirACesta.setBorder(new RoundedBorder(7));
+		
+		elect.add(anyadirACesta, BorderLayout.SOUTH);
+		ropa.add(anyadirACesta, BorderLayout.SOUTH);
+		hobby.add(anyadirACesta, BorderLayout.SOUTH);
+		
 		JPanel cesta = new Cesta().panelCesta();		
 		tabs.add("Principal", new JScrollPane(main));		
 		
 		// Nombres de la columnas
-		String[] nomColumnas = {"Cod_Producto", "Nombre", "Precio", "Marca"};
+		String[] nomColumnas = {"Código de producto", "Nombre", "Precio", "Marca", "Seleccionar"};
 		// Datos de la tabla
 		
 		//El siguiente métdodo, y, por tanto, las zonas comentadas no pueden usarse
@@ -91,7 +102,6 @@ public class VentanaTienda {
 //				prodHobby.add(p);
 //			}
 //		}
-		
 //		tabs.add("Electronica", new JScrollPane(elect));
 		tabs.add("Electronica", new JScrollPane(PanelTabla.getPanelTabla(nomColumnas, prodElectronica)));
 		

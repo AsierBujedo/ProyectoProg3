@@ -5,3 +5,8 @@ src/BD/BaseDeDatos.class
 src/BD/COLS.class
 src/BD/TABLES.class
 *.xml
+src/.classpath
+src/tiendaLog.xml
+src/tienda.db
+*.xml
+src/.classpath
