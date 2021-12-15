@@ -10,3 +10,8 @@ src/tiendaLog.xml
 src/tienda.db
 *.xml
 src/.classpath
+*.db
+*.xml
+src/.classpath
+*.db
+*.xml

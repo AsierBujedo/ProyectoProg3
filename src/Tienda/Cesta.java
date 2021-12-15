@@ -52,10 +52,26 @@ public class Cesta {
 		JPanel panel = new JPanel();
 		JTextField buscarProd = new JTextField(10);
 		buscarProd.setBorder(new RoundedBorder(7));
+		
 		JButton buscar = new JButton("Buscar en carro");
-		buscar.setBorder(new RoundedBorder(7));
-		panel.add(buscarProd, BorderLayout.NORTH);
-		panel.add(buscar, BorderLayout.CENTER);
+		buscar.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		buscar.setForeground(Color.WHITE);
+		buscar.setBackground(new Color(245, 182, 66));
+		
+		buscar.addMouseListener(new MouseAdapter() {
+		    public void mouseEntered(MouseEvent evt) {
+		    	buscar.setBorderPainted(false);
+		    	buscar.setBackground(new Color(245, 182, 66).darker());
+		    }
+
+		    public void mouseExited(MouseEvent evt) {
+		    	buscar.setBackground(new Color(245, 182, 66));
+		    }
+		});
+		
+//		buscar.setBorder(new RoundedBorder(7));
+		panel.add(buscarProd);
+		panel.add(buscar);
 
 		buscar.addActionListener(new ActionListener() {
 

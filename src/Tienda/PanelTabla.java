@@ -1,6 +1,8 @@
 package Tienda;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -25,10 +27,16 @@ public class PanelTabla extends JPanel {
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla
 	 * @return Panel que contiene la tabla
 	 */
-	public static JPanel getPanelTabla(String[] nomColumnas,  ArrayList<DatoParaTabla> datos) {
+	public static JPanel getPanelTabla(String[] nomColumnas,  ArrayList<DatoParaTabla> datos, Color backgroundColorHeader) {
 		JPanel panelTabla = new PanelTabla();
 		panelTabla.setLayout(new BorderLayout());
 		JTable tabla = new JTable(new CustomTableModel(nomColumnas, datos)); // Crea la tabla pasándole el modelo personalizado
+		tabla.setOpaque(true);
+		tabla.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		tabla.setForeground(Color.BLACK);
+		tabla.getTableHeader().setBackground(backgroundColorHeader);
+		tabla.getTableHeader().setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		tabla.getTableHeader().setForeground(Color.WHITE);
 		JScrollPane panelScroll = new JScrollPane(tabla); // Crea un ScrollPane que contendrá la tabla
 		panelTabla.add(panelScroll); // Añade el ScrollPane al panel
 		return panelTabla;

@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-12-15T15:32:02.505938400Z</date>
-  <millis>1639582322505</millis>
-  <nanos>938400</nanos>
+  <date>2021-12-15T19:36:43.203251500Z</date>
+  <millis>1639597003203</millis>
+  <nanos>251500</nanos>
   <sequence>0</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Logger inicializado</message>
 </record>
 <record>
-  <date>2021-12-15T15:32:02.557986400Z</date>
-  <millis>1639582322557</millis>
-  <nanos>986400</nanos>
+  <date>2021-12-15T19:36:43.259388800Z</date>
+  <millis>1639597003259</millis>
+  <nanos>388800</nanos>
   <sequence>1</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>PROPERTIES SUCCESFULLY LOADED</message>
 </record>
 <record>
-  <date>2021-12-15T15:32:03.155742300Z</date>
-  <millis>1639582323155</millis>
-  <nanos>742300</nanos>
+  <date>2021-12-15T19:36:44.150904700Z</date>
+  <millis>1639597004150</millis>
+  <nanos>904700</nanos>
   <sequence>2</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -38,27 +38,14 @@
   <message>Ventana inicializada</message>
 </record>
 <record>
-  <date>2021-12-15T15:32:03.161749100Z</date>
-  <millis>1639582323161</millis>
-  <nanos>749100</nanos>
+  <date>2021-12-15T19:36:44.161915Z</date>
+  <millis>1639597004161</millis>
+  <nanos>915000</nanos>
   <sequence>3</sequence>
   <logger>logger</logger>
   <level>INFO</level>
-  <class>Tienda.VentanaTienda$6</class>
+  <class>Tienda.VentanaTienda$14</class>
   <method>windowOpened</method>
   <thread>27</thread>
   <message>Abriendo ventana. Abriendo conexión con la base de datos</message>
 </record>
-<record>
-  <date>2021-12-15T15:32:06.512310800Z</date>
-  <millis>1639582326512</millis>
-  <nanos>310800</nanos>
-  <sequence>4</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.VentanaTienda$6</class>
-  <method>windowClosing</method>
-  <thread>27</thread>
-  <message>Cerrando ventana</message>
-</record>
-</log>
