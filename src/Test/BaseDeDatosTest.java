@@ -66,11 +66,11 @@ public class BaseDeDatosTest {
 	/*
 	 * No se puede, no existe la tabla PRODUCTO de momento
 	 */
-//	@Test
-//	public void testProductos() {
-//		ArrayList<Producto> prods = BaseDeDatos.getProductos();
-//		assertNotEquals(prods.size(), null);
-//	}
+	@Test
+	public void testProductos() {
+		ArrayList<Producto> prods = BaseDeDatos.getProductos();
+		assertNotEquals(prods.size(), null);
+	}
 	
 	@Test
 	public void getProductosTest() {

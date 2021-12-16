@@ -14,13 +14,13 @@ public class Libro extends Producto {
 		super();
 	}
 	
-	public Libro(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Libro(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 
-	public Libro(String codigoProducto, String nombre, double precio, String marca, int ID, String autor, String editorial,
+	public Libro(String codigoProducto, String nombre, double precio, String marca, String autor, String editorial,
 			Color color, boolean tapaDura) {
-		super(codigoProducto, nombre, precio, marca, ID);
+		super(codigoProducto, nombre, precio, marca);
 		this.autor = autor;
 		this.editorial = editorial;
 		this.color = color;

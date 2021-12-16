@@ -15,3 +15,7 @@ src/.classpath
 src/.classpath
 *.db
 *.xml
+*.dat
+*.db
+*.db
+*.lck

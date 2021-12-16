@@ -28,7 +28,6 @@ public class BaseDeDatos {
 					"CREATE TABLE USER (USER_ID int PRIMARY KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) NOT NULL, PASS varchar(100) NOT NULL)");
 			stmt.executeUpdate(
 				"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100))");
-//			Error con la creación de esta tabla. "incomplete input".
 			stmt.executeUpdate(
 					"CREATE TABLE COMPRA (USER_ID int NOT NULL, COD_PRODUCTO int NOT NULL, CANTIDAD int, FECHA bigint, FOREIGN KEY (USER_ID) REFERENCES USER (USER_ID), FOREIGN KEY (COD_PRODUCTO) REFERENCES PRODUCTO (COD_PRODUCTO))");
 			stmt.executeUpdate(
@@ -187,37 +186,49 @@ public class BaseDeDatos {
 				String marca = rs.getString("MARCA");
 				
 				if (codigoProducto.contains("I")) {
-					productos.add( new Impresora(codigoProducto, nombre, precio, marca, 0) );
+					productos.add( new Impresora(codigoProducto, nombre, precio, marca) );
 				}
 				else if (codigoProducto.contains("L")) {
-					productos.add(new Libro(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Libro(codigoProducto, nombre, precio, marca));
 				}
 				else if (codigoProducto.contains("O")) {
-					productos.add(new Ordenador(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Ordenador(codigoProducto, nombre, precio, marca));
 				}
 				else if (codigoProducto.contains("P")) {
-					productos.add(new Pantalon(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Pantalon(codigoProducto, nombre, precio, marca));
 				}
 				else if (codigoProducto.contains("S")) {
-					productos.add(new Sudadera(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Sudadera(codigoProducto, nombre, precio, marca));
 				}
 				else if (codigoProducto.contains("T")) {
-					productos.add(new Telefono(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Telefono(codigoProducto, nombre, precio, marca));
 				}
 				else if (codigoProducto.contains("VC")) {
-					productos.add(new Videoconsola(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Videoconsola(codigoProducto, nombre, precio, marca));
 				}
 				else if (codigoProducto.contains("VJ")) {
-					productos.add(new Videojuego(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Videojuego(codigoProducto, nombre, precio, marca));
 				}
 				else if (codigoProducto.contains("Z")) {
-					productos.add(new Zapatilla(codigoProducto, nombre, precio, marca, 0));
+					productos.add(new Zapatilla(codigoProducto, nombre, precio, marca));
 				}				
 			}			
 			return productos;
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return null;
+		}
+	}
+	
+	public static boolean addProducto(Producto p) {
+		try {
+			pstmt = con.prepareStatement("INSERT INTO PRODUCTO VALUES ('"+p.getCodigoProducto()+"', '"+p.getNombre()+"', "+p.getPrecio()+", '"+p.getMarca()+"')");
+			VentanaTienda.logger.log(Level.INFO, "Se ha añadido el producto con código: "+p.getCodigoProducto());
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return false;
 		}
 	}
 	

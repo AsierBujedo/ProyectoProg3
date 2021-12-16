@@ -14,13 +14,13 @@ public class Telefono extends Producto {
 		super();
 	}
 	
-	public Telefono(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Telefono(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 
-	public Telefono(String codigoProducto, String nombre, double precio, String marca, int ID, String modelo, int almacenamiento,
+	public Telefono(String codigoProducto, String nombre, double precio, String marca, String modelo, int almacenamiento,
 			int rAM, int hz, int mAh) {
-		super(codigoProducto, nombre, precio, marca, ID);
+		super(codigoProducto, nombre, precio, marca);
 		this.modelo = modelo;
 		this.almacenamiento = almacenamiento;
 		RAM = rAM;

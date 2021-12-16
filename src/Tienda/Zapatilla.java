@@ -14,13 +14,13 @@ public class Zapatilla extends Producto {
 		super();
 	}
 	
-	public Zapatilla(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Zapatilla(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 
-	public Zapatilla(String codigoProducto, String nombre, double precio, String marca, int ID, String modelo, double talla,
+	public Zapatilla(String codigoProducto, String nombre, double precio, String marca, String modelo, double talla,
 			Color color, Pais paisMadeIn) {
-		super(codigoProducto, nombre, precio, marca, ID);
+		super(codigoProducto, nombre, precio, marca);
 		this.modelo = modelo;
 		this.talla = talla;
 		this.color = color;

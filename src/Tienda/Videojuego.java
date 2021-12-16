@@ -14,13 +14,13 @@ public class Videojuego extends Producto {
 		super();
 	}
 	
-	public Videojuego(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Videojuego(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 	
-	public Videojuego(String codigoProducto, String nombre, double precio, String marca, int ID, String nombre2, int anyo,
+	public Videojuego(String codigoProducto, String nombre, double precio, String marca, String nombre2, int anyo,
 			String desarrollador, boolean esDigital, int tamanyo) {
-		super(codigoProducto, nombre, precio, marca, ID);
+		super(codigoProducto, nombre, precio, marca);
 		nombre = nombre2;
 		this.anyo = anyo;
 		this.desarrollador = desarrollador;

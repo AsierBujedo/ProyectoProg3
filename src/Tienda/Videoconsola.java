@@ -16,13 +16,13 @@ public class Videoconsola extends Producto {
 		super();
 	}
 	
-	public Videoconsola(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Videoconsola(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 
-	public Videoconsola(String codigoProducto, String nombre, double precio, String marca, int ID, String modelo, int almacenamiento,
+	public Videoconsola(String codigoProducto, String nombre, double precio, String marca, String modelo, int almacenamiento,
 			int rAM, int memGraf, boolean esPortatil, boolean versionDigital, boolean internetConex) {
-		super(codigoProducto, nombre, precio, marca, ID);
+		super(codigoProducto, nombre, precio, marca);
 		this.modelo = modelo;
 		this.almacenamiento = almacenamiento;
 		RAM = rAM;

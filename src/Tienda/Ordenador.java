@@ -13,13 +13,13 @@ public class Ordenador extends Producto {
 		super();
 	}
 	
-	public Ordenador(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Ordenador(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 
-	public Ordenador(String codigoProducto, String nombre, double precio, String marca, int ID, String modelo, int memInterna, int rAM,
+	public Ordenador(String codigoProducto, String nombre, double precio, String marca, String modelo, int memInterna, int rAM,
 			int memGraf) {
-		super(codigoProducto, nombre, precio, marca, ID);
+		super(codigoProducto, nombre, precio, marca);
 		this.modelo = modelo;
 		this.memInterna = memInterna;
 		RAM = rAM;

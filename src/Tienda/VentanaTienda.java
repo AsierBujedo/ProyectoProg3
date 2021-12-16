@@ -35,7 +35,7 @@ public class VentanaTienda {
 
 	public void InitWindow() {
 		bd.InitDB();
-		
+
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
@@ -60,23 +60,23 @@ public class VentanaTienda {
 		bar.add(menucliente);
 		bar.add(atcliente);
 		JTabbedPane tabs = new JTabbedPane();
-		JPanel main = new JPanel();		
-		tabs.add("Principal", new JScrollPane(main));		
-		
+		JPanel main = new JPanel();
+		tabs.add("Principal", new JScrollPane(main));
+
 		// Nombres de la columnas
-		String[] nomColumnas = {"Código de producto", "Nombre", "Precio", "Marca", "Seleccionar"};
-		String[] nomColumnasCesta = {"Código", "Nombre", "Precio", "Marca"};
+		String[] nomColumnas = { "Código de producto", "Nombre", "Precio", "Marca", "Seleccionar" };
+		String[] nomColumnasCesta = { "Código", "Nombre", "Precio", "Marca" };
 		// Datos de la tabla
-		
-		//El siguiente métdodo, y, por tanto, las zonas comentadas no pueden usarse
-		//hasta solucionarse el error en BaseDeDatos(29).
-		//ArrayList<Producto> productos = bd.getProductos();
-		
+
+		// El siguiente métdodo, y, por tanto, las zonas comentadas no pueden usarse
+		// hasta solucionarse el error en BaseDeDatos(29).
+		// ArrayList<Producto> productos = bd.getProductos();
+
 		// Una colección por cada temática de producto
 		ArrayList<DatoParaTabla> prodElectronica = new ArrayList<DatoParaTabla>();
 		ArrayList<DatoParaTabla> prodRopa = new ArrayList<DatoParaTabla>();
 		ArrayList<DatoParaTabla> prodHobby = new ArrayList<DatoParaTabla>();
-		
+
 //		for (Producto p : productos) {
 //			if (p instanceof Impresora || p instanceof Ordenador || p instanceof Telefono) {
 //				prodElectronica.add(p);
@@ -88,181 +88,186 @@ public class VentanaTienda {
 //				prodHobby.add(p);
 //			}
 //		}
-		
-		// -------------------------------------------------- Tab 1, tabElect --------------------------------------------------
+
+		// -------------------------------------------------- Tab 1, tabElect
+		// --------------------------------------------------
 		JPanel tabElect = new JPanel();
 		tabElect.setLayout(new BorderLayout());
-		
+
 		JPanel botoneraElect = new JPanel();
 		botoneraElect.setBackground(Color.WHITE);
 		JPanel panelTablaElect = PanelTabla.getPanelTabla(nomColumnas, prodElectronica, new Color(88, 101, 242));
 		panelTablaElect.setBackground(Color.WHITE);
-		
+
 		JButton anyadirElect = new JButton("Añadir a la cesta");
 		anyadirElect.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		anyadirElect.setForeground(Color.WHITE);
 		anyadirElect.setBackground(new Color(88, 101, 242));
-		
-		anyadirElect.addMouseListener(new MouseAdapter() {
-		    public void mouseEntered(MouseEvent evt) {
-		    	anyadirElect.setBorderPainted(false);
-		    	anyadirElect.setBackground(new Color(88, 101, 242).darker());
-		    }
 
-		    public void mouseExited(MouseEvent evt) {
-		    	anyadirElect.setBackground(new Color(88, 101, 242));
-		    }
+		anyadirElect.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				anyadirElect.setBorderPainted(false);
+				anyadirElect.setBackground(new Color(88, 101, 242).darker());
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				anyadirElect.setBackground(new Color(88, 101, 242));
+			}
 		});
-		
+
 		anyadirElect.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
-		botoneraElect.add(anyadirElect, BorderLayout.CENTER);		
-		
+
+		botoneraElect.add(anyadirElect, BorderLayout.CENTER);
+
 		tabElect.add(new JScrollPane(panelTablaElect), BorderLayout.CENTER);
 		tabElect.add(botoneraElect, BorderLayout.SOUTH);
-		
+
 		tabs.add("Electronica", tabElect);
-		
-		// -------------------------------------------------- Tab 2, tabRopa --------------------------------------------------
+
+		// -------------------------------------------------- Tab 2, tabRopa
+		// --------------------------------------------------
 		JPanel tabRopa = new JPanel();
 		tabRopa.setLayout(new BorderLayout());
-		
+
 		JPanel botoneraRopa = new JPanel();
-		botoneraRopa.setBackground(Color.WHITE);		
+		botoneraRopa.setBackground(Color.WHITE);
 		JPanel panelTablaRopa = PanelTabla.getPanelTabla(nomColumnas, prodRopa, new Color(151, 88, 252));
 		panelTablaRopa.setBackground(Color.WHITE);
-		
+
 		JButton anyadirRopa = new JButton("Añadir a la cesta");
 		anyadirRopa.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		anyadirRopa.setForeground(Color.WHITE);
 		anyadirRopa.setBackground(new Color(151, 88, 252));
-		
-		anyadirRopa.addMouseListener(new MouseAdapter() {
-		    public void mouseEntered(MouseEvent evt) {
-		    	anyadirRopa.setBorderPainted(false);
-		    	anyadirRopa.setBackground(new Color(151, 88, 252).darker());
-		    }
 
-		    public void mouseExited(MouseEvent evt) {
-		    	anyadirRopa.setBackground(new Color(151, 88, 252));
-		    }
+		anyadirRopa.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				anyadirRopa.setBorderPainted(false);
+				anyadirRopa.setBackground(new Color(151, 88, 252).darker());
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				anyadirRopa.setBackground(new Color(151, 88, 252));
+			}
 		});
-		
+
 		anyadirRopa.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
-		botoneraRopa.add(anyadirRopa, BorderLayout.CENTER);		
-		
+
+		botoneraRopa.add(anyadirRopa, BorderLayout.CENTER);
+
 		tabRopa.add(new JScrollPane(panelTablaRopa), BorderLayout.CENTER);
 		tabRopa.add(botoneraRopa, BorderLayout.SOUTH);
-		
+
 		tabs.add("Ropa", tabRopa);
-		
-		// -------------------------------------------------- Tab 3, tabHobby --------------------------------------------------
+
+		// -------------------------------------------------- Tab 3, tabHobby
+		// --------------------------------------------------
 		JPanel tabHobby = new JPanel();
 		tabHobby.setLayout(new BorderLayout());
-		
+
 		JPanel botoneraHobby = new JPanel();
-		botoneraHobby.setBackground(Color.WHITE);		
+		botoneraHobby.setBackground(Color.WHITE);
 		JPanel panelTablaHobby = PanelTabla.getPanelTabla(nomColumnas, prodHobby, new Color(252, 88, 107));
 		panelTablaHobby.setBackground(Color.WHITE);
-		
+
 		JButton anyadirHobby = new JButton("Añadir a la cesta");
 		anyadirHobby.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		anyadirHobby.setForeground(Color.WHITE);
 		anyadirHobby.setBackground(new Color(252, 88, 107));
-		
-		anyadirHobby.addMouseListener(new MouseAdapter() {
-		    public void mouseEntered(MouseEvent evt) {
-		    	anyadirHobby.setBorderPainted(false);
-		    	anyadirHobby.setBackground(new Color(252, 88, 107).darker());
-		    }
 
-		    public void mouseExited(MouseEvent evt) {
-		    	anyadirHobby.setBackground(new Color(252, 88, 107));
-		    }
+		anyadirHobby.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				anyadirHobby.setBorderPainted(false);
+				anyadirHobby.setBackground(new Color(252, 88, 107).darker());
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				anyadirHobby.setBackground(new Color(252, 88, 107));
+			}
 		});
-		
+
 		anyadirHobby.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
-		botoneraHobby.add(anyadirHobby, BorderLayout.CENTER);		
-		
+
+		botoneraHobby.add(anyadirHobby, BorderLayout.CENTER);
+
 		tabHobby.add(new JScrollPane(panelTablaHobby), BorderLayout.CENTER);
 		tabHobby.add(botoneraHobby, BorderLayout.SOUTH);
-		
-		tabs.add("Hobby", tabHobby);		
-		
-		// -------------------------------------------------- Tab 4, tabCesta --------------------------------------------------
-		JPanel tabCesta = new JPanel();		
+
+		tabs.add("Hobby", tabHobby);
+
+		// -------------------------------------------------- Tab 4, tabCesta
+		// --------------------------------------------------
+		JPanel tabCesta = new JPanel();
 		tabCesta.setLayout(new BorderLayout());
-		
+
 		JPanel botoneraBuscar = new Cesta().panelCesta();
 		botoneraBuscar.setBackground(Color.WHITE);
-		
+
 		JPanel botoneraComprar = new JPanel();
 		botoneraComprar.setLayout(new BorderLayout());
 		botoneraComprar.setBackground(Color.WHITE);
-		
+
 		JButton realizarCompra = new JButton("Realizar compra");
 		realizarCompra.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		realizarCompra.setForeground(Color.WHITE);
 		realizarCompra.setBackground(new Color(92, 156, 180));
-		
-		realizarCompra.addMouseListener(new MouseAdapter() {
-		    public void mouseEntered(MouseEvent evt) {
-		    	realizarCompra.setBorderPainted(false);
-		    	realizarCompra.setBackground(new Color(92, 156, 180).darker());
-		    }
 
-		    public void mouseExited(MouseEvent evt) {
-		    	realizarCompra.setBackground(new Color(92, 156, 180));
-		    }
+		realizarCompra.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				realizarCompra.setBorderPainted(false);
+				realizarCompra.setBackground(new Color(92, 156, 180).darker());
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				realizarCompra.setBackground(new Color(92, 156, 180));
+			}
 		});
-		
+
 		realizarCompra.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		botoneraComprar.add(realizarCompra, BorderLayout.EAST);
-		
-		JPanel panelTablaCesta = PanelTabla.getPanelTabla(nomColumnasCesta, new ArrayList<DatoParaTabla>(), new Color(162, 195, 234));
+
+		JPanel panelTablaCesta = PanelTabla.getPanelTabla(nomColumnasCesta, new ArrayList<DatoParaTabla>(),
+				new Color(162, 195, 234));
 		panelTablaCesta.setBackground(Color.WHITE);
-		
+
 		tabCesta.add(new JScrollPane(panelTablaCesta), BorderLayout.CENTER);
 		tabCesta.add(botoneraBuscar, BorderLayout.NORTH);
 		tabCesta.add(botoneraComprar, BorderLayout.SOUTH);
-		
+
 		tabs.add("Cesta", new JScrollPane(tabCesta));
-				
+
 		tabs.setBorder(new RoundedBorder(7));
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
-		
+
 		chat.addActionListener(new ActionListener() { // Accion de chat con un agente
 
 			@Override
@@ -270,14 +275,15 @@ public class VentanaTienda {
 				Thread hilochat = new Thread(new Runnable() {
 					@Override
 					public void run() {
-						new Chat.TextChatClient().InitChat(OtherUtils.prop.getProperty("CLIENT-IP-DESTINATION"), Integer.valueOf(OtherUtils.prop.getProperty("CLIENT-PORT")));
+						new Chat.TextChatClient().InitChat(OtherUtils.prop.getProperty("CLIENT-IP-DESTINATION"),
+								Integer.valueOf(OtherUtils.prop.getProperty("CLIENT-PORT")));
 					}
 				});
 				logger.log(Level.INFO, "Iniciando chat");
 				hilochat.start();
 			}
 		});
-		
+
 		loginItem.addActionListener(new ActionListener() { // Accion de inicio de sesion
 
 			@Override
@@ -319,47 +325,59 @@ public class VentanaTienda {
 
 		tabs.addKeyListener(new KeyAdapter() {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public void keyTyped(KeyEvent e) {
-				System.out.println(e.getKeyCode());
 				if (e.getKeyChar() == KeyEvent.VK_L) {
 					JOptionPane.showMessageDialog(null, "Cargando datos de prueba...", "Carga de datos", 1);
 					try {
 						FileInputStream fis = new FileInputStream(new File("datos.dat"));
 						ObjectInputStream ois = new ObjectInputStream(fis);
 						Cesta.cesta = (ArrayList<Producto>) ois.readObject();
+						for (Producto p : Cesta.cesta) {
+							BaseDeDatos.addProducto(p);
+						}
 					} catch (IOException | ClassNotFoundException e1) {
 						// TODO Auto-generated catch block
 						logger.log(Level.SEVERE, "Error al cargar datos");
 					}
+				} else if (e.isControlDown() && e.getKeyChar() == KeyEvent.VK_S) {
+					JOptionPane.showConfirmDialog(null, "¿Apagar ordenador?", "Diálogo de apagado", 1);
 				}
 			}
-		
+
 		});
-		
+
 		frame.addWindowListener(new WindowAdapter() {
 
 			public void windowClosing(WindowEvent e) {
 				logger.log(Level.INFO, "Cerrando ventana");
 			}
+
 			public void windowOpened(WindowEvent e) {
+				File f = new File("datos.dat");
+				if (!f.exists()) {
+					Cesta.datosPrueba();
+				}
 				logger.log(Level.INFO, "Abriendo ventana. Abriendo conexión con la base de datos");
 			}
 		});
 		frame.setVisible(true);
 		frame.setTitle("Emai");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		frame.setSize(Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-WIDTH")), Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-HEIGHT")));
+		frame.setSize(Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-WIDTH")),
+				Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-HEIGHT")));
 		frame.setIconImage(icon);
 
 	}
+
 	public static void iniciaLog() {
 		try {
-			logger=Logger.getLogger("logger");
+			logger = Logger.getLogger("logger");
 			logger.addHandler(new FileHandler("tiendaLog.xml"));
-			}catch(Exception e) {
-			}
-			logger.log(Level.INFO, "Logger inicializado");
+		} catch (Exception e) {
+		}
+		logger.log(Level.INFO, "Logger inicializado");
 	}
 
 	// Esta es la única clase que cuenta con un método main()

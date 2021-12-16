@@ -12,13 +12,13 @@ public class Impresora extends Producto {
 		super();
 	}
 	
-	public Impresora(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Impresora(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 
-	public Impresora(String codigoProducto, String nombre, double precio, String marca, int ID, String modelo, boolean esColor,
+	public Impresora(String codigoProducto, String nombre, double precio, String marca, String modelo, boolean esColor,
 			boolean esLaser) {
-		super(codigoProducto, nombre, precio, marca, ID);
+		super(codigoProducto, nombre, precio, marca);
 		this.modelo = modelo;
 		this.esColor = esColor;
 		this.esLaser = esLaser;

@@ -13,12 +13,12 @@ public class Pantalon extends Producto {
 		super();
 	}
 	
-	public Pantalon(String codigoProducto, String nombre, double precio, String marca, int ID) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Pantalon(String codigoProducto, String nombre, double precio, String marca) {
+		super(codigoProducto, nombre, precio, marca);
 	}
 
-	public Pantalon(String codigoProducto, String nombre, double precio, String marca, int ID, Talla talla, Color color, Pais paisMadeIn) {
-		super(codigoProducto, nombre, precio, marca, ID);
+	public Pantalon(String codigoProducto, String nombre, double precio, String marca, Talla talla, Color color, Pais paisMadeIn) {
+		super(codigoProducto, nombre, precio, marca);
 		this.talla = talla;
 		this.color = color;
 		this.paisMadeIn = paisMadeIn;

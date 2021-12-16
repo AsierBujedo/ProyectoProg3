@@ -21,7 +21,7 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 	}
 
 	// Constructor con argumentos de la clase Producto
-	public Producto(String codigoProducto, String nombre, double precio, String marca, int ID) {
+	public Producto(String codigoProducto, String nombre, double precio, String marca) {
 		super();
 		this.codigoProducto = codigoProducto;
 		this.nombre = nombre;
