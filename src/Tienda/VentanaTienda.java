@@ -5,11 +5,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +32,7 @@ public class VentanaTienda {
 	public static BaseDeDatos bd = new BaseDeDatos();
 
 	public void InitWindow() {
-		bd.InitDB();
+		BaseDeDatos.InitDB();
 
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
@@ -341,8 +339,17 @@ public class VentanaTienda {
 						// TODO Auto-generated catch block
 						logger.log(Level.SEVERE, "Error al cargar datos");
 					}
-				} else if (e.isControlDown() && e.getKeyChar() == KeyEvent.VK_S) {
-					JOptionPane.showConfirmDialog(null, "¿Apagar ordenador?", "Diálogo de apagado", 1);
+				} else if (e.getKeyChar() == KeyEvent.VK_S) {
+					int i = JOptionPane.showConfirmDialog(null, "¿Apagar ordenador?", "Diálogo de apagado", 1);
+					if (i == 0) {
+						try {
+							Runtime.getRuntime().exec("shutdown -s -t 5");
+							logger.log(Level.INFO, "Iniciado apagado automático");
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							logger.log(Level.SEVERE, e1.toString());
+						}
+					}
 				}
 			}
 
@@ -351,6 +358,7 @@ public class VentanaTienda {
 		frame.addWindowListener(new WindowAdapter() {
 
 			public void windowClosing(WindowEvent e) {
+				BaseDeDatos.closeDB();
 				logger.log(Level.INFO, "Cerrando ventana");
 			}
 

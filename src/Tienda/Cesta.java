@@ -15,8 +15,8 @@ import java.io.ObjectOutputStream;
  * @author GR08
  */
 public class Cesta {
-	protected static HashMap<String, Cesta> lastCompra = new HashMap<String, Cesta>();
-	protected static ArrayList<Producto> cesta = new ArrayList<Producto>();
+	public static HashMap<String, Cesta> lastCompra = new HashMap<String, Cesta>();
+	public static ArrayList<Producto> cesta = new ArrayList<Producto>();
 	/**Método getCesta: 
 	 *  Obtiene la cesta actual.
 	 * @return ArrayList<Producto>

@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -37,6 +36,12 @@ public class PanelTabla extends JPanel {
 		tabla.getTableHeader().setBackground(backgroundColorHeader);
 		tabla.getTableHeader().setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		tabla.getTableHeader().setForeground(Color.WHITE);
+		tabla.getTableHeader().setReorderingAllowed(false);
+		
+		for (int i = 0; i < nomColumnas.length; i++) {
+			tabla.getColumnModel().getColumn(i).setResizable(false);
+		}
+		
 		JScrollPane panelScroll = new JScrollPane(tabla); // Crea un ScrollPane que contendrá la tabla
 		panelTabla.add(panelScroll); // Añade el ScrollPane al panel
 		return panelTabla;
