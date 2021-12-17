@@ -11,16 +11,6 @@ import javax.swing.JTable;
 @SuppressWarnings("serial")
 public class PanelTabla extends JPanel {
 	
-//	public PanelTabla() {
-//		this.setLayout(new BorderLayout());	
-//		String[] nomColumnas = {"Columna 1", "Columna 2", "Columna 3"};
-//		ArrayList<DatoParaTabla> datos = new ArrayList<DatoParaTabla>();
-//		datos.add(new PersonaPrueba("Asier", "Bujedo", 19, "00000000E"));
-//		datos.add(new PersonaPrueba("Eduardo", "Larrinaga", 19, "11111111E"));
-//		datos.add(new PersonaPrueba("Iker", "López", 21, "22222222E"));
-//		datos.add(new PersonaPrueba("Mikel", "Lambarri", 19, "33333333E"));	
-//	}
-	
 	/** Crea un panel y le añade una tabla
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla
@@ -42,8 +32,16 @@ public class PanelTabla extends JPanel {
 			tabla.getColumnModel().getColumn(i).setResizable(false);
 		}
 		
+		//Añadir botón "añadir a la cesta" en esta clase, devolveremos el panel con el ActionListener ya creado desde aquí
+		//De esta forma, podemos acceder a los datos de la tabla sin problemas.
+		//Poniendo el listener desde VentanaTienda no puedes acceder a los datos, por tanto, no puedes añadir nada a la cesta.
+		//tabla.getvalueAt(int row, int column);
+		//Mas información en https://stackoverflow.com/questions/29345792/java-jtable-getting-the-data-of-the-selected-row
+		
+		
 		JScrollPane panelScroll = new JScrollPane(tabla); // Crea un ScrollPane que contendrá la tabla
 		panelTabla.add(panelScroll); // Añade el ScrollPane al panel
+		
 		return panelTabla;
 		
 	}

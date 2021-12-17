@@ -29,11 +29,10 @@ public class VentanaTienda {
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
-	public static BaseDeDatos bd = new BaseDeDatos();
 
 	public void InitWindow() {
 		BaseDeDatos.InitDB();
-
+		cargaDatos();
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JMenu menucliente = new JMenu("Area cliente");
@@ -68,24 +67,22 @@ public class VentanaTienda {
 
 		// El siguiente métdodo, y, por tanto, las zonas comentadas no pueden usarse
 		// hasta solucionarse el error en BaseDeDatos(29).
-		// ArrayList<Producto> productos = bd.getProductos();
+		ArrayList<Producto> productos = BaseDeDatos.getProductos();
 
 		// Una colección por cada temática de producto
 		ArrayList<DatoParaTabla> prodElectronica = new ArrayList<DatoParaTabla>();
 		ArrayList<DatoParaTabla> prodRopa = new ArrayList<DatoParaTabla>();
 		ArrayList<DatoParaTabla> prodHobby = new ArrayList<DatoParaTabla>();
 
-//		for (Producto p : productos) {
-//			if (p instanceof Impresora || p instanceof Ordenador || p instanceof Telefono) {
-//				prodElectronica.add(p);
-//			}
-//			else if (p instanceof Pantalon || p instanceof Sudadera || p instanceof Zapatilla) {
-//				prodRopa.add(p);
-//			}
-//			else if (p instanceof Libro || p instanceof Videoconsola || p instanceof Videojuego) {
-//				prodHobby.add(p);
-//			}
-//		}
+		for (Producto p : productos) {
+			if (p instanceof Impresora || p instanceof Ordenador || p instanceof Telefono) {
+				prodElectronica.add(p);
+			} else if (p instanceof Pantalon || p instanceof Sudadera || p instanceof Zapatilla) {
+				prodRopa.add(p);
+			} else if (p instanceof Libro || p instanceof Videoconsola || p instanceof Videojuego) {
+				prodHobby.add(p);
+			}
+		}
 
 		// -------------------------------------------------- Tab 1, tabElect
 		// --------------------------------------------------
@@ -323,36 +320,32 @@ public class VentanaTienda {
 
 		tabs.addKeyListener(new KeyAdapter() {
 
-			@SuppressWarnings("unchecked")
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if (e.getKeyChar() == KeyEvent.VK_L) {
-					JOptionPane.showMessageDialog(null, "Cargando datos de prueba...", "Carga de datos", 1);
-					try {
-						FileInputStream fis = new FileInputStream(new File("datos.dat"));
-						ObjectInputStream ois = new ObjectInputStream(fis);
-						Cesta.cesta = (ArrayList<Producto>) ois.readObject();
-						for (Producto p : Cesta.cesta) {
-							BaseDeDatos.addProducto(p);
-						}
-					} catch (IOException | ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						logger.log(Level.SEVERE, "Error al cargar datos");
-					}
-				} else if (e.getKeyChar() == KeyEvent.VK_S) {
-					int i = JOptionPane.showConfirmDialog(null, "¿Apagar ordenador?", "Diálogo de apagado", 1);
+				if (e.getKeyChar() == KeyEvent.VK_R) {
+					int i = JOptionPane.showConfirmDialog(null, "¿Reiniciar ordenador en 10 segundos?",
+							"Diálogo de apagado", 1);
 					if (i == 0) {
 						try {
-							Runtime.getRuntime().exec("shutdown -s -t 5");
-							logger.log(Level.INFO, "Iniciado apagado automático");
+							Runtime.getRuntime().exec("shutdown -r -t 10");
+							logger.log(Level.INFO, "Iniciado el reinicio automático");
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							logger.log(Level.SEVERE, e1.toString());
+						}
+					} else if (e.getKeyChar() == KeyEvent.VK_S) {
+						int j = JOptionPane.showConfirmDialog(null, "¿Apagar ordenador en 10 segundos?",
+								"Diálogo de apagado", 1);
+						if (j == 0) {
+							try {
+								Runtime.getRuntime().exec("shutdown -s -t 5");
+								logger.log(Level.INFO, "Iniciado el apagado automático");
+							} catch (IOException e1) {
+								logger.log(Level.SEVERE, e1.toString());
+							}
 						}
 					}
 				}
 			}
-
 		});
 
 		frame.addWindowListener(new WindowAdapter() {
@@ -377,6 +370,22 @@ public class VentanaTienda {
 				Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-HEIGHT")));
 		frame.setIconImage(icon);
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public void cargaDatos() {
+		Cesta.datosPrueba();
+		try {
+			FileInputStream fis = new FileInputStream(new File("datos.dat"));
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Cesta.cesta = (ArrayList<Producto>) ois.readObject();
+			for (Producto p : Cesta.cesta) {
+				BaseDeDatos.addProducto(p);
+			}
+		} catch (IOException | ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			logger.log(Level.SEVERE, "Error al cargar datos");
+		}
 	}
 
 	public static void iniciaLog() {

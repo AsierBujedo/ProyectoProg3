@@ -36,9 +36,12 @@ public class Cesta {
 					"Editorial", Color.BLUE, true));
 			list.add(new Libro("L124", "Harry Potter", 24.99, "Editorial", "J. K. Rowling", "Editorial", Color.RED,
 					true));
-			list.add(new Ordenador("O223", "Lenovo Ideapad", 500.00, "Lenovo", "Ideapad 2", 500, 8, 2));
+			list.add(new Ordenador("O223", "Lenovo Ideapad 2", 500.00, "Lenovo", "Ideapad 2", 500, 8, 2));
+			list.add(new Telefono("T623", "Samsung Galaxy S 21", 759.99, "Samsung", "S 21", 128, 6, 2, 4800));
+			list.add(new Videoconsola("VC723", "Playstation 5", 499.99, "Sony", "Playstation 5", 500, 16, 8, false, false, true));
 			list.add(new Zapatilla("Z323", "Nike Air", 99.99, "Nike", null, 42.00, Color.BLACK, Pais.CHINA));
-			list.add(new Sudadera("Z423", "Sudadera", 22.99, "Billabong", Talla.M, Color.GREEN, true, Pais.CHINA));
+			list.add(new Sudadera("S423", "Sudadera", 22.99, "Billabong", Talla.M, Color.GREEN, true, Pais.CHINA));
+			list.add(new Pantalon("P523", "Pantalón Levis", 49.99, "Levis", Talla.L, Color.BLUE, Pais.ALEMANIA));
 			oos.writeObject(list);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

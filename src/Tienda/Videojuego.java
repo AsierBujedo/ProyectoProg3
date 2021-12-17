@@ -18,10 +18,10 @@ public class Videojuego extends Producto {
 		super(codigoProducto, nombre, precio, marca);
 	}
 	
-	public Videojuego(String codigoProducto, String nombre, double precio, String marca, String nombre2, int anyo,
+	public Videojuego(String codigoProducto, String nombre, double precio, String marca, int anyo,
 			String desarrollador, boolean esDigital, int tamanyo) {
 		super(codigoProducto, nombre, precio, marca);
-		nombre = nombre2;
+		this.nombre = nombre;
 		this.anyo = anyo;
 		this.desarrollador = desarrollador;
 		this.esDigital = esDigital;

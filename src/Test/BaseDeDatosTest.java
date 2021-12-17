@@ -1,23 +1,20 @@
 package Test;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import BD.BaseDeDatos;
-import BD.COLS;
+import BD.*;
 import Tienda.Producto;
+import Tienda.VentanaTienda;
 
 public class BaseDeDatosTest {
 
 	@Before
 	public void Inicio() {
+		VentanaTienda.iniciaLog();
 		BaseDeDatos.InitDB();
-		Tienda.VentanaTienda.iniciaLog();
 	}
 	
 	@After
@@ -26,13 +23,13 @@ public class BaseDeDatosTest {
 	}
 
 	
-//	@Test
-//	public void testAddColumn() {
-//		assertTrue(BaseDeDatos.addColumn(TABLES.USER, null));
-//		assertTrue(BaseDeDatos.addColumn(TABLES.USER, null));
-//		assertTrue(BaseDeDatos.addColumn(TABLES.USER, null));
-//		
-//	}
+	@Test
+	public void testAddColumn() {
+		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Dir"));
+		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Telf"));
+		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Tarjeta_Socio"));
+		
+	}
 	
 	@Test
 	public void addUserTest(){

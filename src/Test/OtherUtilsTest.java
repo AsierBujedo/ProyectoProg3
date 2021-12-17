@@ -13,6 +13,7 @@ import org.junit.Test;
 import BD.BaseDeDatos;
 import Tienda.Cesta;
 import Tienda.Producto;
+import Tienda.VentanaTienda;
 import Utils.OtherUtils;
 
 public class OtherUtilsTest {
@@ -20,6 +21,7 @@ public class OtherUtilsTest {
 	@SuppressWarnings("unchecked")
 	@Before
 	public void Inicio() {
+		VentanaTienda.iniciaLog();
 		BaseDeDatos.InitDB();
 		Tienda.VentanaTienda.iniciaLog();
 		try {
