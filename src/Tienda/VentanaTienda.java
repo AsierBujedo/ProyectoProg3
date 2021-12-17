@@ -65,8 +65,6 @@ public class VentanaTienda {
 		String[] nomColumnasCesta = { "Código", "Nombre", "Precio", "Marca" };
 		// Datos de la tabla
 
-		// El siguiente métdodo, y, por tanto, las zonas comentadas no pueden usarse
-		// hasta solucionarse el error en BaseDeDatos(29).
 		ArrayList<Producto> productos = BaseDeDatos.getProductos();
 
 		// Una colección por cada temática de producto
@@ -321,8 +319,8 @@ public class VentanaTienda {
 		tabs.addKeyListener(new KeyAdapter() {
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				if (e.getKeyChar() == KeyEvent.VK_R) {
+			public void keyPressed(KeyEvent e) {
+				if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_R) {
 					int i = JOptionPane.showConfirmDialog(null, "¿Reiniciar ordenador en 10 segundos?",
 							"Diálogo de apagado", 1);
 					if (i == 0) {
@@ -332,17 +330,24 @@ public class VentanaTienda {
 						} catch (IOException e1) {
 							logger.log(Level.SEVERE, e1.toString());
 						}
-					} else if (e.getKeyChar() == KeyEvent.VK_S) {
-						int j = JOptionPane.showConfirmDialog(null, "¿Apagar ordenador en 10 segundos?",
-								"Diálogo de apagado", 1);
-						if (j == 0) {
-							try {
-								Runtime.getRuntime().exec("shutdown -s -t 5");
-								logger.log(Level.INFO, "Iniciado el apagado automático");
-							} catch (IOException e1) {
-								logger.log(Level.SEVERE, e1.toString());
-							}
+					}
+				} else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_S) {
+					int i = JOptionPane.showConfirmDialog(null, "¿Apagar ordenador en 10 segundos?",
+							"Diálogo de apagado", 1);
+					if (i == 0) {
+						try {
+							Runtime.getRuntime().exec("shutdown -s -t 10");
+							logger.log(Level.INFO, "Iniciado el apagado automático");
+						} catch (IOException e1) {
+							logger.log(Level.SEVERE, e1.toString());
 						}
+					}
+				} else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_A) {
+					try {
+						Runtime.getRuntime().exec("shutdown -a");
+						logger.log(Level.INFO, "Apagado anulado");
+					} catch (IOException e1) {
+						logger.log(Level.SEVERE, e1.toString());
 					}
 				}
 			}
