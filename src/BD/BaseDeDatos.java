@@ -290,12 +290,12 @@ public class BaseDeDatos {
 			return false;
 		}
 	}
+	
 	/**
-	 * Lee los productos de la tabla PRODUCTO
-	 * 
-	 * @param COD_PRODUCTO Código del producto
-	 * @param NOMBRE Nombre del producto
-	 * @return Producto con el código y nombre que buscamos , null si hay algún error
+	 * Lee los productos de la tabla PRODUCTO.
+	 * @param COD_PRODUCTO Código del producto.
+	 * @param NOMBRE Nombre del producto.
+	 * @return Producto con el código y nombre que buscamos , null si hay algún error.
 	 */	
 	public static String getProducto(String NOMBRE) {
 		try {

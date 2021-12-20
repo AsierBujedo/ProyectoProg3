@@ -30,3 +30,6 @@ src/tiendaLog.xml.5
 src/tiendaLog.xml.6
 src/tiendaLog.xml.7
 src/.classpath
+src/.classpath
+*.xml
+*.db

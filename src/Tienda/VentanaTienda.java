@@ -29,6 +29,7 @@ public class VentanaTienda {
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
+	public static JPanel panelTablaCesta;
 
 	public void InitWindow() {
 		BaseDeDatos.InitDB();
@@ -62,8 +63,9 @@ public class VentanaTienda {
 
 		// Nombres de la columnas
 		String[] nomColumnas = {"Código de producto", "Nombre", "Precio", "Marca"};
+		String[] nomColumnasCesta = {"Código de producto", "Nombre", "Precio", "Marca", "ID"};
+		
 		// Datos de la tabla
-
 		ArrayList<Producto> productos = BaseDeDatos.getProductos();
 
 		// Una colección de datos por cada temática de producto
@@ -105,7 +107,7 @@ public class VentanaTienda {
 		// Tab 4, tabCesta --------------------------------------------------
 		JPanel tabCesta = new JPanel();
 		tabCesta.setLayout(new BorderLayout());
-		JPanel panelTablaCesta = PanelTabla.getPanelTablaCesta(nomColumnas, new ArrayList<DatoParaTabla>());
+		panelTablaCesta = PanelTabla.getPanelTablaCesta(nomColumnasCesta, Cesta.cesta);
 		panelTablaCesta.setBackground(Color.WHITE);
 		tabCesta.add(new JScrollPane(panelTablaCesta), BorderLayout.CENTER);
 		tabs.add("Cesta", new JScrollPane(tabCesta));
@@ -222,7 +224,7 @@ public class VentanaTienda {
 			}
 		});
 		
-//		frame.setLocationRelativeTo(null); El frame no se muestra en el centro de la pantalla ¿?
+//		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setTitle("Emai");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);

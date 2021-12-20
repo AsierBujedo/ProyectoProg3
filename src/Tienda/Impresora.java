@@ -64,6 +64,7 @@ public class Impresora extends Producto {
     	case 1: { return nombre; }
     	case 2: { return precio; }
     	case 3: { return marca; }
+    	case 4: { return ID; }
 	}
 		return null;
 	}
@@ -76,6 +77,7 @@ public class Impresora extends Producto {
 		    	case 1: { nombre = (String) valor; break; }
 		    	case 2: { precio = (double) valor; break; }
 		    	case 3: { marca = (String) valor; break; }
+		    	case 4: { ID = (int) valor; break; }
 	    	}
     	} catch (Exception e) {
     		// Error en conversión, intentando asignar un tipo incorrecto

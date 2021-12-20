@@ -85,14 +85,21 @@ public class BaseDeDatosTest {
 		}
 		
 		// Comprobación de que el ID de cada producto es mayor que ID del producto anterior en la lista
-		// Esta comprobación es provisional, no puedo ejecutar el programa asi que no se si lo hace correctamente
 		for (int i = 0; i < productos.size(); i++) {
 			  for (int j = i+1; j < productos.size(); j++) {
 				  assertTrue(productos.get(j).getID() > productos.get(i).getID());
 			  }
 		}
+		
+		// Comprobación de que el precio de cada producto es mayor que precio del producto anterior en la lista
+		for (int i = 0; i < productos.size(); i++) {
+			  for (int j = i+1; j < productos.size(); j++) {
+				  assertTrue(productos.get(j).getPrecio() > productos.get(i).getPrecio());
+				 }
+		}
 	}
 	
+	// Este test falla
 	@Test
 	public void addProductoTest() {
 		// Comprobación de que la adición de un nuevo producto se realiza correctamente

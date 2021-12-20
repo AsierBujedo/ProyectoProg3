@@ -15,8 +15,9 @@ import java.io.ObjectOutputStream;
  * @author GR08
  */
 public class Cesta {
-	public static HashMap<String, Cesta> lastCompra = new HashMap<String, Cesta>();
 	public static ArrayList<Producto> cesta = new ArrayList<Producto>();
+	public static HashMap<String, ArrayList<Producto>> lastCompra = new HashMap<String, ArrayList<Producto>>();
+
 	/**Método getCesta: 
 	 *  Obtiene la cesta actual.
 	 * @return ArrayList<Producto>
@@ -46,6 +47,7 @@ public class Cesta {
 	public JPanel panelCesta() {
 		JPanel panel = new JPanel();
 		JTextField buscarProd = new JTextField("Introduce el número (ID) del producto", 30);
+		buscarProd.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 12));
 		buscarProd.setBorder(new RoundedBorder(5));
 		buscarProd.setForeground(Color.GRAY);
 		
@@ -63,7 +65,7 @@ public class Cesta {
 			public void focusLost(FocusEvent e) {
 				if (buscarProd.getText().equals("")) {
 					buscarProd.setForeground(Color.GRAY);
-					buscarProd.setText("Introduce el número del producto");
+					buscarProd.setText("Introduce el número (ID) del producto");
 				}
 				super.focusLost(e);
 			}
@@ -95,13 +97,16 @@ public class Cesta {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Producto p = OtherUtils.buscarEnLista(cesta, Integer.valueOf(buscarProd.getText()), 0);
-				if (p != null) {
-					JOptionPane.showMessageDialog(null, "Nombre: " + p.getNombre() + ", Marca: " + p.getMarca()
-							+ ", Precio: " + p.getPrecio() + "€, Código: " + p.getCodigoProducto(), p.getNombre(), 1);
-				} else {
-					JOptionPane.showMessageDialog(null, "No existe ningún producto con ese ID", "Error de búsqueda", 0);
+				if (!buscarProd.getText().equals("Introduce el número (ID) del producto")) {
+					Producto p = OtherUtils.buscarEnLista(cesta, Integer.valueOf(buscarProd.getText()), 0);
+					if (p != null) {
+						JOptionPane.showMessageDialog(null, "Nombre: " + p.getNombre() + ", Marca: " + p.getMarca()
+								+ ", Precio: " + p.getPrecio() + "€, Código: " + p.getCodigoProducto(), p.getNombre(), 1);
+					} else {
+						JOptionPane.showMessageDialog(null, "No existe ningún producto con ese ID", "Error de búsqueda", 0);
+					}
 				}
+				
 			}
 		});
 		return panel;

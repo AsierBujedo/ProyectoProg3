@@ -70,8 +70,35 @@ public class PanelTabla extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!tabla.getSelectionModel().isSelectionEmpty()) {
-					String valor = (String) tabla.getValueAt(tabla.getSelectedRow(), 0);
-					System.out.println(valor);
+					String codigoProducto = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+					String nombre = tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
+					String precio = tabla.getValueAt(tabla.getSelectedRow(), 2).toString();
+					String marca = tabla.getValueAt(tabla.getSelectedRow(), 3).toString();
+					
+					if (codigoProducto.contains("I")) {
+						Cesta.cesta.add(new Impresora(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("L")) {
+						Cesta.cesta.add(new Libro(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("O")) {
+						Cesta.cesta.add(new Ordenador(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("P")) {
+						Cesta.cesta.add(new Pantalon(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("S")) {
+						Cesta.cesta.add(new Sudadera(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("T")) {
+						Cesta.cesta.add(new Telefono(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("VC")) {
+						Cesta.cesta.add(new Videoconsola(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("VJ")) {
+						Cesta.cesta.add(new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("Z")) {
+						Cesta.cesta.add(new Zapatilla(codigoProducto, nombre, Double.valueOf(precio), marca));
+					} else if (codigoProducto.contains("VJ")) {
+						Cesta.cesta.add(new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca));
+					}
+					
+					System.out.println(Cesta.cesta);
+					
 					// actionPerformed del botón aun sin terminar
 					// Haciéndolo de esta forma, ¿Cómo vamos a pasarle la lista de productos seleccionados a getPanelTablaCesta(nomColumnas, ?)?
 				}
@@ -94,12 +121,18 @@ public class PanelTabla extends JPanel {
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla.
 	 * @return Panel que contiene la tabla y los paneles botonera.
 	 */
-	public static JPanel getPanelTablaCesta(String[] nomColumnas,  ArrayList<DatoParaTabla> datos) {
+	public static JPanel getPanelTablaCesta(String[] nomColumnas,  ArrayList<Producto> datos) {
 		JPanel panelTablaCesta = new PanelTabla();
 		panelTablaCesta.setLayout(new BorderLayout());
 		panelTablaCesta.setBackground(Color.WHITE);
 		
-		JTable tabla = new JTable(new CustomTableModel(nomColumnas, datos)); // Crea la tabla pasándole el modelo personalizado
+		ArrayList<DatoParaTabla> datosTabla = new ArrayList<DatoParaTabla>();
+		
+		for (Producto p : datos) {
+			datosTabla.add(p);
+		}
+		
+		JTable tabla = new JTable(new CustomTableModel(nomColumnas, datosTabla)); // Crea la tabla pasándole el modelo personalizado
 		tabla.setOpaque(true);
 		tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 		tabla.setForeground(Color.BLACK);
@@ -126,6 +159,11 @@ public class PanelTabla extends JPanel {
 		realizarCompra.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		realizarCompra.setForeground(Color.WHITE);
 		realizarCompra.setBackground(new Color(92, 156, 180));
+		
+		JButton actualizar = new JButton("Actualizar cesta");
+		actualizar.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		actualizar.setForeground(Color.WHITE);
+		actualizar.setBackground(Color.GREEN);
 
 		realizarCompra.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
@@ -137,22 +175,46 @@ public class PanelTabla extends JPanel {
 				realizarCompra.setBackground(new Color(92, 156, 180));
 			}
 		});
+		
+		actualizar.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				actualizar.setBorderPainted(false);
+				actualizar.setBackground(Color.GREEN.darker());
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				actualizar.setBackground(Color.GREEN);
+			}
+		});
 
 		realizarCompra.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
-				if (reply == JOptionPane.YES_OPTION) {
-				    JOptionPane.showMessageDialog(null, "La compra ha sido cancelada");
-				} else {
-				    JOptionPane.showMessageDialog(null, "Compra realizada");
-				    // Aquí hay que limpiar la tabla (Eliminar todos los datos)
-//				    System.exit(0);
+				if (tabla.getColumnCount() != 0 && tabla.getRowCount() != 0) {
+					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION) {
+					    JOptionPane.showMessageDialog(null, "Compra realizada");
+					} else {
+					    JOptionPane.showMessageDialog(null, "La compra ha sido cancelada");
+					    // Aquí hay que limpiar la tabla (Eliminar todos los datos)
+					}
 				}
 			}
+				
 		});
+		
+		actualizar.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaTienda.panelTablaCesta = PanelTabla.getPanelTablaCesta(nomColumnas, Cesta.cesta);
+				// Falla cesta
+			}
+				
+		});
+		
+		botoneraBuscar.add(actualizar);
 		botoneraComprar.add(realizarCompra, BorderLayout.EAST);
 		
 		panelTablaCesta.add(botoneraBuscar, BorderLayout.NORTH);
@@ -164,11 +226,5 @@ public class PanelTabla extends JPanel {
 		return panelTablaCesta;
 		
 	}
-	
-	//Añadir botón "añadir a la cesta" en esta clase, devolveremos el panel con el ActionListener ya creado desde aquí
-	//De esta forma, podemos acceder a los datos de la tabla sin problemas.
-	//Poniendo el listener desde VentanaTienda no puedes acceder a los datos, por tanto, no puedes añadir nada a la cesta.
-	//tabla.getvalueAt(int row, int column);
-	//Mas información en https://stackoverflow.com/questions/29345792/java-jtable-getting-the-data-of-the-selected-row
 
 }
