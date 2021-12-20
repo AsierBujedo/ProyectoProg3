@@ -249,6 +249,7 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement(
 					"SELECT COD_PRODUCTO AS CÓDIGO, NOMBRE, MIN(PRECIO) AS PRECIO, MARCA FROM PRODUCTO WHERE PRECIO IN (SELECT MIN(PRECIO) FROM PRODUCTO);");
 			ResultSet rs = pstmt.executeQuery();
+			
 			String code = rs.getString(1);
 			String name = rs.getString(2);
 			double precio = rs.getDouble(3);
@@ -269,6 +270,7 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement(
 					"SELECT COD_PRODUCTO AS CÓDIGO, NOMBRE, MAX(PRECIO) AS PRECIO, MARCA FROM PRODUCTO WHERE PRECIO IN (SELECT MAX(PRECIO) FROM PRODUCTO);");
 			ResultSet rs = pstmt.executeQuery();
+			
 			String code = rs.getString(1);
 			String name = rs.getString(2);
 			double precio = rs.getDouble(3);
@@ -295,6 +297,26 @@ public class BaseDeDatos {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return false;
 		}
+	}
+	/**
+	 * Lee los productos de la tabla PRODUCTO
+	 * 
+	 * @param COD_PRODUCTO Código del producto
+	 * @param NOMBRE Nombre del producto
+	 * @return Producto con el código y nombre que buscamos , null si hay algún error
+	 */	
+	public static String getProducto(String COD_PRODUCTO, String NOMBRE) {
+		try {
+			pstmt = con.prepareStatement("SELECT COD_PRODUCTO FROM PRODUCTO WHERE COD_PRODUCTO = '" + COD_PRODUCTO + "' AND NOMBRE = '" + NOMBRE + "'");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getString("COD_PRODUCTO");
+
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return "Error";
+		}	
+	
 	}
 
 //	public static void main(String[] args) {

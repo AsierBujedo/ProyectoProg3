@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-12-20T13:23:43.733051Z</date>
+  <millis>1640006623733</millis>
+  <nanos>51000</nanos>
+  <sequence>0</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:43.947252700Z</date>
+  <millis>1640006623947</millis>
+  <nanos>252700</nanos>
+  <sequence>1</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:43.954861700Z</date>
+  <millis>1640006623954</millis>
+  <nanos>861700</nanos>
+  <sequence>2</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>addUser</method>
+  <thread>1</thread>
+  <message>Nuevo usuario: USERTEST@GMAIL.COM, ID: 1. Añadido correctamente</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:43.961869Z</date>
+  <millis>1640006623961</millis>
+  <nanos>869000</nanos>
+  <sequence>3</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:43.963841500Z</date>
+  <millis>1640006623963</millis>
+  <nanos>841500</nanos>
+  <sequence>4</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.003782Z</date>
+  <millis>1640006624003</millis>
+  <nanos>782000</nanos>
+  <sequence>5</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.010051500Z</date>
+  <millis>1640006624010</millis>
+  <nanos>51500</nanos>
+  <sequence>6</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>addUser</method>
+  <thread>1</thread>
+  <message>Nuevo usuario: USERTEST@GMAIL.COM, ID: 2. Añadido correctamente</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.015690300Z</date>
+  <millis>1640006624015</millis>
+  <nanos>690300</nanos>
+  <sequence>7</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>removeUser</method>
+  <thread>1</thread>
+  <message>Usuario con mail: USERTEST@GMAIL.COM eliminado correctamente</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.016691Z</date>
+  <millis>1640006624016</millis>
+  <nanos>691000</nanos>
+  <sequence>8</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.017689Z</date>
+  <millis>1640006624017</millis>
+  <nanos>689000</nanos>
+  <sequence>9</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.068838800Z</date>
+  <millis>1640006624068</millis>
+  <nanos>838800</nanos>
+  <sequence>10</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.074823100Z</date>
+  <millis>1640006624074</millis>
+  <nanos>823100</nanos>
+  <sequence>11</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>addUser</method>
+  <thread>1</thread>
+  <message>Nuevo usuario: USERTEST@GMAIL.COM, ID: 3. Añadido correctamente</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.075821200Z</date>
+  <millis>1640006624075</millis>
+  <nanos>821200</nanos>
+  <sequence>12</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.077816Z</date>
+  <millis>1640006624077</millis>
+  <nanos>816000</nanos>
+  <sequence>13</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.116626400Z</date>
+  <millis>1640006624116</millis>
+  <nanos>626400</nanos>
+  <sequence>14</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.118648500Z</date>
+  <millis>1640006624118</millis>
+  <nanos>648500</nanos>
+  <sequence>15</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>addProducto</method>
+  <thread>1</thread>
+  <message>Se ha añadido el producto con código: V234</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.124606Z</date>
+  <millis>1640006624124</millis>
+  <nanos>606000</nanos>
+  <sequence>16</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>getProducto</method>
+  <thread>1</thread>
+  <message>Operación en la base de datos realizada</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.126603400Z</date>
+  <millis>1640006624126</millis>
+  <nanos>603400</nanos>
+  <sequence>17</sequence>
+  <logger>logger</logger>
+  <level>SEVERE</level>
+  <class>BD.BaseDeDatos</class>
+  <method>getProducto</method>
+  <thread>1</thread>
+  <message>java.sql.SQLException: ResultSet closed</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.127598800Z</date>
+  <millis>1640006624127</millis>
+  <nanos>598800</nanos>
+  <sequence>18</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.136573300Z</date>
+  <millis>1640006624136</millis>
+  <nanos>573300</nanos>
+  <sequence>19</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.176466700Z</date>
+  <millis>1640006624176</millis>
+  <nanos>466700</nanos>
+  <sequence>20</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.177463500Z</date>
+  <millis>1640006624177</millis>
+  <nanos>463500</nanos>
+  <sequence>21</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.179459900Z</date>
+  <millis>1640006624179</millis>
+  <nanos>459900</nanos>
+  <sequence>22</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.219255100Z</date>
+  <millis>1640006624219</millis>
+  <nanos>255100</nanos>
+  <sequence>23</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.225212500Z</date>
+  <millis>1640006624225</millis>
+  <nanos>212500</nanos>
+  <sequence>24</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>addColumn</method>
+  <thread>1</thread>
+  <message>Añadida en USER la columna Dir</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.231229Z</date>
+  <millis>1640006624231</millis>
+  <nanos>229000</nanos>
+  <sequence>25</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>addColumn</method>
+  <thread>1</thread>
+  <message>Añadida en USER la columna Telf</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.238179200Z</date>
+  <millis>1640006624238</millis>
+  <nanos>179200</nanos>
+  <sequence>26</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>addColumn</method>
+  <thread>1</thread>
+  <message>Añadida en USER la columna Tarjeta_Socio</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.239176100Z</date>
+  <millis>1640006624239</millis>
+  <nanos>176100</nanos>
+  <sequence>27</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.241169900Z</date>
+  <millis>1640006624241</millis>
+  <nanos>169900</nanos>
+  <sequence>28</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.281063400Z</date>
+  <millis>1640006624281</millis>
+  <nanos>63400</nanos>
+  <sequence>29</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.282063Z</date>
+  <millis>1640006624282</millis>
+  <nanos>63000</nanos>
+  <sequence>30</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.286051Z</date>
+  <millis>1640006624286</millis>
+  <nanos>51000</nanos>
+  <sequence>31</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.325943300Z</date>
+  <millis>1640006624325</millis>
+  <nanos>943300</nanos>
+  <sequence>32</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.327937800Z</date>
+  <millis>1640006624327</millis>
+  <nanos>937800</nanos>
+  <sequence>33</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>getMasCaro</method>
+  <thread>1</thread>
+  <message>Operación en la base de datos realizada</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.328935200Z</date>
+  <millis>1640006624328</millis>
+  <nanos>935200</nanos>
+  <sequence>34</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.330929700Z</date>
+  <millis>1640006624330</millis>
+  <nanos>929700</nanos>
+  <sequence>35</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda</class>
+  <method>iniciaLog</method>
+  <thread>1</thread>
+  <message>Logger inicializado</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.367633700Z</date>
+  <millis>1640006624367</millis>
+  <nanos>633700</nanos>
+  <sequence>36</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>InitDB</method>
+  <thread>1</thread>
+  <message>Creación de tablas correcta</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.369627700Z</date>
+  <millis>1640006624369</millis>
+  <nanos>627700</nanos>
+  <sequence>37</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>getMasBarato</method>
+  <thread>1</thread>
+  <message>Operación en la base de datos realizada</message>
+</record>
+<record>
+  <date>2021-12-20T13:23:44.370625200Z</date>
+  <millis>1640006624370</millis>
+  <nanos>625200</nanos>
+  <sequence>38</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>closeDB</method>
+  <thread>1</thread>
+  <message>Conexión cerrada con la base de datos</message>
+</record>
+</log>

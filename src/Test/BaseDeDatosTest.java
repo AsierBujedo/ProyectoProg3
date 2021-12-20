@@ -8,6 +8,7 @@ import org.junit.Test;
 import BD.*;
 import Tienda.Producto;
 import Tienda.VentanaTienda;
+import Tienda.Videojuego;
 
 public class BaseDeDatosTest {
 
@@ -72,8 +73,7 @@ public class BaseDeDatosTest {
 	@Test
 	public void getProductosTest() {
 		// Comprobación de que el tamaño de la lista que devuelve el método getProductos() es el correcto
-		ArrayList<Producto> productos = new ArrayList<Producto>();
-		BaseDeDatos.getProductos();
+		ArrayList<Producto> productos = BaseDeDatos.getProductos();
 		assertEquals(0, productos.size());
 		
 		for (Producto producto : productos) {
@@ -91,6 +91,43 @@ public class BaseDeDatosTest {
 				  assertTrue(productos.get(j).getID() > productos.get(i).getID());
 			  }
 		}
-	}	
-
+	}
+	
+	@Test
+	public void addProductoTest() {
+		// Comprobación de que la adición de un nuevo producto se realiza correctamente
+		// Comprobando que el método devuelve true al hacerlo
+		assertTrue(BaseDeDatos.addProducto(new Videojuego("V545", "XBOX ONE", 25.99, "Microsoft")));
+				
+		// Comprobando que el producto es efectivamente el introducido
+		assertEquals(BaseDeDatos.getProducto("V234", "XBOX ONE"), "V545");
+	}
+	
+	@Test
+	public void getMasCaroTest(){
+		ArrayList<Producto> productos = BaseDeDatos.getProductos();
+		double mayor = BaseDeDatos.getMasBarato().getPrecio();
+		
+		for (Producto p : productos) {
+			if(p.getPrecio()> mayor) {
+				mayor = p.getPrecio();
+				//	Comprobación de que getMasCaro() efectivamente devuelve el producto más caro
+				assertEquals(mayor, BaseDeDatos.getMasCaro());
+			}
+		}
+	}
+	
+	@Test
+	public void getMasBaratoTest(){
+		ArrayList<Producto> productos = BaseDeDatos.getProductos();
+		double menor = BaseDeDatos.getMasCaro().getPrecio();
+		
+		for (Producto p : productos) {
+			if(p.getPrecio()< menor) {
+				menor = p.getPrecio();
+				//	Comprobación de que getMasBarato() efectivamente devuelve el producto más barato
+				assertEquals(menor, BaseDeDatos.getMasBarato());
+			}
+		}
+	}
 }
