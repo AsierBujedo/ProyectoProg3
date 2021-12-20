@@ -53,4 +53,5 @@ class CustomTableModel extends AbstractTableModel{
         datos.get(row).setValor( valor, col );
 //        fireTableCellUpdated(row, col);  // Notifica a escuchadores de cambio de celda
     }
+
 }

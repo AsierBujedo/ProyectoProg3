@@ -25,29 +25,6 @@ public class Cesta {
 		return cesta;
 	}
 
-	public static void datosPrueba() {
-		FileOutputStream fos;
-		try {
-			fos = new FileOutputStream("datos.dat");
-			@SuppressWarnings("resource")
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			ArrayList<Producto> list = new ArrayList<Producto>();
-			list.add(new Libro("L123", "La casa de los espíritus", 19.99, "Editorial", "Isabel Allende",
-					"Editorial", Color.BLUE, true));
-			list.add(new Libro("L124", "Harry Potter", 24.99, "Editorial", "J. K. Rowling", "Editorial", Color.RED,
-					true));
-			list.add(new Ordenador("O223", "Lenovo Ideapad 2", 500.00, "Lenovo", "Ideapad 2", 500, 8, 2));
-			list.add(new Telefono("T623", "Samsung Galaxy S 21", 759.99, "Samsung", "S 21", 128, 6, 2, 4800));
-			list.add(new Videoconsola("VC723", "Playstation 5", 499.99, "Sony", "Playstation 5", 500, 16, 8, false, false, true));
-			list.add(new Zapatilla("Z323", "Nike Air", 99.99, "Nike", null, 42.00, Color.BLACK, Pais.CHINA));
-			list.add(new Sudadera("S423", "Sudadera", 22.99, "Billabong", Talla.M, Color.GREEN, true, Pais.CHINA));
-			list.add(new Pantalon("P523", "Pantalón Levis", 49.99, "Levis", Talla.L, Color.BLUE, Pais.ALEMANIA));
-			oos.writeObject(list);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	/**Método setCesta:
 	 *  Sustituye la actual cesta por una nueva.
 	 * @param cesta
@@ -68,8 +45,29 @@ public class Cesta {
 	 */
 	public JPanel panelCesta() {
 		JPanel panel = new JPanel();
-		JTextField buscarProd = new JTextField(10);
-		buscarProd.setBorder(new RoundedBorder(7));
+		JTextField buscarProd = new JTextField("Introduce el número (ID) del producto", 30);
+		buscarProd.setBorder(new RoundedBorder(5));
+		buscarProd.setForeground(Color.GRAY);
+		
+		buscarProd.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (buscarProd.getText().equals("Introduce el número (ID) del producto")) {
+					buscarProd.setForeground(Color.BLACK);
+					buscarProd.setText("");
+				}
+				super.focusGained(e);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (buscarProd.getText().equals("")) {
+					buscarProd.setForeground(Color.GRAY);
+					buscarProd.setText("Introduce el número del producto");
+				}
+				super.focusLost(e);
+			}
+		});
 
 		JButton buscar = new JButton("Buscar en carro");
 		buscar.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));

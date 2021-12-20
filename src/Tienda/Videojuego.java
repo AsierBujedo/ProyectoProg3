@@ -4,7 +4,6 @@ import java.util.logging.Level;
 
 @SuppressWarnings("serial")
 public class Videojuego extends Producto {
-	protected String nombre;
 	protected int anyo;
 	protected String desarrollador;
 	protected boolean esDigital;
@@ -21,7 +20,6 @@ public class Videojuego extends Producto {
 	public Videojuego(String codigoProducto, String nombre, double precio, String marca, int anyo,
 			String desarrollador, boolean esDigital, int tamanyo) {
 		super(codigoProducto, nombre, precio, marca);
-		this.nombre = nombre;
 		this.anyo = anyo;
 		this.desarrollador = desarrollador;
 		this.esDigital = esDigital;
@@ -29,10 +27,6 @@ public class Videojuego extends Producto {
 	}
 
 	//Getters
-	public String getNombre() {
-		return nombre;
-	}
-	
 	public int getAnyo() {
 		return anyo;
 	}
@@ -50,10 +44,6 @@ public class Videojuego extends Producto {
 	}
 
 	//Setters
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public void setAnyo(int anyo) {
 		this.anyo = anyo;
 	}

@@ -13,9 +13,8 @@ public class BaseDeDatos {
 	private static int USER_IDS = 1;
 
 	/**
-	 * Inicializa la base de datos
-	 * 
-	 * @return True si todo va bien, false si hay algún error
+	 * Inicializa la base de datos.
+	 * @return True si todo va bien, false si hay algún error.
 	 */
 	// Este método deberá ejecutarse antes de comenzar a usar la base de datos
 	public static boolean InitDB() {
@@ -43,11 +42,10 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Añade una columna a una tabla
-	 * 
-	 * @param TABLE Nombre de la tabla a la que se quiere añadir la columna
-	 * @param name  Nombre de la columna a añadir
-	 * @return True si la columna se añade correctamente, false si hay algún error
+	 * Añade una columna a una tabla.
+	 * @param TABLE Nombre de la tabla a la que se quiere añadir la columna.
+	 * @param name  Nombre de la columna a añadir.
+	 * @return True si la columna se añade correctamente, false si hay algún error.
 	 */
 	public static boolean addColumn(TABLES TABLE, String name) {
 		/*
@@ -67,12 +65,10 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Elimina una columna de una tabla
-	 * 
-	 * @param TABLE  Nombre de la tabla que posee la columna a eliminar
-	 * @param COLUMN Nombre de la columna a eliminar
-	 * @return True si la columna se borra correctamente, false si es una columna
-	 *         por defecto o hay algún error
+	 * Elimina una columna de una tabla.
+	 * @param TABLE  Nombre de la tabla que posee la columna a eliminar.
+	 * @param COLUMN Nombre de la columna a eliminar.
+	 * @return True si la columna se borra correctamente, false si es una columna por defecto o hay algún error.
 	 */
 	// No se podrán borrar las columnas por defecto
 	public static boolean removeColumn(TABLES TABLE, String COLUMN) {
@@ -94,11 +90,10 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Elimina un usuario de la tabla USER
-	 * 
-	 * @param MAIL Dirección de correo electrónico del usuario
-	 * @param PASS Contraseña del usuario
-	 * @return True si el usuario elimina correctamente, false si hay algún error
+	 * Elimina un usuario de la tabla USER.
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param PASS Contraseña del usuario.
+	 * @return True si el usuario elimina correctamente, false si hay algún error.
 	 */
 	// El usuario se identifica por su dirección de correo electrónico y su
 	// contraseña, no por su identificativo único
@@ -116,12 +111,11 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Añade un nuevo usuario a la tabla USER
-	 * 
-	 * @param USERNAME Nombre de usuario
-	 * @param MAIL     Dirección de correo electrónico del usuario
-	 * @param PASS     Contraseña del usuario
-	 * @return True si el usuario se añade correctamente, false si hay algún error
+	 * Añade un nuevo usuario a la tabla USER.
+	 * @param USERNAME Nombre de usuario.
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param PASS Contraseña del usuario.
+	 * @return True si el usuario se añade correctamente, false si hay algún error.
 	 */
 	// Automáticamente se le asigna un ID como código identificativo único, su
 	// PRIMARY KEY
@@ -141,9 +135,8 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Cierra la conexión con la base de datos
-	 * 
-	 * @return True si la conexión se cierra correctamente, false si hay algún error
+	 * Cierra la conexión con la base de datos.
+	 * @return True si la conexión se cierra correctamente, false si hay algún error.
 	 */
 	// Deberá cerrarse siempre la conexion con la base de datos mediante este método
 	public static boolean closeDB() {
@@ -158,11 +151,10 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Lee los usuarios de la tabla USER
-	 * 
-	 * @param MAIL Dirección de correo electrónico del usuario
-	 * @param PASS Contraseña del usuario
-	 * @return "Nombre de usuario", "Error" si hay algún error
+	 * Lee los usuarios de la tabla USER.
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param PASS Contraseña del usuario.
+	 * @return "Nombre de usuario", "Error" si hay algún error.
 	 */
 	public static String getUser(String MAIL, String PASS) {
 		try {
@@ -177,13 +169,12 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Edita un usuario de la tabla USER
-	 * 
-	 * @param COL  Nombre de la columna de la tabla USER
-	 * @param MAIL Dirección de correo electrónico del usuario
-	 * @param PASS Contraseña del usuario
+	 * Edita un usuario de la tabla USER.
+	 * @param COL  Nombre de la columna de la tabla USER.
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param PASS Contraseña del usuario.
 	 * @param NEW
-	 * @return True si el cambio es efectivo, false si hay algún error
+	 * @return True si el cambio es efectivo, false si hay algún error.
 	 */
 	// Se permite el cambio de nombre de usuario, mail y/o password
 	public static boolean editUser(COLS COL, String MAIL, String PASS, String NEW) {
@@ -199,9 +190,8 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Lee los productos de la tabla PRODUCTO
-	 * 
-	 * @return Lista completa de productos, null si hay algún error
+	 * Lee los productos de la tabla PRODUCTO.
+	 * @return Lista completa de productos, null si hay algún error.
 	 */
 	public static ArrayList<Producto> getProductos() {
 		try {
@@ -262,7 +252,8 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
-	/**Funcion que realiza una consulta y obtiene el producto más caro
+	/**
+	 * Funcion que realiza una consulta y obtiene el producto más caro.
 	 * @return Producto
 	 */
 	public static Producto getMasCaro() {
@@ -283,7 +274,8 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
-	/**Funcion que realiza una consulta y obtiene el producto más barato
+	/**
+	 * Funcion que realiza una consulta y obtiene el producto más barato.
 	 * @return Producto
 	 */
 	public static boolean addProducto(Producto p) {
