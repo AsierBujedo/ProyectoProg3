@@ -297,9 +297,9 @@ public class BaseDeDatos {
 	 * @param NOMBRE Nombre del producto
 	 * @return Producto con el código y nombre que buscamos , null si hay algún error
 	 */	
-	public static String getProducto(String COD_PRODUCTO, String NOMBRE) {
+	public static String getProducto(String NOMBRE) {
 		try {
-			pstmt = con.prepareStatement("SELECT COD_PRODUCTO FROM PRODUCTO WHERE COD_PRODUCTO = '" + COD_PRODUCTO + "' AND NOMBRE = '" + NOMBRE + "'");
+			pstmt = con.prepareStatement("SELECT COD_PRODUCTO FROM PRODUCTO WHERE NOMBRE = '" + NOMBRE + "'");
 			ResultSet rs = pstmt.executeQuery();
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
 			return rs.getString("COD_PRODUCTO");

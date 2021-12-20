@@ -96,11 +96,12 @@ public class BaseDeDatosTest {
 	@Test
 	public void addProductoTest() {
 		// Comprobación de que la adición de un nuevo producto se realiza correctamente
+		
 		// Comprobando que el método devuelve true al hacerlo
-		assertTrue(BaseDeDatos.addProducto(new Videojuego("V545", "XBOX ONE", 25.99, "Microsoft")));
+		assertTrue(BaseDeDatos.addProducto(new Videojuego("V545", "XBOX ONE", 399.99, "Microsoft")));
 				
 		// Comprobando que el producto es efectivamente el introducido
-		assertEquals(BaseDeDatos.getProducto("V234", "XBOX ONE"), "V545");
+		assertEquals(BaseDeDatos.getProducto("XBOX ONE"), "V545");
 	}
 	
 	@Test
