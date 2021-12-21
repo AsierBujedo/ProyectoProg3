@@ -99,7 +99,6 @@ public class BaseDeDatosTest {
 		}
 	}
 	
-	// Este test falla
 	@Test
 	public void addProductoTest() {
 		// Comprobación de que la adición de un nuevo producto se realiza correctamente

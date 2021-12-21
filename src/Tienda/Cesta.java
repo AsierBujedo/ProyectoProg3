@@ -46,7 +46,7 @@ public class Cesta {
 	 */
 	public JPanel panelCesta() {
 		JPanel panel = new JPanel();
-		JTextField buscarProd = new JTextField("Introduce el número (ID) del producto", 30);
+		JTextField buscarProd = new JTextField("Introduce un número (ID) de producto", 30);
 		buscarProd.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 12));
 		buscarProd.setBorder(new RoundedBorder(5));
 		buscarProd.setForeground(Color.GRAY);
@@ -54,7 +54,7 @@ public class Cesta {
 		buscarProd.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if (buscarProd.getText().equals("Introduce el número (ID) del producto")) {
+				if (buscarProd.getText().equals("Introduce un número (ID) de producto")) {
 					buscarProd.setForeground(Color.BLACK);
 					buscarProd.setText("");
 				}
@@ -65,20 +65,20 @@ public class Cesta {
 			public void focusLost(FocusEvent e) {
 				if (buscarProd.getText().equals("")) {
 					buscarProd.setForeground(Color.GRAY);
-					buscarProd.setText("Introduce el número (ID) del producto");
+					buscarProd.setText("Introduce un número (ID) de producto");
 				}
 				super.focusLost(e);
 			}
 		});
 
-		JButton buscar = new JButton("Buscar en carro");
+		JButton buscar = new JButton(new ImageIcon("search.png"));
+		buscar.setBorderPainted(false);
 		buscar.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		buscar.setForeground(Color.WHITE);
 		buscar.setBackground(new Color(245, 182, 66));
 
 		buscar.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				buscar.setBorderPainted(false);
 				buscar.setBackground(new Color(245, 182, 66).darker());
 			}
 
@@ -97,7 +97,7 @@ public class Cesta {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (!buscarProd.getText().equals("Introduce el número (ID) del producto")) {
+				if (!buscarProd.getText().equals("Introduce un número (ID) de producto")) {
 					Producto p = OtherUtils.buscarEnLista(cesta, Integer.valueOf(buscarProd.getText()), 0);
 					if (p != null) {
 						JOptionPane.showMessageDialog(null, "Nombre: " + p.getNombre() + ", Marca: " + p.getMarca()

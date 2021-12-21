@@ -3,12 +3,17 @@ package Tienda;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -49,14 +54,14 @@ public class PanelTabla extends JPanel {
 		botonera.setBackground(Color.WHITE);
 		
 		// Botón anyadir
-		JButton anyadir = new JButton("Añadir a la cesta");
+		JButton anyadir = new JButton("Añadir a la cesta", new ImageIcon("add.png"));
+		anyadir.setBorderPainted(false);
 		anyadir.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		anyadir.setForeground(Color.WHITE);
 		anyadir.setBackground(color);
 
 		anyadir.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				anyadir.setBorderPainted(false);
 				anyadir.setBackground(color.darker());
 			}
 
@@ -156,18 +161,19 @@ public class PanelTabla extends JPanel {
 		
 		// Botón realizarCompra
 		JButton realizarCompra = new JButton("Realizar compra");
+		realizarCompra.setBorderPainted(false);
 		realizarCompra.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		realizarCompra.setForeground(Color.WHITE);
 		realizarCompra.setBackground(new Color(92, 156, 180));
 		
-		JButton actualizar = new JButton("Actualizar cesta");
+		JButton actualizar = new JButton("Actualizar cesta", new ImageIcon("loader.gif"));
+		actualizar.setBorderPainted(false);
 		actualizar.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		actualizar.setForeground(Color.WHITE);
-		actualizar.setBackground(Color.GREEN);
+		actualizar.setBackground(new Color(146, 201, 142));
 
 		realizarCompra.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				realizarCompra.setBorderPainted(false);
 				realizarCompra.setBackground(new Color(92, 156, 180).darker());
 			}
 
@@ -178,12 +184,11 @@ public class PanelTabla extends JPanel {
 		
 		actualizar.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				actualizar.setBorderPainted(false);
-				actualizar.setBackground(Color.GREEN.darker());
+				actualizar.setBackground(new Color(146, 201, 142).darker());
 			}
 
 			public void mouseExited(MouseEvent evt) {
-				actualizar.setBackground(Color.GREEN);
+				actualizar.setBackground(new Color(146, 201, 142));
 			}
 		});
 
@@ -194,10 +199,10 @@ public class PanelTabla extends JPanel {
 				if (tabla.getColumnCount() != 0 && tabla.getRowCount() != 0) {
 					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
+						// Aquí hay que limpiar la tabla (Eliminar todos los datos)
 					    JOptionPane.showMessageDialog(null, "Compra realizada");
 					} else {
 					    JOptionPane.showMessageDialog(null, "La compra ha sido cancelada");
-					    // Aquí hay que limpiar la tabla (Eliminar todos los datos)
 					}
 				}
 			}
