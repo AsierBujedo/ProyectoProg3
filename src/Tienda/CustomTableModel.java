@@ -46,13 +46,19 @@ class CustomTableModel extends AbstractTableModel {
 	public String getColumnName(int columnIndex) {
         return nomColumnas[columnIndex];
     }
+	
 	/*
 	 * Método propio del modelo: 
 	 */
 	public void setValueAt(Object valor, int row, int col) {
         datos.get(row).setValor( valor, col );
-//        fireTableCellUpdated(row, col);  // Notifica a escuchadores de cambio de celda
+        fireTableCellUpdated(row, col);  // Notifica a escuchadores de cambio de celda
     }
+	
+	public void removeRow(int row) {
+		datos.remove(row);   
+	}
+	
 	public void newRow(String[] data) {
 		String cod = data[0];
 		String nombre = data[1];

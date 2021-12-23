@@ -7,9 +7,7 @@ import Utils.OtherUtils;
 import Utils.RoundedBorder;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 /**Clase Cesta: 
  *  Gestiona la cesta del cliente, permite añadir productos, retirarlos o buscar en el carro.
  * @author GR08

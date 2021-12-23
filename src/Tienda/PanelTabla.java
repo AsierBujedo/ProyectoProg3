@@ -3,30 +3,26 @@ package Tienda;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-
-import BD.BaseDeDatos;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 @SuppressWarnings("serial")
 public class PanelTabla extends JPanel {
 	public static ArrayList<DatoParaTabla> datosCesta = new ArrayList<DatoParaTabla>();
 	public static String[] nomColumnasCesta = {};
+	
 	/** 
 	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botón para añadir productos a la cesta.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
@@ -61,15 +57,19 @@ public class PanelTabla extends JPanel {
 		anyadir.setBorderPainted(false);
 		anyadir.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		anyadir.setForeground(Color.WHITE);
-		anyadir.setBackground(color);
-
+		anyadir.setBackground(Color.GRAY.brighter());
+		
 		anyadir.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				anyadir.setBackground(color.darker());
+				if (!tabla.getSelectionModel().isSelectionEmpty()) {
+					anyadir.setBackground(color.darker());
+				}
 			}
 
 			public void mouseExited(MouseEvent evt) {
-				anyadir.setBackground(color);
+				if (!tabla.getSelectionModel().isSelectionEmpty()) {
+					anyadir.setBackground(color);
+				}
 			}
 		});
 
@@ -133,12 +133,18 @@ public class PanelTabla extends JPanel {
 					CustomTableModel ctm = new CustomTableModel(nomColumnasCesta, datosCesta);
 					tablaCesta.setModel(ctm);
 					System.out.println(Cesta.cesta);
-					
-					// actionPerformed del botón aun sin terminar
-					// Haciéndolo de esta forma, ¿Cómo vamos a pasarle la lista de productos seleccionados a getPanelTablaCesta(nomColumnas, ?)?
 				}
 			}
 		});
+		
+		tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				anyadir.setBackground(color);
+				
+			}	        
+	    });
 
 		botonera.add(anyadir, BorderLayout.CENTER);
 		panelTabla.add(botonera, BorderLayout.SOUTH);		
@@ -160,12 +166,13 @@ public class PanelTabla extends JPanel {
 	 */
 	public static JPanel getPanelTablaCesta(String[] nomColumnas,  ArrayList<Producto> datos) {
 		nomColumnasCesta = nomColumnas;
+		
 		for (Producto p : datos) {
 			datosCesta.add(p);
 		}
+		
 		JPanel panelTablaCesta = new PanelTabla();
 		panelTablaCesta.setLayout(new BorderLayout());
-		panelTablaCesta.setBackground(Color.WHITE);
 		
 		ArrayList<DatoParaTabla> datosTabla = new ArrayList<DatoParaTabla>();
 		
@@ -200,31 +207,24 @@ public class PanelTabla extends JPanel {
 		realizarCompra.setBorderPainted(false);
 		realizarCompra.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		realizarCompra.setForeground(Color.WHITE);
-		realizarCompra.setBackground(new Color(92, 156, 180));
 		
-		JButton actualizar = new JButton("Actualizar cesta", new ImageIcon("loader.gif"));
-		actualizar.setBorderPainted(false);
-		actualizar.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
-		actualizar.setForeground(Color.WHITE);
-		actualizar.setBackground(new Color(146, 201, 142));
+		if (tablaCesta.getColumnCount() == 0 && tablaCesta.getRowCount() == 0) {
+			realizarCompra.setBackground(new Color(92, 156, 180)); // No lo hace del todo bien 
+		} else {
+			realizarCompra.setBackground(Color.GRAY.brighter());
+		}
 
 		realizarCompra.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				realizarCompra.setBackground(new Color(92, 156, 180).darker());
+				if (tablaCesta.getColumnCount() != 0 && tablaCesta.getRowCount() != 0) {
+					realizarCompra.setBackground(new Color(92, 156, 180).darker());
+				}
 			}
 
 			public void mouseExited(MouseEvent evt) {
-				realizarCompra.setBackground(new Color(92, 156, 180));
-			}
-		});
-		
-		actualizar.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent evt) {
-				actualizar.setBackground(new Color(146, 201, 142).darker());
-			}
-
-			public void mouseExited(MouseEvent evt) {
-				actualizar.setBackground(new Color(146, 201, 142));
+				if (tablaCesta.getColumnCount() != 0 && tablaCesta.getRowCount() != 0) {
+					realizarCompra.setBackground(new Color(92, 156, 180));
+				}
 			}
 		});
 
@@ -232,30 +232,31 @@ public class PanelTabla extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<Producto> productosCompra = new ArrayList<Producto>(); 
+				// ArrayList en el que se guardarán los productos comprados
+				// Este ArrayList hay que introducirlo en el HashMap lastCompra de la clase Cesta
+				
 				if (tablaCesta.getColumnCount() != 0 && tablaCesta.getRowCount() != 0) {
 					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
-						// Aquí hay que limpiar la tabla (Eliminar todos los datos)
-					    JOptionPane.showMessageDialog(null, "Compra realizada");
+						
+						while (tablaCesta.getRowCount()>0) {
+							CustomTableModel model = (CustomTableModel) tablaCesta.getModel();
+							model.removeRow(0);
+							model.fireTableDataChanged();
+							tablaCesta.repaint();
+				        }
+						// Añadir la compra al HashMap lastCompra de la clase Cesta
+						
+					    JOptionPane.showMessageDialog(null, "Compra realizada", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					} else {
-					    JOptionPane.showMessageDialog(null, "La compra ha sido cancelada");
+					    JOptionPane.showMessageDialog(null, "La compra ha sido cancelada", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}
 				
 		});
 		
-		actualizar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaTienda.panelTablaCesta = PanelTabla.getPanelTablaCesta(nomColumnas, Cesta.cesta);
-				// Falla cesta
-			}
-				
-		});
-		
-		botoneraBuscar.add(actualizar);
 		botoneraComprar.add(realizarCompra, BorderLayout.EAST);
 		
 		panelTablaCesta.add(botoneraBuscar, BorderLayout.NORTH);
