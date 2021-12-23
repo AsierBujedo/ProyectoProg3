@@ -58,8 +58,7 @@ public class VentanaTienda {
 		bar.add(menucliente);
 		bar.add(atcliente);
 		JTabbedPane tabs = new JTabbedPane();
-		JPanel main = new JPanel();
-		tabs.add("Principal", new JScrollPane(main));
+		tabs.add("Presentación", new JScrollPane(new Utils.BackgroungImagePanel()));
 
 		// Nombres de la columnas
 		String[] nomColumnas = {"Código de producto", "Nombre", "Precio", "Marca"};
@@ -238,10 +237,11 @@ public class VentanaTienda {
 	public void cargaDatos() {
 		OtherUtils.escribeDatos();
 		try {
+			ArrayList<Producto> prods = new ArrayList<Producto>();
 			FileInputStream fis = new FileInputStream(new File("datos.dat"));
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			Cesta.cesta = (ArrayList<Producto>) ois.readObject();
-			for (Producto p : Cesta.cesta) {
+			prods = (ArrayList<Producto>) ois.readObject();
+			for (Producto p : prods) {
 				BaseDeDatos.addProducto(p);
 			}
 		} catch (IOException | ClassNotFoundException e1) {

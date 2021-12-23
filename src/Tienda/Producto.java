@@ -68,6 +68,10 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+	
+	public void setID(int ID) {
+		this.ID = ID;
+	}
 
 	@Override
 	public String toString() {

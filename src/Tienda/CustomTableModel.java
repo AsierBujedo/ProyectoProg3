@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 @SuppressWarnings("serial")
-class CustomTableModel extends AbstractTableModel{
+class CustomTableModel extends AbstractTableModel {
 	String[] nomColumnas;
 	ArrayList<DatoParaTabla> datos = new ArrayList<DatoParaTabla>();
 	
@@ -53,5 +53,11 @@ class CustomTableModel extends AbstractTableModel{
         datos.get(row).setValor( valor, col );
 //        fireTableCellUpdated(row, col);  // Notifica a escuchadores de cambio de celda
     }
-
+	public void newRow(String[] data) {
+		String cod = data[0];
+		String nombre = data[1];
+		String precio = data[2];
+		String marca = data[3];
+		datos.add(new Generico(cod, nombre, Double.valueOf(precio), marca));
+	}
 }

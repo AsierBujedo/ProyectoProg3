@@ -25,7 +25,8 @@ import BD.BaseDeDatos;
 
 @SuppressWarnings("serial")
 public class PanelTabla extends JPanel {
-	
+	public static ArrayList<DatoParaTabla> datosCesta = new ArrayList<DatoParaTabla>();
+	public static String[] nomColumnasCesta = {};
 	/** 
 	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botón para añadir productos a la cesta.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
@@ -36,8 +37,10 @@ public class PanelTabla extends JPanel {
 	public static JPanel getPanelTabla(String[] nomColumnas,  ArrayList<DatoParaTabla> datos, Color color) {
 		JPanel panelTabla = new PanelTabla();
 		panelTabla.setLayout(new BorderLayout());
-		JTable tabla = new JTable(new CustomTableModel(nomColumnas, datos)); // Crea la tabla pasándole el modelo personalizado
+		CustomTableModel ctm = new CustomTableModel(nomColumnas, datos);
+		JTable tabla = new JTable(ctm); // Crea la tabla pasándole el modelo personalizado
 		tabla.setOpaque(true);
+		
 		tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 		tabla.setForeground(Color.BLACK);
 		tabla.getTableHeader().setBackground(color);
@@ -81,27 +84,54 @@ public class PanelTabla extends JPanel {
 					String marca = tabla.getValueAt(tabla.getSelectedRow(), 3).toString();
 					
 					if (codigoProducto.contains("I")) {
-						Cesta.cesta.add(new Impresora(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Impresora imp = new Impresora(codigoProducto, nombre, Double.valueOf(precio), marca);
+						imp.setID(imp.getID()-30+1100);
+						Cesta.cesta.add(imp);
+						datosCesta.add(imp);
 					} else if (codigoProducto.contains("L")) {
-						Cesta.cesta.add(new Libro(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Libro lib = new Libro(codigoProducto, nombre, Double.valueOf(precio), marca);
+						lib.setID(lib.getID()-30+1100);
+						Cesta.cesta.add(lib);
+						datosCesta.add(lib);
 					} else if (codigoProducto.contains("O")) {
-						Cesta.cesta.add(new Ordenador(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Ordenador o = new Ordenador(codigoProducto, nombre, Double.valueOf(precio), marca);
+						o.setID(o.getID()-30+1100);
+						Cesta.cesta.add(o);
+						datosCesta.add(o);
 					} else if (codigoProducto.contains("P")) {
-						Cesta.cesta.add(new Pantalon(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Pantalon pant = new Pantalon(codigoProducto, nombre, Double.valueOf(precio), marca);
+						pant.setID(pant.getID()-30+1100);
+						Cesta.cesta.add(pant);
+						datosCesta.add(pant);
 					} else if (codigoProducto.contains("S")) {
-						Cesta.cesta.add(new Sudadera(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Sudadera s = new Sudadera(codigoProducto, nombre, Double.valueOf(precio), marca);
+						s.setID(s.getID()-30+1100);
+						Cesta.cesta.add(s);
+						datosCesta.add(s);
 					} else if (codigoProducto.contains("T")) {
-						Cesta.cesta.add(new Telefono(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Telefono t = new Telefono(codigoProducto, nombre, Double.valueOf(precio), marca);
+						t.setID(t.getID()-30+1100);
+						Cesta.cesta.add(t);
+						datosCesta.add(t);
 					} else if (codigoProducto.contains("VC")) {
-						Cesta.cesta.add(new Videoconsola(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Videoconsola vc = new Videoconsola(codigoProducto, nombre, Double.valueOf(precio), marca);
+						vc.setID(vc.getID()-30+1100);
+						Cesta.cesta.add(vc);
+						datosCesta.add(vc);
 					} else if (codigoProducto.contains("VJ")) {
-						Cesta.cesta.add(new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Videojuego vj = new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca);
+						vj.setID(vj.getID()-30+1100);
+						Cesta.cesta.add(vj);
+						datosCesta.add(new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca));
 					} else if (codigoProducto.contains("Z")) {
-						Cesta.cesta.add(new Zapatilla(codigoProducto, nombre, Double.valueOf(precio), marca));
-					} else if (codigoProducto.contains("VJ")) {
-						Cesta.cesta.add(new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca));
+						Zapatilla z = new Zapatilla(codigoProducto, nombre, Double.valueOf(precio), marca);
+						z.setID(z.getID()-30+1100);
+						Cesta.cesta.add(z);
+						datosCesta.add(z);
 					}
 					
+					CustomTableModel ctm = new CustomTableModel(nomColumnasCesta, datosCesta);
+					tablaCesta.setModel(ctm);
 					System.out.println(Cesta.cesta);
 					
 					// actionPerformed del botón aun sin terminar
@@ -120,6 +150,8 @@ public class PanelTabla extends JPanel {
 		
 	}
 	
+	
+	public static JTable tablaCesta;
 	/** 
 	 * Crea un panel que contiene un JScrollPane con una tabla y dos paneles botonera con los elementos necesarios para realizar búsquedas y compras de productos.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
@@ -127,6 +159,10 @@ public class PanelTabla extends JPanel {
 	 * @return Panel que contiene la tabla y los paneles botonera.
 	 */
 	public static JPanel getPanelTablaCesta(String[] nomColumnas,  ArrayList<Producto> datos) {
+		nomColumnasCesta = nomColumnas;
+		for (Producto p : datos) {
+			datosCesta.add(p);
+		}
 		JPanel panelTablaCesta = new PanelTabla();
 		panelTablaCesta.setLayout(new BorderLayout());
 		panelTablaCesta.setBackground(Color.WHITE);
@@ -137,17 +173,17 @@ public class PanelTabla extends JPanel {
 			datosTabla.add(p);
 		}
 		
-		JTable tabla = new JTable(new CustomTableModel(nomColumnas, datosTabla)); // Crea la tabla pasándole el modelo personalizado
-		tabla.setOpaque(true);
-		tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
-		tabla.setForeground(Color.BLACK);
-		tabla.getTableHeader().setBackground(new Color(162, 195, 234));
-		tabla.getTableHeader().setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
-		tabla.getTableHeader().setForeground(Color.WHITE);
-		tabla.getTableHeader().setReorderingAllowed(false);
+		tablaCesta = new JTable(new CustomTableModel(nomColumnas, datosTabla)); // Crea la tabla pasándole el modelo personalizado
+		tablaCesta.setOpaque(true);
+		tablaCesta.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
+		tablaCesta.setForeground(Color.BLACK);
+		tablaCesta.getTableHeader().setBackground(new Color(162, 195, 234));
+		tablaCesta.getTableHeader().setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		tablaCesta.getTableHeader().setForeground(Color.WHITE);
+		tablaCesta.getTableHeader().setReorderingAllowed(false);
 		
 		for (int i = 0; i < nomColumnas.length; i++) {
-			tabla.getColumnModel().getColumn(i).setResizable(false);
+			tablaCesta.getColumnModel().getColumn(i).setResizable(false);
 		}
 		
 		// Panel botoneraBuscar
@@ -196,7 +232,7 @@ public class PanelTabla extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (tabla.getColumnCount() != 0 && tabla.getRowCount() != 0) {
+				if (tablaCesta.getColumnCount() != 0 && tablaCesta.getRowCount() != 0) {
 					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
 						// Aquí hay que limpiar la tabla (Eliminar todos los datos)
@@ -225,7 +261,7 @@ public class PanelTabla extends JPanel {
 		panelTablaCesta.add(botoneraBuscar, BorderLayout.NORTH);
 		panelTablaCesta.add(botoneraComprar, BorderLayout.SOUTH);
 		
-		JScrollPane panelScroll = new JScrollPane(tabla); // Crea un ScrollPane que contendrá la tabla
+		JScrollPane panelScroll = new JScrollPane(tablaCesta); // Crea un ScrollPane que contendrá la tabla
 		panelTablaCesta.add(panelScroll); // Añade el ScrollPane al panel
 		
 		return panelTablaCesta;
