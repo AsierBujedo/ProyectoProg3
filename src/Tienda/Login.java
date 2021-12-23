@@ -49,7 +49,6 @@ public class Login {
 					VentanaTienda.loginItem.setEnabled(false);
 					VentanaTienda.logoutItem.setEnabled(true);
 					VentanaTienda.personalArea.setEnabled(true);
-					bd.closeDB();
 					frame.dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Incorrect mail or password","Login error", 0);

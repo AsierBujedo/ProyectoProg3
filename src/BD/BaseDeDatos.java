@@ -167,6 +167,18 @@ public class BaseDeDatos {
 			return "Error";
 		}
 	}
+	
+	public static String getUserMail(String name) {
+		try {
+			pstmt = con.prepareStatement(
+					"SELECT MAIL FROM USER WHERE USERNAME = '"+ name + "'");
+			ResultSet rs = pstmt.executeQuery();
+			return rs.getString("MAIL");
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return "Error";
+		}
+	}
 
 	/**
 	 * Edita un usuario de la tabla USER.
