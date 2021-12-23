@@ -22,6 +22,7 @@ import javax.swing.event.ListSelectionListener;
 public class PanelTabla extends JPanel {
 	public static ArrayList<DatoParaTabla> datosCesta = new ArrayList<DatoParaTabla>();
 	public static String[] nomColumnasCesta = {};
+	public static JButton realizarCompra = new JButton("Realizar compra");
 	
 	/** 
 	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botón para añadir productos a la cesta.
@@ -34,7 +35,7 @@ public class PanelTabla extends JPanel {
 		JPanel panelTabla = new PanelTabla();
 		panelTabla.setLayout(new BorderLayout());
 		CustomTableModel ctm = new CustomTableModel(nomColumnas, datos);
-		JTable tabla = new JTable(ctm); // Crea la tabla pasándole el modelo personalizado
+		JTable tabla = new JTable(ctm);
 		tabla.setOpaque(true);
 		
 		tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
@@ -122,7 +123,7 @@ public class PanelTabla extends JPanel {
 						Videojuego vj = new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca);
 						vj.setID(vj.getID()-30+1100);
 						Cesta.cesta.add(vj);
-						datosCesta.add(new Videojuego(codigoProducto, nombre, Double.valueOf(precio), marca));
+						datosCesta.add(vj);
 					} else if (codigoProducto.contains("Z")) {
 						Zapatilla z = new Zapatilla(codigoProducto, nombre, Double.valueOf(precio), marca);
 						z.setID(z.getID()-30+1100);
@@ -132,6 +133,7 @@ public class PanelTabla extends JPanel {
 					
 					CustomTableModel ctm = new CustomTableModel(nomColumnasCesta, datosCesta);
 					tablaCesta.setModel(ctm);
+					realizarCompra.setBackground(new Color(92, 156, 180));
 					System.out.println(Cesta.cesta);
 				}
 			}
@@ -149,8 +151,8 @@ public class PanelTabla extends JPanel {
 		botonera.add(anyadir, BorderLayout.CENTER);
 		panelTabla.add(botonera, BorderLayout.SOUTH);		
 		
-		JScrollPane panelScroll = new JScrollPane(tabla); // Crea un ScrollPane que contendrá la tabla
-		panelTabla.add(panelScroll, BorderLayout.CENTER); // Añade el ScrollPane al panel
+		JScrollPane panelScroll = new JScrollPane(tabla);
+		panelTabla.add(panelScroll, BorderLayout.CENTER);
 		
 		return panelTabla;
 		
@@ -199,30 +201,31 @@ public class PanelTabla extends JPanel {
 		
 		// Panel botoneraComprar
 		JPanel botoneraComprar = new JPanel();
-		botoneraComprar.setLayout(new BorderLayout());
 		botoneraComprar.setBackground(Color.WHITE);
 		
 		// Botón realizarCompra
-		JButton realizarCompra = new JButton("Realizar compra");
+		realizarCompra = new JButton("Realizar compra");
 		realizarCompra.setBorderPainted(false);
 		realizarCompra.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		realizarCompra.setForeground(Color.WHITE);
+		realizarCompra.setBackground(Color.GRAY.brighter());
 		
-		if (tablaCesta.getColumnCount() == 0 && tablaCesta.getRowCount() == 0) {
-			realizarCompra.setBackground(new Color(92, 156, 180)); // No lo hace del todo bien 
-		} else {
-			realizarCompra.setBackground(Color.GRAY.brighter());
-		}
+		// Botón eliminarProducto
+		JButton eliminarProducto = new JButton("Eliminar producto");
+		eliminarProducto.setBorderPainted(false);
+		eliminarProducto.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		eliminarProducto.setForeground(Color.WHITE);
+		eliminarProducto.setBackground(Color.GRAY.brighter());
 
 		realizarCompra.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				if (tablaCesta.getColumnCount() != 0 && tablaCesta.getRowCount() != 0) {
+				if (tablaCesta.getRowCount() != 0) {
 					realizarCompra.setBackground(new Color(92, 156, 180).darker());
 				}
 			}
 
 			public void mouseExited(MouseEvent evt) {
-				if (tablaCesta.getColumnCount() != 0 && tablaCesta.getRowCount() != 0) {
+				if (tablaCesta.getRowCount() != 0) {
 					realizarCompra.setBackground(new Color(92, 156, 180));
 				}
 			}
@@ -236,7 +239,7 @@ public class PanelTabla extends JPanel {
 				// ArrayList en el que se guardarán los productos comprados
 				// Este ArrayList hay que introducirlo en el HashMap lastCompra de la clase Cesta
 				
-				if (tablaCesta.getColumnCount() != 0 && tablaCesta.getRowCount() != 0) {
+				if (tablaCesta.getRowCount() != 0) {
 					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
 						
@@ -245,6 +248,7 @@ public class PanelTabla extends JPanel {
 							model.removeRow(0);
 							model.fireTableDataChanged();
 							tablaCesta.repaint();
+							realizarCompra.setBackground(Color.GRAY.brighter());
 				        }
 						// Añadir la compra al HashMap lastCompra de la clase Cesta
 						
@@ -257,13 +261,63 @@ public class PanelTabla extends JPanel {
 				
 		});
 		
-		botoneraComprar.add(realizarCompra, BorderLayout.EAST);
+		eliminarProducto.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
+					eliminarProducto.setBackground(new Color(180, 56, 61).darker());
+				}
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
+					eliminarProducto.setBackground(new Color(180, 56, 61));
+				}
+			}
+		});
+		
+		eliminarProducto.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (tablaCesta.getRowCount() != 0) {
+					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres eliminar el producto de la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION) {
+						CustomTableModel model = (CustomTableModel) tablaCesta.getModel();
+						model.removeRow(tablaCesta.getSelectedRow());
+						model.fireTableDataChanged();						
+						tablaCesta.repaint();
+						eliminarProducto.setBackground(Color.GRAY.brighter());
+						
+						if (tablaCesta.getRowCount() == 0) {
+							realizarCompra.setBackground(Color.GRAY.brighter());
+						}
+						
+						JOptionPane.showMessageDialog(null, "Producto eliminado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+						
+					} else {
+						JOptionPane.showMessageDialog(null, "No se eliminó ningún producto", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+					} 
+				}				
+			}
+		});
+		
+		tablaCesta.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				eliminarProducto.setBackground(new Color(180, 56, 61));
+				
+			}	        
+	    });
+		
+		botoneraComprar.add(eliminarProducto);
+		botoneraComprar.add(realizarCompra);
 		
 		panelTablaCesta.add(botoneraBuscar, BorderLayout.NORTH);
 		panelTablaCesta.add(botoneraComprar, BorderLayout.SOUTH);
 		
-		JScrollPane panelScroll = new JScrollPane(tablaCesta); // Crea un ScrollPane que contendrá la tabla
-		panelTablaCesta.add(panelScroll); // Añade el ScrollPane al panel
+		JScrollPane panelScroll = new JScrollPane(tablaCesta);
+		panelTablaCesta.add(panelScroll);
 		
 		return panelTablaCesta;
 		

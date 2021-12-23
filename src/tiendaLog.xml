@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-12-23T13:14:10.004227700Z</date>
-  <millis>1640265250004</millis>
-  <nanos>227700</nanos>
+  <date>2021-12-23T15:37:15.977695400Z</date>
+  <millis>1640273835977</millis>
+  <nanos>695400</nanos>
   <sequence>0</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Logger inicializado</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.058277600Z</date>
-  <millis>1640265250058</millis>
-  <nanos>277600</nanos>
+  <date>2021-12-23T15:37:16.031744700Z</date>
+  <millis>1640273836031</millis>
+  <nanos>744700</nanos>
   <sequence>1</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>PROPERTIES SUCCESFULLY LOADED</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.316352600Z</date>
-  <millis>1640265250316</millis>
-  <nanos>352600</nanos>
+  <date>2021-12-23T15:37:16.298989Z</date>
+  <millis>1640273836298</millis>
+  <nanos>989000</nanos>
   <sequence>2</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -38,9 +38,9 @@
   <message>Creación de tablas correcta</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.353387900Z</date>
-  <millis>1640265250353</millis>
-  <nanos>387900</nanos>
+  <date>2021-12-23T15:37:16.335021900Z</date>
+  <millis>1640273836335</millis>
+  <nanos>21900</nanos>
   <sequence>3</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -50,9 +50,9 @@
   <message>Se ha añadido el producto con código: I001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.360392700Z</date>
-  <millis>1640265250360</millis>
-  <nanos>392700</nanos>
+  <date>2021-12-23T15:37:16.342029700Z</date>
+  <millis>1640273836342</millis>
+  <nanos>29700</nanos>
   <sequence>4</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -62,9 +62,9 @@
   <message>Se ha añadido el producto con código: I002</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.364398Z</date>
-  <millis>1640265250364</millis>
-  <nanos>398000</nanos>
+  <date>2021-12-23T15:37:16.347034200Z</date>
+  <millis>1640273836347</millis>
+  <nanos>34200</nanos>
   <sequence>5</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -74,9 +74,9 @@
   <message>Se ha añadido el producto con código: O001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.371079800Z</date>
-  <millis>1640265250371</millis>
-  <nanos>79800</nanos>
+  <date>2021-12-23T15:37:16.353039800Z</date>
+  <millis>1640273836353</millis>
+  <nanos>39800</nanos>
   <sequence>6</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -86,9 +86,9 @@
   <message>Se ha añadido el producto con código: T001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.375753800Z</date>
-  <millis>1640265250375</millis>
-  <nanos>753800</nanos>
+  <date>2021-12-23T15:37:16.358092900Z</date>
+  <millis>1640273836358</millis>
+  <nanos>92900</nanos>
   <sequence>7</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -98,9 +98,9 @@
   <message>Se ha añadido el producto con código: T002</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.381537600Z</date>
-  <millis>1640265250381</millis>
-  <nanos>537600</nanos>
+  <date>2021-12-23T15:37:16.364651100Z</date>
+  <millis>1640273836364</millis>
+  <nanos>651100</nanos>
   <sequence>8</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -110,9 +110,9 @@
   <message>Se ha añadido el producto con código: P001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.386366500Z</date>
-  <millis>1640265250386</millis>
-  <nanos>366500</nanos>
+  <date>2021-12-23T15:37:16.369656400Z</date>
+  <millis>1640273836369</millis>
+  <nanos>656400</nanos>
   <sequence>9</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -122,9 +122,9 @@
   <message>Se ha añadido el producto con código: S001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.392322Z</date>
-  <millis>1640265250392</millis>
-  <nanos>322000</nanos>
+  <date>2021-12-23T15:37:16.375654800Z</date>
+  <millis>1640273836375</millis>
+  <nanos>654800</nanos>
   <sequence>10</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -134,9 +134,9 @@
   <message>Se ha añadido el producto con código: S002</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.397326Z</date>
-  <millis>1640265250397</millis>
-  <nanos>326000</nanos>
+  <date>2021-12-23T15:37:16.380269800Z</date>
+  <millis>1640273836380</millis>
+  <nanos>269800</nanos>
   <sequence>11</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -146,9 +146,9 @@
   <message>Se ha añadido el producto con código: Z001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.402302100Z</date>
-  <millis>1640265250402</millis>
-  <nanos>302100</nanos>
+  <date>2021-12-23T15:37:16.387124500Z</date>
+  <millis>1640273836387</millis>
+  <nanos>124500</nanos>
   <sequence>12</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -158,9 +158,9 @@
   <message>Se ha añadido el producto con código: Z002</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.408307600Z</date>
-  <millis>1640265250408</millis>
-  <nanos>307600</nanos>
+  <date>2021-12-23T15:37:16.391852300Z</date>
+  <millis>1640273836391</millis>
+  <nanos>852300</nanos>
   <sequence>13</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -170,9 +170,9 @@
   <message>Se ha añadido el producto con código: L001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.414293100Z</date>
-  <millis>1640265250414</millis>
-  <nanos>293100</nanos>
+  <date>2021-12-23T15:37:16.397807300Z</date>
+  <millis>1640273836397</millis>
+  <nanos>807300</nanos>
   <sequence>14</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -182,9 +182,9 @@
   <message>Se ha añadido el producto con código: L002</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.419298500Z</date>
-  <millis>1640265250419</millis>
-  <nanos>298500</nanos>
+  <date>2021-12-23T15:37:16.404813700Z</date>
+  <millis>1640273836404</millis>
+  <nanos>813700</nanos>
   <sequence>15</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -194,9 +194,9 @@
   <message>Se ha añadido el producto con código: VC001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.424390800Z</date>
-  <millis>1640265250424</millis>
-  <nanos>390800</nanos>
+  <date>2021-12-23T15:37:16.410822400Z</date>
+  <millis>1640273836410</millis>
+  <nanos>822400</nanos>
   <sequence>16</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -206,9 +206,9 @@
   <message>Se ha añadido el producto con código: VC002</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:10.429396800Z</date>
-  <millis>1640265250429</millis>
-  <nanos>396800</nanos>
+  <date>2021-12-23T15:37:16.415295800Z</date>
+  <millis>1640273836415</millis>
+  <nanos>295800</nanos>
   <sequence>17</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -218,9 +218,9 @@
   <message>Se ha añadido el producto con código: VJ001</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:11.047570900Z</date>
-  <millis>1640265251047</millis>
-  <nanos>570900</nanos>
+  <date>2021-12-23T15:37:17.054385600Z</date>
+  <millis>1640273837054</millis>
+  <nanos>385600</nanos>
   <sequence>18</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -230,9 +230,9 @@
   <message>Ventana inicializada</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:11.058581400Z</date>
-  <millis>1640265251058</millis>
-  <nanos>581400</nanos>
+  <date>2021-12-23T15:37:17.086415Z</date>
+  <millis>1640273837086</millis>
+  <nanos>415000</nanos>
   <sequence>19</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -242,9 +242,9 @@
   <message>Abriendo ventana. Abriendo conexión con la base de datos</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:16.864513300Z</date>
-  <millis>1640265256864</millis>
-  <nanos>513300</nanos>
+  <date>2021-12-23T15:37:29.709126500Z</date>
+  <millis>1640273849709</millis>
+  <nanos>126500</nanos>
   <sequence>20</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -254,9 +254,9 @@
   <message>Conexión cerrada con la base de datos</message>
 </record>
 <record>
-  <date>2021-12-23T13:14:16.865516400Z</date>
-  <millis>1640265256865</millis>
-  <nanos>516400</nanos>
+  <date>2021-12-23T15:37:29.710130300Z</date>
+  <millis>1640273849710</millis>
+  <nanos>130300</nanos>
   <sequence>21</sequence>
   <logger>logger</logger>
   <level>INFO</level>

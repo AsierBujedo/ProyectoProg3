@@ -223,13 +223,13 @@ public class VentanaTienda {
 			}
 		});
 		
-//		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setTitle("Emai");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-WIDTH")),
-				Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-HEIGHT")));
+		Integer.valueOf(OtherUtils.prop.getProperty("WINDOW-HEIGHT")));
 		frame.setIconImage(icon);
+		frame.setLocationRelativeTo(null);
 
 	}
 

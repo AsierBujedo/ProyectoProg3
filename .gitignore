@@ -36,3 +36,5 @@ src/.classpath
 *.xml
 *.xml
 *.db
+*.db
+*.xml
