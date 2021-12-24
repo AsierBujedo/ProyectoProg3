@@ -252,6 +252,7 @@ public class PanelTabla extends JPanel {
 							CustomTableModel model = new CustomTableModel(nomColumnas, new ArrayList<DatoParaTabla>());
 							tablaCesta.setModel(model);
 							Cesta.cesta = new ArrayList<Producto>();
+							datosCesta = new ArrayList<DatoParaTabla>();
 							System.out.println(Cesta.lastCompra);
 							JOptionPane.showMessageDialog(null, "Compra realizada", "Mensaje",
 									JOptionPane.INFORMATION_MESSAGE);

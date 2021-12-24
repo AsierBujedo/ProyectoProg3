@@ -1,11 +1,17 @@
 package Test;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import BD.*;
+import Tienda.Cesta;
 import Tienda.Producto;
 import Tienda.VentanaTienda;
 import Tienda.Videojuego;
@@ -16,6 +22,16 @@ public class BaseDeDatosTest {
 	public void Inicio() {
 		VentanaTienda.iniciaLog();
 		BaseDeDatos.InitDB();
+		try {
+			FileInputStream fis = new FileInputStream(new File("datos.dat"));
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			ArrayList<Producto> productos = (ArrayList<Producto>) ois.readObject();
+			for (Producto p : productos) {
+				BaseDeDatos.addProducto(p);
+			}
+		} catch (IOException | ClassNotFoundException e1) {
+			System.err.println("datos.dat no encontrado");
+		}
 	}
 	
 	@After
@@ -74,11 +90,12 @@ public class BaseDeDatosTest {
 	public void getProductosTest() {
 		// Comprobación de que el tamaño de la lista que devuelve el método getProductos() es el correcto
 		ArrayList<Producto> productos = BaseDeDatos.getProductos();
-		assertEquals(0, productos.size());
+		//Sabiendo que son 15 los pridyctos que hemos anyadido...
+		assertEquals(15, productos.size());
 		
 		for (Producto producto : productos) {
-			// Comprobación de que el primer caracter del codigoProducto de cada producto es un char
-			assertEquals(char.class, producto.getCodigoProducto().charAt(0));
+			// Comprobación de que el codigo del producto es un String
+			assertEquals(String.class.getName(), producto.getCodigoProducto().getClass().getName());
 			
 			// Comprobación de que el precio de cada producto es mayor que 0
 			assertTrue(producto.getPrecio() > 0);
@@ -87,13 +104,13 @@ public class BaseDeDatosTest {
 		// Comprobación de que el ID de cada producto es mayor que ID del producto anterior en la lista
 		for (int i = 0; i < productos.size(); i++) {
 			  for (int j = i+1; j < productos.size(); j++) {
-				  assertTrue(productos.get(j).getID() > productos.get(i).getID());
+				  assertTrue(productos.get(j).getID() > productos.get(i).getID());			  
 			  }
 		}
 		
 		// Comprobación de que el precio de cada producto es mayor que precio del producto anterior en la lista
 		for (int i = 0; i < productos.size(); i++) {
-			  for (int j = i+1; j < productos.size(); j++) {
+			  for (int j = i + 1; j < productos.size(); j++) {
 				  assertTrue(productos.get(j).getPrecio() > productos.get(i).getPrecio());
 				 }
 		}
@@ -116,10 +133,10 @@ public class BaseDeDatosTest {
 		double mayor = BaseDeDatos.getMasBarato().getPrecio();
 		
 		for (Producto p : productos) {
-			if(p.getPrecio()> mayor) {
+			if(p.getPrecio()< mayor) {
 				mayor = p.getPrecio();
 				//	Comprobación de que getMasCaro() efectivamente devuelve el producto más caro
-				assertEquals(mayor, BaseDeDatos.getMasCaro());
+				assertEquals(mayor, BaseDeDatos.getMasCaro().getPrecio(), 0.0001);
 			}
 		}
 	}
@@ -130,10 +147,10 @@ public class BaseDeDatosTest {
 		double menor = BaseDeDatos.getMasCaro().getPrecio();
 		
 		for (Producto p : productos) {
-			if(p.getPrecio()< menor) {
+			if(p.getPrecio()> menor) {
 				menor = p.getPrecio();
 				//	Comprobación de que getMasBarato() efectivamente devuelve el producto más barato
-				assertEquals(menor, BaseDeDatos.getMasBarato());
+				assertEquals(menor, BaseDeDatos.getMasBarato().getPrecio(), 0.0001);
 			}
 		}
 	}
