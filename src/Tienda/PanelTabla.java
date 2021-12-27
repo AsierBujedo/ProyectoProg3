@@ -22,6 +22,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 import BD.BaseDeDatos;
 
@@ -43,8 +44,9 @@ public class PanelTabla extends JPanel {
 		panelTabla.setLayout(new BorderLayout());
 		CustomTableModel ctm = new CustomTableModel(nomColumnas, datos);
 		JTable tabla = new JTable(ctm);
+		TableRowSorter<CustomTableModel> sorter = new TableRowSorter<CustomTableModel>(ctm);
+		tabla.setRowSorter(sorter);
 		tabla.setOpaque(false);
-
 		tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 		tabla.setForeground(Color.BLACK);
 		tabla.getTableHeader().setBackground(color);
@@ -186,6 +188,7 @@ public class PanelTabla extends JPanel {
 					CustomTableModel ctm = new CustomTableModel(nomColumnasCesta, datosCesta);
 					tablaCesta.setModel(ctm);
 					realizarCompra.setBackground(new Color(92, 156, 180));
+					System.out.println(Cesta.cesta);
 					
 					VentanaTienda.logger.log(Level.INFO, "Producto con código: " + codigoProducto + " añadido a la cesta");
 				}
@@ -256,7 +259,8 @@ public class PanelTabla extends JPanel {
 			datosTabla.add(p);
 		}
 		
-		tablaCesta = new JTable(new CustomTableModel(nomColumnas, datosTabla));
+		CustomTableModel ctm = new CustomTableModel(nomColumnas, datosTabla);
+		tablaCesta = new JTable(ctm);
 		tablaCesta.setOpaque(true);
 		tablaCesta.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 		tablaCesta.setForeground(Color.BLACK);
@@ -283,6 +287,8 @@ public class PanelTabla extends JPanel {
 		};
 		
 		tablaCesta.setDefaultRenderer(Object.class, rendererCesta);
+		tablaCesta.setDefaultRenderer(Double.class, rendererCesta);
+		tablaCesta.setDefaultRenderer(Integer.class, rendererCesta);
 								
 		// Panel botoneraBuscar
 		JPanel botoneraBuscar = new Cesta().panelCesta();
@@ -379,6 +385,7 @@ public class PanelTabla extends JPanel {
 						for (Producto p : Cesta.cesta) {
 							if (p.getID() == ID) {
 								Cesta.cesta.remove(p);
+								System.out.println(Cesta.cesta);
 							}
 						}
 						
@@ -389,14 +396,14 @@ public class PanelTabla extends JPanel {
 						eliminarProducto.setBackground(Color.GRAY.brighter());
 						
 						} catch (Exception e1) {
-							VentanaTienda.logger.log(Level.SEVERE, "No se ha podido añadir la compra \n" + e.toString());
+							VentanaTienda.logger.log(Level.SEVERE, "No se ha podido eliminar el producto seleccionado \n" + e.toString());
 						}
 						if (tablaCesta.getRowCount() == 0) {
 							realizarCompra.setBackground(Color.GRAY.brighter());
 						}
 						
-						JOptionPane.showMessageDialog(null, "Producto eliminado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 						VentanaTienda.logger.log(Level.INFO, "Producto con ID: " + ID + " eliminado");
+						JOptionPane.showMessageDialog(null, "Producto eliminado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					} else {
 						JOptionPane.showMessageDialog(null, "No se eliminó ningún producto", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					} 
