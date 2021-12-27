@@ -111,6 +111,7 @@ public class Login {
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				frame.setIconImage(VentanaTienda.icon);
+				frame.setLocationRelativeTo(null);
 
 			}
 		});
@@ -121,6 +122,7 @@ public class Login {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		frame.setIconImage(VentanaTienda.icon);
+		frame.setLocationRelativeTo(null);
 	}
 
 }

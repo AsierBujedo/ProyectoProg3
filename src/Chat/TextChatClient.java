@@ -103,5 +103,7 @@ public class TextChatClient {
 		frame.setIconImage(VentanaTienda.icon);
 		frame.setDefaultCloseOperation(1);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+
 	}
 }

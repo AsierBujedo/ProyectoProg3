@@ -85,21 +85,21 @@ public class VentanaTienda {
 		// Tab 1, tabElect --------------------------------------------------
 		JPanel tabElect = new JPanel();
 		tabElect.setLayout(new BorderLayout());
-		JPanel panelTablaElect = PanelTabla.getPanelTabla(nomColumnas, prodElectronica, new Color(88, 101, 242));
+		JPanel panelTablaElect = PanelTabla.getPanelTabla(nomColumnas, prodElectronica, new Color(133, 222, 119));
 		tabElect.add(panelTablaElect, BorderLayout.CENTER);
 		tabs.add("Electronica", tabElect);
 
 		// Tab 2, tabRopa --------------------------------------------------
 		JPanel tabRopa = new JPanel();
 		tabRopa.setLayout(new BorderLayout());
-		JPanel panelTablaRopa = PanelTabla.getPanelTabla(nomColumnas, prodRopa, new Color(151, 88, 252));
+		JPanel panelTablaRopa = PanelTabla.getPanelTabla(nomColumnas, prodRopa, new Color(170, 152, 240));
 		tabRopa.add(panelTablaRopa, BorderLayout.CENTER);
 		tabs.add("Ropa", tabRopa);
 
 		// Tab 3, tabHobby --------------------------------------------------
 		JPanel tabHobby = new JPanel();
 		tabHobby.setLayout(new BorderLayout());
-		JPanel panelTablaHobby = PanelTabla.getPanelTabla(nomColumnas, prodHobby, new Color(252, 88, 107));
+		JPanel panelTablaHobby = PanelTabla.getPanelTabla(nomColumnas, prodHobby, new Color(136, 206, 251));
 		tabHobby.add(panelTablaHobby, BorderLayout.CENTER);
 		tabs.add("Hobby", tabHobby);
 
@@ -265,6 +265,6 @@ public class VentanaTienda {
 		OtherUtils.restartProperties();
 		new VentanaTienda().InitWindow();
 		logger.log(Level.INFO, "Ventana inicializada");
-
 	}
+	
 }

@@ -2,21 +2,26 @@ package Tienda;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import BD.BaseDeDatos;
 
@@ -27,20 +32,18 @@ public class PanelTabla extends JPanel {
 	public static JButton realizarCompra = new JButton("Realizar compra");
 
 	/**
-	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera
-	 * con un botÃ³n para aÃ±adir productos a la cesta.
-	 * 
+	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botÃ³n para aÃ±adir productos a la cesta.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
 	 * @param datos       ArrayList<DatoParaTabla> con los datos para la tabla.
 	 * @param color       Color que se le aplicarÃ¡ a la cabecera de la tabla.
 	 * @return Panel que contiene la tabla y el panel botonera.
 	 */
-	public static JPanel getPanelTabla(String[] nomColumnas, ArrayList<DatoParaTabla> datos, Color color) {
+	public static JPanel getPanelTabla(String[] nomColumnas, ArrayList<DatoParaTabla> datos, Color color) {			
 		JPanel panelTabla = new PanelTabla();
 		panelTabla.setLayout(new BorderLayout());
 		CustomTableModel ctm = new CustomTableModel(nomColumnas, datos);
 		JTable tabla = new JTable(ctm);
-		tabla.setOpaque(true);
+		tabla.setOpaque(false);
 
 		tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 		tabla.setForeground(Color.BLACK);
@@ -52,18 +55,52 @@ public class PanelTabla extends JPanel {
 		for (int i = 0; i < nomColumnas.length; i++) {
 			tabla.getColumnModel().getColumn(i).setResizable(false);
 		}
+		
+		//Renderers
+		DefaultTableCellRenderer rendererPrecio = new DefaultTableCellRenderer() {
+		    @Override
+		    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+		        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+		        c.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		        c.setForeground(Color.RED.darker());
+		        return c;
+		    }
+		    
+		};
+		
+		DefaultTableCellRenderer rendererCodigo = new DefaultTableCellRenderer() {
+		    @Override
+		    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+		        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+		        c.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		        c.setForeground(color.darker());
+		        return c;
+		    }
+		    
+		};
+		
+		rendererPrecio.setHorizontalAlignment(JLabel.CENTER);
+		rendererCodigo.setHorizontalAlignment(JLabel.CENTER);
+		tabla.getColumnModel().getColumn(2).setCellRenderer(rendererPrecio);
+		tabla.getColumnModel().getColumn(0).setCellRenderer(rendererCodigo);		
 
 		// Panel botonera
 		JPanel botonera = new JPanel();
 		botonera.setBackground(Color.WHITE);
 
-		// BotÃ³n anyadir
-		JButton anyadir = new JButton("AÃ±adir a la cesta", new ImageIcon("add.png"));
+		// Botón anyadir
+		JButton anyadir = new JButton("Añadir a la cesta", new ImageIcon("add.png"));
 		anyadir.setBorderPainted(false);
 		anyadir.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		anyadir.setForeground(Color.WHITE);
 		anyadir.setBackground(Color.GRAY.brighter());
-
+		
+		// Botón info
+		JButton info = new JButton(new ImageIcon("info.png"));
+		info.setBorderPainted(false);
+		info.setBackground(new Color(88, 101, 242));
+		
+		// MouseListeners
 		anyadir.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				if (!tabla.getSelectionModel().isSelectionEmpty()) {
@@ -77,7 +114,18 @@ public class PanelTabla extends JPanel {
 				}
 			}
 		});
+		
+		info.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				info.setBackground(new Color(88, 101, 242).darker());
+			}
 
+			public void mouseExited(MouseEvent evt) {
+					info.setBackground(new Color(88, 101, 242));
+			}
+		});
+		
+		// ActionListeners
 		anyadir.addActionListener(new ActionListener() {
 
 			@Override
@@ -138,11 +186,33 @@ public class PanelTabla extends JPanel {
 					CustomTableModel ctm = new CustomTableModel(nomColumnasCesta, datosCesta);
 					tablaCesta.setModel(ctm);
 					realizarCompra.setBackground(new Color(92, 156, 180));
-					System.out.println(Cesta.cesta);
+					
+					VentanaTienda.logger.log(Level.INFO, "Producto con código: " + codigoProducto + " añadido a la cesta");
 				}
+				
 			}
 		});
+		
+		info.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Runnable r = () -> {
+		            String html = "<html><body width='%1s'><h1>Código de producto</h1>"
+		            		+ "<p style=\"text-align: justify;\"><strong>&Aacute;rea de Electr&oacute;nica&nbsp; &nbsp;</strong><strong>- &nbsp;&nbsp;</strong><strong>I:</strong> Impresora &nbsp; <strong>O:</strong> Ordenador &nbsp; <strong>T:</strong> Tel&eacute;fono</p>"
+		            		+ "<p style=\"text-align: justify;\"><strong>&Aacute;rea de Ropa</strong>&nbsp; &nbsp;<strong>-</strong>&nbsp; &nbsp;<strong>P:</strong> Pantalones &nbsp; <strong>S:</strong> Sudadera &nbsp; <strong>Z:</strong> Zapatillas</p>"
+		            		+ "<p style=\"text-align: justify;\"><strong>&Aacute;rea de Hobby</strong>&nbsp; &nbsp;<strong>-</strong>&nbsp; &nbsp;<strong>L:</strong> Libro &nbsp; <strong>VC:</strong> Videoconsola &nbsp; <strong>VJ:</strong> Videojuego</p>"
+		            		;
+		            
+		            int w = 400;
 
+		            JOptionPane.showMessageDialog(null, String.format(html, w, w), "Información", JOptionPane.INFORMATION_MESSAGE);
+		        };
+		        SwingUtilities.invokeLater(r);
+		        VentanaTienda.logger.log(Level.INFO, "Información desplegada");
+			}
+		});
+		
 		tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 			@Override
@@ -153,13 +223,13 @@ public class PanelTabla extends JPanel {
 		});
 
 		botonera.add(anyadir, BorderLayout.CENTER);
+		botonera.add(info);
 		panelTabla.add(botonera, BorderLayout.SOUTH);
 
 		JScrollPane panelScroll = new JScrollPane(tabla);
 		panelTabla.add(panelScroll, BorderLayout.CENTER);
 
 		return panelTabla;
-
 	}
 
 	public static JTable tablaCesta;
@@ -170,7 +240,7 @@ public class PanelTabla extends JPanel {
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla.
 	 * @return Panel que contiene la tabla y los paneles botonera.
 	 */
-	public static JPanel getPanelTablaCesta(String[] nomColumnas,  ArrayList<Producto> datos) {
+	public static JPanel getPanelTablaCesta(String[] nomColumnas,  ArrayList<Producto> datos) {		
 		nomColumnasCesta = nomColumnas;
 		
 		for (Producto p : datos) {
@@ -186,7 +256,7 @@ public class PanelTabla extends JPanel {
 			datosTabla.add(p);
 		}
 		
-		tablaCesta = new JTable(new CustomTableModel(nomColumnas, datosTabla)); // Crea la tabla pasÃ¡ndole el modelo personalizado
+		tablaCesta = new JTable(new CustomTableModel(nomColumnas, datosTabla));
 		tablaCesta.setOpaque(true);
 		tablaCesta.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 		tablaCesta.setForeground(Color.BLACK);
@@ -197,8 +267,23 @@ public class PanelTabla extends JPanel {
 		
 		for (int i = 0; i < nomColumnas.length; i++) {
 			tablaCesta.getColumnModel().getColumn(i).setResizable(false);
-		}
+		}		
 		
+		// Renderer		
+		DefaultTableCellRenderer rendererCesta = new DefaultTableCellRenderer() {
+			@Override
+			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+			final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+			setHorizontalAlignment(JLabel.CENTER);
+			c.setFont(column == 2 ? new Font("Uni Sans Heavy", Font.BOLD, 15) : null);
+			c.setForeground(column == 2 ? Color.RED.darker() : null);
+			c.setBackground(row % 2 == 0 ? new Color(241, 238, 230) : Color.WHITE);
+			return c;
+			}
+		};
+		
+		tablaCesta.setDefaultRenderer(Object.class, rendererCesta);
+								
 		// Panel botoneraBuscar
 		JPanel botoneraBuscar = new Cesta().panelCesta();
 		botoneraBuscar.setBackground(Color.WHITE);
@@ -238,13 +323,9 @@ public class PanelTabla extends JPanel {
 		realizarCompra.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				ArrayList<Producto> productosCompra = new ArrayList<Producto>(); 
-				// ArrayList en el que se guardarÃ¡n los productos comprados
-				// Este ArrayList hay que introducirlo en el HashMap lastCompra de la clase Cesta
-				
+			public void actionPerformed(ActionEvent e) {				
 				if (tablaCesta.getRowCount() != 0) {
-					int reply = JOptionPane.showConfirmDialog(null, "Â¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
 						
 						if (!VentanaTienda.loginItem.getText().equals("Login")) {
@@ -253,11 +334,11 @@ public class PanelTabla extends JPanel {
 							tablaCesta.setModel(model);
 							Cesta.cesta = new ArrayList<Producto>();
 							datosCesta = new ArrayList<DatoParaTabla>();
-							System.out.println(Cesta.lastCompra);
-							JOptionPane.showMessageDialog(null, "Compra realizada", "Mensaje",
-									JOptionPane.INFORMATION_MESSAGE);
+							BaseDeDatos.addCompra(BaseDeDatos.getUserMail(VentanaTienda.loginItem.getText()));
+							JOptionPane.showMessageDialog(null, "Compra realizada", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+							VentanaTienda.logger.log(Level.INFO, "Compra realizada");
 						} else {
-							JOptionPane.showMessageDialog(null, "Antes de comprar, debes iniciar sesiï¿½n", "Advertencia",
+							JOptionPane.showMessageDialog(null, "Antes de comprar, debes iniciar sesión", "Advertencia",
 									JOptionPane.WARNING_MESSAGE);
 						}
 					} else {
@@ -288,24 +369,40 @@ public class PanelTabla extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (tablaCesta.getRowCount() != 0) {
-					int reply = JOptionPane.showConfirmDialog(null, "Â¿Quieres eliminar el producto de la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres eliminar el producto de la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
+						
+						int ID = (int) tablaCesta.getValueAt(tablaCesta.getSelectedRow(), 4);
+												
+						try {
+							
+						for (Producto p : Cesta.cesta) {
+							if (p.getID() == ID) {
+								Cesta.cesta.remove(p);
+							}
+						}
+						
 						CustomTableModel model = (CustomTableModel) tablaCesta.getModel();
 						model.removeRow(tablaCesta.getSelectedRow());
 						model.fireTableDataChanged();						
 						tablaCesta.repaint();
 						eliminarProducto.setBackground(Color.GRAY.brighter());
 						
+						} catch (Exception e1) {
+							VentanaTienda.logger.log(Level.SEVERE, "No se ha podido añadir la compra \n" + e.toString());
+						}
 						if (tablaCesta.getRowCount() == 0) {
 							realizarCompra.setBackground(Color.GRAY.brighter());
 						}
 						
 						JOptionPane.showMessageDialog(null, "Producto eliminado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-						
+						VentanaTienda.logger.log(Level.INFO, "Producto con ID: " + ID + " eliminado");
 					} else {
-						JOptionPane.showMessageDialog(null, "No se eliminÃ³ ningÃºn producto", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "No se eliminó ningún producto", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					} 
-				}				
+				}
+				
+				
 			}
 		});
 		
@@ -330,5 +427,4 @@ public class PanelTabla extends JPanel {
 		return panelTablaCesta;
 		
 	}
-
 }

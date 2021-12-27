@@ -14,7 +14,7 @@ public class BaseDeDatos {
 
 	/**
 	 * Inicializa la base de datos.
-	 * @return True si todo va bien, false si hay algún error.
+	 * @return true si todo va bien, false si hay algún error.
 	 */
 	// Este método deberá ejecutarse antes de comenzar a usar la base de datos
 	public static boolean InitDB() {
@@ -30,9 +30,9 @@ public class BaseDeDatos {
 			stmt.executeUpdate(
 					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100))");
 			stmt.executeUpdate(
-					"CREATE TABLE COMPRA (USER_ID int NOT NULL, COD_PRODUCTO int NOT NULL, CANTIDAD int, FECHA bigint, FOREIGN KEY (USER_ID) REFERENCES USER (USER_ID), FOREIGN KEY (COD_PRODUCTO) REFERENCES PRODUCTO (COD_PRODUCTO))");
+					"CREATE TABLE COMPRA (MAIL varchar(100) PRIMARY KEY NOT NULL, PRECIO double, TOTAL_PRODS int, FECHA bigint, FOREIGN KEY (MAIL) REFERENCES USER (MAIL))");
 			stmt.executeUpdate("INSERT INTO USER VALUES (0, 'ADMIN', 'ADMIN@GMAIL.COM', 12345)"); // Fila de prueba para
-																									// la tabla USER
+			stmt.executeUpdate("INSERT INTO COMPRA VALUES ('IKER@GMAIL.COM', 25.9, 78, 785469631215)");																					// la tabla USER
 			VentanaTienda.logger.log(Level.INFO, "Creación de tablas correcta");
 			return true;
 		} catch (SQLException e) {
@@ -45,7 +45,7 @@ public class BaseDeDatos {
 	 * Añade una columna a una tabla.
 	 * @param TABLE Nombre de la tabla a la que se quiere añadir la columna.
 	 * @param name  Nombre de la columna a añadir.
-	 * @return True si la columna se añade correctamente, false si hay algún error.
+	 * @return true si la columna se añade correctamente, false si hay algún error.
 	 */
 	public static boolean addColumn(TABLES TABLE, String name) {
 		/*
@@ -68,7 +68,7 @@ public class BaseDeDatos {
 	 * Elimina una columna de una tabla.
 	 * @param TABLE  Nombre de la tabla que posee la columna a eliminar.
 	 * @param COLUMN Nombre de la columna a eliminar.
-	 * @return True si la columna se borra correctamente, false si es una columna por defecto o hay algún error.
+	 * @return true si la columna se borra correctamente, false si es una columna por defecto o hay algún error.
 	 */
 	// No se podrán borrar las columnas por defecto
 	public static boolean removeColumn(TABLES TABLE, String COLUMN) {
@@ -93,7 +93,7 @@ public class BaseDeDatos {
 	 * Elimina un usuario de la tabla USER.
 	 * @param MAIL Dirección de correo electrónico del usuario.
 	 * @param PASS Contraseña del usuario.
-	 * @return True si el usuario elimina correctamente, false si hay algún error.
+	 * @return true si el usuario elimina correctamente, false si hay algún error.
 	 */
 	// El usuario se identifica por su dirección de correo electrónico y su
 	// contraseña, no por su identificativo único
@@ -115,7 +115,7 @@ public class BaseDeDatos {
 	 * @param USERNAME Nombre de usuario.
 	 * @param MAIL Dirección de correo electrónico del usuario.
 	 * @param PASS Contraseña del usuario.
-	 * @return True si el usuario se añade correctamente, false si hay algún error.
+	 * @return true si el usuario se añade correctamente, false si hay algún error.
 	 */
 	// Automáticamente se le asigna un ID como código identificativo único, su
 	// PRIMARY KEY
@@ -136,7 +136,7 @@ public class BaseDeDatos {
 
 	/**
 	 * Cierra la conexión con la base de datos.
-	 * @return True si la conexión se cierra correctamente, false si hay algún error.
+	 * @return true si la conexión se cierra correctamente, false si hay algún error.
 	 */
 	// Deberá cerrarse siempre la conexion con la base de datos mediante este método
 	public static boolean closeDB() {
@@ -324,15 +324,27 @@ public class BaseDeDatos {
 		}	
 	
 	}
+	
+	/**
+	 * Añade una nueva compra a la tabla COMPRA.
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @return true si la compra se añade correctamente, false si hay algún error.
+	 */
+	public static boolean addCompra(String MAIL) {
+		try {
+			double precio = 0.0;
+			for (Producto p : Cesta.lastCompra.get(MAIL)) {
+				precio += p.getPrecio();
+			}
+			Date fecha = new Date(System.currentTimeMillis());
+			pstmt = con.prepareStatement("INSERT INTO COMPRA VALUES ('" + MAIL + "','" + precio + "','" + Cesta.lastCompra.get(MAIL).size() + "','" + fecha + "')");
+			pstmt.executeUpdate();
+			VentanaTienda.logger.log(Level.INFO, "Nueva compra: " + MAIL + ". Añadida correctamente");
+			return true;
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return false;
+		}
+	}
 
-//	public static void main(String[] args) {
-//		BaseDeDatos bd = new BaseDeDatos();
-//		bd.InitDB();
-//
-//		// COLOCAR AQUÍ LAS PRUEBAS CON LA BASE DE DATOS
-//
-//		
-//		bd.closeDB();
-//
-//	}
 }

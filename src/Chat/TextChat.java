@@ -106,6 +106,7 @@ public class TextChat { //Creo todas las variables a usar durante el programa.
 		frame.setDefaultCloseOperation(1);
 		frame.setVisible(true);
 		frame.setIconImage(VentanaTienda.icon);
+		frame.setLocationRelativeTo(null);
 	}
 
 }

@@ -71,7 +71,6 @@ public class Cesta {
 
 		JButton buscar = new JButton(new ImageIcon("search.png"));
 		buscar.setBorderPainted(false);
-		buscar.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
 		buscar.setForeground(Color.WHITE);
 		buscar.setBackground(new Color(245, 182, 66));
 

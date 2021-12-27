@@ -11,13 +11,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import BD.*;
-import Tienda.Cesta;
 import Tienda.Producto;
 import Tienda.VentanaTienda;
 import Tienda.Videojuego;
 
 public class BaseDeDatosTest {
-
+	
 	@Before
 	public void Inicio() {
 		VentanaTienda.iniciaLog();
@@ -25,6 +24,7 @@ public class BaseDeDatosTest {
 		try {
 			FileInputStream fis = new FileInputStream(new File("datos.dat"));
 			ObjectInputStream ois = new ObjectInputStream(fis);
+			@SuppressWarnings("unchecked")
 			ArrayList<Producto> productos = (ArrayList<Producto>) ois.readObject();
 			for (Producto p : productos) {
 				BaseDeDatos.addProducto(p);
