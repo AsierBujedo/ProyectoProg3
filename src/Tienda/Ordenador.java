@@ -92,5 +92,14 @@ public class Ordenador extends Producto {
     		VentanaTienda.logger.log(Level.SEVERE, "Error al establecer un valor");		
     	}
 	}
+
+	@Override
+	public boolean inCesta() {
+		if (Cesta.cesta.contains(this)) {
+			return true;
+		} else {
+			return false;
+		}	
+	}
 	
 }

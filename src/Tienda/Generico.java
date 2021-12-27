@@ -66,4 +66,13 @@ public class Generico extends Producto {
 
 	}
 
+	@Override
+	public boolean inCesta() {
+		if (Cesta.cesta.contains(this)) {
+			return true;
+		} else {
+			return false;
+		}	
+	}
+
 }

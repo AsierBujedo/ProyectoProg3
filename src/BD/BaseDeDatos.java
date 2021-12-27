@@ -186,7 +186,7 @@ public class BaseDeDatos {
 	 * @param MAIL Dirección de correo electrónico del usuario.
 	 * @param PASS Contraseña del usuario.
 	 * @param NEW
-	 * @return True si el cambio es efectivo, false si hay algún error.
+	 * @return true si el cambio es efectivo, false si hay algún error.
 	 */
 	// Se permite el cambio de nombre de usuario, mail y/o password
 	public static boolean editUser(COLS COL, String MAIL, String PASS, String NEW) {
@@ -245,7 +245,9 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
-
+	/**Método que consulta en la base de datos el Producto más barato
+	 * @return Producto
+	 */
 	public static Producto getMasBarato() {
 		try {
 			pstmt = con.prepareStatement(
