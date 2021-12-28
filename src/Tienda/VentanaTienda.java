@@ -23,7 +23,7 @@ import Utils.RoundedBorder;
  *         principal. Esta clase cuenta con el método main().
  */
 public class VentanaTienda {
-	static JMenuItem loginItem = new JMenuItem("Login");
+	public static JMenuItem loginItem = new JMenuItem("Login");
 	static JMenuItem logoutItem = new JMenuItem("Logout");
 	static JMenu atcliente = new JMenu("Atencion al cliente");
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
