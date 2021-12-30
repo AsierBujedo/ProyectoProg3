@@ -35,15 +35,16 @@ public class PanelTabla extends JPanel {
 	/**
 	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botón para añadir productos a la cesta.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
-	 * @param datos       ArrayList<DatoParaTabla> con los datos para la tabla.
-	 * @param color       Color que se le aplicará a la cabecera de la tabla.
+	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla.
+	 * @param color Color que se le aplicará a la cabecera de la tabla.
 	 * @return Panel que contiene la tabla y el panel botonera.
 	 */
 	public static JPanel getPanelTabla(String[] nomColumnas, ArrayList<DatoParaTabla> datos, Color color) {			
 		JPanel panelTabla = new PanelTabla();
-		panelTabla.setLayout(new BorderLayout());
+		panelTabla.setLayout(new BorderLayout());		
 		CustomTableModel ctm = new CustomTableModel(nomColumnas, datos);
 		JTable tabla = new JTable(ctm);
+		tabla.setOpaque(true);
 		TableRowSorter<CustomTableModel> sorter = new TableRowSorter<CustomTableModel>(ctm);
 		tabla.setRowSorter(sorter);
 		tabla.setOpaque(false);
@@ -188,7 +189,6 @@ public class PanelTabla extends JPanel {
 					CustomTableModel ctm = new CustomTableModel(nomColumnasCesta, datosCesta);
 					tablaCesta.setModel(ctm);
 					realizarCompra.setBackground(new Color(92, 156, 180));
-					System.out.println(Cesta.cesta);
 					
 					VentanaTienda.logger.log(Level.INFO, "Producto con c�digo: " + codigoProducto + " a�adido a la cesta");
 				}
@@ -379,13 +379,10 @@ public class PanelTabla extends JPanel {
 					if (reply == JOptionPane.YES_OPTION) {
 						
 						int ID = (int) tablaCesta.getValueAt(tablaCesta.getSelectedRow(), 4);
-												
-						try {
-							
-						for (Producto p : Cesta.cesta) {
-							if (p.getID() == ID) {
-								Cesta.cesta.remove(p);
-								System.out.println(Cesta.cesta);
+						
+						for (int i = 0; i < Cesta.cesta.size(); i++) {
+							if (Cesta.cesta.get(i).getID() == ID) {
+								Cesta.cesta.remove(i);
 							}
 						}
 						
@@ -395,9 +392,6 @@ public class PanelTabla extends JPanel {
 						tablaCesta.repaint();
 						eliminarProducto.setBackground(Color.GRAY.brighter());
 						
-						} catch (Exception e1) {
-							VentanaTienda.logger.log(Level.SEVERE, "No se ha podido eliminar el producto seleccionado \n" + e.toString());
-						}
 						if (tablaCesta.getRowCount() == 0) {
 							realizarCompra.setBackground(Color.GRAY.brighter());
 						}

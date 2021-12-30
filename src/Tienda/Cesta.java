@@ -68,7 +68,25 @@ public class Cesta {
 				super.focusLost(e);
 			}
 		});
-
+		
+		buscarProd.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER){
+		            if (!buscarProd.getText().equals("Introduce un número (ID) de producto")) {
+						Producto p = OtherUtils.buscarEnLista(cesta, Integer.valueOf(buscarProd.getText()), 0);
+						if (p != null) {
+							JOptionPane.showMessageDialog(null, "Nombre: " + p.getNombre() + ", Marca: " + p.getMarca()
+									+ ", Precio: " + p.getPrecio() + "€, Código: " + p.getCodigoProducto(), p.getNombre(), 1);
+						} else {
+							JOptionPane.showMessageDialog(null, "No existe ningún producto con ese ID", "Error de búsqueda", 0);
+						}
+					}
+				}
+			}
+		});
+		
 		JButton buscar = new JButton(new ImageIcon("search.png"));
 		buscar.setBorderPainted(false);
 		buscar.setForeground(Color.WHITE);
