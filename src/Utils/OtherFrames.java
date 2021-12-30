@@ -4,11 +4,21 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Vector;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import BD.BaseDeDatos;
 import BD.COLS;
 import Tienda.VentanaTienda;
+import Tienda.Cesta;
+import Tienda.PanelTabla;
+import Tienda.Producto;
+import Tienda.Cesta.*;
+import Tienda.DatoParaTabla;
 
 
 public class OtherFrames {
@@ -77,10 +87,31 @@ public class OtherFrames {
 			}
 		});
 		historial.addActionListener(new ActionListener() {//ventana para ultima compra
+			
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			String nombre=VentanaTienda.loginItem.getText();
+			String mail=BaseDeDatos.getUserMail(nombre);
+			if(Cesta.lastCompra.containsKey(mail)){
+				JFrame frame = new JFrame();
+				Vector<String> nomColumnas = new Vector<String>( Arrays.asList( "Código de producto", "Nombre", "Precio", "Marca" ) );
+				JTable tabla=new JTable();
+				DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
+				for (Producto p : Cesta.lastCompra.get(mail)) {
+					model.addRow( new Object[] { p.getCodigoProducto(), p.getNombre(), p.getPrecio(), p.getMarca()} );
+				}
+				tabla.setModel(model);
+				frame.add(new JScrollPane(tabla));
+				frame.setTitle("Última compra");
+				frame.setSize(800, 500);
+				frame.setResizable(false);
+				frame.setVisible(true);
+				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				frame.setIconImage(VentanaTienda.icon);
+			}else {
+				JOptionPane.showMessageDialog(null, "Tu usuario no tiene ninguna compra registrada","Compra no encontrada", 1);
+			}
 		}
 	});
 
