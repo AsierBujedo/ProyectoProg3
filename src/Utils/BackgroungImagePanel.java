@@ -2,6 +2,8 @@ package Utils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BackgroungImagePanel extends JPanel {
 
@@ -9,9 +11,19 @@ public class BackgroungImagePanel extends JPanel {
 	private Image img;
 
 	public BackgroungImagePanel() {
+		JButton boton = new JButton("stats");
 		JPanel panel = new JPanel();
-		JTextArea tA = new JTextArea();
+		panel.add(boton, BorderLayout.SOUTH);
+//		JTextArea tA = new JTextArea();
 		this.add(panel);
+		
+		boton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OtherFrames.VentanaStats();
+			}
+		});
 	}
 
 	@Override
@@ -23,4 +35,5 @@ public class BackgroungImagePanel extends JPanel {
 		this.setOpaque(false);
 		super.paint(g);
 	}
+
 }
