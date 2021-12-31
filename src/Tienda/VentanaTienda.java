@@ -27,7 +27,9 @@ public class VentanaTienda {
 	public static JMenuItem loginItem = new JMenuItem("Login");
 	static JMenuItem logoutItem = new JMenuItem("Logout");
 	static JMenu atcliente = new JMenu("Atencion al cliente");
-	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
+	static JMenu personalArea = new JMenu("Acceso al area personal");
+	static JMenuItem contra = new JMenuItem("Cambiar contraseña");
+	static JMenuItem lastcompra = new JMenuItem("Ver última compra");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
 	public static JPanel panelTablaCesta;
@@ -54,6 +56,10 @@ public class VentanaTienda {
 		logoutItem.setBorder(new RoundedBorder(7));
 		menucliente.add(logoutItem);
 		menucliente.setBorder(new RoundedBorder(7));
+		contra.setBorder(new RoundedBorder(7));
+		lastcompra.setBorder(new RoundedBorder(7));
+		personalArea.add(contra);
+		personalArea.add(lastcompra);
 		personalArea.setEnabled(false);
 		menucliente.add(personalArea);
 		bar.add(menucliente);
@@ -116,12 +122,19 @@ public class VentanaTienda {
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
 		
-		personalArea.addActionListener(new ActionListener() {
+contra.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new OtherFrames().areaCliente();
-				
+				OtherFrames.cambiaContra();
+			}
+		});
+		
+		lastcompra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OtherFrames.ultimaCompra();
 			}
 		});
 
