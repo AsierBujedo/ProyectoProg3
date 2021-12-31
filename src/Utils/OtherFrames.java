@@ -13,6 +13,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import BD.BaseDeDatos;
@@ -30,6 +33,7 @@ public class OtherFrames {
 		JFrame frame = new JFrame();
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		frame.getContentPane().setBackground(Color.WHITE);
+		
 		JPanel botonera = new JPanel();
 		botonera.setLayout(new GridLayout(2, 1));
 		botonera.setBackground(new Color(246,246,246));
@@ -38,15 +42,17 @@ public class OtherFrames {
 		iconoUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
 		ImageIcon icono = new ImageIcon("user.png");
 		iconoUsuario.setIcon(icono);
+		
 		JLabel nombreUsuario = new JLabel();
 		nombreUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
 		nombreUsuario.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		
 		JLabel mailUsuario = new JLabel();
 		mailUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
 		mailUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		mailUsuario.setForeground(new Color(225,225,225));
 		
-		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtf.getPassword()));
+		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtf.getPassword())).toUpperCase();
 		if (!username.equals("Error")) {
 			nombreUsuario.setText(username);
 		} else {
@@ -63,7 +69,8 @@ public class OtherFrames {
 //			VentanaTienda.logger.log(Level.SEVERE, "Error al obtener mail");
 //		}
 		
-		JButton contra = new JButton("Cambiar contraseÃ±a");
+		// Botón contra
+		JButton contra = new JButton("Cambiar contraseña");
 		contra.setAlignmentX(Component.CENTER_ALIGNMENT);
 		contra.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		contra.setForeground(new Color(67,67,67));
@@ -72,7 +79,8 @@ public class OtherFrames {
 		contra.setOpaque(false);
 		contra.setContentAreaFilled(false);
 		
-		JButton historial = new JButton("Ãšltima compra");
+		// Botón historial
+		JButton historial = new JButton("Última compra");
 		historial.setAlignmentX(Component.CENTER_ALIGNMENT);
 		historial.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		historial.setForeground(new Color(67,67,67));
@@ -81,6 +89,7 @@ public class OtherFrames {
 		historial.setOpaque(false);
 		historial.setContentAreaFilled(false);
 		
+		// MouseListener contra
 		contra.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				contra.setOpaque(true);
@@ -94,6 +103,7 @@ public class OtherFrames {
 			}
 		});
 		
+		// MouseListener historial
 		historial.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				historial.setOpaque(true);
@@ -112,66 +122,204 @@ public class OtherFrames {
 		frame.add(mailUsuario);
 		frame.add(botonera);
 		
-//		frame.add(contra);
-//		frame.add(historial);
-//		frame.add(contra);
-//		frame.add(historial);
-
-		contra.addActionListener(new ActionListener() {// Ventana para cambio de contraseÃ±a
+		// Ventana para cambio de contraseña --------------------------------------------------
+		contra.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame();
-				JLabel contraV = new JLabel("ContraseÃ±a antigua: ");
-				JPasswordField contraVtf = new JPasswordField(20);
-				contraVtf.setBorder(new RoundedBorder(7));
-				JLabel contraN = new JLabel("ContraseÃ±a Nueva: ");
-				JPasswordField contraNtf = new JPasswordField(20);
-				contraNtf.setBorder(new RoundedBorder(7));
-				JLabel contraNC = new JLabel("Confirma la contraseÃ±a nueva: ");
-				JPasswordField contraNCtf = new JPasswordField(20);
-				contraNCtf.setBorder(new RoundedBorder(7));
-				JButton cambiar = new JButton("Cambiar contraseÃ±a");
-				JPanel panel = new JPanel();
-				panel.setLayout(new GridLayout(3, 1));
-				panel.add(contraV, BorderLayout.NORTH);
-				panel.add(contraVtf, BorderLayout.CENTER);
-				panel.add(contraN, BorderLayout.NORTH);
-				panel.add(contraNtf, BorderLayout.CENTER);
-				panel.add(contraNC, BorderLayout.NORTH);
-				panel.add(contraNCtf, BorderLayout.CENTER);
-				frame.add(panel, BorderLayout.CENTER);
-				frame.add(cambiar, BorderLayout.SOUTH);
+				frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+				frame.getContentPane().setBackground(Color.WHITE);
+				
+				JPanel labelText = new JPanel();
+				labelText.setLayout(new GridBagLayout());
+				labelText.setBackground(Color.WHITE);
+				
+				JPanel botonera = new JPanel();
+				botonera.setLayout(new BorderLayout());
+				botonera.setBackground(new Color(246,246,246));
+				
+				JLabel contraActual = new JLabel("Contraseña actual: ");
+				contraActual.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JLabel contraNueva = new JLabel("Nueva contraseña: ");
+				contraNueva.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JLabel contraConfirmar = new JLabel("Confirmar contraseña: ");
+				contraConfirmar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				
+				JPasswordField contraActualtf = new JPasswordField( 20);
+				Border lineA = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border emptyA = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder borderA = new CompoundBorder(lineA, emptyA);
+				contraActualtf.setBorder(borderA);
+				contraActualtf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				
+				JPasswordField contraNuevatf = new JPasswordField(20);
+				Border lineN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border emptyN = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder borderN = new CompoundBorder(lineN, emptyN);
+				contraNuevatf.setBorder(borderN);
+				contraNuevatf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				
+				JPasswordField contraConfirmartf = new JPasswordField(20);
+				Border lineC = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border emptyC = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder borderC = new CompoundBorder(lineC, emptyC);
+				contraConfirmartf.setBorder(borderC);
+				contraConfirmartf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				
+				// FocusListener contraActualtf
+				contraActualtf.addFocusListener(new FocusAdapter() {
+					
+					@Override
+					public void focusGained(FocusEvent e) {
+						Border lineA = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+						Border emptyA = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderA = new CompoundBorder(lineA, emptyA);
+						contraActualtf.setBorder(borderA);
+						super.focusGained(e);
+						
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						Border lineA = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+						Border emptyA = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderA = new CompoundBorder(lineA, emptyA);
+						contraActualtf.setBorder(borderA);
+						super.focusLost(e);						
+					}
+				});
+				
+				// FocusListener contraNuevatf
+				contraNuevatf.addFocusListener(new FocusAdapter() {
+					
+					@Override
+					public void focusGained(FocusEvent e) {
+						Border lineN = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+						Border emptyN = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderN = new CompoundBorder(lineN, emptyN);
+						contraNuevatf.setBorder(borderN);
+						super.focusGained(e);
+						
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						Border lineN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+						Border emptyN = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderN = new CompoundBorder(lineN, emptyN);
+						contraNuevatf.setBorder(borderN);
+						super.focusLost(e);						
+					}
+				});
+				
+				// FocusListener contraConfirmartf
+				contraConfirmartf.addFocusListener(new FocusAdapter() {
+					
+					@Override
+					public void focusGained(FocusEvent e) {
+						Border lineC = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+						Border emptyC = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderC = new CompoundBorder(lineC, emptyC);
+						contraConfirmartf.setBorder(borderC);
+						super.focusGained(e);
+						
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						Border lineC = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+						Border emptyC = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderC = new CompoundBorder(lineC, emptyC);
+						contraConfirmartf.setBorder(borderC);
+						super.focusLost(e);						
+					}
+				});
+				
+				// Botón cambiar
+				JButton cambiar = new JButton("Cambiar contraseña");
+				cambiar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				cambiar.setForeground(new Color(67,67,67));
+				cambiar.setBorderPainted(false);
+				cambiar.setFocusPainted(false);
+				cambiar.setOpaque(false);
+				cambiar.setContentAreaFilled(false);
+				
+				// MouseListener cambiar
+				cambiar.addMouseListener(new MouseAdapter() {
+					public void mouseEntered(MouseEvent evt) {
+						cambiar.setOpaque(true);
+						cambiar.setContentAreaFilled(true);
+						cambiar.setBackground(new Color(225,225,225));
+					}
 
-				cambiar.addActionListener(new ActionListener() {// Boton para cambio de contraseÃ±as
+					public void mouseExited(MouseEvent evt) {
+						cambiar.setOpaque(false);
+						cambiar.setContentAreaFilled(false);
+					}
+				});
+				
+				// ActionListener cambiar
+				cambiar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						String nombre = VentanaTienda.loginItem.getText();
 						String mail = BaseDeDatos.getUserMail(nombre);
-						String existe = BaseDeDatos.getUser(mail, String.valueOf(contraVtf.getPassword()));
-						if (String.valueOf(contraNtf.getPassword()).equals(String.valueOf(contraNCtf.getPassword()))
+						String existe = BaseDeDatos.getUser(mail, String.valueOf(contraActualtf.getPassword()));
+						if (String.valueOf(contraNuevatf.getPassword()).equals(String.valueOf(contraConfirmartf.getPassword()))
 								&& !existe.equals("Error")) {
-							BaseDeDatos.editUser(COLS.PASS, mail, String.valueOf(contraVtf.getPassword()),
-									String.valueOf(contraNtf.getPassword()));
+							BaseDeDatos.editUser(COLS.PASS, mail, String.valueOf(contraActualtf.getPassword()),
+									String.valueOf(contraNuevatf.getPassword()));
 						} else {
-							JOptionPane.showMessageDialog(null, "Alguna de las contraseÃ±as no coincide", "Error", 0);
+							JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Error", 0);
 							frame.dispose();
 						}
 						frame.dispose();
 					}
 				});
+				
+				GridBagConstraints gc = new GridBagConstraints();
+		        gc.fill = GridBagConstraints.HORIZONTAL;
+		        gc.insets = new Insets(10, 10, 10, 10);
 
-				frame.setTitle("Cambio de contraseÃ±a");
-				frame.setSize(400, 225);
+		        gc.gridx = 0;
+		        gc.gridy = 0;
+		        labelText.add(contraActual, gc);
+
+		        gc.gridx = 1;
+		        gc.gridy = 0;
+		        labelText.add(contraActualtf, gc);
+
+		        gc.gridx = 0;
+		        gc.gridy = 1;
+		        labelText.add(contraNueva, gc);
+
+		        gc.gridx = 1;
+		        gc.gridy = 1;
+		        labelText.add(contraNuevatf, gc);
+		        
+		        gc.gridx = 0;
+		        gc.gridy = 2;
+		        labelText.add(contraConfirmar, gc);
+
+		        gc.gridx = 1;
+		        gc.gridy = 2;
+		        labelText.add(contraConfirmartf, gc);
+				
+				botonera.add(cambiar);
+				frame.add(labelText);
+				frame.add(botonera);
+
+				frame.setTitle("Cambio de contraseña");
 				frame.setResizable(false);
+				frame.pack();
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				frame.setIconImage(VentanaTienda.icon);
 				frame.setLocationRelativeTo(null);
 			}
 		});
-		historial.addActionListener(new ActionListener() {// ventana para ultima compra
+		
+		// Ventana para última compra --------------------------------------------------
+		historial.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -180,8 +328,7 @@ public class OtherFrames {
 				if (Cesta.lastCompra.containsKey(mail)) {
 					JFrame frame = new JFrame();
 					Vector<String> nomColumnas = new Vector<String>(
-							Arrays.asList("CÃ³digo de producto", "Nombre", "Precio", "Marca"));
-					String[] nomColumnasInArray = { "CÃ³digo de producto", "Nombre", "Precio", "Marca" };
+							Arrays.asList("Código de producto", "Nombre", "Precio", "Marca"));
 					JTable tabla = new JTable();
 					DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
 					tabla.getTableHeader().setReorderingAllowed(false);
@@ -200,7 +347,7 @@ public class OtherFrames {
 					tabla.setModel(model);
 					frame.add(new JScrollPane(tabla), BorderLayout.CENTER);
 					frame.add(info, BorderLayout.SOUTH);
-					frame.setTitle("Ãšltima compra");
+					frame.setTitle("Última compra");
 					frame.setSize(800, 500);
 					frame.setResizable(false);
 					frame.setLocationRelativeTo(null);
@@ -237,8 +384,7 @@ public class OtherFrames {
 		});
 
 		frame.setTitle("Area cliente");
-		frame.setSize(300, 400);
-		frame.pack();
+		frame.setSize(300, 250);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
@@ -444,6 +590,4 @@ public static void VentanaStats() {
 	frame.setVisible(true);
 	
 	}
-}
-
 }

@@ -17,16 +17,15 @@ import javax.swing.*;
 import BD.BaseDeDatos;
 import Utils.OtherFrames;
 import Utils.OtherUtils;
-import Utils.RoundedBorder;
 
 /**
  * @author GR08 Clase VentanaTienda, es la clase principal, contiene la ventana
  *         principal. Esta clase cuenta con el método main().
  */
 public class VentanaTienda {
+	static JMenu atcliente = new JMenu("Atencion al cliente");
 	public static JMenuItem loginItem = new JMenuItem("Login");
 	static JMenuItem logoutItem = new JMenuItem("Logout");
-	static JMenu atcliente = new JMenu("Atencion al cliente");
 	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
@@ -37,30 +36,96 @@ public class VentanaTienda {
 		cargaDatos();
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(246,246,246));
+		
+		// JMenuBar bar
+		JMenuBar bar = new JMenuBar();
+		bar.setBackground(new Color(230,230,230));
+		
+		// JMenu menucliente
 		JMenu menucliente = new JMenu("Area cliente");
-		JMenu atcliente = new JMenu("Atencion al cliente");
-		personalArea.setBorder(new RoundedBorder(7));
-		atcliente.setBorder(new RoundedBorder(7));
+		menucliente.setOpaque(false);
+		menucliente.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		menucliente.setForeground(new Color(67,67,67));
+		
+		// JMenu atcliente
+		atcliente.setOpaque(false);
+		atcliente.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		atcliente.setForeground(new Color(67,67,67));
+		
+		// JMenuItem chat
 		JMenuItem chat = new JMenuItem("Chat con un agente");
+		chat.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		chat.setForeground(new Color(67,67,67));
+		
+		// JMenuItem chatServerP
 		JMenuItem chatServerP = new JMenuItem("Iniciar chat (modo servidor)");
-		chat.setBorder(new RoundedBorder(7));
-		chatServerP.setBorder(new RoundedBorder(7));
+		chatServerP.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		chatServerP.setForeground(new Color(67,67,67));
+		
+		// JMenuItem loginItem
+		loginItem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		loginItem.setForeground(new Color(67,67,67));
+		
+		// JMenuItem logoutItem
+		logoutItem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		logoutItem.setForeground(new Color(67,67,67));
+		logoutItem.setEnabled(false);
+		
+		// JMenuItem personalArea
+		personalArea.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		personalArea.setForeground(new Color(67,67,67));
+		personalArea.setEnabled(false);
+		
+		// MouseListener menucliente
+		menucliente.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				menucliente.setOpaque(true);
+				menucliente.setContentAreaFilled(true);
+				menucliente.setBackground(new Color(210,210,210));
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				menucliente.setOpaque(false);
+				menucliente.setContentAreaFilled(false);
+			}
+		});
+				
+		// MouseListener atcliente
+		atcliente.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				atcliente.setOpaque(true);
+				atcliente.setContentAreaFilled(true);
+				atcliente.setBackground(new Color(210,210,210));
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				atcliente.setOpaque(false);
+				atcliente.setContentAreaFilled(false);
+			}
+		});
+		
 		atcliente.add(chat);
 		atcliente.add(chatServerP);
-		JMenuBar bar = new JMenuBar();
-		loginItem.setBorder(new RoundedBorder(7));
 		menucliente.add(loginItem);
-		logoutItem.setEnabled(false);
-		logoutItem.setBorder(new RoundedBorder(7));
 		menucliente.add(logoutItem);
-		menucliente.setBorder(new RoundedBorder(7));
-		personalArea.setEnabled(false);
 		menucliente.add(personalArea);
 		bar.add(menucliente);
 		bar.add(atcliente);
+		
+		// JTabbedPane tabs
 		JTabbedPane tabs = new JTabbedPane();
-		tabs.add("Presentación", new JScrollPane(new Utils.BackgroungImagePanel()));
-
+		tabs.setBackground(Color.WHITE);
+		tabs.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		tabs.setForeground(new Color(67,67,67));
+		tabs.setFocusable(false);
+		Insets insets = UIManager.getInsets("TabbedPane.contentBorderInsets");
+		insets.top = -1;
+		insets.bottom = -1;
+		insets.left = -1;
+		insets.right = -1;
+		UIManager.put("TabbedPane.contentBorderInsets", insets);
+		
 		// Nombres de la columnas
 		String[] nomColumnas = {"Código de producto", "Nombre", "Precio", "Marca"};
 		String[] nomColumnasCesta = {"Código de producto", "Nombre", "Precio", "Marca", "ID"};
@@ -82,29 +147,31 @@ public class VentanaTienda {
 				prodHobby.add(p);
 			}
 		}
-
-		// Tab 1, tabElect --------------------------------------------------
+		// Tab 0, Presentación --------------------------------------------------
+		tabs.add("Presentación", new JScrollPane(new Utils.BackgroungImagePanel()));
+		
+		// Tab 1, Electrónica --------------------------------------------------
 		JPanel tabElect = new JPanel();
 		tabElect.setLayout(new BorderLayout());
 		JPanel panelTablaElect = PanelTabla.getPanelTabla(nomColumnas, prodElectronica, new Color(133, 222, 119));
 		tabElect.add(panelTablaElect, BorderLayout.CENTER);
-		tabs.add("Electronica", tabElect);
+		tabs.add("Electrónica", tabElect);
 
-		// Tab 2, tabRopa --------------------------------------------------
+		// Tab 2, Ropa --------------------------------------------------
 		JPanel tabRopa = new JPanel();
 		tabRopa.setLayout(new BorderLayout());
 		JPanel panelTablaRopa = PanelTabla.getPanelTabla(nomColumnas, prodRopa, new Color(170, 152, 240));
 		tabRopa.add(panelTablaRopa, BorderLayout.CENTER);
 		tabs.add("Ropa", tabRopa);
 
-		// Tab 3, tabHobby --------------------------------------------------
+		// Tab 3, Hobby --------------------------------------------------
 		JPanel tabHobby = new JPanel();
 		tabHobby.setLayout(new BorderLayout());
 		JPanel panelTablaHobby = PanelTabla.getPanelTabla(nomColumnas, prodHobby, new Color(136, 206, 251));
 		tabHobby.add(panelTablaHobby, BorderLayout.CENTER);
 		tabs.add("Hobby", tabHobby);
 
-		// Tab 4, tabCesta --------------------------------------------------
+		// Tab 4, Cesta --------------------------------------------------
 		JPanel tabCesta = new JPanel();
 		tabCesta.setLayout(new BorderLayout());
 		panelTablaCesta = PanelTabla.getPanelTablaCesta(nomColumnasCesta, Cesta.cesta);
@@ -112,7 +179,6 @@ public class VentanaTienda {
 		tabCesta.add(new JScrollPane(panelTablaCesta), BorderLayout.CENTER);
 		tabs.add("Cesta", new JScrollPane(tabCesta));
 		
-		tabs.setBorder(new RoundedBorder(7));
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
 		
@@ -120,7 +186,7 @@ public class VentanaTienda {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new OtherFrames().areaCliente();
+				OtherFrames.areaCliente();
 				
 			}
 		});

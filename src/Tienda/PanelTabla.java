@@ -48,10 +48,10 @@ public class PanelTabla extends JPanel {
 		TableRowSorter<CustomTableModel> sorter = new TableRowSorter<CustomTableModel>(ctm);
 		tabla.setRowSorter(sorter);
 		tabla.setOpaque(false);
-		tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
+		tabla.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		tabla.setForeground(Color.BLACK);
 		tabla.getTableHeader().setBackground(color);
-		tabla.getTableHeader().setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		tabla.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
 		tabla.getTableHeader().setForeground(Color.WHITE);
 		tabla.getTableHeader().setReorderingAllowed(false);
 
@@ -59,23 +59,24 @@ public class PanelTabla extends JPanel {
 			tabla.getColumnModel().getColumn(i).setResizable(false);
 		}
 		
-		//Renderers
+		// Renderer rendererPrecio
 		DefaultTableCellRenderer rendererPrecio = new DefaultTableCellRenderer() {
 		    @Override
 		    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		        c.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		        c.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		        c.setForeground(Color.RED.darker());
 		        return c;
 		    }
 		    
 		};
 		
+		// Renderer rendererCodigo
 		DefaultTableCellRenderer rendererCodigo = new DefaultTableCellRenderer() {
 		    @Override
 		    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		        c.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		        c.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		        c.setForeground(color.darker());
 		        return c;
 		    }
@@ -94,7 +95,7 @@ public class PanelTabla extends JPanel {
 		// Botón anyadir
 		JButton anyadir = new JButton("Añadir a la cesta", new ImageIcon("add.png"));
 		anyadir.setBorderPainted(false);
-		anyadir.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		anyadir.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		anyadir.setForeground(Color.WHITE);
 		anyadir.setBackground(Color.GRAY.brighter());
 		
@@ -103,7 +104,7 @@ public class PanelTabla extends JPanel {
 		info.setBorderPainted(false);
 		info.setBackground(new Color(88, 101, 242));
 		
-		// MouseListeners
+		// MouseListener anyadir
 		anyadir.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				if (!tabla.getSelectionModel().isSelectionEmpty()) {
@@ -118,6 +119,7 @@ public class PanelTabla extends JPanel {
 			}
 		});
 		
+		// MouseListener info
 		info.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				info.setBackground(new Color(88, 101, 242).darker());
@@ -128,7 +130,7 @@ public class PanelTabla extends JPanel {
 			}
 		});
 		
-		// ActionListeners
+		// ActionListener anyadir
 		anyadir.addActionListener(new ActionListener() {
 
 			@Override
@@ -196,6 +198,7 @@ public class PanelTabla extends JPanel {
 			}
 		});
 		
+		// ActionListener info
 		info.addActionListener(new ActionListener() {
 			
 			@Override
@@ -262,10 +265,10 @@ public class PanelTabla extends JPanel {
 		CustomTableModel ctm = new CustomTableModel(nomColumnas, datosTabla);
 		tablaCesta = new JTable(ctm);
 		tablaCesta.setOpaque(true);
-		tablaCesta.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
+		tablaCesta.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		tablaCesta.setForeground(Color.BLACK);
 		tablaCesta.getTableHeader().setBackground(new Color(162, 195, 234));
-		tablaCesta.getTableHeader().setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		tablaCesta.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
 		tablaCesta.getTableHeader().setForeground(Color.WHITE);
 		tablaCesta.getTableHeader().setReorderingAllowed(false);
 		
@@ -273,13 +276,13 @@ public class PanelTabla extends JPanel {
 			tablaCesta.getColumnModel().getColumn(i).setResizable(false);
 		}		
 		
-		// Renderer		
+		// Renderer rendererCesta		
 		DefaultTableCellRenderer rendererCesta = new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 			final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			setHorizontalAlignment(JLabel.CENTER);
-			c.setFont(column == 2 ? new Font("Uni Sans Heavy", Font.BOLD, 15) : null);
+			c.setFont(column == 2 ? new Font("Segoe UI", Font.BOLD, 15) : null);
 			c.setForeground(column == 2 ? Color.RED.darker() : null);
 			c.setBackground(row % 2 == 0 ? new Color(241, 238, 230) : Color.WHITE);
 			return c;
@@ -298,20 +301,21 @@ public class PanelTabla extends JPanel {
 		JPanel botoneraComprar = new JPanel();
 		botoneraComprar.setBackground(Color.WHITE);
 		
-		// BotÃ³n realizarCompra
+		// Botón realizarCompra
 		realizarCompra = new JButton("Realizar compra");
 		realizarCompra.setBorderPainted(false);
-		realizarCompra.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		realizarCompra.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		realizarCompra.setForeground(Color.WHITE);
 		realizarCompra.setBackground(Color.GRAY.brighter());
 		
-		// BotÃ³n eliminarProducto
+		// Botón eliminarProducto
 		JButton eliminarProducto = new JButton("Eliminar producto");
 		eliminarProducto.setBorderPainted(false);
-		eliminarProducto.setFont(new Font("Uni Sans Heavy", Font.BOLD, 15));
+		eliminarProducto.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		eliminarProducto.setForeground(Color.WHITE);
 		eliminarProducto.setBackground(Color.GRAY.brighter());
-
+		
+		// MouseListener realizarCompra
 		realizarCompra.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				if (tablaCesta.getRowCount() != 0) {
@@ -325,7 +329,24 @@ public class PanelTabla extends JPanel {
 				}
 			}
 		});
+		
+		// MouseListener eliminarProducto
+		eliminarProducto.addMouseListener(new MouseAdapter() {
 
+			public void mouseEntered(MouseEvent evt) {
+				if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
+					eliminarProducto.setBackground(new Color(180, 56, 61).darker());
+				}
+			}
+
+			public void mouseExited(MouseEvent evt) {
+						if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
+							eliminarProducto.setBackground(new Color(180, 56, 61));
+						}
+					}
+				});
+		
+		// ActionListener realizarCompra
 		realizarCompra.addActionListener(new ActionListener() {
 
 			@Override
@@ -355,21 +376,7 @@ public class PanelTabla extends JPanel {
 				
 		});
 		
-		eliminarProducto.addMouseListener(new MouseAdapter() {
-
-	public void mouseEntered(MouseEvent evt) {
-		if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
-			eliminarProducto.setBackground(new Color(180, 56, 61).darker());
-		}
-	}
-
-	public void mouseExited(MouseEvent evt) {
-				if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
-					eliminarProducto.setBackground(new Color(180, 56, 61));
-				}
-			}
-		});
-		
+		// ActionListener eliminarProducto
 		eliminarProducto.addActionListener(new ActionListener() {
 			
 			@Override
@@ -407,6 +414,7 @@ public class PanelTabla extends JPanel {
 			}
 		});
 		
+		// ListSelectionListener tablaCesta
 		tablaCesta.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override

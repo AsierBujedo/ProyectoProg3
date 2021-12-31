@@ -44,3 +44,5 @@ src/.classpath
 *.xml
 *.db
 *.xml
+*.db
+*.xml

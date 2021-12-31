@@ -3,8 +3,11 @@ package Tienda;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+
 import Utils.OtherUtils;
-import Utils.RoundedBorder;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -44,15 +47,24 @@ public class Cesta {
 	 */
 	public JPanel panelCesta() {
 		JPanel panel = new JPanel();
+		
 		JTextField buscarProd = new JTextField("Introduce un número (ID) de producto", 30);
-		buscarProd.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 12));
-		buscarProd.setBorder(new RoundedBorder(5));
+		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+		Border empty = new EmptyBorder(0, 5, 0, 0);
+		CompoundBorder border = new CompoundBorder(line, empty);
+		buscarProd.setBorder(border);
+		buscarProd.setFont(new Font("Segoe UI", Font.PLAIN, 19));
 		buscarProd.setForeground(Color.GRAY);
 		
+		// FocusListener buscarProd
 		buscarProd.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
 				if (buscarProd.getText().equals("Introduce un número (ID) de producto")) {
+					Border line = BorderFactory.createLineBorder(new Color(245, 182, 66), 2);
+					Border empty = new EmptyBorder(0, 5, 0, 0);
+					CompoundBorder border = new CompoundBorder(line, empty);
+					buscarProd.setBorder(border);
 					buscarProd.setForeground(Color.BLACK);
 					buscarProd.setText("");
 				}
@@ -62,6 +74,10 @@ public class Cesta {
 			@Override
 			public void focusLost(FocusEvent e) {
 				if (buscarProd.getText().equals("")) {
+					Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+					Border empty = new EmptyBorder(0, 5, 0, 0);
+					CompoundBorder border = new CompoundBorder(line, empty);
+					buscarProd.setBorder(border);
 					buscarProd.setForeground(Color.GRAY);
 					buscarProd.setText("Introduce un número (ID) de producto");
 				}
@@ -69,6 +85,7 @@ public class Cesta {
 			}
 		});
 		
+		// KeyListener buscarProd
 		buscarProd.addKeyListener(new KeyAdapter() {
 			
 			@Override
