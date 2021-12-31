@@ -346,5 +346,53 @@ public class BaseDeDatos {
 			return false;
 		}
 	}
+	
+	/**
+	 * Lee las compras de la tabla COMPRA
+	 * @return La suma del los precios de todas las compras, 0 si hay algún error.
+	 */
+	public static double getPrecioCompras() {
+		try {
+			pstmt = con.prepareStatement("SELECT SUM(PRECIO) AS DINERO_TOTAL FROM COMPRA");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getDouble("DINERO_TOTAL");
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return 0;
+		}
+	}
+	
+	/**
+	 * Lee las compras de la tabla COMPRA.
+	 * @return El número de compras, null si hay algún error.
+	 */
+	public static Integer getNumeroCompras() {
+		try {
+			pstmt = con.prepareStatement("SELECT COUNT(*) AS COMPRAS_TOTALES FROM COMPRA");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getInt("COMPRAS_TOTALES");
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
+	}
+
+	/**
+	 * Lee las compras de la tabla COMPRA.
+	 * @return Total de clientes/usuarios, null si hay algún error.
+	 */
+	public static Integer getTotalClientes() {
+		try {
+			pstmt = con.prepareStatement("SELECT COUNT(*) AS CLIENTES FROM USER");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getInt("CLIENTES");
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
+	}
 
 }
