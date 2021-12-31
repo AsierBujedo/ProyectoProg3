@@ -8,14 +8,17 @@ import BD.*;
 import Utils.RoundedBorder;
 
 public class Login {
+	public static JTextField usertf;
+	public static JPasswordField passtf;
+	
 	public void doLogin() {
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JLabel user = new JLabel("Correo: ");
-		JTextField usertf = new JTextField(20);
+		usertf = new JTextField(20);
 		usertf.setBorder(new RoundedBorder(7));
 		JLabel pass = new JLabel("Contraseña: ");
-		JPasswordField passtf = new JPasswordField(20);
+		passtf = new JPasswordField(20);
 		passtf.setBorder(new RoundedBorder(7));
 		JButton log = new JButton("Iniciar sesion");
 		log.setBorder(new RoundedBorder(7));
@@ -62,7 +65,7 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame();
 				JLabel user = new JLabel("Correo: ");
-				JTextField usertf = new JTextField(20);
+				usertf = new JTextField(20);
 				usertf.setBorder(new RoundedBorder(7));
 				JLabel pass = new JLabel("Contraseña: ");
 				JPasswordField passtf = new JPasswordField(20);

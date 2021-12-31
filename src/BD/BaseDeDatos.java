@@ -160,7 +160,9 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement(
 					"SELECT USERNAME FROM USER WHERE MAIL = '" + MAIL + "' AND PASS = '" + PASS + "'");
 			ResultSet rs = pstmt.executeQuery();
-			return rs.getString("USERNAME");
+			String user = rs.getString("USERNAME");
+			rs.close();
+			return user;
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return "Error";
@@ -172,7 +174,9 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement(
 					"SELECT MAIL FROM USER WHERE USERNAME = '"+ name + "'");
 			ResultSet rs = pstmt.executeQuery();
-			return rs.getString("MAIL");
+			String mail = rs.getString("MAIL");
+			rs.close();
+			return mail;
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return "Error";

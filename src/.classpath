@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="C:/Users/Eduardo/Documents/GitHub/ProyectoProg3/src/BD/sqlite-jdbc-3.36.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Iker López/Documents/GitHub/ProyectoProg3/src/BD/sqlite-jdbc-3.36.0.3.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
