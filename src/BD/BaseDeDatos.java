@@ -30,9 +30,8 @@ public class BaseDeDatos {
 			stmt.executeUpdate(
 					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100))");
 			stmt.executeUpdate(
-					"CREATE TABLE COMPRA (MAIL varchar(100) PRIMARY KEY NOT NULL, PRECIO double, TOTAL_PRODS int, FECHA bigint, FOREIGN KEY (MAIL) REFERENCES USER (MAIL))");
-			stmt.executeUpdate("INSERT INTO USER VALUES (0, 'ADMIN', 'ADMIN@GMAIL.COM', 12345)"); // Fila de prueba para
-			stmt.executeUpdate("INSERT INTO COMPRA VALUES ('IKER@GMAIL.COM', 25.9, 78, 785469631215)");																					// la tabla USER
+					"CREATE TABLE COMPRA (MAIL varchar(100) NOT NULL, PRECIO double, TOTAL_PRODS int, FECHA date, FOREIGN KEY (MAIL) REFERENCES USER (MAIL))");
+			stmt.executeUpdate("INSERT INTO USER VALUES (0, 'ADMIN', 'ADMIN@GMAIL.COM', 12345)"); // Fila de prueba para															// la tabla USER
 			VentanaTienda.logger.log(Level.INFO, "Creación de tablas correcta");
 			return true;
 		} catch (SQLException e) {

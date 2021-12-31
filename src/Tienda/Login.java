@@ -9,9 +9,6 @@ import Utils.RoundedBorder;
 
 public class Login {
 	public void doLogin() {
-		BaseDeDatos bd = new BaseDeDatos();
-		bd.InitDB();
-		
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JLabel user = new JLabel("Correo: ");
@@ -43,7 +40,7 @@ public class Login {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String username = bd.getUser(usertf.getText(), String.valueOf(passtf.getPassword()));
+				String username = BaseDeDatos.getUser(usertf.getText(), String.valueOf(passtf.getPassword()));
 				if (!username.equals("Error")) {
 					VentanaTienda.loginItem.setText(username);
 					VentanaTienda.loginItem.setEnabled(false);
@@ -99,7 +96,7 @@ public class Login {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						bd.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()));
+						BaseDeDatos.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()));
 						frame.dispose();
 
 					}
