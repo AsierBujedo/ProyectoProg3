@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import BD.BaseDeDatos;
@@ -20,10 +21,10 @@ import Tienda.Producto;
 import Tienda.Cesta.*;
 import Tienda.DatoParaTabla;
 
-
 public class OtherFrames {
-	
-	//Acceso al area personal
+	private static double precio = 0.0;
+
+	// Acceso al area personal
 	public static void areaCliente() {
 		JFrame frame = new JFrame();
 		JButton contra = new JButton("Cambiar contraseña");
@@ -31,11 +32,13 @@ public class OtherFrames {
 		JButton historial = new JButton("Ultima compra");
 		historial.setBorder(new RoundedBorder(7));
 		frame.setLayout(new GridLayout(2, 1));
+		historial.setFont(new Font("Uni Sans Heavy", Font.ROMAN_BASELINE, 15));
+		contra.setFont(new Font("Uni Sans Heavy", Font.ROMAN_BASELINE, 15));
 		frame.add(contra);
 		frame.add(historial);
-		
-		contra.addActionListener(new ActionListener() {//Ventana para cambio de contraseña
-			
+
+		contra.addActionListener(new ActionListener() {// Ventana para cambio de contraseña
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame();
@@ -48,7 +51,7 @@ public class OtherFrames {
 				JLabel contraNC = new JLabel("Confirma la contraseña nueva: ");
 				JPasswordField contraNCtf = new JPasswordField(20);
 				contraNCtf.setBorder(new RoundedBorder(7));
-				JButton cambiar=new JButton("Cambiar contraseña");
+				JButton cambiar = new JButton("Cambiar contraseña");
 				JPanel panel = new JPanel();
 				panel.setLayout(new GridLayout(3, 1));
 				panel.add(contraV, BorderLayout.NORTH);
@@ -59,68 +62,107 @@ public class OtherFrames {
 				panel.add(contraNCtf, BorderLayout.CENTER);
 				frame.add(panel, BorderLayout.CENTER);
 				frame.add(cambiar, BorderLayout.SOUTH);
-				
-				cambiar.addActionListener(new ActionListener() {//Boton para cambio de contraseñas
-					
+
+				cambiar.addActionListener(new ActionListener() {// Boton para cambio de contraseñas
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						String nombre=VentanaTienda.loginItem.getText();
-						String mail=BaseDeDatos.getUserMail(nombre);
-						String existe=BaseDeDatos.getUser(mail, String.valueOf(contraVtf.getPassword()));
-						if(String.valueOf(contraNtf.getPassword()).equals(String.valueOf(contraNCtf.getPassword()))&&!existe.equals("Error")) {
-							BaseDeDatos.editUser(COLS.PASS, mail, String.valueOf(contraVtf.getPassword()), String.valueOf(contraNtf.getPassword()));
-						}else {
-							JOptionPane.showMessageDialog(null, "Alguna de las contraseñas no coincide","Error", 0);
+						String nombre = VentanaTienda.loginItem.getText();
+						String mail = BaseDeDatos.getUserMail(nombre);
+						String existe = BaseDeDatos.getUser(mail, String.valueOf(contraVtf.getPassword()));
+						if (String.valueOf(contraNtf.getPassword()).equals(String.valueOf(contraNCtf.getPassword()))
+								&& !existe.equals("Error")) {
+							BaseDeDatos.editUser(COLS.PASS, mail, String.valueOf(contraVtf.getPassword()),
+									String.valueOf(contraNtf.getPassword()));
+						} else {
+							JOptionPane.showMessageDialog(null, "Alguna de las contraseñas no coincide", "Error", 0);
 							frame.dispose();
 						}
 						frame.dispose();
 					}
 				});
-				
-				
+
 				frame.setTitle("Cambio de contraseña");
 				frame.setSize(400, 225);
 				frame.setResizable(false);
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				frame.setIconImage(VentanaTienda.icon);
+				frame.setLocationRelativeTo(null);
 			}
 		});
-		historial.addActionListener(new ActionListener() {//ventana para ultima compra
-			
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String nombre=VentanaTienda.loginItem.getText();
-			String mail=BaseDeDatos.getUserMail(nombre);
-			if(Cesta.lastCompra.containsKey(mail)){
-				JFrame frame = new JFrame();
-				Vector<String> nomColumnas = new Vector<String>( Arrays.asList( "Código de producto", "Nombre", "Precio", "Marca" ) );
-				JTable tabla=new JTable();
-				DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
-				for (Producto p : Cesta.lastCompra.get(mail)) {
-					model.addRow( new Object[] { p.getCodigoProducto(), p.getNombre(), p.getPrecio(), p.getMarca()} );
-				}
-				tabla.setModel(model);
-				frame.add(new JScrollPane(tabla));
-				frame.setTitle("Última compra");
-				frame.setSize(800, 500);
-				frame.setResizable(false);
-				frame.setVisible(true);
-				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				frame.setIconImage(VentanaTienda.icon);
-			}else {
-				JOptionPane.showMessageDialog(null, "Tu usuario no tiene ninguna compra registrada","Compra no encontrada", 1);
-			}
-		}
-	});
+		historial.addActionListener(new ActionListener() {// ventana para ultima compra
 
-	frame.setTitle("Registro de usuarios");
-	frame.setSize(400, 225);
-	frame.setResizable(false);
-	frame.setVisible(true);
-	frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	frame.setIconImage(VentanaTienda.icon);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String nombre = VentanaTienda.loginItem.getText();
+				String mail = BaseDeDatos.getUserMail(nombre);
+				if (Cesta.lastCompra.containsKey(mail)) {
+					JFrame frame = new JFrame();
+					Vector<String> nomColumnas = new Vector<String>(
+							Arrays.asList("Código de producto", "Nombre", "Precio", "Marca"));
+					String[] nomColumnasInArray = { "Código de producto", "Nombre", "Precio", "Marca" };
+					JTable tabla = new JTable();
+					DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
+					tabla.getTableHeader().setReorderingAllowed(false);
+					tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
+					tabla.getTableHeader().setBackground(Color.GREEN.darker());
+					precio = 0.0;
+					for (Producto p : Cesta.lastCompra.get(mail)) {
+						model.addRow(
+								new Object[] { p.getCodigoProducto(), p.getNombre(), p.getPrecio(), p.getMarca() });
+						precio += p.getPrecio();
+					}
+					JLabel info = new JLabel();
+					info.setFont(new Font("Uni Sans Heavy", Font.BOLD, 14));
+					info.setBackground(Color.YELLOW.darker());
+					info.setOpaque(true);
+					tabla.setModel(model);
+					frame.add(new JScrollPane(tabla), BorderLayout.CENTER);
+					frame.add(info, BorderLayout.SOUTH);
+					frame.setTitle("Última compra");
+					frame.setSize(800, 500);
+					frame.setResizable(false);
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+					frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					frame.setIconImage(VentanaTienda.icon);
+					Thread infoTh = new Thread(new Runnable() {
+
+						@Override
+						public void run() {
+							while (!Thread.interrupted()) {
+								info.setText("Precio total: " + OtherUtils.round(precio, 2) + "€");
+								try {
+									Thread.sleep(3000);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+								info.setText("Cantidad de productos: " + Cesta.lastCompra.get(mail).size() + " uds.");
+								try {
+									Thread.sleep(3000);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+							}
+						}
+					});
+					infoTh.start();
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Tu usuario no tiene ninguna compra registrada",
+							"Compra no encontrada", 1);
+				}
+			}
+		});
+
+		frame.setTitle("Registro de usuarios");
+		frame.setSize(400, 225);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		frame.setIconImage(VentanaTienda.icon);
 	}
 
 }

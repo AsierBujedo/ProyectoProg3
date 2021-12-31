@@ -117,4 +117,19 @@ public class OtherUtils {
 			
 		}
 	}
+	
+	
+	/**Método que recibe un double (preferentemente con muchos decimales), y el número de decimales a tener en cuenta.
+	 *  La función obtendrá el redondeo a x decimales del double que le hemos pasado.
+	 * @param valor
+	 * @param dec
+	 * @return double
+	 */
+	public static double round(double valor, int dec ) {
+	    if (dec < 0) throw new IllegalArgumentException();
+	    long factor = (long) Math.pow(10, dec);
+	    valor = valor * factor;
+	    long tmp = Math.round(valor);
+	    return (double) tmp / factor;
+	}
 }

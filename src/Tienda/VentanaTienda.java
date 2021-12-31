@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 import BD.BaseDeDatos;
+import Utils.OtherFrames;
 import Utils.OtherUtils;
 import Utils.RoundedBorder;
 
@@ -114,6 +115,15 @@ public class VentanaTienda {
 		tabs.setBorder(new RoundedBorder(7));
 		frame.add(bar, BorderLayout.NORTH);
 		frame.add(tabs);
+		
+		personalArea.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new OtherFrames().areaCliente();
+				
+			}
+		});
 
 		chat.addActionListener(new ActionListener() { // Accion de chat con un agente
 
