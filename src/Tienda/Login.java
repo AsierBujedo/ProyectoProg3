@@ -4,12 +4,21 @@ import static javax.swing.WindowConstants.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.TextAttribute;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
-
+import java.util.Properties;
+import java.util.logging.Level;
 import javax.swing.*;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 import BD.*;
 import Utils.OtherUtils;
@@ -17,6 +26,11 @@ import Utils.OtherUtils;
 public class Login {
 	public static JTextField usertf;
 	public static JPasswordField passtf;
+	public static JTextField usernametf;
+	public static JTextField telftf;
+	public static JComboBox<Genero> genjcb ;
+	public static JTextField dirtf;
+	public static JDatePickerImpl datePicker;
 	
 	public void doLogin() {
 		// Inicializamos la ventana
@@ -215,14 +229,17 @@ public class Login {
 				pass.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				JLabel username = new JLabel("Nombre de usuario: ");
 				username.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JLabel telf = new JLabel("Número de teléfono");
+				telf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JLabel gen = new JLabel("Género: ");
+				gen.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JLabel fechanac = new JLabel("Fecha de nacimiento");
+				fechanac.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JLabel dir = new JLabel("Dirección: ");
+				dir.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				
 				usertf = new JTextField(20);
-				Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyU = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-				usertf.setBorder(borderU);
-				usertf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				usertf.setForeground(Color.GRAY);
+				usertf = OtherUtils.modifyTextField(usertf);
 				
 				JPasswordField passtf = new JPasswordField(20);
 				Border lineP = BorderFactory.createLineBorder(new Color(194,194,194), 2);
@@ -231,82 +248,49 @@ public class Login {
 				passtf.setBorder(borderP);
 				passtf.setFont(new Font("Segoe UI", Font.PLAIN, 15)); // Mirar
 				
-				JTextField usernametf = new JTextField(20);
-				Border lineUN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyUN = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
-				usernametf.setBorder(borderUN);
-				usernametf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				usernametf.setForeground(Color.GRAY);
+				usernametf = new JTextField(20);
+				usernametf = OtherUtils.modifyTextField(usernametf);
 				
-				// FocusListener usertf
-				usertf.addFocusListener(new FocusAdapter() {
-					@Override
-					public void focusGained(FocusEvent e) {
-						Border lineU = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-						Border emptyU = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-						usertf.setBorder(borderU);
-						usertf.setForeground(Color.BLACK);
-						super.focusGained(e);
-					}
+				telftf = new JTextField(20);
+				telftf = OtherUtils.modifyTextField(telftf);
+				
+				genjcb = new JComboBox<>(Genero.values());
+				genjcb.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				genjcb.setBackground(Color.WHITE);
+				
+				dirtf = new JTextField(20);
+				dirtf = OtherUtils.modifyTextField(dirtf);
+				
+				//Implemantación del calendario
+				UtilDateModel model = new UtilDateModel();
+				Properties p = new Properties();
+				p.put("text.today", "Hoy");
+				p.put("text.month", "Mes");
+				p.put("text.year", "Año");
+				JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+				AbstractFormatter af = new AbstractFormatter() {
 
+					private static final long serialVersionUID = 1L;
+					private String datePattern = "yyyy/MM/dd";
+				    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
 					@Override
-					public void focusLost(FocusEvent e) {
-						Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-						Border emptyU = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-						usertf.setBorder(borderU);
-						usertf.setForeground(Color.GRAY);
-						super.focusLost(e);
+					public String valueToString(Object value) throws ParseException {
+						if (value != null) {
+				            Calendar cal = (Calendar) value;
+				            return dateFormatter.format(cal.getTime());
+				        }
+				        return "";
 					}
-				});
-				
-				// FocusListener passtf
-				passtf.addFocusListener(new FocusAdapter() {
 					
 					@Override
-					public void focusGained(FocusEvent e) {
-						Border lineP = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-						Border emptyP = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderP = new CompoundBorder(lineP, emptyP);
-						passtf.setBorder(borderP);
-						super.focusGained(e);
-						
+					public Object stringToValue(String text) throws ParseException {
+						return dateFormatter.parseObject(text);
 					}
-					@Override
-					public void focusLost(FocusEvent e) {
-						Border lineP = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-						Border emptyP = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderP = new CompoundBorder(lineP, emptyP);
-						passtf.setBorder(borderP);
-						super.focusLost(e);						
-					}
-				});
-				
-				// FocusListener usernametf
-				usernametf.addFocusListener(new FocusAdapter() {
-					@Override
-					public void focusGained(FocusEvent e) {
-						Border lineUN = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-						Border emptyUN = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
-						usernametf.setBorder(borderUN);
-						usernametf.setForeground(Color.BLACK);
-						super.focusGained(e);
-					}
-
-					@Override
-					public void focusLost(FocusEvent e) {
-						Border lineUN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-						Border emptyUN = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
-						usernametf.setBorder(borderUN);
-						usernametf.setForeground(Color.GRAY);
-						super.focusLost(e);
-					}
-				});
-				
+				};
+				datePicker = new JDatePickerImpl(datePanel, af);
+				datePicker.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				datePicker.setBackground(Color.WHITE);
+				datePicker.setForeground(Color.GRAY);
 				// Botón reg
 				JButton reg = new JButton("Registrarse");
 				reg = OtherUtils.modifyButton(reg, new Color(67, 67, 67), new Color(194, 194, 194));
@@ -317,10 +301,19 @@ public class Login {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if (usertf.getText().isBlank() || usernametf.getText().isBlank() || String.valueOf(passtf.getPassword()).isBlank()) {
-							JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);		
 						} else {
-						BaseDeDatos.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()), 0, Genero.MASCULINO, null, null);
-							frameReg.dispose();
+							SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+							Date date;
+							try {
+								date = sdf.parse(datePicker.getJFormattedTextField().getText());
+								long fecha = date.getTime();
+								BaseDeDatos.addUser(usertf.getText(), usernametf.getText(), String.valueOf(passtf.getPassword()), Integer.valueOf(telftf.getText()), (Genero) genjcb.getSelectedItem(), new Date(fecha), dirtf.getText());
+								frameReg.dispose();
+							} catch (ParseException e1) {
+								VentanaTienda.logger.log(Level.SEVERE, "No se ha podido añadir el usuario");
+							}
+
 						}
 					}
 				});
@@ -356,6 +349,38 @@ public class Login {
 		        gc.gridx = 1;
 		        gc.gridy = 3;
 		        labelText.add(usernametf, gc);
+		        
+		        gc.gridx = 0;
+		        gc.gridy = 4;
+		        labelText.add(telf, gc);
+		        
+		        gc.gridx = 1;
+		        gc.gridy = 4;
+		        labelText.add(telftf, gc);
+		        
+		        gc.gridx = 0;
+		        gc.gridy = 5;
+		        labelText.add(gen, gc);
+		        
+		        gc.gridx = 1;
+		        gc.gridy = 5;
+		        labelText.add(genjcb, gc);
+		        
+		        gc.gridx = 0;
+		        gc.gridy = 6;
+		        labelText.add(fechanac, gc);
+		        
+		        gc.gridx = 1;
+		        gc.gridy = 6;
+		        labelText.add(datePicker, gc);
+		        
+		        gc.gridx = 0;
+		        gc.gridy = 7;
+		        labelText.add(dir, gc);
+		        
+		        gc.gridx = 1;
+		        gc.gridy = 7;
+		        labelText.add(dirtf, gc);
 				
 		        botonera.add(reg);
 		        frameReg.add(labelText);

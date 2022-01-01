@@ -3,6 +3,8 @@ package Utils;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -15,7 +17,12 @@ import java.util.Properties;
 import java.util.TreeSet;
 import java.util.logging.Level;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 
 import Tienda.*;
 
@@ -179,6 +186,38 @@ public class OtherUtils {
 			}
 		});
 		return boton;
+	}
+	
+	public static JTextField modifyTextField(JTextField field) {
+		Border lineT = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+		Border emptyT = new EmptyBorder(0, 5, 0, 0);
+		CompoundBorder borderT = new CompoundBorder(lineT, emptyT);
+		field.setBorder(borderT);
+		field.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		field.setForeground(Color.GRAY);
+		
+		field.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				Border lineU = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+				Border emptyU = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
+				field.setBorder(borderU);
+				field.setForeground(Color.BLACK);
+				super.focusGained(e);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border emptyU = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
+				field.setBorder(borderU);
+				field.setForeground(Color.GRAY);
+				super.focusLost(e);
+			}
+		});
+		return field;
 	}
 
 }
