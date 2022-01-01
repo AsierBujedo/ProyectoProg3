@@ -12,6 +12,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 import BD.*;
+import Utils.OtherUtils;
 
 public class Login {
 	public static JTextField usertf;
@@ -100,48 +101,12 @@ public class Login {
 		
 		// Botón log
 		JButton log = new JButton("Iniciar sesion");
-		log.setAlignmentX(Component.CENTER_ALIGNMENT);
-		log.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		log.setForeground(new Color(67,67,67));
-		log.setBorderPainted(false);
-		log.setFocusPainted(false);
-		log.setOpaque(false);
-		log.setContentAreaFilled(false);
+		log = OtherUtils.modifyButton(log, new Color(67, 67, 67), new Color(194, 194, 194));
 		
 		// Botón regbutton
 		JButton regbutton = new JButton("Registro");
-		regbutton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		regbutton.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		regbutton.setForeground(new Color(67,67,67));
-		regbutton.setBorderPainted(false);
-		regbutton.setFocusPainted(false);
-		regbutton.setBackground(new Color(194,194,194));
-		
-		// MouseListener log
-		log.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent evt) {
-				log.setOpaque(true);
-				log.setContentAreaFilled(true);
-				log.setBackground(new Color(225,225,225));
-			}
-
-			public void mouseExited(MouseEvent evt) {
-				log.setOpaque(false);
-				log.setContentAreaFilled(false);
-			}
-		});
+		regbutton = OtherUtils.modifyButton(regbutton, new Color(67, 67, 67), new Color(194, 194, 194));
 				
-		// MouseListener regbutton
-		regbutton.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent evt) {
-				regbutton.setBackground(new Color(170,170,170));			
-			}
-
-			public void mouseExited(MouseEvent evt) {
-				regbutton.setBackground(new Color(194,194,194));			
-			}
-		});
-		
 		GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
         gc.insets = new Insets(10, 10, 10, 10);
@@ -191,7 +156,7 @@ public class Login {
 					VentanaTienda.personalArea.setEnabled(true);
 					frame.dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Incorrect mail or password","Login error", 0);
+					JOptionPane.showMessageDialog(null, "Correo o clave incorrectos","Login error", JOptionPane.ERROR_MESSAGE);
 					frame.dispose();
 					doLogin();
 				}
@@ -344,35 +309,19 @@ public class Login {
 				
 				// Botón reg
 				JButton reg = new JButton("Registrarse");
-				reg.setAlignmentX(Component.CENTER_ALIGNMENT);
-				reg.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				reg.setForeground(new Color(67,67,67));
-				reg.setBorderPainted(false);
-				reg.setFocusPainted(false);
-				reg.setOpaque(false);
-				reg.setContentAreaFilled(false);
-				
-				// MouseListener log
-				reg.addMouseListener(new MouseAdapter() {
-					public void mouseEntered(MouseEvent evt) {
-						reg.setOpaque(true);
-						reg.setContentAreaFilled(true);
-						reg.setBackground(new Color(225,225,225));
-					}
+				reg = OtherUtils.modifyButton(reg, new Color(67, 67, 67), new Color(194, 194, 194));
 
-					public void mouseExited(MouseEvent evt) {
-						reg.setOpaque(false);
-						reg.setContentAreaFilled(false);
-					}
-				});
-				
 				// ActionListener reg
 				reg.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						BaseDeDatos.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()));
-						frameReg.dispose();
+						if (usertf.getText().isBlank() || usernametf.getText().isBlank() || String.valueOf(passtf.getPassword()).isBlank()) {
+							JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+						} else {
+						BaseDeDatos.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()), 0, Genero.MASCULINO, null, null);
+							frameReg.dispose();
+						}
 					}
 				});
 				

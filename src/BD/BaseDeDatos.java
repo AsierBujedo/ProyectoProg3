@@ -26,12 +26,12 @@ public class BaseDeDatos {
 			stmt.executeUpdate("DROP TABLE IF EXISTS COMPRA");
 
 			stmt.executeUpdate(
-					"CREATE TABLE USER (USER_ID int PRIMARY KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) NOT NULL, PASS varchar(100) NOT NULL)");
+					"CREATE TABLE USER (USER_ID int PRIMARY KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) NOT NULL, PASS varchar(100) NOT NULL, TELF int(15) DEFAULT NULL, SEXO varchar(10) DEFAULT NULL, NACIMIENTO date DEFAULT NULL, DIR varchar(100) DEFAULT NULL)");
 			stmt.executeUpdate(
 					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100))");
 			stmt.executeUpdate(
 					"CREATE TABLE COMPRA (MAIL varchar(100) NOT NULL, PRECIO double, TOTAL_PRODS int, FECHA date, FOREIGN KEY (MAIL) REFERENCES USER (MAIL))");
-			stmt.executeUpdate("INSERT INTO USER VALUES (0, 'admin', 'admin@gmail.com', 12345)"); // Fila de prueba para															// la tabla USER
+			stmt.executeUpdate("INSERT INTO USER(USER_ID, USERNAME, MAIL, PASS) VALUES (0, 'admin', 'admin@gmail.com', 12345)"); // Fila de prueba para	la tabla USER														
 			VentanaTienda.logger.log(Level.INFO, "Creación de tablas correcta");
 			return true;
 		} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class BaseDeDatos {
 	public static boolean removeColumn(TABLES TABLE, String COLUMN) {
 		try {
 			if (!COLUMN.equals(COLS.USERNAME.toString()) || !COLUMN.equals(COLS.MAIL.toString())
-					|| !COLUMN.equals(COLS.PASS.toString()) || COLUMN.equals("PLAYED") || COLUMN.equals("WON")) {
+					|| !COLUMN.equals(COLS.PASS.toString())) {
 				pstmt = con.prepareStatement("ALTER TABLE " + TABLE.toString() + " DROP " + COLUMN);
 				pstmt.executeUpdate();
 				VentanaTienda.logger.log(Level.INFO, "Eliminada de " + TABLE.toString() + " la columna " + COLUMN);
@@ -118,10 +118,10 @@ public class BaseDeDatos {
 	 */
 	// Automáticamente se le asigna un ID como código identificativo único, su
 	// PRIMARY KEY
-	public static boolean addUser(String USERNAME, String MAIL, String PASS) {
+	public static boolean addUser(String USERNAME, String MAIL, String PASS, int TELF, Genero SEXO, Date NACIMIENTO, String DIR) {
 		try {
-			pstmt = con.prepareStatement("INSERT INTO USER (USERNAME, MAIL, PASS, USER_ID) VALUES ('" + USERNAME + "','"
-					+ MAIL + "','" + PASS + "','" + USER_IDS + "')");
+			pstmt = con.prepareStatement("INSERT INTO USER (USERNAME, MAIL, PASS, USER_ID, TELF, SEXO, NACIMIENTO, DIR) VALUES ('" + USERNAME + "','"
+					+ MAIL + "','" + PASS + "','" + USER_IDS + "',"+TELF+",'"+SEXO.toString()+"',"+NACIMIENTO+",'"+DIR+"')");
 			pstmt.executeUpdate();
 			VentanaTienda.logger.log(Level.INFO,
 					"Nuevo usuario: " + MAIL + ", ID: " + USER_IDS + ". Añadido correctamente");

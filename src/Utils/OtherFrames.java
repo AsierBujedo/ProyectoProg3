@@ -424,9 +424,9 @@ public static void VentanaStats() {
 	txtDinero.setColumns(10);
 	txtDinero.setBorder(new RoundedBorder(7));
 
-	txtDinero.setText(BaseDeDatos.getPrecioCompras() + " ï¿½");
+	txtDinero.setText(OtherUtils.round(BaseDeDatos.getPrecioCompras(), 2)+"€");
 	
-	JLabel lblClientes = new JLabel("N\u00FAmero de clientes:");
+	JLabel lblClientes = new JLabel("Número de clientes:");
 	lblClientes.setFont(new Font("Sitka Text", Font.PLAIN, 13));
 	lblClientes.setBounds(42, 130, 125, 22);
 	principal.add(lblClientes);
@@ -545,10 +545,9 @@ public static void VentanaStats() {
 			info.setText(todo);
 			info.setEditable(false);
 			principal.add(info, BorderLayout.CENTER);
-			
-			JButton btnConfirmar = new JButton("Confirmar");
-			btnConfirmar.setBorder(new RoundedBorder(7));
-			principal.add(btnConfirmar, BorderLayout.SOUTH);
+				
+			JButton btnConfirmar = new JButton("Confirmar");	
+			principal.add(OtherUtils.modifyButton(btnConfirmar, new Color(67, 67, 67), new Color(194, 194, 194)), BorderLayout.SOUTH);
 			
 			btnConfirmar.addActionListener(new ActionListener() {
 				
@@ -558,7 +557,7 @@ public static void VentanaStats() {
 						PrintWriter pw = new PrintWriter("estadisticas.txt");
 			
 						System.out.println(info.getText()); // comprobacion
-						pw.println(info);
+						pw.println(info.getText());
 						
 						pw.close();
 						frame.dispose();
