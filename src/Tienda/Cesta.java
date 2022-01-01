@@ -46,7 +46,9 @@ public class Cesta {
 	 * @return JPanel
 	 */
 	public JPanel panelCesta() {
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+		Border lowered_bevelborder = BorderFactory.createLoweredBevelBorder();
+		panel.setBorder(lowered_bevelborder);
 		
 		JTextField buscarProd = new JTextField("Introduce un número (ID) de producto", 30);
 		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
@@ -55,6 +57,11 @@ public class Cesta {
 		buscarProd.setBorder(border);
 		buscarProd.setFont(new Font("Segoe UI", Font.PLAIN, 19));
 		buscarProd.setForeground(Color.GRAY);
+		
+		JButton buscar = new JButton(new ImageIcon("search.png"));
+		buscar.setBorderPainted(false);
+		buscar.setForeground(Color.WHITE);
+		buscar.setBackground(new Color(194,194,194));
 		
 		// FocusListener buscarProd
 		buscarProd.addFocusListener(new FocusAdapter() {
@@ -65,6 +72,7 @@ public class Cesta {
 					Border empty = new EmptyBorder(0, 5, 0, 0);
 					CompoundBorder border = new CompoundBorder(line, empty);
 					buscarProd.setBorder(border);
+					buscar.setBackground(new Color(245, 182, 66));
 					buscarProd.setForeground(Color.BLACK);
 					buscarProd.setText("");
 				}
@@ -78,20 +86,21 @@ public class Cesta {
 					Border empty = new EmptyBorder(0, 5, 0, 0);
 					CompoundBorder border = new CompoundBorder(line, empty);
 					buscarProd.setBorder(border);
+					buscar.setBackground(new Color(194,194,194));
 					buscarProd.setForeground(Color.GRAY);
 					buscarProd.setText("Introduce un número (ID) de producto");
 				}
 				super.focusLost(e);
 			}
 		});
-		
+				
 		// KeyListener buscarProd
 		buscarProd.addKeyListener(new KeyAdapter() {
-			
+					
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode()==KeyEvent.VK_ENTER){
-		            if (!buscarProd.getText().equals("Introduce un número (ID) de producto")) {
+					if (!buscarProd.getText().equals("Introduce un número (ID) de producto")) {
 						Producto p = OtherUtils.buscarEnLista(cesta, Integer.valueOf(buscarProd.getText()), 0);
 						if (p != null) {
 							JOptionPane.showMessageDialog(null, "Nombre: " + p.getNombre() + ", Marca: " + p.getMarca()
@@ -104,18 +113,18 @@ public class Cesta {
 			}
 		});
 		
-		JButton buscar = new JButton(new ImageIcon("search.png"));
-		buscar.setBorderPainted(false);
-		buscar.setForeground(Color.WHITE);
-		buscar.setBackground(new Color(245, 182, 66));
-
+		// MouseListener buscar
 		buscar.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
+				if (buscarProd.hasFocus()) {
 				buscar.setBackground(new Color(245, 182, 66).darker());
+				}
 			}
 
 			public void mouseExited(MouseEvent evt) {
+				if (buscarProd.hasFocus()) {
 				buscar.setBackground(new Color(245, 182, 66));
+				}
 			}
 		});
 

@@ -31,7 +31,7 @@ public class Login {
 		botonera.setLayout(new BorderLayout());
 		botonera.setBackground(new Color(246,246,246));
 		
-		JLabel register = new JLabel("Registro");
+		JLabel register = new JLabel("Crear una cuenta");
 		register.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		JLabel question = new JLabel("¿Ya tienes una cuenta?");
 		question.setFont(new Font("Segoe UI", Font.BOLD, 13));
@@ -63,9 +63,9 @@ public class Login {
 				Border emptyU = new EmptyBorder(0, 5, 0, 0);
 				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
 				usertf.setBorder(borderU);
-				super.focusGained(e);
-				
+				super.focusGained(e);			
 			}
+			
 			@Override
 			public void focusLost(FocusEvent e) {
 				Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
@@ -240,7 +240,7 @@ public class Login {
 					public void mouseClicked(MouseEvent e) {
 						frameReg.dispose();
 						doLogin();
-						
+						usertf.requestFocus();
 					}
 				});
 				
@@ -251,7 +251,7 @@ public class Login {
 				JLabel username = new JLabel("Nombre de usuario: ");
 				username.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				
-				usertf = new JTextField("user@mail.com", 20);
+				usertf = new JTextField(20);
 				Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
 				Border emptyU = new EmptyBorder(0, 5, 0, 0);
 				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
@@ -266,7 +266,7 @@ public class Login {
 				passtf.setBorder(borderP);
 				passtf.setFont(new Font("Segoe UI", Font.PLAIN, 15)); // Mirar
 				
-				JTextField usernametf = new JTextField("user12345", 20);
+				JTextField usernametf = new JTextField(20);
 				Border lineUN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
 				Border emptyUN = new EmptyBorder(0, 5, 0, 0);
 				CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
@@ -278,27 +278,21 @@ public class Login {
 				usertf.addFocusListener(new FocusAdapter() {
 					@Override
 					public void focusGained(FocusEvent e) {
-						if (usertf.getText().equals("user@mail.com")) {
-							Border lineU = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-							Border emptyU = new EmptyBorder(0, 5, 0, 0);
-							CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-							usertf.setBorder(borderU);
-							usertf.setForeground(Color.BLACK);
-							usertf.setText("");
-						}
+						Border lineU = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+						Border emptyU = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
+						usertf.setBorder(borderU);
+						usertf.setForeground(Color.BLACK);
 						super.focusGained(e);
 					}
 
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (usertf.getText().equals("")) {
-							Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-							Border emptyU = new EmptyBorder(0, 5, 0, 0);
-							CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-							usertf.setBorder(borderU);
-							usertf.setForeground(Color.GRAY);
-							usertf.setText("user@mail.com");
-						}
+						Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+						Border emptyU = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
+						usertf.setBorder(borderU);
+						usertf.setForeground(Color.GRAY);
 						super.focusLost(e);
 					}
 				});
@@ -329,27 +323,21 @@ public class Login {
 				usernametf.addFocusListener(new FocusAdapter() {
 					@Override
 					public void focusGained(FocusEvent e) {
-						if (usernametf.getText().equals("user12345")) {
-							Border lineUN = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-							Border emptyUN = new EmptyBorder(0, 5, 0, 0);
-							CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
-							usernametf.setBorder(borderUN);
-							usernametf.setForeground(Color.BLACK);
-							usernametf.setText("");
-						}
+						Border lineUN = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+						Border emptyUN = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
+						usernametf.setBorder(borderUN);
+						usernametf.setForeground(Color.BLACK);
 						super.focusGained(e);
 					}
 
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (usernametf.getText().equals("")) {
-							Border lineUN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-							Border emptyUN = new EmptyBorder(0, 5, 0, 0);
-							CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
-							usernametf.setBorder(borderUN);
-							usernametf.setForeground(Color.GRAY);
-							usernametf.setText("user12345");
-						}
+						Border lineUN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+						Border emptyUN = new EmptyBorder(0, 5, 0, 0);
+						CompoundBorder borderUN = new CompoundBorder(lineUN, emptyUN);
+						usernametf.setBorder(borderUN);
+						usernametf.setForeground(Color.GRAY);
 						super.focusLost(e);
 					}
 				});

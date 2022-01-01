@@ -28,7 +28,7 @@ import Tienda.Producto;
 public class OtherFrames {
 	private static double precio = 0.0;
 
-	// Acceso al area personal
+	// Acceso al área personal
 	public static void areaCliente() {
 		JFrame frame = new JFrame();
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
@@ -119,7 +119,7 @@ public class OtherFrames {
 		botonera.add(historial);
 		frame.add(iconoUsuario);
 		frame.add(nombreUsuario);
-		frame.add(mailUsuario);
+//		frame.add(mailUsuario);
 		frame.add(botonera);
 		
 		// Ventana para cambio de contraseña --------------------------------------------------
@@ -359,7 +359,7 @@ public class OtherFrames {
 						@Override
 						public void run() {
 							while (!Thread.interrupted()) {
-								info.setText("Precio total: " + OtherUtils.round(precio, 2) + "â‚¬");
+								info.setText("Precio total: " + OtherUtils.round(precio, 2) + "€");
 								try {
 									Thread.sleep(3000);
 								} catch (InterruptedException e) {
@@ -441,7 +441,7 @@ public static void VentanaStats() {
 	
 	txtClientes.setText(BaseDeDatos.getTotalClientes() + "");
 	
-	JLabel lblPedidos = new JLabel("Nï¿½mero de pedidos:");
+	JLabel lblPedidos = new JLabel("Número de pedidos:");
 	lblPedidos.setFont(new Font("Sitka Text", Font.PLAIN, 13));
 	lblPedidos.setBounds(42, 175, 145, 22);
 	principal.add(lblPedidos);
@@ -502,7 +502,7 @@ public static void VentanaStats() {
 	principal.add(lblGuardar);
 	
 	JLabel titulo = new JLabel(new ImageIcon("logo.png"));
-	titulo.setText("ESTADï¿½STICAS");
+	titulo.setText("ESTADÍSTICAS");
 	titulo.setFont(new Font("Tahoma", Font.BOLD, 15));
 	titulo.setBounds(120, 5, 185, 55);
 	principal.add(titulo);
@@ -540,8 +540,8 @@ public static void VentanaStats() {
 			info.setFont(new Font("Monospaced", Font.PLAIN, 15));
 			Date f = new Date(System.currentTimeMillis());
 			String fecha = sdf.format(f);
-			String todo = fecha + "\n\n" + "Dinero recaudado: " + txtDinero.getText() + "\n" + "Nï¿½mero de clientes: " 
-			+ txtClientes.getText() + "\n" + "Nï¿½mero de pedidos: " + txtPedidos.getText() + "\n" + "Media de compras: " + txtCompras.getText();
+			String todo = fecha + "\n\n" + "Dinero recaudado: " + txtDinero.getText() + "\n" + "Número de clientes: " 
+			+ txtClientes.getText() + "\n" + "Número de pedidos: " + txtPedidos.getText() + "\n" + "Media de compras: " + txtCompras.getText();
 			info.setText(todo);
 			info.setEditable(false);
 			principal.add(info, BorderLayout.CENTER);

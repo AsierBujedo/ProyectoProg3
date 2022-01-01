@@ -31,7 +31,7 @@ public class BaseDeDatos {
 					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100))");
 			stmt.executeUpdate(
 					"CREATE TABLE COMPRA (MAIL varchar(100) NOT NULL, PRECIO double, TOTAL_PRODS int, FECHA date, FOREIGN KEY (MAIL) REFERENCES USER (MAIL))");
-			stmt.executeUpdate("INSERT INTO USER VALUES (0, 'admin', '1', 1)"); // Fila de prueba para															// la tabla USER
+			stmt.executeUpdate("INSERT INTO USER VALUES (0, 'admin', 'admin@gmail.com', 12345)"); // Fila de prueba para															// la tabla USER
 			VentanaTienda.logger.log(Level.INFO, "Creación de tablas correcta");
 			return true;
 		} catch (SQLException e) {

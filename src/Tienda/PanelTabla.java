@@ -30,7 +30,8 @@ import BD.BaseDeDatos;
 public class PanelTabla extends JPanel {
 	public static ArrayList<DatoParaTabla> datosCesta = new ArrayList<DatoParaTabla>();
 	public static String[] nomColumnasCesta = {};
-	public static JButton realizarCompra = new JButton("Realizar compra");
+	public static JButton realizarCompra;
+	public static JButton vaciarCesta;
 
 	/**
 	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botÃ³n para aÃ±adir productos a la cesta.
@@ -41,7 +42,8 @@ public class PanelTabla extends JPanel {
 	 */
 	public static JPanel getPanelTabla(String[] nomColumnas, ArrayList<DatoParaTabla> datos, Color color) {			
 		JPanel panelTabla = new PanelTabla();
-		panelTabla.setLayout(new BorderLayout());		
+		panelTabla.setLayout(new BorderLayout());
+		
 		CustomTableModel ctm = new CustomTableModel(nomColumnas, datos);
 		JTable tabla = new JTable(ctm);
 		tabla.setOpaque(true);
@@ -95,6 +97,7 @@ public class PanelTabla extends JPanel {
 		// Botón anyadir
 		JButton anyadir = new JButton("Añadir a la cesta", new ImageIcon("add.png"));
 		anyadir.setBorderPainted(false);
+		anyadir.setFocusPainted(false);
 		anyadir.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		anyadir.setForeground(Color.WHITE);
 		anyadir.setBackground(Color.GRAY.brighter());
@@ -102,6 +105,7 @@ public class PanelTabla extends JPanel {
 		// Botón info
 		JButton info = new JButton(new ImageIcon("info.png"));
 		info.setBorderPainted(false);
+		info.setFocusPainted(false);
 		info.setBackground(new Color(88, 101, 242));
 		
 		// MouseListener anyadir
@@ -191,6 +195,7 @@ public class PanelTabla extends JPanel {
 					CustomTableModel ctm = new CustomTableModel(nomColumnasCesta, datosCesta);
 					tablaCesta.setModel(ctm);
 					realizarCompra.setBackground(new Color(92, 156, 180));
+					vaciarCesta.setBackground(new Color(107, 41, 67));
 					
 					VentanaTienda.logger.log(Level.INFO, "Producto con código: " + codigoProducto + " añadido a la cesta");
 				}
@@ -304,6 +309,7 @@ public class PanelTabla extends JPanel {
 		// Botón realizarCompra
 		realizarCompra = new JButton("Realizar compra");
 		realizarCompra.setBorderPainted(false);
+		realizarCompra.setFocusPainted(false);
 		realizarCompra.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		realizarCompra.setForeground(Color.WHITE);
 		realizarCompra.setBackground(Color.GRAY.brighter());
@@ -311,9 +317,18 @@ public class PanelTabla extends JPanel {
 		// Botón eliminarProducto
 		JButton eliminarProducto = new JButton("Eliminar producto");
 		eliminarProducto.setBorderPainted(false);
+		eliminarProducto.setFocusPainted(false);
 		eliminarProducto.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		eliminarProducto.setForeground(Color.WHITE);
 		eliminarProducto.setBackground(Color.GRAY.brighter());
+		
+		// Botón limpiarCesta
+		vaciarCesta = new JButton("Limpiar cesta");
+		vaciarCesta.setBorderPainted(false);
+		vaciarCesta.setFocusPainted(false);
+		vaciarCesta.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		vaciarCesta.setForeground(Color.WHITE);
+		vaciarCesta.setBackground(Color.GRAY.brighter());
 		
 		// MouseListener realizarCompra
 		realizarCompra.addMouseListener(new MouseAdapter() {
@@ -343,8 +358,24 @@ public class PanelTabla extends JPanel {
 						if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
 							eliminarProducto.setBackground(new Color(180, 56, 61));
 						}
-					}
-				});
+			}
+		});
+		
+		// MouseListener limpiarCesta
+		vaciarCesta.addMouseListener(new MouseAdapter() {
+
+			public void mouseEntered(MouseEvent evt) {
+				if (tablaCesta.getRowCount() != 0) {
+					vaciarCesta.setBackground(new Color(107, 41, 67).darker());
+				}
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				if (tablaCesta.getRowCount() != 0) {
+					vaciarCesta.setBackground(new Color(107, 41, 67));
+				}
+			}
+		});
 		
 		// ActionListener realizarCompra
 		realizarCompra.addActionListener(new ActionListener() {
@@ -359,8 +390,12 @@ public class PanelTabla extends JPanel {
 							Cesta.lastCompra.put(BaseDeDatos.getUserMail(VentanaTienda.loginItem.getText()), Cesta.cesta);
 							CustomTableModel model = new CustomTableModel(nomColumnas, new ArrayList<DatoParaTabla>());
 							tablaCesta.setModel(model);
+							tablaCesta.repaint();
 							Cesta.cesta = new ArrayList<Producto>();
 							datosCesta = new ArrayList<DatoParaTabla>();
+							vaciarCesta.setBackground(Color.GRAY.brighter());
+							eliminarProducto.setBackground(Color.GRAY.brighter());
+							realizarCompra.setBackground(Color.GRAY.brighter());
 							BaseDeDatos.addCompra(BaseDeDatos.getUserMail(VentanaTienda.loginItem.getText()));
 							JOptionPane.showMessageDialog(null, "Compra realizada", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 							VentanaTienda.logger.log(Level.INFO, "Compra realizada");
@@ -401,6 +436,7 @@ public class PanelTabla extends JPanel {
 						
 						if (tablaCesta.getRowCount() == 0) {
 							realizarCompra.setBackground(Color.GRAY.brighter());
+							vaciarCesta.setBackground(Color.GRAY.brighter());
 						}
 						
 						VentanaTienda.logger.log(Level.INFO, "Producto con ID: " + ID + " eliminado");
@@ -414,16 +450,46 @@ public class PanelTabla extends JPanel {
 			}
 		});
 		
+		// ActionListener vaciarCesta
+		vaciarCesta.addActionListener(new ActionListener() {
+					
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (tablaCesta.getRowCount() != 0) {
+					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres vaciar la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION) {
+								
+						CustomTableModel model = new CustomTableModel(nomColumnas, new ArrayList<DatoParaTabla>());
+						tablaCesta.setModel(model);
+						tablaCesta.repaint();
+						Cesta.cesta = new ArrayList<Producto>();
+						datosCesta = new ArrayList<DatoParaTabla>();
+						System.out.println(Cesta.cesta);
+						System.out.println(datosCesta);
+						vaciarCesta.setBackground(Color.GRAY.brighter());
+						eliminarProducto.setBackground(Color.GRAY.brighter());
+						realizarCompra.setBackground(Color.GRAY.brighter());
+						VentanaTienda.logger.log(Level.INFO, "Cesta vaciada");
+						JOptionPane.showMessageDialog(null, "Todos los productos han sido eliminados", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "La cesta no se ha vaciado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+					} 
+				}
+						
+						
+			}
+		});
+		
 		// ListSelectionListener tablaCesta
 		tablaCesta.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				eliminarProducto.setBackground(new Color(180, 56, 61));
-				
+				eliminarProducto.setBackground(new Color(180, 56, 61));				
 			}	        
 	    });
 		
+		botoneraComprar.add(vaciarCesta);
 		botoneraComprar.add(eliminarProducto);
 		botoneraComprar.add(realizarCompra);
 		
