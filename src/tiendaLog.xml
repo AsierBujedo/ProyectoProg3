@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2022-01-01T01:47:05.052870100Z</date>
-  <millis>1641001625052</millis>
-  <nanos>870100</nanos>
+  <date>2022-01-01T18:06:09.624376100Z</date>
+  <millis>1641060369624</millis>
+  <nanos>376100</nanos>
   <sequence>0</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Logger inicializado</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.106920200Z</date>
-  <millis>1641001625106</millis>
-  <nanos>920200</nanos>
+  <date>2022-01-01T18:06:09.678425200Z</date>
+  <millis>1641060369678</millis>
+  <nanos>425200</nanos>
   <sequence>1</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>PROPERTIES SUCCESFULLY LOADED</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.362151200Z</date>
-  <millis>1641001625362</millis>
-  <nanos>151200</nanos>
+  <date>2022-01-01T18:06:09.936366700Z</date>
+  <millis>1641060369936</millis>
+  <nanos>366700</nanos>
   <sequence>2</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -38,10 +38,22 @@
   <message>Creación de tablas correcta</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.399184500Z</date>
-  <millis>1641001625399</millis>
-  <nanos>184500</nanos>
+  <date>2022-01-01T18:06:09.959476100Z</date>
+  <millis>1641060369959</millis>
+  <nanos>476100</nanos>
   <sequence>3</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>BD.BaseDeDatos</class>
+  <method>editUserSpecs</method>
+  <thread>1</thread>
+  <message>Se ha actualizado el usuario con MAIL: admin@gmail.com</message>
+</record>
+<record>
+  <date>2022-01-01T18:06:09.993507Z</date>
+  <millis>1641060369993</millis>
+  <nanos>507000</nanos>
+  <sequence>4</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -50,10 +62,10 @@
   <message>Se ha añadido el producto con código: I001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.405565800Z</date>
-  <millis>1641001625405</millis>
-  <nanos>565800</nanos>
-  <sequence>4</sequence>
+  <date>2022-01-01T18:06:09.999624300Z</date>
+  <millis>1641060369999</millis>
+  <nanos>624300</nanos>
+  <sequence>5</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -62,10 +74,10 @@
   <message>Se ha añadido el producto con código: T002</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.410188800Z</date>
-  <millis>1641001625410</millis>
-  <nanos>188800</nanos>
-  <sequence>5</sequence>
+  <date>2022-01-01T18:06:10.004692600Z</date>
+  <millis>1641060370004</millis>
+  <nanos>692600</nanos>
+  <sequence>6</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -74,10 +86,10 @@
   <message>Se ha añadido el producto con código: O001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.416559100Z</date>
-  <millis>1641001625416</millis>
-  <nanos>559100</nanos>
-  <sequence>6</sequence>
+  <date>2022-01-01T18:06:10.010479500Z</date>
+  <millis>1641060370010</millis>
+  <nanos>479500</nanos>
+  <sequence>7</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -86,10 +98,10 @@
   <message>Se ha añadido el producto con código: T001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.421161800Z</date>
-  <millis>1641001625421</millis>
-  <nanos>161800</nanos>
-  <sequence>7</sequence>
+  <date>2022-01-01T18:06:10.016517300Z</date>
+  <millis>1641060370016</millis>
+  <nanos>517300</nanos>
+  <sequence>8</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -98,10 +110,10 @@
   <message>Se ha añadido el producto con código: I002</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.427167800Z</date>
-  <millis>1641001625427</millis>
-  <nanos>167800</nanos>
-  <sequence>8</sequence>
+  <date>2022-01-01T18:06:10.022594600Z</date>
+  <millis>1641060370022</millis>
+  <nanos>594600</nanos>
+  <sequence>9</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -110,10 +122,10 @@
   <message>Se ha añadido el producto con código: P001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.432165900Z</date>
-  <millis>1641001625432</millis>
-  <nanos>165900</nanos>
-  <sequence>9</sequence>
+  <date>2022-01-01T18:06:10.028563300Z</date>
+  <millis>1641060370028</millis>
+  <nanos>563300</nanos>
+  <sequence>10</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -122,10 +134,10 @@
   <message>Se ha añadido el producto con código: Z002</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.438172200Z</date>
-  <millis>1641001625438</millis>
-  <nanos>172200</nanos>
-  <sequence>10</sequence>
+  <date>2022-01-01T18:06:10.034570Z</date>
+  <millis>1641060370034</millis>
+  <nanos>570000</nanos>
+  <sequence>11</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -134,10 +146,10 @@
   <message>Se ha añadido el producto con código: S002</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.443743400Z</date>
-  <millis>1641001625443</millis>
-  <nanos>743400</nanos>
-  <sequence>11</sequence>
+  <date>2022-01-01T18:06:10.040575Z</date>
+  <millis>1641060370040</millis>
+  <nanos>575000</nanos>
+  <sequence>12</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -146,10 +158,10 @@
   <message>Se ha añadido el producto con código: Z001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.449725800Z</date>
-  <millis>1641001625449</millis>
-  <nanos>725800</nanos>
-  <sequence>12</sequence>
+  <date>2022-01-01T18:06:10.046341400Z</date>
+  <millis>1641060370046</millis>
+  <nanos>341400</nanos>
+  <sequence>13</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -158,10 +170,10 @@
   <message>Se ha añadido el producto con código: S001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.454732900Z</date>
-  <millis>1641001625454</millis>
-  <nanos>732900</nanos>
-  <sequence>13</sequence>
+  <date>2022-01-01T18:06:10.051636100Z</date>
+  <millis>1641060370051</millis>
+  <nanos>636100</nanos>
+  <sequence>14</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -170,10 +182,10 @@
   <message>Se ha añadido el producto con código: VC002</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.460739600Z</date>
-  <millis>1641001625460</millis>
-  <nanos>739600</nanos>
-  <sequence>14</sequence>
+  <date>2022-01-01T18:06:10.057345400Z</date>
+  <millis>1641060370057</millis>
+  <nanos>345400</nanos>
+  <sequence>15</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -182,10 +194,10 @@
   <message>Se ha añadido el producto con código: L001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.465745700Z</date>
-  <millis>1641001625465</millis>
-  <nanos>745700</nanos>
-  <sequence>15</sequence>
+  <date>2022-01-01T18:06:10.062581500Z</date>
+  <millis>1641060370062</millis>
+  <nanos>581500</nanos>
+  <sequence>16</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -194,10 +206,10 @@
   <message>Se ha añadido el producto con código: VJ001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.471225Z</date>
-  <millis>1641001625471</millis>
-  <nanos>225000</nanos>
-  <sequence>16</sequence>
+  <date>2022-01-01T18:06:10.069038900Z</date>
+  <millis>1641060370069</millis>
+  <nanos>38900</nanos>
+  <sequence>17</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -206,10 +218,10 @@
   <message>Se ha añadido el producto con código: L002</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.480229500Z</date>
-  <millis>1641001625480</millis>
-  <nanos>229500</nanos>
-  <sequence>17</sequence>
+  <date>2022-01-01T18:06:10.074039300Z</date>
+  <millis>1641060370074</millis>
+  <nanos>39300</nanos>
+  <sequence>18</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -218,10 +230,10 @@
   <message>Se ha añadido el producto con código: VC001</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.890817200Z</date>
-  <millis>1641001625890</millis>
-  <nanos>817200</nanos>
-  <sequence>18</sequence>
+  <date>2022-01-01T18:06:10.486087900Z</date>
+  <millis>1641060370486</millis>
+  <nanos>87900</nanos>
+  <sequence>19</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda</class>
@@ -230,10 +242,10 @@
   <message>Ventana inicializada</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:05.890817200Z</date>
-  <millis>1641001625890</millis>
-  <nanos>817200</nanos>
-  <sequence>19</sequence>
+  <date>2022-01-01T18:06:10.507106700Z</date>
+  <millis>1641060370507</millis>
+  <nanos>106700</nanos>
+  <sequence>20</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda$9</class>
@@ -242,34 +254,34 @@
   <message>Abriendo ventana. Abriendo conexión con la base de datos</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:11.059914500Z</date>
-  <millis>1641001631059</millis>
-  <nanos>914500</nanos>
-  <sequence>20</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.VentanaTienda$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Inicio de sesion</message>
-</record>
-<record>
-  <date>2022-01-01T01:47:46.308652800Z</date>
-  <millis>1641001666308</millis>
-  <nanos>652800</nanos>
+  <date>2022-01-01T18:06:11.541099600Z</date>
+  <millis>1641060371541</millis>
+  <nanos>99600</nanos>
   <sequence>21</sequence>
   <logger>logger</logger>
   <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>addUser</method>
+  <class>Tienda.VentanaTienda$5</class>
+  <method>actionPerformed</method>
   <thread>27</thread>
-  <message>Nuevo usuario: ikerlop00@gmail.com, ID: 1. Añadido correctamente</message>
+  <message>Inicio de sesion</message>
 </record>
 <record>
-  <date>2022-01-01T01:47:49.919427400Z</date>
-  <millis>1641001669919</millis>
-  <nanos>427400</nanos>
+  <date>2022-01-01T18:06:42.713894300Z</date>
+  <millis>1641060402713</millis>
+  <nanos>894300</nanos>
   <sequence>22</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>Tienda.VentanaTienda$6</class>
+  <method>actionPerformed</method>
+  <thread>27</thread>
+  <message>Cerrado de sesion</message>
+</record>
+<record>
+  <date>2022-01-01T18:06:43.792007700Z</date>
+  <millis>1641060403792</millis>
+  <nanos>7700</nanos>
+  <sequence>23</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda$5</class>
@@ -278,358 +290,10 @@
   <message>Inicio de sesion</message>
 </record>
 <record>
-  <date>2022-01-01T01:48:20.086933200Z</date>
-  <millis>1641001700086</millis>
-  <nanos>933200</nanos>
-  <sequence>23</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: O001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:20.247314400Z</date>
-  <millis>1641001700247</millis>
-  <nanos>314400</nanos>
+  <date>2022-01-01T18:07:24.944782600Z</date>
+  <millis>1641060444944</millis>
+  <nanos>782600</nanos>
   <sequence>24</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: O001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:20.383615800Z</date>
-  <millis>1641001700383</millis>
-  <nanos>615800</nanos>
-  <sequence>25</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: O001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:20.506965200Z</date>
-  <millis>1641001700506</millis>
-  <nanos>965200</nanos>
-  <sequence>26</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: O001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:20.664000400Z</date>
-  <millis>1641001700664</millis>
-  <nanos>400</nanos>
-  <sequence>27</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: O001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:24.599980800Z</date>
-  <millis>1641001704599</millis>
-  <nanos>980800</nanos>
-  <sequence>28</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: S002 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:24.753427600Z</date>
-  <millis>1641001704753</millis>
-  <nanos>427600</nanos>
-  <sequence>29</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: S002 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:24.904713100Z</date>
-  <millis>1641001704904</millis>
-  <nanos>713100</nanos>
-  <sequence>30</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: S002 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:25.902610500Z</date>
-  <millis>1641001705902</millis>
-  <nanos>610500</nanos>
-  <sequence>31</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: Z001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:26.041947900Z</date>
-  <millis>1641001706041</millis>
-  <nanos>947900</nanos>
-  <sequence>32</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: Z001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:26.179641200Z</date>
-  <millis>1641001706179</millis>
-  <nanos>641200</nanos>
-  <sequence>33</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: Z001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:27.616091900Z</date>
-  <millis>1641001707616</millis>
-  <nanos>91900</nanos>
-  <sequence>34</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: VJ001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:27.750004700Z</date>
-  <millis>1641001707750</millis>
-  <nanos>4700</nanos>
-  <sequence>35</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: VJ001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:27.888348200Z</date>
-  <millis>1641001707888</millis>
-  <nanos>348200</nanos>
-  <sequence>36</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: VJ001 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:29.063976800Z</date>
-  <millis>1641001709063</millis>
-  <nanos>976800</nanos>
-  <sequence>37</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: L002 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:29.209157Z</date>
-  <millis>1641001709209</millis>
-  <nanos>157000</nanos>
-  <sequence>38</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: L002 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:29.349164700Z</date>
-  <millis>1641001709349</millis>
-  <nanos>164700</nanos>
-  <sequence>39</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: L002 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:29.479553700Z</date>
-  <millis>1641001709479</millis>
-  <nanos>553700</nanos>
-  <sequence>40</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$5</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Producto con código: L002 añadido a la cesta</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:32.437610200Z</date>
-  <millis>1641001712437</millis>
-  <nanos>610200</nanos>
-  <sequence>41</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>addCompra</method>
-  <thread>27</thread>
-  <message>Nueva compra: ikerlop00@gmail.com. Añadida correctamente</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:33.102724500Z</date>
-  <millis>1641001713102</millis>
-  <nanos>724500</nanos>
-  <sequence>42</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>Tienda.PanelTabla$12</class>
-  <method>actionPerformed</method>
-  <thread>27</thread>
-  <message>Compra realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:38.695347400Z</date>
-  <millis>1641001718695</millis>
-  <nanos>347400</nanos>
-  <sequence>43</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getPrecioCompras</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:38.701365700Z</date>
-  <millis>1641001718701</millis>
-  <nanos>365700</nanos>
-  <sequence>44</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getTotalClientes</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:38.702366500Z</date>
-  <millis>1641001718702</millis>
-  <nanos>366500</nanos>
-  <sequence>45</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getNumeroCompras</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:53.167790600Z</date>
-  <millis>1641001733167</millis>
-  <nanos>790600</nanos>
-  <sequence>46</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getPrecioCompras</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:53.168796800Z</date>
-  <millis>1641001733168</millis>
-  <nanos>796800</nanos>
-  <sequence>47</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getTotalClientes</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:48:53.169800800Z</date>
-  <millis>1641001733169</millis>
-  <nanos>800800</nanos>
-  <sequence>48</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getNumeroCompras</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:49:26.113951900Z</date>
-  <millis>1641001766113</millis>
-  <nanos>951900</nanos>
-  <sequence>49</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getPrecioCompras</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:49:26.115955300Z</date>
-  <millis>1641001766115</millis>
-  <nanos>955300</nanos>
-  <sequence>50</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getTotalClientes</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:49:26.116965700Z</date>
-  <millis>1641001766116</millis>
-  <nanos>965700</nanos>
-  <sequence>51</sequence>
-  <logger>logger</logger>
-  <level>INFO</level>
-  <class>BD.BaseDeDatos</class>
-  <method>getNumeroCompras</method>
-  <thread>27</thread>
-  <message>Operación en la base de datos realizada</message>
-</record>
-<record>
-  <date>2022-01-01T01:49:35.760214500Z</date>
-  <millis>1641001775760</millis>
-  <nanos>214500</nanos>
-  <sequence>52</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>BD.BaseDeDatos</class>
@@ -638,10 +302,10 @@
   <message>Conexión cerrada con la base de datos</message>
 </record>
 <record>
-  <date>2022-01-01T01:49:35.761217700Z</date>
-  <millis>1641001775761</millis>
-  <nanos>217700</nanos>
-  <sequence>53</sequence>
+  <date>2022-01-01T18:07:24.945785500Z</date>
+  <millis>1641060444945</millis>
+  <nanos>785500</nanos>
+  <sequence>25</sequence>
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda$9</class>

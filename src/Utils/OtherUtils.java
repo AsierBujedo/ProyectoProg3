@@ -19,6 +19,7 @@ import java.util.logging.Level;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -164,7 +165,7 @@ public class OtherUtils {
 	
 	
 	
-	public static JButton modifyButton(JButton boton, Color Foreground, Color Background) {
+	public static JButton modifyButton(JButton boton, Color Foreground, Color Background, Color BackgroundWhenEnetered) {
 		boton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		boton.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		boton.setForeground(Foreground);
@@ -172,47 +173,87 @@ public class OtherUtils {
 		boton.setFocusPainted(false);
 		boton.setContentAreaFilled(false);
 		boton.setBackground(Background);
+		if (boton.getText() == "Registro") {
+			boton.setOpaque(true);
+		}
 
 		boton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
-				boton.setOpaque(true);
-				boton.setContentAreaFilled(true);
-				boton.setBackground(new Color(225, 225, 225));
+				if (boton.getText() != "Registro") {
+					boton.setOpaque(true);
+					boton.setContentAreaFilled(true);
+				}
+				boton.setBackground(BackgroundWhenEnetered);
 			}
 
 			public void mouseExited(MouseEvent evt) {
-				boton.setOpaque(false);
-				boton.setContentAreaFilled(false);
+				if (boton.getText() != "Registro") {
+					boton.setOpaque(false);
+					boton.setContentAreaFilled(false);
+				}
+				boton.setBackground(new Color(194,194,194));
 			}
 		});
 		return boton;
 	}
 	
 	public static JTextField modifyTextField(JTextField field) {
-		Border lineT = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-		Border emptyT = new EmptyBorder(0, 5, 0, 0);
-		CompoundBorder borderT = new CompoundBorder(lineT, emptyT);
-		field.setBorder(borderT);
+		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+		Border empty = new EmptyBorder(0, 5, 0, 0);
+		CompoundBorder border = new CompoundBorder(line, empty);
+		field.setBorder(border);
 		field.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		field.setForeground(Color.GRAY);
 		
 		field.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				Border lineU = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-				Border emptyU = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-				field.setBorder(borderU);
+				Border line = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+				Border empty = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder border = new CompoundBorder(line, empty);
+				field.setBorder(border);
 				field.setForeground(Color.BLACK);
 				super.focusGained(e);
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyU = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-				field.setBorder(borderU);
+				Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border empty = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder border = new CompoundBorder(line, empty);
+				field.setBorder(border);
+				field.setForeground(Color.GRAY);
+				super.focusLost(e);
+			}
+		});
+		return field;
+	}
+	
+	public static JPasswordField modifyPasswordField(JPasswordField field) {
+		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+		Border empty = new EmptyBorder(0, 5, 0, 0);
+		CompoundBorder border = new CompoundBorder(line, empty);
+		field.setBorder(border);
+		field.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		field.setForeground(Color.GRAY);
+		
+		field.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				Border line = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+				Border empty = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder border = new CompoundBorder(line, empty);
+				field.setBorder(border);
+				field.setForeground(Color.BLACK);
+				super.focusGained(e);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border empty = new EmptyBorder(0, 5, 0, 0);
+				CompoundBorder border = new CompoundBorder(line, empty);
+				field.setBorder(border);
 				field.setForeground(Color.GRAY);
 				super.focusLost(e);
 			}

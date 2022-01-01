@@ -13,9 +13,6 @@ import java.util.Vector;
 import java.util.logging.Level;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import BD.BaseDeDatos;
@@ -59,15 +56,6 @@ public class OtherFrames {
 			nombreUsuario.setText("");
 			VentanaTienda.logger.log(Level.SEVERE, "Error al obtener nombre de usuario");
 		}
-		
-//		String mail = BaseDeDatos.getUserMail(Login.usertf.getText());
-//		System.out.println(mail);
-//		if (!mail.equals("Error")) {
-//			mailUsuario.setText(mail);
-//		} else {
-//			mailUsuario.setText("");
-//			VentanaTienda.logger.log(Level.SEVERE, "Error al obtener mail");
-//		}
 		
 		// Botón contra
 		JButton contra = new JButton("Cambiar contraseña");
@@ -119,7 +107,6 @@ public class OtherFrames {
 		botonera.add(historial);
 		frame.add(iconoUsuario);
 		frame.add(nombreUsuario);
-//		frame.add(mailUsuario);
 		frame.add(botonera);
 		
 		// Ventana para cambio de contraseña --------------------------------------------------
@@ -146,92 +133,14 @@ public class OtherFrames {
 				JLabel contraConfirmar = new JLabel("Confirmar contraseña: ");
 				contraConfirmar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				
-				JPasswordField contraActualtf = new JPasswordField( 20);
-				Border lineA = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyA = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderA = new CompoundBorder(lineA, emptyA);
-				contraActualtf.setBorder(borderA);
-				contraActualtf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JPasswordField contraActualtf = new JPasswordField(20);
+				contraActualtf = OtherUtils.modifyPasswordField(contraActualtf);
 				
 				JPasswordField contraNuevatf = new JPasswordField(20);
-				Border lineN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyN = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderN = new CompoundBorder(lineN, emptyN);
-				contraNuevatf.setBorder(borderN);
-				contraNuevatf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				contraNuevatf = OtherUtils.modifyPasswordField(contraNuevatf);
 				
 				JPasswordField contraConfirmartf = new JPasswordField(20);
-				Border lineC = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyC = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderC = new CompoundBorder(lineC, emptyC);
-				contraConfirmartf.setBorder(borderC);
-				contraConfirmartf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				
-				// FocusListener contraActualtf
-				contraActualtf.addFocusListener(new FocusAdapter() {
-					
-					@Override
-					public void focusGained(FocusEvent e) {
-						Border lineA = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-						Border emptyA = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderA = new CompoundBorder(lineA, emptyA);
-						contraActualtf.setBorder(borderA);
-						super.focusGained(e);
-						
-					}
-					@Override
-					public void focusLost(FocusEvent e) {
-						Border lineA = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-						Border emptyA = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderA = new CompoundBorder(lineA, emptyA);
-						contraActualtf.setBorder(borderA);
-						super.focusLost(e);						
-					}
-				});
-				
-				// FocusListener contraNuevatf
-				contraNuevatf.addFocusListener(new FocusAdapter() {
-					
-					@Override
-					public void focusGained(FocusEvent e) {
-						Border lineN = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-						Border emptyN = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderN = new CompoundBorder(lineN, emptyN);
-						contraNuevatf.setBorder(borderN);
-						super.focusGained(e);
-						
-					}
-					@Override
-					public void focusLost(FocusEvent e) {
-						Border lineN = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-						Border emptyN = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderN = new CompoundBorder(lineN, emptyN);
-						contraNuevatf.setBorder(borderN);
-						super.focusLost(e);						
-					}
-				});
-				
-				// FocusListener contraConfirmartf
-				contraConfirmartf.addFocusListener(new FocusAdapter() {
-					
-					@Override
-					public void focusGained(FocusEvent e) {
-						Border lineC = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-						Border emptyC = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderC = new CompoundBorder(lineC, emptyC);
-						contraConfirmartf.setBorder(borderC);
-						super.focusGained(e);
-						
-					}
-					@Override
-					public void focusLost(FocusEvent e) {
-						Border lineC = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-						Border emptyC = new EmptyBorder(0, 5, 0, 0);
-						CompoundBorder borderC = new CompoundBorder(lineC, emptyC);
-						contraConfirmartf.setBorder(borderC);
-						super.focusLost(e);						
-					}
-				});
+				contraConfirmartf = OtherUtils.modifyPasswordField(contraConfirmartf);
 				
 				// Botón cambiar
 				JButton cambiar = new JButton("Cambiar contraseña");
@@ -547,7 +456,7 @@ public static void VentanaStats() {
 			principal.add(info, BorderLayout.CENTER);
 				
 			JButton btnConfirmar = new JButton("Confirmar");	
-			principal.add(OtherUtils.modifyButton(btnConfirmar, new Color(67, 67, 67), new Color(194, 194, 194)), BorderLayout.SOUTH);
+			principal.add(OtherUtils.modifyButton(btnConfirmar, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225)), BorderLayout.SOUTH);
 			
 			btnConfirmar.addActionListener(new ActionListener() {
 				

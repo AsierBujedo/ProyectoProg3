@@ -13,9 +13,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import javax.swing.*;
 import javax.swing.JFormattedTextField.AbstractFormatter;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -56,70 +53,18 @@ public class Login {
 		pass.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		
 		usertf = new JTextField(20);
-		Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-		Border emptyU = new EmptyBorder(0, 5, 0, 0);
-		CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-		usertf.setBorder(borderU);
-		usertf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		usertf = OtherUtils.modifyTextField(usertf);
 		
 		passtf = new JPasswordField(20);
-		Border lineP = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-		Border emptyP = new EmptyBorder(0, 5, 0, 0);
-		CompoundBorder borderP = new CompoundBorder(lineP, emptyP);
-		passtf.setBorder(borderP);
-		passtf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		
-		// FocusListener usertf
-		usertf.addFocusListener(new FocusAdapter() {
-			
-			@Override
-			public void focusGained(FocusEvent e) {
-				Border lineU = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-				Border emptyU = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-				usertf.setBorder(borderU);
-				super.focusGained(e);			
-			}
-			
-			@Override
-			public void focusLost(FocusEvent e) {
-				Border lineU = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyU = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderU = new CompoundBorder(lineU, emptyU);
-				usertf.setBorder(borderU);
-				super.focusLost(e);						
-			}
-		});
-		
-		// FocusListener passtf
-		passtf.addFocusListener(new FocusAdapter() {
-			
-			@Override
-			public void focusGained(FocusEvent e) {
-				Border lineP = BorderFactory.createLineBorder(new Color(20,115,191), 2);
-				Border emptyP = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderP = new CompoundBorder(lineP, emptyP);
-				passtf.setBorder(borderP);
-				super.focusGained(e);
-				
-			}
-			@Override
-			public void focusLost(FocusEvent e) {
-				Border lineP = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyP = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderP = new CompoundBorder(lineP, emptyP);
-				passtf.setBorder(borderP);
-				super.focusLost(e);						
-			}
-		});
+		passtf = OtherUtils.modifyPasswordField(passtf);
 		
 		// Botón log
 		JButton log = new JButton("Iniciar sesion");
-		log = OtherUtils.modifyButton(log, new Color(67, 67, 67), new Color(194, 194, 194));
+		log = OtherUtils.modifyButton(log, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
 		
 		// Botón regbutton
 		JButton regbutton = new JButton("Registro");
-		regbutton = OtherUtils.modifyButton(regbutton, new Color(67, 67, 67), new Color(194, 194, 194));
+		regbutton = OtherUtils.modifyButton(regbutton, new Color(67, 67, 67), new Color(194, 194, 194), new Color(170,170,170));
 				
 		GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -242,11 +187,7 @@ public class Login {
 				usertf = OtherUtils.modifyTextField(usertf);
 				
 				JPasswordField passtf = new JPasswordField(20);
-				Border lineP = BorderFactory.createLineBorder(new Color(194,194,194), 2);
-				Border emptyP = new EmptyBorder(0, 5, 0, 0);
-				CompoundBorder borderP = new CompoundBorder(lineP, emptyP);
-				passtf.setBorder(borderP);
-				passtf.setFont(new Font("Segoe UI", Font.PLAIN, 15)); // Mirar
+				passtf = OtherUtils.modifyPasswordField(passtf);
 				
 				usernametf = new JTextField(20);
 				usernametf = OtherUtils.modifyTextField(usernametf);
@@ -293,7 +234,7 @@ public class Login {
 				datePicker.setForeground(Color.GRAY);
 				// Botón reg
 				JButton reg = new JButton("Registrarse");
-				reg = OtherUtils.modifyButton(reg, new Color(67, 67, 67), new Color(194, 194, 194));
+				reg = OtherUtils.modifyButton(reg, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
 
 				// ActionListener reg
 				reg.addActionListener(new ActionListener() {
