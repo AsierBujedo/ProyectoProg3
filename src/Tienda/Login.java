@@ -29,6 +29,7 @@ public class Login {
 	public static JTextField dirtf;
 	public static JDatePickerImpl datePicker;
 	
+	
 	public void doLogin() {
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
@@ -186,7 +187,7 @@ public class Login {
 				usertf = new JTextField(20);
 				usertf = OtherUtils.modifyTextField(usertf);
 				
-				JPasswordField passtf = new JPasswordField(20);
+				passtf = new JPasswordField(20);
 				passtf = OtherUtils.modifyPasswordField(passtf);
 				
 				usernametf = new JTextField(20);
