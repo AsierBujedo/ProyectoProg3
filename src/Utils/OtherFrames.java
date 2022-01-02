@@ -330,7 +330,7 @@ public static void VentanaStats() {
 	
 	JTextField txtDinero = new JTextField();
 	txtDinero.setEditable(false);
-	txtDinero.setFont(new Font("Tahoma", Font.BOLD, 10));
+	txtDinero.setFont(new Font("Tahoma", Font.BOLD, 12));
 	txtDinero.setBounds(185, 80, 230, 30);
 	principal.add(txtDinero);
 	txtDinero.setColumns(10);
@@ -345,7 +345,7 @@ public static void VentanaStats() {
 	
 	JTextField txtClientes = new JTextField();
 	txtClientes.setEditable(false);
-	txtClientes.setFont(new Font("Tahoma", Font.BOLD, 10));
+	txtClientes.setFont(new Font("Tahoma", Font.BOLD, 12));
 	txtClientes.setColumns(10);
 	txtClientes.setBorder(new RoundedBorder(7));
 	txtClientes.setBounds(185, 125, 230, 30);
@@ -360,7 +360,7 @@ public static void VentanaStats() {
 	
 	JTextField txtPedidos = new JTextField();
 	txtPedidos.setEditable(false);
-	txtPedidos.setFont(new Font("Tahoma", Font.BOLD, 10));
+	txtPedidos.setFont(new Font("Tahoma", Font.BOLD, 12));
 	txtPedidos.setColumns(10);
 	txtPedidos.setBorder(new RoundedBorder(7));
 	txtPedidos.setBounds(185, 167, 230, 30);
@@ -375,7 +375,7 @@ public static void VentanaStats() {
 	
 	JTextField txtCompras = new JTextField();
 	txtCompras.setEditable(false);
-	txtCompras.setFont(new Font("Tahoma", Font.BOLD, 10));
+	txtCompras.setFont(new Font("Tahoma", Font.BOLD, 12));
 	txtCompras.setColumns(10);
 	txtCompras.setBorder(new RoundedBorder(7));
 	txtCompras.setBounds(185, 210, 230, 30);

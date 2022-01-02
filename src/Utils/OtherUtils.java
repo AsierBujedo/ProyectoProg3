@@ -2,11 +2,13 @@ package Utils;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -179,6 +181,7 @@ public class OtherUtils {
 
 		boton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
+				boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				if (boton.getText() != "Registro") {
 					boton.setOpaque(true);
 					boton.setContentAreaFilled(true);
@@ -225,6 +228,15 @@ public class OtherUtils {
 				field.setForeground(Color.GRAY);
 				super.focusLost(e);
 			}
+		});
+		
+		field.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				field.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+			}
+			
 		});
 		return field;
 	}
