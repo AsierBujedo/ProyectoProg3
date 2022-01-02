@@ -24,6 +24,9 @@ import Tienda.Producto;
 
 public class OtherFrames {
 	private static double precio = 0.0;
+	public static JPasswordField contraActualtf;
+	public static JPasswordField contraNuevatf;
+	public static JPasswordField contraConfirmartf;
 
 	// Acceso al área personal
 	public static void areaCliente() {
@@ -133,13 +136,13 @@ public class OtherFrames {
 				JLabel contraConfirmar = new JLabel("Confirmar contraseña: ");
 				contraConfirmar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				
-				JPasswordField contraActualtf = new JPasswordField(20);
+				contraActualtf = new JPasswordField(20);
 				contraActualtf = OtherUtils.modifyPasswordField(contraActualtf);
 				
-				JPasswordField contraNuevatf = new JPasswordField(20);
+				contraNuevatf = new JPasswordField(20);
 				contraNuevatf = OtherUtils.modifyPasswordField(contraNuevatf);
 				
-				JPasswordField contraConfirmartf = new JPasswordField(20);
+				contraConfirmartf = new JPasswordField(20);
 				contraConfirmartf = OtherUtils.modifyPasswordField(contraConfirmartf);
 				
 				// Botón cambiar

@@ -213,6 +213,7 @@ public class BaseDeDatos {
 	 * @param DIR
 	 * @return true, false
 	 */
+	
 	public static boolean editUserSpecs(String MAIL, int TELF, Genero SEXO, Date NACIMIENTO, String DIR) {
 		try {
 			pstmt = con.prepareStatement("UPDATE USER SET " + "TELF" + "= " + TELF + " WHERE MAIL = '" + MAIL+"';");
