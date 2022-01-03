@@ -242,8 +242,8 @@ public class Login {
 				reg.addActionListener(new ActionListener() {
 
 					@Override
-					public void actionPerformed(ActionEvent e) { // ASIER, ÚLTIMA COMPROBACIÓN DE ESTE IF 
-						if (usertf.getText().equals("Email") || String.valueOf(passtf.getPassword()).equals("Contraseña") || usernametf.getText().equals("Nombre de usuario") || telftf.getText().equals("Número de teléfono") || genjcb.getSelectedIndex() == -1 || dirtf.getText().equals("Dirección") || datePicker.getJFormattedTextField().getText() == "") {
+					public void actionPerformed(ActionEvent e) { 
+						if (usertf.getText().equals("Email") || String.valueOf(passtf.getPassword()).equals("Contraseña") || usernametf.getText().equals("Nombre de usuario") || telftf.getText().equals("Número de teléfono") || genjcb.getSelectedIndex() == -1 || dirtf.getText().equals("Dirección") || datePicker.getJFormattedTextField().getText().isBlank()) {
 							JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);		
 						} else {
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
