@@ -33,7 +33,7 @@ public class OtherFrames {
 		frame.getContentPane().setBackground(Color.WHITE);
 
 		JPanel botonera = new JPanel();
-		botonera.setLayout(new GridLayout(2, 1));
+		botonera.setLayout(new GridLayout(3, 1));
 		botonera.setBackground(new Color(246, 246, 246));
 
 		JLabel iconoUsuario = new JLabel();
@@ -72,10 +72,21 @@ public class OtherFrames {
 		historial.setFocusPainted(false);
 		historial.setOpaque(false);
 		historial.setContentAreaFilled(false);
+		
+		// Botón informacion
+		JButton informacion = new JButton("Información de la cuenta");
+		informacion.setAlignmentX(Component.CENTER_ALIGNMENT);
+		informacion.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		informacion.setForeground(new Color(67, 67, 67));
+		informacion.setBorderPainted(false);
+		informacion.setFocusPainted(false);
+		informacion.setOpaque(false);
+		informacion.setContentAreaFilled(false);
 
 		// MouseListener contra
 		contra.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
+				contra.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				contra.setOpaque(true);
 				contra.setContentAreaFilled(true);
 				contra.setBackground(new Color(225, 225, 225));
@@ -90,6 +101,7 @@ public class OtherFrames {
 		// MouseListener historial
 		historial.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
+				historial.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				historial.setOpaque(true);
 				historial.setContentAreaFilled(true);
 				historial.setBackground(new Color(225, 225, 225));
@@ -100,9 +112,25 @@ public class OtherFrames {
 				historial.setContentAreaFilled(false);
 			}
 		});
+		
+		// MouseListener historial
+		informacion.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
+				informacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				informacion.setOpaque(true);
+				informacion.setContentAreaFilled(true);
+				informacion.setBackground(new Color(225, 225, 225));
+			}
+
+			public void mouseExited(MouseEvent evt) {
+				informacion.setOpaque(false);
+				informacion.setContentAreaFilled(false);
+			}
+		});
 
 		botonera.add(contra);
 		botonera.add(historial);
+		botonera.add(informacion);
 		frame.add(iconoUsuario);
 		frame.add(nombreUsuario);
 		frame.add(botonera);
@@ -290,9 +318,19 @@ public class OtherFrames {
 				}
 			}
 		});
+		
+		// Ventana para la informacion de la cuenta --------------------------------------------------
+		informacion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Aqui iria la VentaInfo que me falta por terminar
+				
+			}
+		});
 
 		frame.setTitle("Area cliente");
-		frame.setSize(300, 250);
+		frame.setSize(300, 270);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);

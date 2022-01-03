@@ -33,7 +33,7 @@ public class BaseDeDatos {
 					"CREATE TABLE COMPRA (MAIL varchar(100) NOT NULL, PRECIO double, TOTAL_PRODS int, FECHA date, FOREIGN KEY (MAIL) REFERENCES USER (MAIL))");
 			stmt.executeUpdate("INSERT INTO USER(USER_ID, USERNAME, MAIL, PASS) VALUES (0, 'admin', 'admin@gmail.com', 12345)"); // Fila de prueba para	la tabla USER														
 			VentanaTienda.logger.log(Level.INFO, "Creación de tablas correcta");
-			BaseDeDatos.editUserSpecs("admin@gmail.com", 666666666, Genero.MASCULINO, new Date(System.currentTimeMillis()), "Avda de Las Universidades 24, 48007, Bilbao, Bizkaia");
+			BaseDeDatos.editUserSpecs("admin@gmail.com", "admin", 666666666, Genero.MASCULINO, new Date(System.currentTimeMillis()), "Avda de Las Universidades 24, 48007, Bilbao, Bizkaia");
 			return true;
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
@@ -207,9 +207,10 @@ public class BaseDeDatos {
 			return false;
 		}
 	}
-	/**Metodo que edita varios atributos de los Usuarios, entre ellos: TELF, SEXO, NACIMIENTO Y LA DIRECCION.
+	/**Metodo que edita varios atributos de los Usuarios, entre ellos: USERNAME, TELF, SEXO, NACIMIENTO Y LA DIRECCION.
 	 * 
 	 * @param MAIL
+	 * @param USERNAME
 	 * @param TELF
 	 * @param SEXO
 	 * @param NACIMIENTO
@@ -217,8 +218,10 @@ public class BaseDeDatos {
 	 * @return true, false
 	 */
 	
-	public static boolean editUserSpecs(String MAIL, int TELF, Genero GENERO, Date NACIMIENTO, String DIR) {
+	public static boolean editUserSpecs(String MAIL, String USERNAME, int TELF, Genero GENERO, Date NACIMIENTO, String DIR) {
 		try {
+			pstmt = con.prepareStatement("UPDATE USER SET " + "USERNAME" + "= '" + USERNAME + "' WHERE MAIL = '" + MAIL+"';");
+			pstmt.executeUpdate();
 			pstmt = con.prepareStatement("UPDATE USER SET " + "TELF" + "= " + TELF + " WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement("UPDATE USER SET " + "GENERO" + "= '" + GENERO.toString() + "' WHERE MAIL = '" + MAIL+"';");
