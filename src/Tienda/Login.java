@@ -49,16 +49,16 @@ public class Login {
 		register.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		JLabel question = new JLabel("¿Ya tienes una cuenta?");
 		question.setFont(new Font("Segoe UI", Font.BOLD, 13));
-		JLabel mail = new JLabel("Email: ");
+		JLabel mail = new JLabel("Email ");
 		mail.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		JLabel pass = new JLabel("Contraseña: ");
+		JLabel pass = new JLabel("Contraseña ");
 		pass.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		
 		usertf = new JTextField(20);
-		usertf = OtherUtils.modifyTextField(usertf);
+		usertf = OtherUtils.modifyTextField(usertf, "Email");
 		
 		passtflog = new JPasswordField(20);
-		passtflog = OtherUtils.modifyPasswordField(passtflog);
+		passtflog = OtherUtils.modifyPasswordField(passtflog, "Contraseña");
 		
 		// Botón log
 		JButton log = new JButton("Iniciar sesion");
@@ -162,7 +162,6 @@ public class Login {
 						loginlabel.setForeground(Color.BLACK);
 					}
 					
-					// Asegurar que se hace correctamente
 					public void mouseClicked(MouseEvent e) {
 						frameReg.dispose();
 						doLogin();
@@ -170,39 +169,39 @@ public class Login {
 					}
 				});
 				
-				JLabel mail = new JLabel("Email: ");
-				mail.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel pass = new JLabel("Contraseña: ");
-				pass.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel username = new JLabel("Nombre de usuario: ");
-				username.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel telf = new JLabel("Número de teléfono");
-				telf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel gen = new JLabel("Género: ");
-				gen.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel fechanac = new JLabel("Fecha de nacimiento");
-				fechanac.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel dir = new JLabel("Dirección: ");
-				dir.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+				JLabel mail = new JLabel("Email * ");
+				mail = OtherUtils.JLabelWithPopup(mail);		
+				JLabel pass = new JLabel("Contraseña * ");
+				pass = OtherUtils.JLabelWithPopup(pass);
+				JLabel username = new JLabel("Nombre de usuario * ");
+				username = OtherUtils.JLabelWithPopup(username);
+				JLabel telf = new JLabel("Número de teléfono *");
+				telf = OtherUtils.JLabelWithPopup(telf);
+				JLabel gen = new JLabel("Género * ");
+				gen = OtherUtils.JLabelWithPopup(gen);
+				JLabel fechanac = new JLabel("Fecha de nacimiento *");
+				fechanac = OtherUtils.JLabelWithPopup(fechanac);
+				JLabel dir = new JLabel("Dirección * ");
+				dir = OtherUtils.JLabelWithPopup(dir);
 				
 				usertf = new JTextField(20);
-				usertf = OtherUtils.modifyTextField(usertf);
+				usertf = OtherUtils.modifyTextField(usertf, "Email");
 				
 				passtf = new JPasswordField(20);
-				passtf = OtherUtils.modifyPasswordField(passtf);
+				passtf = OtherUtils.modifyPasswordField(passtf, "Contraseña");
 				
 				usernametf = new JTextField(20);
-				usernametf = OtherUtils.modifyTextField(usernametf);
+				usernametf = OtherUtils.modifyTextField(usernametf, "Nombre de usuario");
 				
 				telftf = new JTextField(20);
-				telftf = OtherUtils.modifyTextField(telftf);
+				telftf = OtherUtils.modifyTextField(telftf, "Número de teléfono");
 				
 				genjcb = new JComboBox<>(Genero.values());
 				genjcb.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				genjcb.setBackground(Color.WHITE);
 				
 				dirtf = new JTextField(20);
-				dirtf = OtherUtils.modifyTextField(dirtf);
+				dirtf = OtherUtils.modifyTextField(dirtf, "Dirección");
 				
 				//Implemantación del calendario
 				UtilDateModel model = new UtilDateModel();
@@ -234,6 +233,7 @@ public class Login {
 				datePicker.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				datePicker.setBackground(Color.WHITE);
 				datePicker.setForeground(Color.GRAY);
+				
 				// Botón reg
 				JButton reg = new JButton("Registrarse");
 				reg = OtherUtils.modifyButton(reg, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
@@ -242,8 +242,8 @@ public class Login {
 				reg.addActionListener(new ActionListener() {
 
 					@Override
-					public void actionPerformed(ActionEvent e) {
-						if (usertf.getText().isBlank() || usernametf.getText().isBlank() || String.valueOf(passtf.getPassword()).isBlank()) {
+					public void actionPerformed(ActionEvent e) { // ASIER, ÚLTIMA COMPROBACIÓN DE ESTE IF 
+						if (usertf.getText().equals("Email") || String.valueOf(passtf.getPassword()).equals("Contraseña") || usernametf.getText().equals("Nombre de usuario") || telftf.getText().equals("Número de teléfono") || genjcb.getSelectedIndex() == -1 || dirtf.getText().equals("Dirección") || datePicker.getJFormattedTextField().getText() == "") {
 							JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);		
 						} else {
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");

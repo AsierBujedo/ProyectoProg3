@@ -139,6 +139,7 @@ public class OtherFrames {
 				contraConfirmar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 
 				contraActualtf = new JPasswordField(20);
+<<<<<<< Updated upstream
 				contraActualtf = OtherUtils.modifyPasswordField(contraActualtf);
 
 				contraNuevatf = new JPasswordField(20);
@@ -147,6 +148,16 @@ public class OtherFrames {
 				contraConfirmartf = new JPasswordField(20);
 				contraConfirmartf = OtherUtils.modifyPasswordField(contraConfirmartf);
 
+=======
+				contraActualtf = OtherUtils.modifyPasswordField(contraActualtf, "Contraseña actual");
+				
+				contraNuevatf = new JPasswordField(20);
+				contraNuevatf = OtherUtils.modifyPasswordField(contraNuevatf, "Nueva contraseña");
+				
+				contraConfirmartf = new JPasswordField(20);
+				contraConfirmartf = OtherUtils.modifyPasswordField(contraConfirmartf, "Confirmar contraseña");
+				
+>>>>>>> Stashed changes
 				// Botón cambiar
 				JButton cambiar = new JButton("Cambiar contraseña");
 				cambiar.setFont(new Font("Segoe UI", Font.PLAIN, 15));

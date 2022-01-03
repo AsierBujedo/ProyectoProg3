@@ -2,9 +2,15 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.146687100Z</date>
   <millis>1641220924146</millis>
   <nanos>687100</nanos>
+=======
+  <date>2022-01-03T15:57:57.321244200Z</date>
+  <millis>1641225477321</millis>
+  <nanos>244200</nanos>
+>>>>>>> Stashed changes
   <sequence>0</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -14,9 +20,15 @@
   <message>Logger inicializado</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.190570200Z</date>
   <millis>1641220924190</millis>
   <nanos>570200</nanos>
+=======
+  <date>2022-01-03T15:57:57.377295400Z</date>
+  <millis>1641225477377</millis>
+  <nanos>295400</nanos>
+>>>>>>> Stashed changes
   <sequence>1</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -26,9 +38,15 @@
   <message>PROPERTIES SUCCESFULLY LOADED</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.382235300Z</date>
   <millis>1641220924382</millis>
   <nanos>235300</nanos>
+=======
+  <date>2022-01-03T15:57:57.636034500Z</date>
+  <millis>1641225477636</millis>
+  <nanos>34500</nanos>
+>>>>>>> Stashed changes
   <sequence>2</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -38,9 +56,15 @@
   <message>Creación de tablas correcta</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.405074900Z</date>
   <millis>1641220924405</millis>
   <nanos>74900</nanos>
+=======
+  <date>2022-01-03T15:57:57.659167700Z</date>
+  <millis>1641225477659</millis>
+  <nanos>167700</nanos>
+>>>>>>> Stashed changes
   <sequence>3</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -50,9 +74,15 @@
   <message>Se ha actualizado el usuario con MAIL: admin@gmail.com</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.406074300Z</date>
   <millis>1641220924406</millis>
   <nanos>74300</nanos>
+=======
+  <date>2022-01-03T15:57:57.660171200Z</date>
+  <millis>1641225477660</millis>
+  <nanos>171200</nanos>
+>>>>>>> Stashed changes
   <sequence>4</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -62,9 +92,15 @@
   <message>Carga de datos... Recuperación de archivo.</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.431007900Z</date>
   <millis>1641220924431</millis>
   <nanos>7900</nanos>
+=======
+  <date>2022-01-03T15:57:57.690197500Z</date>
+  <millis>1641225477690</millis>
+  <nanos>197500</nanos>
+>>>>>>> Stashed changes
   <sequence>5</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -74,9 +110,15 @@
   <message>Se ha añadido el producto con código: I001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.436011800Z</date>
   <millis>1641220924436</millis>
   <nanos>11800</nanos>
+=======
+  <date>2022-01-03T15:57:57.695589800Z</date>
+  <millis>1641225477695</millis>
+  <nanos>589800</nanos>
+>>>>>>> Stashed changes
   <sequence>6</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -86,9 +128,15 @@
   <message>Se ha añadido el producto con código: T002</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.442023200Z</date>
   <millis>1641220924442</millis>
   <nanos>23200</nanos>
+=======
+  <date>2022-01-03T15:57:57.701593200Z</date>
+  <millis>1641225477701</millis>
+  <nanos>593200</nanos>
+>>>>>>> Stashed changes
   <sequence>7</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -98,9 +146,15 @@
   <message>Se ha añadido el producto con código: O001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.447983300Z</date>
   <millis>1641220924447</millis>
   <nanos>983300</nanos>
+=======
+  <date>2022-01-03T15:57:57.707593700Z</date>
+  <millis>1641225477707</millis>
+  <nanos>593700</nanos>
+>>>>>>> Stashed changes
   <sequence>8</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -110,9 +164,15 @@
   <message>Se ha añadido el producto con código: T001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.453654500Z</date>
   <millis>1641220924453</millis>
   <nanos>654500</nanos>
+=======
+  <date>2022-01-03T15:57:57.713552500Z</date>
+  <millis>1641225477713</millis>
+  <nanos>552500</nanos>
+>>>>>>> Stashed changes
   <sequence>9</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -122,9 +182,15 @@
   <message>Se ha añadido el producto con código: I002</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.459627100Z</date>
   <millis>1641220924459</millis>
   <nanos>627100</nanos>
+=======
+  <date>2022-01-03T15:57:57.718575100Z</date>
+  <millis>1641225477718</millis>
+  <nanos>575100</nanos>
+>>>>>>> Stashed changes
   <sequence>10</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -134,9 +200,15 @@
   <message>Se ha añadido el producto con código: P001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.465625Z</date>
   <millis>1641220924465</millis>
   <nanos>625000</nanos>
+=======
+  <date>2022-01-03T15:57:57.724581Z</date>
+  <millis>1641225477724</millis>
+  <nanos>581000</nanos>
+>>>>>>> Stashed changes
   <sequence>11</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -146,9 +218,15 @@
   <message>Se ha añadido el producto con código: Z002</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.471271600Z</date>
   <millis>1641220924471</millis>
   <nanos>271600</nanos>
+=======
+  <date>2022-01-03T15:57:57.731208600Z</date>
+  <millis>1641225477731</millis>
+  <nanos>208600</nanos>
+>>>>>>> Stashed changes
   <sequence>12</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -158,9 +236,15 @@
   <message>Se ha añadido el producto con código: S002</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.476654700Z</date>
   <millis>1641220924476</millis>
   <nanos>654700</nanos>
+=======
+  <date>2022-01-03T15:57:57.737164200Z</date>
+  <millis>1641225477737</millis>
+  <nanos>164200</nanos>
+>>>>>>> Stashed changes
   <sequence>13</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -170,9 +254,15 @@
   <message>Se ha añadido el producto con código: Z001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.482636800Z</date>
   <millis>1641220924482</millis>
   <nanos>636800</nanos>
+=======
+  <date>2022-01-03T15:57:57.743169500Z</date>
+  <millis>1641225477743</millis>
+  <nanos>169500</nanos>
+>>>>>>> Stashed changes
   <sequence>14</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -182,9 +272,15 @@
   <message>Se ha añadido el producto con código: S001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.488690Z</date>
   <millis>1641220924488</millis>
   <nanos>690000</nanos>
+=======
+  <date>2022-01-03T15:57:57.750007100Z</date>
+  <millis>1641225477750</millis>
+  <nanos>7100</nanos>
+>>>>>>> Stashed changes
   <sequence>15</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -194,9 +290,15 @@
   <message>Se ha añadido el producto con código: VC002</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.494759200Z</date>
   <millis>1641220924494</millis>
   <nanos>759200</nanos>
+=======
+  <date>2022-01-03T15:57:57.755000900Z</date>
+  <millis>1641225477755</millis>
+  <nanos>900</nanos>
+>>>>>>> Stashed changes
   <sequence>16</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -206,9 +308,15 @@
   <message>Se ha añadido el producto con código: L001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.500575400Z</date>
   <millis>1641220924500</millis>
   <nanos>575400</nanos>
+=======
+  <date>2022-01-03T15:57:57.761085500Z</date>
+  <millis>1641225477761</millis>
+  <nanos>85500</nanos>
+>>>>>>> Stashed changes
   <sequence>17</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -218,9 +326,15 @@
   <message>Se ha añadido el producto con código: VJ001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.506804400Z</date>
   <millis>1641220924506</millis>
   <nanos>804400</nanos>
+=======
+  <date>2022-01-03T15:57:57.765880600Z</date>
+  <millis>1641225477765</millis>
+  <nanos>880600</nanos>
+>>>>>>> Stashed changes
   <sequence>18</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -230,9 +344,15 @@
   <message>Se ha añadido el producto con código: L002</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.513790Z</date>
   <millis>1641220924513</millis>
   <nanos>790000</nanos>
+=======
+  <date>2022-01-03T15:57:57.771600600Z</date>
+  <millis>1641225477771</millis>
+  <nanos>600600</nanos>
+>>>>>>> Stashed changes
   <sequence>19</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -242,9 +362,15 @@
   <message>Se ha añadido el producto con código: VC001</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:04.775418Z</date>
   <millis>1641220924775</millis>
   <nanos>418000</nanos>
+=======
+  <date>2022-01-03T15:57:58.187979800Z</date>
+  <millis>1641225478187</millis>
+  <nanos>979800</nanos>
+>>>>>>> Stashed changes
   <sequence>20</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -254,9 +380,15 @@
   <message>Ventana inicializada</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:05.799844300Z</date>
   <millis>1641220925799</millis>
   <nanos>844300</nanos>
+=======
+  <date>2022-01-03T15:57:59.230810500Z</date>
+  <millis>1641225479230</millis>
+  <nanos>810500</nanos>
+>>>>>>> Stashed changes
   <sequence>21</sequence>
   <logger>logger</logger>
   <level>INFO</level>
@@ -266,6 +398,7 @@
   <message>Operación en la base de datos realizada</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:05.805824700Z</date>
   <millis>1641220925805</millis>
   <nanos>824700</nanos>
@@ -296,6 +429,26 @@
   <sequence>24</sequence>
   <logger>logger</logger>
   <level>INFO</level>
+=======
+  <date>2022-01-03T15:58:09.558990100Z</date>
+  <millis>1641225489558</millis>
+  <nanos>990100</nanos>
+  <sequence>22</sequence>
+  <logger>logger</logger>
+  <level>SEVERE</level>
+  <class>Tienda.Login$2$3</class>
+  <method>actionPerformed</method>
+  <thread>27</thread>
+  <message>No se ha podido añadir el usuario || java.text.ParseException: Unparseable date: ""</message>
+</record>
+<record>
+  <date>2022-01-03T15:58:53.036040Z</date>
+  <millis>1641225533036</millis>
+  <nanos>40000</nanos>
+  <sequence>23</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+>>>>>>> Stashed changes
   <class>BD.BaseDeDatos</class>
   <method>getTotalProductos</method>
   <thread>19</thread>
@@ -314,10 +467,17 @@
   <message>Conexión cerrada con la base de datos</message>
 </record>
 <record>
+<<<<<<< Updated upstream
   <date>2022-01-03T14:42:07.574685900Z</date>
   <millis>1641220927574</millis>
   <nanos>685900</nanos>
   <sequence>26</sequence>
+=======
+  <date>2022-01-03T15:58:53.037043100Z</date>
+  <millis>1641225533037</millis>
+  <nanos>43100</nanos>
+  <sequence>24</sequence>
+>>>>>>> Stashed changes
   <logger>logger</logger>
   <level>INFO</level>
   <class>Tienda.VentanaTienda$9</class>

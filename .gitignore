@@ -54,3 +54,6 @@ src/tienda.db
 src/tiendaLog.xml
 .classpath
 *.png
+src/tienda.db
+src/tiendaLog.xml
+src/tiendaLog.xml

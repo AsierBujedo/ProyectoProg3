@@ -19,8 +19,11 @@ import java.util.TreeSet;
 import java.util.logging.Level;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.Popup;
+import javax.swing.PopupFactory;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -29,6 +32,7 @@ import Tienda.*;
 
 public class OtherUtils {
 	public static Properties prop = new Properties();
+	public static Popup popup;
 
 	/**
 	 * Escribe los datos creados mediante las instancias de cada uno de los
@@ -217,13 +221,14 @@ public class OtherUtils {
 		return boton;
 	}
 	
-	public static JTextField modifyTextField(JTextField field) {
+	public static JTextField modifyTextField(JTextField field, String textoPorDefecto) {
 		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
 		Border empty = new EmptyBorder(0, 5, 0, 0);
 		CompoundBorder border = new CompoundBorder(line, empty);
 		field.setBorder(border);
 		field.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		field.setForeground(Color.GRAY);
+		field.setText(textoPorDefecto);
 		
 		field.addFocusListener(new FocusAdapter() {
 			@Override
@@ -233,6 +238,9 @@ public class OtherUtils {
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
 				field.setForeground(Color.BLACK);
+				if (field.getText().equals(textoPorDefecto)) {
+					field.setText("");
+				} 
 				super.focusGained(e);
 			}
 
@@ -243,6 +251,9 @@ public class OtherUtils {
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
 				field.setForeground(Color.GRAY);
+				if (field.getText().isBlank()) {
+					field.setText(textoPorDefecto);
+				}
 				super.focusLost(e);
 			}
 		});
@@ -258,13 +269,16 @@ public class OtherUtils {
 		return field;
 	}
 	
-	public static JPasswordField modifyPasswordField(JPasswordField field) {
+	public static JPasswordField modifyPasswordField(JPasswordField field, String textoPorDefecto) {
 		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
 		Border empty = new EmptyBorder(0, 5, 0, 0);
 		CompoundBorder border = new CompoundBorder(line, empty);
 		field.setBorder(border);
 		field.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		field.setForeground(Color.GRAY);
+		char passwordChar = field.getEchoChar();
+		field.setEchoChar ((char) 0);
+		field.setText(textoPorDefecto);
 		
 		field.addFocusListener(new FocusAdapter() {
 			@Override
@@ -274,6 +288,12 @@ public class OtherUtils {
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
 				field.setForeground(Color.BLACK);
+				if (String.valueOf(field.getPassword()).equals(textoPorDefecto)) {
+					field.setEchoChar(passwordChar);
+					field.setText("");
+				} else {
+					field.setEchoChar(passwordChar);
+				}
 				super.focusGained(e);
 			}
 
@@ -284,10 +304,44 @@ public class OtherUtils {
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
 				field.setForeground(Color.GRAY);
+				if (String.valueOf(field.getPassword()).isBlank()) {
+					field.setEchoChar ((char) 0);
+					field.setText(textoPorDefecto);
+				} else {
+					field.setEchoChar(passwordChar);
+				}
 				super.focusLost(e);
 			}
 		});
 		return field;
+	}
+	
+	public static JLabel JLabelWithPopup (JLabel label) {
+		label.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		label.addMouseListener(new MouseAdapter() {		
+			
+			@Override
+			public void mouseEntered(MouseEvent evt) {
+				if (popup != null) {
+                    popup.hide();
+                }
+                JLabel text = new JLabel("Campo requerido");
+                text.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+                text.setForeground(Color.WHITE);
+                text.setOpaque(true);
+                text.setBackground(new Color(20,115,191));
+                popup = PopupFactory.getSharedInstance().getPopup(evt.getComponent(), text, (int)label.getLocationOnScreen().getX(), (int)label.getLocationOnScreen().getY() - 20);
+                popup.show();						
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if (popup != null) {
+					popup.hide();
+				}					
+			}
+		});
+		return label;
 	}
 
 }
