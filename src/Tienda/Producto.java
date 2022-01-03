@@ -1,9 +1,10 @@
 package Tienda;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public abstract class Producto implements Vendible, Comparable<Producto>, Serializable, DatoParaTabla {
-
+	Random r = new Random();
 	private static final long serialVersionUID = 1L;
 	public static int cont = 1;
 	protected String codigoProducto;
@@ -27,7 +28,8 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 		this.nombre = nombre;
 		this.precio = precio;
 		this.marca = marca;
-		this.ID = cont;
+		this.ID = r.nextInt(1000000);
+		cont = this.ID;
 		cont++;
 	}
 
