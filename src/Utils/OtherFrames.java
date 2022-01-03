@@ -45,13 +45,7 @@ public class OtherFrames {
 		nombreUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
 		nombreUsuario.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
-		JLabel mailUsuario = new JLabel();
-		mailUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
-		mailUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		mailUsuario.setForeground(new Color(225, 225, 225));
-
-		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtflog.getPassword()))
-				.toUpperCase();
+		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtflog.getPassword())).toUpperCase();
 		if (!username.equals("Error")) {
 			nombreUsuario.setText(username);
 		} else {
@@ -131,11 +125,11 @@ public class OtherFrames {
 				botonera.setLayout(new BorderLayout());
 				botonera.setBackground(new Color(246, 246, 246));
 
-				JLabel contraActual = new JLabel("Contraseña actual: ");
+				JLabel contraActual = new JLabel("Contraseña actual");
 				contraActual.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel contraNueva = new JLabel("Nueva contraseña: ");
+				JLabel contraNueva = new JLabel("Nueva contraseña");
 				contraNueva.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				JLabel contraConfirmar = new JLabel("Confirmar contraseña: ");
+				JLabel contraConfirmar = new JLabel("Confirmar contraseña");
 				contraConfirmar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 
 				contraActualtf = new JPasswordField(20);
