@@ -429,5 +429,21 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
-
+		
+	/**
+	* Lee las compras de la tabla COMPRA.
+	* @return Total de productos vendidos, null si hay algún error.
+	*/
+	public static Integer getTotalProductos() {
+		try {
+			pstmt = con.prepareStatement("SELECT SUM(TOTAL_PRODS) AS TOTAL FROM COMPRA");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getInt("TOTAL");
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
+	}
+	
 }
