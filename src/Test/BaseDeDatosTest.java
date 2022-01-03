@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.sql.Date;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.Before;
@@ -42,8 +43,8 @@ public class BaseDeDatosTest {
 	
 	@Test
 	public void testAddColumn() {
-		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Dir"));
-		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Telf"));
+		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Direccion"));
+		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Telefono"));
 		assertTrue(BaseDeDatos.addColumn(TABLES.USER, "Tarjeta_Socio"));
 		
 	}
@@ -53,7 +54,7 @@ public class BaseDeDatosTest {
 		// Comprobación de que la adición de un nuevo usuario se realiza correctamente
 		
 		// Comprobando que el método devuelve true al hacerlo
-		assertTrue(BaseDeDatos.addUser("USERTEST", "USERTEST@GMAIL.COM", "PASSTEST"));
+		assertTrue(BaseDeDatos.addUser("USERTEST", "USERTEST@GMAIL.COM", "PASSTEST", 123, Genero.MASCULINO, new Date(System.currentTimeMillis()), "NULL"));
 		
 		// Comprobando que el nombre de ususario es efectivamente el introducido
 		assertEquals(BaseDeDatos.getUser("USERTEST@GMAIL.COM", "PASSTEST"), "USERTEST");
@@ -62,14 +63,14 @@ public class BaseDeDatosTest {
 	@Test
 	public void removeUserTest(){
 		// Comprobación de que el método devuelve true al eliminar un usuario de la tabla
-		BaseDeDatos.addUser("USERTEST", "USERTEST@GMAIL.COM", "PASSTEST");
+		assertTrue(BaseDeDatos.addUser("USERTEST", "USERTEST@GMAIL.COM", "PASSTEST", 123, Genero.MASCULINO, new Date(System.currentTimeMillis()), "NULL"));
 		assertTrue(BaseDeDatos.removeUser("USERTEST@GMAIL.COM", "PASSTEST"));
 	}
 	
 	@Test
 	public void editUserTest() {
 		// Comprobación de que la edición del nombre de usuario de un usuario se realiza correctamente
-		BaseDeDatos.addUser("USERTEST", "USERTEST@GMAIL.COM", "PASSTEST");
+		assertTrue(BaseDeDatos.addUser("USERTEST", "USERTEST@GMAIL.COM", "PASSTEST", 123, Genero.MASCULINO, new Date(System.currentTimeMillis()), "NULL"));
 		BaseDeDatos.editUser(COLS.USERNAME, "USERTEST@GMAIL.COM", "PASSTEST", "NEW_USERNAME");
 		assertEquals(BaseDeDatos.getUser("USERTEST@GMAIL.COM", "PASSTEST"), "NEW_USERNAME");
 		

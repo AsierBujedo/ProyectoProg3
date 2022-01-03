@@ -23,6 +23,7 @@ import Utils.OtherUtils;
 public class Login {
 	public static JTextField usertf;
 	public static JPasswordField passtf;
+	public static JPasswordField passtflog;
 	public static JTextField usernametf;
 	public static JTextField telftf;
 	public static JComboBox<Genero> genjcb ;
@@ -56,8 +57,8 @@ public class Login {
 		usertf = new JTextField(20);
 		usertf = OtherUtils.modifyTextField(usertf);
 		
-		passtf = new JPasswordField(20);
-		passtf = OtherUtils.modifyPasswordField(passtf);
+		passtflog = new JPasswordField(20);
+		passtflog = OtherUtils.modifyPasswordField(passtflog);
 		
 		// Botón log
 		JButton log = new JButton("Iniciar sesion");
@@ -97,7 +98,7 @@ public class Login {
 
         gc.gridx = 1;
         gc.gridy = 3;
-        labelText.add(passtf, gc);
+        labelText.add(passtflog, gc);
         
         botonera.add(log);
 		frame.add(labelText);
@@ -108,7 +109,7 @@ public class Login {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String username = BaseDeDatos.getUser(usertf.getText(), String.valueOf(passtf.getPassword()));
+				String username = BaseDeDatos.getUser(usertf.getText(), String.valueOf(passtflog.getPassword()));
 				if (!username.equals("Error")) {
 					VentanaTienda.loginItem.setText(username);
 					VentanaTienda.loginItem.setEnabled(false);
@@ -249,11 +250,10 @@ public class Login {
 							Date date;
 							try {
 								date = sdf.parse(datePicker.getJFormattedTextField().getText());
-								long fecha = date.getTime();
-								BaseDeDatos.addUser(usertf.getText(), usernametf.getText(), String.valueOf(passtf.getPassword()), Integer.valueOf(telftf.getText()), (Genero) genjcb.getSelectedItem(), new Date(fecha), dirtf.getText());
+								BaseDeDatos.addUser(usertf.getText(), usernametf.getText(), String.valueOf(passtf.getPassword()), Integer.valueOf(telftf.getText()), (Genero) genjcb.getSelectedItem(), new java.sql.Date(date.getTime()), dirtf.getText());
 								frameReg.dispose();
 							} catch (ParseException e1) {
-								VentanaTienda.logger.log(Level.SEVERE, "No se ha podido añadir el usuario");
+								VentanaTienda.logger.log(Level.SEVERE, "No se ha podido añadir el usuario || "+ e1.toString());
 							}
 
 						}

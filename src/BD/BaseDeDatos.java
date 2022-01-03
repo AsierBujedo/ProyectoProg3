@@ -26,7 +26,7 @@ public class BaseDeDatos {
 			stmt.executeUpdate("DROP TABLE IF EXISTS COMPRA");
 
 			stmt.executeUpdate(
-					"CREATE TABLE USER (USER_ID int ALTERNATIVE KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) PRIMARY KEY NOT NULL, PASS varchar(100) NOT NULL, TELF int(15) DEFAULT NULL, SEXO varchar(10) DEFAULT NULL, NACIMIENTO date DEFAULT NULL, DIR varchar(100) DEFAULT NULL)");
+					"CREATE TABLE USER (USER_ID int ALTERNATIVE KEY NOT NULL, USERNAME varchar(100) NOT NULL, MAIL varchar(100) PRIMARY KEY NOT NULL, PASS varchar(100) NOT NULL, TELF int(15) DEFAULT NULL, GENERO varchar(10) DEFAULT NULL, NACIMIENTO date DEFAULT NULL, DIR varchar(100) DEFAULT NULL)");
 			stmt.executeUpdate(
 					"CREATE TABLE PRODUCTO (COD_PRODUCTO varchar(15) PRIMARY KEY NOT NULL, NOMBRE varchar(100), PRECIO double, MARCA varchar(100))");
 			stmt.executeUpdate(
@@ -119,10 +119,10 @@ public class BaseDeDatos {
 	 */
 	// Automáticamente se le asigna un ID como código identificativo único, su
 	// PRIMARY KEY
-	public static boolean addUser(String USERNAME, String MAIL, String PASS, int TELF, Genero SEXO, java.util.Date date, String DIR) {
+	public static boolean addUser(String USERNAME, String MAIL, String PASS, Integer TELF, Genero GENERO, Date date, String DIR) {
 		try {
-			pstmt = con.prepareStatement("INSERT INTO USER (USERNAME, MAIL, PASS, USER_ID, TELF, SEXO, NACIMIENTO, DIR) VALUES ('" + USERNAME + "','"
-					+ MAIL + "','" + PASS + "','" + USER_IDS + "',"+TELF+",'"+SEXO.toString()+"',"+date+",'"+DIR+"')");
+			pstmt = con.prepareStatement("INSERT INTO USER (USERNAME, MAIL, PASS, USER_ID, TELF, GENERO, NACIMIENTO, DIR) VALUES ('" + USERNAME + "','"
+					+ MAIL + "','" + PASS + "','" + USER_IDS + "',"+TELF+",'"+GENERO.toString()+"','"+date+"','"+DIR+"')");
 			pstmt.executeUpdate();
 			VentanaTienda.logger.log(Level.INFO,
 					"Nuevo usuario: " + MAIL + ", ID: " + USER_IDS + ". Añadido correctamente");
@@ -169,7 +169,10 @@ public class BaseDeDatos {
 			return "Error";
 		}
 	}
-	
+	/**Este método obtiene mediante el nombre de usuario, el mail del propietario
+	 * @param name
+	 * @return String mail
+	 */
 	public static String getUserMail(String name) {
 		try {
 			pstmt = con.prepareStatement(
@@ -214,13 +217,14 @@ public class BaseDeDatos {
 	 * @return true, false
 	 */
 	
-	public static boolean editUserSpecs(String MAIL, int TELF, Genero SEXO, Date NACIMIENTO, String DIR) {
+	public static boolean editUserSpecs(String MAIL, int TELF, Genero GENERO, Date NACIMIENTO, String DIR) {
 		try {
 			pstmt = con.prepareStatement("UPDATE USER SET " + "TELF" + "= " + TELF + " WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
-			pstmt = con.prepareStatement("UPDATE USER SET " + "SEXO" + "= '" + SEXO.toString() + "' WHERE MAIL = '" + MAIL+"';");
+			pstmt = con.prepareStatement("UPDATE USER SET " + "GENERO" + "= '" + GENERO.toString() + "' WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
-			pstmt = con.prepareStatement("UPDATE USER SET " + "NACIMIENTO" + "= " + NACIMIENTO + " WHERE MAIL = '" + MAIL+"';");
+			pstmt = con.prepareStatement("UPDATE USER SET " + "NACIMIENTO" + "= '" + NACIMIENTO + "' WHERE MAIL = '" + MAIL+"';");
+			System.out.println("UPDATE USER SET " + "NACIMIENTO" + "= " + NACIMIENTO + " WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement("UPDATE USER SET " + "DIR" + "= '" + DIR + "' WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();

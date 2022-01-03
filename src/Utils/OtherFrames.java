@@ -52,7 +52,7 @@ public class OtherFrames {
 		mailUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		mailUsuario.setForeground(new Color(225,225,225));
 		
-		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtf.getPassword())).toUpperCase();
+		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtflog.getPassword())).toUpperCase();
 		if (!username.equals("Error")) {
 			nombreUsuario.setText(username);
 		} else {

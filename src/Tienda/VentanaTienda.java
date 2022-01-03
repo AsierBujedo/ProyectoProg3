@@ -1,6 +1,7 @@
 package Tienda;
 
 import static javax.swing.WindowConstants.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -11,12 +12,9 @@ import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.swing.*;
-
 import BD.BaseDeDatos;
-import Utils.OtherFrames;
-import Utils.OtherUtils;
+import Utils.*;
 
 /**
  * @author GR08 Clase VentanaTienda, es la clase principal, contiene la ventana
@@ -289,16 +287,8 @@ public class VentanaTienda {
 				BaseDeDatos.closeDB();
 				logger.log(Level.INFO, "Cerrando ventana");
 			}
-
-			public void windowOpened(WindowEvent e) {
-				File f = new File("datos.dat");
-				if (!f.exists()) {
-					OtherUtils.escribeDatos();
-				}
-				logger.log(Level.INFO, "Abriendo ventana. Abriendo conexión con la base de datos");
-			}
 		});
-		
+
 		frame.setVisible(true);
 		frame.setTitle("Emai");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -311,7 +301,12 @@ public class VentanaTienda {
 
 	@SuppressWarnings("unchecked")
 	public void cargaDatos() {
-		OtherUtils.escribeDatos();
+		File f = new File("datos.dat");
+		if (!f.exists()) {
+			OtherUtils.escribeDatos();
+		}
+		logger.log(Level.INFO, "Carga de datos... Recuperación de archivo.");
+
 		try {
 			ArrayList<Producto> prods = new ArrayList<Producto>();
 			FileInputStream fis = new FileInputStream(new File("datos.dat"));
