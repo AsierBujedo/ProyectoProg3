@@ -8,7 +8,6 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.TreeSet;
 import java.util.logging.Level;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -26,7 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-
+import BD.BaseDeDatos;
 import Tienda.*;
 
 public class OtherUtils {
@@ -165,7 +163,26 @@ public class OtherUtils {
 		return (double) tmp / factor;
 	}
 	
+	public static ArrayList<String> posiblesCompras = new ArrayList<String>();
 	
+	public static void combinaCompras( double dineroRestante ) {
+		ArrayList<Producto> listaComprados = new ArrayList<>();
+		combina( BaseDeDatos.getProductos(), dineroRestante, listaComprados );
+	}
+	
+	private static void combina( ArrayList<Producto> prods, double restante, ArrayList<Producto> listaComprados ) {
+		if (restante < 0 ) {  //Cuando el saldo es menor que cero, no puede realizarse ninguna compra más.
+			System.err.println("CASO BASE || NADA QUE HACER");
+		} else if (restante < BaseDeDatos.getMasBarato().getPrecio()) { //Si el saldo es menor que el precio del producto más barato, ya no se pueden hacer más compras.
+			posiblesCompras.add("Dinero restante: "+ round(restante, 2) +"€; Combinación: "+  listaComprados );
+		} else {
+			for (Producto p : prods) {
+				listaComprados.add( p );
+				combina( prods, restante - p.getPrecio(), listaComprados ); //Restamos al dinero Restante el precio del producto que hemos comprado y volvemos a llamar a la nueva función.
+				listaComprados.remove( listaComprados.size()-1 );
+			}
+		}
+	}
 	
 	public static JButton modifyButton(JButton boton, Color Foreground, Color Background, Color BackgroundWhenEnetered) {
 		boton.setAlignmentX(Component.CENTER_ALIGNMENT);

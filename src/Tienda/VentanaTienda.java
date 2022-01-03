@@ -17,8 +17,9 @@ import BD.BaseDeDatos;
 import Utils.*;
 
 /**
- * @author GR08 Clase VentanaTienda, es la clase principal, contiene la ventana
- *         principal. Esta clase cuenta con el método main().
+ * Clase VentanaTienda, es la clase principal, contiene la ventana
+ * principal. Esta clase cuenta con el método main().
+ * @author GR08
  */
 public class VentanaTienda {
 	static JMenu atcliente = new JMenu("Atencion al cliente");
@@ -219,7 +220,6 @@ public class VentanaTienda {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				loginItem.setText("Login");
 				loginItem.setEnabled(true);
 				logoutItem.setEnabled(false);

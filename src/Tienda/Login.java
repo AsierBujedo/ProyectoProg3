@@ -250,7 +250,7 @@ public class Login {
 							Date date;
 							try {
 								date = sdf.parse(datePicker.getJFormattedTextField().getText());
-								BaseDeDatos.addUser(usertf.getText(), usernametf.getText(), String.valueOf(passtf.getPassword()), Integer.valueOf(telftf.getText()), (Genero) genjcb.getSelectedItem(), new java.sql.Date(date.getTime()), dirtf.getText());
+								BaseDeDatos.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()), Integer.valueOf(telftf.getText()), (Genero) genjcb.getSelectedItem(), new java.sql.Date(date.getTime()), dirtf.getText());
 								frameReg.dispose();
 							} catch (ParseException e1) {
 								VentanaTienda.logger.log(Level.SEVERE, "No se ha podido añadir el usuario || "+ e1.toString());
@@ -315,6 +315,7 @@ public class Login {
 		        gc.gridx = 1;
 		        gc.gridy = 6;
 		        labelText.add(datePicker, gc);
+		        
 		        
 		        gc.gridx = 0;
 		        gc.gridy = 7;
