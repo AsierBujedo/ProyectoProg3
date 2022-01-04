@@ -22,6 +22,7 @@ import Utils.*;
  * @author GR08
  */
 public class VentanaTienda {
+	public static double menorPrecio = 0.0;
 	static JMenu atcliente = new JMenu("Atencion al cliente");
 	public static JMenuItem loginItem = new JMenuItem("Login");
 	static JMenuItem logoutItem = new JMenuItem("Logout");
@@ -33,6 +34,8 @@ public class VentanaTienda {
 	public void InitWindow() {
 		BaseDeDatos.InitDB();
 		cargaDatos();
+		menorPrecio = BaseDeDatos.getMasBarato().getPrecio();
+		
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(246,246,246));

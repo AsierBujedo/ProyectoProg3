@@ -484,8 +484,7 @@ public class OtherFrames {
 						+ "Número de clientes: " + txtClientes.getText() + "\n" + "Compras totales: "
 						+ txtCompras.getText() + "\n" + "Productos totales: " + txtProductos.getText();
 				info.append(todo);
-				OtherUtils.combinaCompras(150);
-				info.append("\n\nPosibles compras con 150€: \n");
+				OtherUtils.combinaCompras(200); //NO SUBIR DE 200€
 				for (String s : OtherUtils.posiblesCompras) {
 					info.append("\n" + s);
 				}
@@ -508,21 +507,29 @@ public class OtherFrames {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						try {
-							PrintWriter pw = new PrintWriter("estadisticas.txt");
-							System.out.println(info.getText()); // comprobacion
-							pw.println(info.getText());
-							pw.println("\n Posibles Compras con los productos actuales: ");
-							for (String s : OtherUtils.posiblesCompras) {
-								pw.println(s);
-							}
-							pw.close();
-							frame.dispose();
+						Thread escritura = new Thread(new Runnable() {
+							
+							@Override
+							public void run() {
+								try {
+									PrintWriter pw = new PrintWriter("estadisticas.txt");
+									System.out.println(info.getText()); // comprobacion
+									pw.println(info.getText());
+									pw.println("\n Posibles Compras con los productos actuales: ");
+									for (String s : OtherUtils.posiblesCompras) {
+										pw.println(s);
+									}
+									pw.close();
+									JOptionPane.showMessageDialog(null, "¡Escritura completada!", "Escritura", JOptionPane.INFORMATION_MESSAGE);
 
-						} catch (IOException e1) {
-							JOptionPane.showMessageDialog(null, "Error en la escritura de los datos", null, 0);
-							VentanaTienda.logger.log(Level.SEVERE, "Error al escribir datos");
-						}
+								} catch (IOException e1) {
+									JOptionPane.showMessageDialog(null, "Error en la escritura de los datos", null, 0);
+									VentanaTienda.logger.log(Level.SEVERE, "Error al escribir datos");
+								}
+							}
+						});
+						escritura.start();
+
 					}
 				});
 

@@ -166,29 +166,32 @@ public class OtherUtils {
 		long tmp = Math.round(valor);
 		return (double) tmp / factor;
 	}
-	
+
 	public static ArrayList<String> posiblesCompras = new ArrayList<String>();
-	
-	public static void combinaCompras( double dineroRestante ) {
+
+	public static void combinaCompras(double dineroRestante) {
 		ArrayList<Producto> listaComprados = new ArrayList<>();
-		combina( BaseDeDatos.getProductos(), dineroRestante, listaComprados );
+		combina(BaseDeDatos.getProductos(), dineroRestante, listaComprados);
 	}
-	
-	private static void combina( ArrayList<Producto> prods, double restante, ArrayList<Producto> listaComprados ) {
-		if (restante < 0 ) {  //Cuando el saldo es menor que cero, no puede realizarse ninguna compra más.
-			System.err.println("CASO BASE || NADA QUE HACER");
-		} else if (restante < BaseDeDatos.getMasBarato().getPrecio()) { //Si el saldo es menor que el precio del producto más barato, ya no se pueden hacer más compras.
-			posiblesCompras.add("Dinero restante: "+ round(restante, 2) +"€; Combinación: "+  listaComprados );
+
+	private static void combina(ArrayList<Producto> prods, double restante, ArrayList<Producto> listaComprados) {
+		if (restante < 0) { // Cuando el saldo es menor que cero, no puede realizarse ninguna compra más.
+		} else if (restante < VentanaTienda.menorPrecio) { // Si el saldo es menor que el precio del producto más
+															// barato, ya no se pueden hacer más compras.
+			posiblesCompras.add("Dinero restante: " + round(restante, 2) + "€; Combinación: " + listaComprados);
 		} else {
 			for (Producto p : prods) {
-				listaComprados.add( p );
-				combina( prods, restante - p.getPrecio(), listaComprados ); //Restamos al dinero Restante el precio del producto que hemos comprado y volvemos a llamar a la nueva función.
-				listaComprados.remove( listaComprados.size()-1 );
+				listaComprados.add(p);
+				combina(prods, restante - p.getPrecio(), listaComprados); // Restamos al dinero Restante el precio del
+																			// producto que hemos comprado y volvemos a
+																			// llamar a la nueva función.
+				listaComprados.remove(listaComprados.size() - 1);
 			}
 		}
 	}
-	
-	public static JButton modifyButton(JButton boton, Color Foreground, Color Background, Color BackgroundWhenEnetered) {
+
+	public static JButton modifyButton(JButton boton, Color Foreground, Color Background,
+			Color BackgroundWhenEnetered) {
 		boton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		boton.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		boton.setForeground(Foreground);
@@ -215,38 +218,38 @@ public class OtherUtils {
 					boton.setOpaque(false);
 					boton.setContentAreaFilled(false);
 				}
-				boton.setBackground(new Color(194,194,194));
+				boton.setBackground(new Color(194, 194, 194));
 			}
 		});
 		return boton;
 	}
-	
+
 	public static JTextField modifyTextField(JTextField field, String textoPorDefecto) {
-		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+		Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
 		Border empty = new EmptyBorder(0, 5, 0, 0);
 		CompoundBorder border = new CompoundBorder(line, empty);
 		field.setBorder(border);
 		field.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		field.setForeground(Color.GRAY);
 		field.setText(textoPorDefecto);
-		
+
 		field.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				Border line = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+				Border line = BorderFactory.createLineBorder(new Color(20, 115, 191), 2);
 				Border empty = new EmptyBorder(0, 5, 0, 0);
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
 				field.setForeground(Color.BLACK);
 				if (field.getText().equals(textoPorDefecto)) {
 					field.setText("");
-				} 
+				}
 				super.focusGained(e);
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
 				Border empty = new EmptyBorder(0, 5, 0, 0);
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
@@ -257,33 +260,33 @@ public class OtherUtils {
 				super.focusLost(e);
 			}
 		});
-		
+
 		field.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				field.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 			}
-			
+
 		});
 		return field;
 	}
-	
+
 	public static JPasswordField modifyPasswordField(JPasswordField field, String textoPorDefecto) {
-		Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+		Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
 		Border empty = new EmptyBorder(0, 5, 0, 0);
 		CompoundBorder border = new CompoundBorder(line, empty);
 		field.setBorder(border);
 		field.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		field.setForeground(Color.GRAY);
 		char passwordChar = field.getEchoChar();
-		field.setEchoChar ((char) 0);
+		field.setEchoChar((char) 0);
 		field.setText(textoPorDefecto);
-		
+
 		field.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				Border line = BorderFactory.createLineBorder(new Color(20,115,191), 2);
+				Border line = BorderFactory.createLineBorder(new Color(20, 115, 191), 2);
 				Border empty = new EmptyBorder(0, 5, 0, 0);
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
@@ -299,13 +302,13 @@ public class OtherUtils {
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				Border line = BorderFactory.createLineBorder(new Color(194,194,194), 2);
+				Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
 				Border empty = new EmptyBorder(0, 5, 0, 0);
 				CompoundBorder border = new CompoundBorder(line, empty);
 				field.setBorder(border);
 				field.setForeground(Color.GRAY);
 				if (String.valueOf(field.getPassword()).isBlank()) {
-					field.setEchoChar ((char) 0);
+					field.setEchoChar((char) 0);
 					field.setText(textoPorDefecto);
 				} else {
 					field.setEchoChar(passwordChar);
@@ -315,30 +318,31 @@ public class OtherUtils {
 		});
 		return field;
 	}
-	
-	public static JLabel JLabelWithPopup (JLabel label) {
+
+	public static JLabel JLabelWithPopup(JLabel label) {
 		label.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		label.addMouseListener(new MouseAdapter() {		
-			
+		label.addMouseListener(new MouseAdapter() {
+
 			@Override
 			public void mouseEntered(MouseEvent evt) {
 				if (popup != null) {
-                    popup.hide();
-                }
-                JLabel text = new JLabel("Campo requerido");
-                text.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-                text.setForeground(Color.WHITE);
-                text.setOpaque(true);
-                text.setBackground(new Color(20,115,191));
-                popup = PopupFactory.getSharedInstance().getPopup(evt.getComponent(), text, (int)label.getLocationOnScreen().getX(), (int)label.getLocationOnScreen().getY() - 20);
-                popup.show();						
+					popup.hide();
+				}
+				JLabel text = new JLabel("Campo requerido");
+				text.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+				text.setForeground(Color.WHITE);
+				text.setOpaque(true);
+				text.setBackground(new Color(20, 115, 191));
+				popup = PopupFactory.getSharedInstance().getPopup(evt.getComponent(), text,
+						(int) label.getLocationOnScreen().getX(), (int) label.getLocationOnScreen().getY() - 20);
+				popup.show();
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				if (popup != null) {
 					popup.hide();
-				}					
+				}
 			}
 		});
 		return label;

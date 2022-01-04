@@ -53,6 +53,11 @@ public class Generico extends Producto {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+	
+	@Override
+	public String toString() {
+		return "Genérico | Código: "+codigoProducto+ "\tNombre: "+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
+	}
 
 	@Override
 	public Object getValor(int col) {

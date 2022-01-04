@@ -49,12 +49,10 @@ public class Pantalon extends Producto {
 	public void setPaisMadeIn(Pais paisMadeIn) {
 		this.paisMadeIn = paisMadeIn;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Pantalon: [talla=" + talla + ", color=" + color + ", paisMadeIn=" + paisMadeIn + ", codigoProducto="
-				+ codigoProducto + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + ", ID=" + ID
-				+ "]";
+		return "Pantalón | Código: "+codigoProducto+ "\tNombre:"+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
 	}
 	
 	@Override

@@ -89,13 +89,10 @@ public class Videoconsola extends Producto {
 	public void setInternetConex(boolean internetConex) {
 		this.internetConex = internetConex;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Videoconsola: [modelo=" + modelo + ", almacenamiento=" + almacenamiento + ", RAM=" + RAM + ", memGraf="
-				+ memGraf + ", esPortatil=" + esPortatil + ", versionDigital=" + versionDigital + ", internetConex="
-				+ internetConex + ", codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", precio=" + precio
-				+ ", marca=" + marca + ", ID=" + ID + "]";
+		return "Videoconsola | Código: "+codigoProducto+ "\tNombre:"+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
 	}
 	
 	@Override

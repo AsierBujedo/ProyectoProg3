@@ -60,13 +60,6 @@ public class Sudadera extends Producto {
 	public void setPaisMadeIn(Pais paisMadeIn) {
 		this.paisMadeIn = paisMadeIn;
 	}
-
-	@Override
-	public String toString() {
-		return "Sudadera: [talla=" + talla + ", color=" + color + ", capucha=" + capucha + ", paisMadeIn=" + paisMadeIn
-				+ ", codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", precio=" + precio + ", marca="
-				+ marca + ", ID=" + ID + "]";
-	}
 	
 	@Override
 	public Object getValor(int col) {
@@ -94,6 +87,11 @@ public class Sudadera extends Producto {
     		// Error en conversión, intentando asignar un tipo incorrecto
     		VentanaTienda.logger.log(Level.SEVERE, "Error al establecer un valor");		
     	}
+	}
+	
+	@Override
+	public String toString() {
+		return "Sudadera | Código: "+codigoProducto+ "\tNombre: "+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
 	}
 
 	@Override

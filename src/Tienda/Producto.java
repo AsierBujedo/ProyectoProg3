@@ -77,8 +77,7 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 
 	@Override
 	public String toString() {
-		return "Producto: [codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", precio=" + precio + ", marca="
-				+ marca + ", ID=" + ID + "]";
+		return "Código:\t"+codigoProducto+ " Nombre:\t"+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
 	}	
 
 	/**Implementación de la interfaz Comparable<Producto>

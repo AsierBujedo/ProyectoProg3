@@ -49,12 +49,10 @@ public class Impresora extends Producto {
 	public void setEsLaser(boolean esLaser) {
 		this.esLaser = esLaser;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Impresora: [modelo=" + modelo + ", esColor=" + esColor + ", esLaser=" + esLaser + ", codigoProducto="
-				+ codigoProducto + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + ", ID=" + ID
-				+ "]";
+		return "Impresora | Código: "+codigoProducto+ "\tNombre: "+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
 	}
 
 	@Override

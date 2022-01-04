@@ -59,12 +59,10 @@ public class Videojuego extends Producto {
 	public void setTamanyo(int tamanyo) {
 		this.tamanyo = tamanyo;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Videojuego: [nombre=" + nombre + ", anyo=" + anyo + ", desarrollador=" + desarrollador + ", esDigital="
-				+ esDigital + ", tamanyo=" + tamanyo + ", codigoProducto=" + codigoProducto + ", precio=" + precio
-				+ ", marca=" + marca + ", ID=" + ID + "]";
+		return "Videojuego | Código: "+codigoProducto+ "\tNombre: "+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
 	}
 	
 	@Override

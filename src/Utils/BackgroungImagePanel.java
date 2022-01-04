@@ -25,7 +25,14 @@ public class BackgroungImagePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				OtherFrames.VentanaStats();
+				Thread stats = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						OtherFrames.VentanaStats();	
+					}
+				});
+				stats.start();
 			}
 		});
 	}
