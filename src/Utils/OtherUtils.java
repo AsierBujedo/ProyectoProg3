@@ -347,5 +347,30 @@ public class OtherUtils {
 		});
 		return label;
 	}
+	
+	public static JTextField modifyTextFieldSimple(JTextField field, String textoPorDefecto) {
+		field.setText(textoPorDefecto);
+
+		field.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				field.setForeground(Color.BLACK);
+				if (field.getText().equals(textoPorDefecto)) {
+					field.setText("");
+				}
+				super.focusGained(e);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (field.getText().isBlank()) {
+					field.setText(textoPorDefecto);
+					field.setForeground(Color.GRAY);
+				}
+				super.focusLost(e);
+			}
+		});
+		return field;
+	}
 
 }

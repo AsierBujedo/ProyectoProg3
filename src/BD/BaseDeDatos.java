@@ -218,7 +218,7 @@ public class BaseDeDatos {
 	 * @return true, false
 	 */
 	
-	public static boolean editUserSpecs(String MAIL, String USERNAME, int TELF, Genero GENERO, Date NACIMIENTO, String DIR) {
+	public static boolean editUserSpecs(String MAIL, String USERNAME, Integer TELF, Genero GENERO, Date NACIMIENTO, String DIR) {
 		try {
 			pstmt = con.prepareStatement("UPDATE USER SET " + "USERNAME" + "= '" + USERNAME + "' WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
@@ -447,6 +447,72 @@ public class BaseDeDatos {
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
 			return rs.getInt("TOTAL");
 		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
+	}
+	
+	/**Este método obtiene el teléfono mediante el mail del usuario
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @return Número de teléfono del usuario, null si hay algún error.
+	 */
+	public static Integer getUserTelf(String MAIL) {
+		try {
+			pstmt = con.prepareStatement("SELECT TELF FROM USER WHERE MAIL = '"+ MAIL + "'");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getInt("TELF");
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
+	}
+	
+	/**Este método obtiene el género mediante el mail del usuario
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @return GENERO Género del usuario, null si hay algún error.
+	 */
+	public static Genero getUserGenero(String MAIL) {
+		try {
+			pstmt = con.prepareStatement("SELECT GENERO FROM USER WHERE MAIL = '"+ MAIL + "'");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			String genero = rs.getString("GENERO");
+			return Genero.valueOf(genero);
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
+	}
+	
+	/**Este método obtiene la dirección mediante el mail del usuario
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @return DIR Dirección del usuario, null si hat algún error.
+	 */
+	public static String getUserDir(String MAIL) {
+		try {
+			pstmt = con.prepareStatement("SELECT DIR FROM USER WHERE MAIL = '"+ MAIL + "'");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getString("DIR");
+		} catch (SQLException e) {
+			VentanaTienda.logger.log(Level.SEVERE, e.toString());
+			return null;
+		}
+	}
+	
+	/**Este método obtiene la fecha de nacimiento mediante el mail del usuario
+	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @return NACIMIENTO Fecha de nacimiento del usuario.
+	 */
+	public static String getUserDate(String MAIL) {
+		try {
+			pstmt = con.prepareStatement("SELECT NACIMIENTO FROM USER WHERE MAIL = '"+ MAIL + "'");
+			ResultSet rs = pstmt.executeQuery();
+			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
+			return rs.getString("NACIMIENTO");
+		} catch (SQLException e) {
+			System.out.println("prueba");
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return null;
 		}
