@@ -3,6 +3,7 @@ package Tienda;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,6 +49,7 @@ public class PanelTabla extends JPanel {
 		JTable tabla = new JTable(ctm);
 		tabla.setOpaque(true);
 		TableRowSorter<CustomTableModel> sorter = new TableRowSorter<CustomTableModel>(ctm);
+		tabla.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		tabla.setRowSorter(sorter);
 		tabla.setOpaque(false);
 		tabla.setFont(new Font("Segoe UI", Font.PLAIN, 15));
@@ -113,6 +115,7 @@ public class PanelTabla extends JPanel {
 			public void mouseEntered(MouseEvent evt) {
 				if (!tabla.getSelectionModel().isSelectionEmpty()) {
 					anyadir.setBackground(color.darker());
+					anyadir.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				}
 			}
 
@@ -127,6 +130,7 @@ public class PanelTabla extends JPanel {
 		info.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				info.setBackground(new Color(88, 101, 242).darker());
+				info.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(MouseEvent evt) {
@@ -272,6 +276,7 @@ public class PanelTabla extends JPanel {
 		tablaCesta.setOpaque(true);
 		tablaCesta.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		tablaCesta.setForeground(Color.BLACK);
+		tablaCesta.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		tablaCesta.getTableHeader().setBackground(new Color(162, 195, 234));
 		tablaCesta.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
 		tablaCesta.getTableHeader().setForeground(Color.WHITE);
@@ -335,6 +340,7 @@ public class PanelTabla extends JPanel {
 			public void mouseEntered(MouseEvent evt) {
 				if (tablaCesta.getRowCount() != 0) {
 					realizarCompra.setBackground(new Color(92, 156, 180).darker());
+					realizarCompra.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				}
 			}
 
@@ -351,6 +357,7 @@ public class PanelTabla extends JPanel {
 			public void mouseEntered(MouseEvent evt) {
 				if (!tablaCesta.getSelectionModel().isSelectionEmpty()) {
 					eliminarProducto.setBackground(new Color(180, 56, 61).darker());
+					eliminarProducto.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				}
 			}
 
@@ -367,6 +374,7 @@ public class PanelTabla extends JPanel {
 			public void mouseEntered(MouseEvent evt) {
 				if (tablaCesta.getRowCount() != 0) {
 					vaciarCesta.setBackground(new Color(107, 41, 67).darker());
+					vaciarCesta.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				}
 			}
 

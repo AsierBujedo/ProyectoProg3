@@ -62,6 +62,7 @@ public class Cesta {
 		buscar.setBorderPainted(false);
 		buscar.setForeground(Color.WHITE);
 		buscar.setBackground(new Color(194,194,194));
+		buscar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// FocusListener buscarProd
 		buscarProd.addFocusListener(new FocusAdapter() {

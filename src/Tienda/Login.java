@@ -155,6 +155,7 @@ public class Login {
 						attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 						loginlabel.setFont(font.deriveFont(attributes));
 						loginlabel.setForeground(new Color(20,115,191));
+						loginlabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 					}
 
 					public void mouseExited(MouseEvent evt) {

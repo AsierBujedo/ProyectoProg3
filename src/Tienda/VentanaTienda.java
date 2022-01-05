@@ -59,25 +59,30 @@ public class VentanaTienda {
 		JMenuItem chat = new JMenuItem("Chat con un agente");
 		chat.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		chat.setForeground(new Color(67,67,67));
+		chat.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// JMenuItem chatServerP
 		JMenuItem chatServerP = new JMenuItem("Iniciar chat (modo servidor)");
 		chatServerP.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		chatServerP.setForeground(new Color(67,67,67));
+		chatServerP.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// JMenuItem loginItem
 		loginItem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		loginItem.setForeground(new Color(67,67,67));
+		loginItem.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// JMenuItem logoutItem
 		logoutItem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		logoutItem.setForeground(new Color(67,67,67));
 		logoutItem.setEnabled(false);
+		logoutItem.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// JMenuItem personalArea
 		personalArea.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		personalArea.setForeground(new Color(67,67,67));
 		personalArea.setEnabled(false);
+		personalArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// MouseListener menucliente
 		menucliente.addMouseListener(new MouseAdapter() {
