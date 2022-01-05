@@ -25,8 +25,8 @@ public class VentanaTienda {
 	public static double menorPrecio = 0.0;
 	static JMenu atcliente = new JMenu("Atencion al cliente");
 	public static JMenuItem loginItem = new JMenuItem("Login");
-	static JMenuItem logoutItem = new JMenuItem("Logout");
-	static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
+	public static JMenuItem logoutItem = new JMenuItem("Logout");
+	public static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
 	public static JPanel panelTablaCesta;

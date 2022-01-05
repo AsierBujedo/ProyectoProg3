@@ -25,12 +25,13 @@ public class OtherFrames {
 	public static JPasswordField contraActualtf;
 	public static JPasswordField contraNuevatf;
 	public static JPasswordField contraConfirmartf;
+	private static JFrame frameaC;
 
 	// Acceso al área personal
 	public static void areaCliente() {
-		JFrame frame = new JFrame();
-		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-		frame.getContentPane().setBackground(Color.WHITE);
+		frameaC = new JFrame();
+		frameaC.setLayout(new BoxLayout(frameaC.getContentPane(), BoxLayout.Y_AXIS));
+		frameaC.getContentPane().setBackground(Color.WHITE);
 
 		JPanel botonera = new JPanel();
 		botonera.setLayout(new GridLayout(3, 1));
@@ -46,7 +47,7 @@ public class OtherFrames {
 		nombreUsuario.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
 		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtflog.getPassword())).toUpperCase();
-		if (!username.equals("Error")) {
+		if (!username.equals("ERROR")) {
 			nombreUsuario.setText(username);
 		} else {
 			nombreUsuario.setText("");
@@ -55,85 +56,22 @@ public class OtherFrames {
 
 		// Botón contra
 		JButton contra = new JButton("Cambiar contraseña");
-		contra.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contra.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		contra.setForeground(new Color(67, 67, 67));
-		contra.setBorderPainted(false);
-		contra.setFocusPainted(false);
-		contra.setOpaque(false);
-		contra.setContentAreaFilled(false);
+		contra = OtherUtils.modifyButton(contra, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
 
 		// Botón historial
 		JButton historial = new JButton("Última compra");
-		historial.setAlignmentX(Component.CENTER_ALIGNMENT);
-		historial.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		historial.setForeground(new Color(67, 67, 67));
-		historial.setBorderPainted(false);
-		historial.setFocusPainted(false);
-		historial.setOpaque(false);
-		historial.setContentAreaFilled(false);
+		historial = OtherUtils.modifyButton(historial, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
 		
 		// Botón informacion
 		JButton informacion = new JButton("Información de la cuenta");
-		informacion.setAlignmentX(Component.CENTER_ALIGNMENT);
-		informacion.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		informacion.setForeground(new Color(67, 67, 67));
-		informacion.setBorderPainted(false);
-		informacion.setFocusPainted(false);
-		informacion.setOpaque(false);
-		informacion.setContentAreaFilled(false);
-
-		// MouseListener contra
-		contra.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent evt) {
-				contra.setCursor(new Cursor(Cursor.HAND_CURSOR));
-				contra.setOpaque(true);
-				contra.setContentAreaFilled(true);
-				contra.setBackground(new Color(225, 225, 225));
-			}
-
-			public void mouseExited(MouseEvent evt) {
-				contra.setOpaque(false);
-				contra.setContentAreaFilled(false);
-			}
-		});
-
-		// MouseListener historial
-		historial.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent evt) {
-				historial.setCursor(new Cursor(Cursor.HAND_CURSOR));
-				historial.setOpaque(true);
-				historial.setContentAreaFilled(true);
-				historial.setBackground(new Color(225, 225, 225));
-			}
-
-			public void mouseExited(MouseEvent evt) {
-				historial.setOpaque(false);
-				historial.setContentAreaFilled(false);
-			}
-		});
-		
-		// MouseListener historial
-		informacion.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent evt) {
-				informacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-				informacion.setOpaque(true);
-				informacion.setContentAreaFilled(true);
-				informacion.setBackground(new Color(225, 225, 225));
-			}
-
-			public void mouseExited(MouseEvent evt) {
-				informacion.setOpaque(false);
-				informacion.setContentAreaFilled(false);
-			}
-		});
+		informacion = OtherUtils.modifyButton(informacion, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
 
 		botonera.add(contra);
 		botonera.add(historial);
 		botonera.add(informacion);
-		frame.add(iconoUsuario);
-		frame.add(nombreUsuario);
-		frame.add(botonera);
+		frameaC.add(iconoUsuario);
+		frameaC.add(nombreUsuario);
+		frameaC.add(botonera);
 
 		// Ventana para cambio de contraseña
 		// --------------------------------------------------
@@ -171,26 +109,7 @@ public class OtherFrames {
 				
 				// Botón cambiar
 				JButton cambiar = new JButton("Cambiar contraseña");
-				cambiar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-				cambiar.setForeground(new Color(67, 67, 67));
-				cambiar.setBorderPainted(false);
-				cambiar.setFocusPainted(false);
-				cambiar.setOpaque(false);
-				cambiar.setContentAreaFilled(false);
-
-				// MouseListener cambiar
-				cambiar.addMouseListener(new MouseAdapter() {
-					public void mouseEntered(MouseEvent evt) {
-						cambiar.setOpaque(true);
-						cambiar.setContentAreaFilled(true);
-						cambiar.setBackground(new Color(225, 225, 225));
-					}
-
-					public void mouseExited(MouseEvent evt) {
-						cambiar.setOpaque(false);
-						cambiar.setContentAreaFilled(false);
-					}
-				});
+				cambiar = OtherUtils.modifyButton(cambiar, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
 
 				// ActionListener cambiar
 				cambiar.addActionListener(new ActionListener() {
@@ -204,11 +123,18 @@ public class OtherFrames {
 								.equals(String.valueOf(contraConfirmartf.getPassword())) && !existe.equals("Error")) {
 							BaseDeDatos.editUser(COLS.PASS, mail, String.valueOf(contraActualtf.getPassword()),
 									String.valueOf(contraNuevatf.getPassword()));
+							frame.dispose();
+							VentanaTienda.loginItem.setText("Login");
+							VentanaTienda.loginItem.setEnabled(true);
+							VentanaTienda.logoutItem.setEnabled(false);
+							VentanaTienda.personalArea.setEnabled(false);
+							frameaC.dispose();
+							JOptionPane.showMessageDialog(null, "Vuelve a iniciar sesión para verificar el cambio", "Verificación", JOptionPane.WARNING_MESSAGE);
+							Login.doLogin();
 						} else {
-							JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Error", 0);
+							JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
 							frame.dispose();
 						}
-						frame.dispose();
 					}
 				});
 
@@ -329,13 +255,13 @@ public class OtherFrames {
 			}
 		});
 
-		frame.setTitle("Area cliente");
-		frame.setSize(300, 270);
-		frame.setResizable(false);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		frame.setIconImage(VentanaTienda.icon);
+		frameaC.setTitle("Area cliente");
+		frameaC.setSize(300, 270);
+		frameaC.setResizable(false);
+		frameaC.setLocationRelativeTo(null);
+		frameaC.setVisible(true);
+		frameaC.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		frameaC.setIconImage(VentanaTienda.icon);
 	}
 
 	// VENTANA ESTADISTICAS

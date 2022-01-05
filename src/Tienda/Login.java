@@ -31,7 +31,7 @@ public class Login {
 	public static JDatePickerImpl datePicker;
 	
 	
-	public void doLogin() {
+	public static void doLogin() {
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
