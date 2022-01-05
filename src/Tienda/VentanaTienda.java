@@ -213,7 +213,7 @@ public class VentanaTienda {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Login().doLogin();
+				Login.doLogin();
 				logger.log(Level.INFO, "Inicio de sesion");
 
 			}

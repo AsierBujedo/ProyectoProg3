@@ -4,6 +4,9 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -11,6 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Vector;
 import java.util.logging.Level;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import BD.BaseDeDatos;
@@ -327,6 +333,7 @@ public class OtherFrames {
 		principal.add(txtCompras);
 
 		txtCompras.setText(BaseDeDatos.getNumeroCompras() + "");
+		System.out.println(BaseDeDatos.getNumeroCompras());
 
 		JLabel lblProductos = new JLabel("Productos vendidos:");
 		lblProductos.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -438,7 +445,8 @@ public class OtherFrames {
 							@Override
 							public void run() {
 								try {
-									PrintWriter pw = new PrintWriter("estadisticas.txt");
+									File f = new File("estadisticas.txt");
+									PrintWriter pw = new PrintWriter(f);
 									System.out.println(info.getText()); // comprobacion
 									pw.println(info.getText());
 									pw.println("\n Posibles Compras con los productos actuales: ");
@@ -446,8 +454,21 @@ public class OtherFrames {
 										pw.println(s);
 									}
 									pw.close();
+									byte[] buffer = new byte[1024];
+									ZipOutputStream toZip = new ZipOutputStream(new FileOutputStream("stats.zip"));
+									FileInputStream in = new FileInputStream( f );
+									toZip.putNextEntry(new ZipEntry(f.getName()));
+									int dato;
+						            while ((dato = in.read(buffer)) > 0) {
+						                toZip.write(buffer, 0, dato);
+						            }
+						            
+						            toZip.closeEntry();
+						            in.close();
+									toZip.close();
+									f.delete();
 									JOptionPane.showMessageDialog(null, "¡Escritura completada!", "Escritura", JOptionPane.INFORMATION_MESSAGE);
-
+									
 								} catch (IOException e1) {
 									JOptionPane.showMessageDialog(null, "Error en la escritura de los datos", null, 0);
 									VentanaTienda.logger.log(Level.SEVERE, "Error al escribir datos");

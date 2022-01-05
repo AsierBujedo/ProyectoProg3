@@ -357,7 +357,6 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement("SELECT COD_PRODUCTO FROM PRODUCTO WHERE NOMBRE = '" + NOMBRE + "'");
 			ResultSet rs = pstmt.executeQuery();
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
-			rs.close();
 			return rs.getString("COD_PRODUCTO");
 
 		} catch (SQLException e) {
@@ -398,7 +397,6 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement("SELECT SUM(PRECIO) AS DINERO_TOTAL FROM COMPRA");
 			ResultSet rs = pstmt.executeQuery();
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
-			rs.close();
 			return rs.getDouble("DINERO_TOTAL");
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
@@ -415,7 +413,6 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement("SELECT COUNT(*) AS COMPRAS_TOTALES FROM COMPRA");
 			ResultSet rs = pstmt.executeQuery();
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
-			rs.close();
 			return rs.getInt("COMPRAS_TOTALES");
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
@@ -432,7 +429,6 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement("SELECT COUNT(*) AS CLIENTES FROM USER");
 			ResultSet rs = pstmt.executeQuery();
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
-			rs.close();
 			return rs.getInt("CLIENTES");
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
@@ -449,7 +445,6 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement("SELECT SUM(TOTAL_PRODS) AS TOTAL FROM COMPRA");
 			ResultSet rs = pstmt.executeQuery();
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
-			rs.close();
 			return rs.getInt("TOTAL");
 		} catch (SQLException e) {
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
