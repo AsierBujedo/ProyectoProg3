@@ -155,7 +155,7 @@ public class VentanaTienda {
 			}
 		}
 		// Tab 0, Presentación --------------------------------------------------
-		tabs.add("Presentación", new JScrollPane(new Utils.BackgroungImagePanel()));
+		tabs.add("Presentación", new JScrollPane(new Utils.BackgroundImagePanel()));
 		
 		// Tab 1, Electrónica --------------------------------------------------
 		JPanel tabElect = new JPanel();

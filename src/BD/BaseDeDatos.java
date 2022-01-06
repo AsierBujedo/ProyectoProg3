@@ -227,7 +227,6 @@ public class BaseDeDatos {
 			pstmt = con.prepareStatement("UPDATE USER SET " + "GENERO" + "= '" + GENERO.toString() + "' WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement("UPDATE USER SET " + "NACIMIENTO" + "= '" + NACIMIENTO + "' WHERE MAIL = '" + MAIL+"';");
-			System.out.println("UPDATE USER SET " + "NACIMIENTO" + "= " + NACIMIENTO + " WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement("UPDATE USER SET " + "DIR" + "= '" + DIR + "' WHERE MAIL = '" + MAIL+"';");
 			pstmt.executeUpdate();
@@ -512,7 +511,6 @@ public class BaseDeDatos {
 			VentanaTienda.logger.log(Level.INFO, "Operación en la base de datos realizada");
 			return rs.getString("NACIMIENTO");
 		} catch (SQLException e) {
-			System.out.println("prueba");
 			VentanaTienda.logger.log(Level.SEVERE, e.toString());
 			return null;
 		}

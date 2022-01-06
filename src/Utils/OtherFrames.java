@@ -341,7 +341,6 @@ public class OtherFrames {
 					txtDate = new JFormattedTextField(modelo);
 					sdf = new SimpleDateFormat("yyyy/MM/dd");
 					String f = BaseDeDatos.getUserDate(BaseDeDatos.getUserMail(VentanaTienda.loginItem.getText()));
-					System.out.println(f);
 					txtDate.setText(f);
 					
 					txtDate.setHorizontalAlignment(SwingConstants.LEFT);
@@ -559,7 +558,6 @@ public class OtherFrames {
 		principal.add(txtCompras);
 
 		txtCompras.setText(BaseDeDatos.getNumeroCompras() + "");
-		System.out.println(BaseDeDatos.getNumeroCompras());
 
 		JLabel lblProductos = new JLabel("Productos vendidos:");
 		lblProductos.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -673,7 +671,6 @@ public class OtherFrames {
 								try {
 									File f = new File("estadisticas.txt");
 									PrintWriter pw = new PrintWriter(f);
-									System.out.println(info.getText()); // comprobacion
 									pw.println(info.getText());
 									pw.println("\n Posibles Compras con los productos actuales: ");
 									for (String s : OtherUtils.posiblesCompras) {
