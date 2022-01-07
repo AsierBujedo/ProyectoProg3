@@ -28,6 +28,7 @@ public class VentanaTienda {
 	public static JMenuItem loginItem = new JMenuItem("Login");
 	public static JMenuItem logoutItem = new JMenuItem("Logout");
 	public static JMenuItem personalArea = new JMenuItem("Acceso al area personal");
+	public static JMenuItem stats = new JMenuItem("Estadísticas");
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
 	public static JPanel panelTablaCesta;
@@ -88,6 +89,11 @@ public class VentanaTienda {
 		personalArea.setEnabled(false);
 		personalArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
+		// JMenuItem stats
+		stats.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		stats.setForeground(new Color(67,67,67));
+		stats.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		
 		// MouseListener menucliente
 		menucliente.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
@@ -121,6 +127,7 @@ public class VentanaTienda {
 		menucliente.add(loginItem);
 		menucliente.add(logoutItem);
 		menucliente.add(personalArea);
+		menucliente.add(stats);
 		bar.add(menucliente);
 		bar.add(atcliente);
 		
@@ -159,7 +166,7 @@ public class VentanaTienda {
 			}
 		}
 		// Tab 0, Presentación --------------------------------------------------
-		tabs.add("Presentación", new JScrollPane(new Utils.BackgroundImagePanel()));
+		tabs.add("Presentación", new JScrollPane(Inicio.InitWindow()));
 		
 		// Tab 1, Electrónica --------------------------------------------------
 		JPanel tabElect = new JPanel();
@@ -238,6 +245,22 @@ public class VentanaTienda {
 				personalArea.setEnabled(false);
 				logger.log(Level.INFO, "Cerrado de sesion");
 
+			}
+		});
+		
+		stats.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread stats = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						OtherFrames.VentanaStats();
+						
+					}
+				});
+				stats.start();
 			}
 		});
 
