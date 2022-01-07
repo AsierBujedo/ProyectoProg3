@@ -344,7 +344,6 @@ public class VentanaTienda {
 			OtherUtils.escribeDatos();
 		}
 		logger.log(Level.INFO, "Carga de datos... Recuperación de archivo.");
-
 		try {
 			ArrayList<Producto> prods = new ArrayList<Producto>();
 			FileInputStream fis = new FileInputStream(new File("datos.dat"));
@@ -353,9 +352,9 @@ public class VentanaTienda {
 			for (Producto p : prods) {
 				BaseDeDatos.addProducto(p);
 			}
-		} catch (IOException | ClassNotFoundException e1) {
+		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			logger.log(Level.SEVERE, "Error al cargar datos");
+			logger.log(Level.SEVERE, "Error al cargar datos: "+ e.toString());
 		}
 	}
 

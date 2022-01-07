@@ -36,7 +36,7 @@ public class OtherFrames {
 	public static JPasswordField contraNuevatf;
 	public static JPasswordField contraConfirmartf;
 	private static JFrame frameaC;
-	
+
 	public static JFormattedTextField txtDate;
 	public static JFormattedTextField txtTelefono;
 	public static SimpleDateFormat sdf;
@@ -63,7 +63,8 @@ public class OtherFrames {
 		nombreUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
 		nombreUsuario.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
-		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtflog.getPassword())).toUpperCase();
+		String username = BaseDeDatos.getUser(Login.usertf.getText(), String.valueOf(Login.passtflog.getPassword()))
+				.toUpperCase();
 		if (!username.equals("ERROR")) {
 			nombreUsuario.setText(username);
 		} else {
@@ -73,15 +74,18 @@ public class OtherFrames {
 
 		// Botón contra
 		JButton contra = new JButton("Cambiar contraseña");
-		contra = OtherUtils.modifyButton(contra, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
+		contra = OtherUtils.modifyButton(contra, new Color(67, 67, 67), new Color(194, 194, 194),
+				new Color(225, 225, 225));
 
 		// Botón historial
 		JButton historial = new JButton("Última compra");
-		historial = OtherUtils.modifyButton(historial, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
-		
+		historial = OtherUtils.modifyButton(historial, new Color(67, 67, 67), new Color(194, 194, 194),
+				new Color(225, 225, 225));
+
 		// Botón informacion
 		JButton informacion = new JButton("Información de la cuenta");
-		informacion = OtherUtils.modifyButton(informacion, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
+		informacion = OtherUtils.modifyButton(informacion, new Color(67, 67, 67), new Color(194, 194, 194),
+				new Color(225, 225, 225));
 
 		botonera.add(contra);
 		botonera.add(historial);
@@ -117,16 +121,17 @@ public class OtherFrames {
 
 				contraActualtf = new JPasswordField(20);
 				contraActualtf = OtherUtils.modifyPasswordField(contraActualtf, "Contraseña actual");
-				
+
 				contraNuevatf = new JPasswordField(20);
 				contraNuevatf = OtherUtils.modifyPasswordField(contraNuevatf, "Nueva contraseña");
-				
+
 				contraConfirmartf = new JPasswordField(20);
 				contraConfirmartf = OtherUtils.modifyPasswordField(contraConfirmartf, "Confirmar contraseña");
-				
+
 				// Botón cambiar
 				JButton cambiar = new JButton("Cambiar contraseña");
-				cambiar = OtherUtils.modifyButton(cambiar, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));
+				cambiar = OtherUtils.modifyButton(cambiar, new Color(67, 67, 67), new Color(194, 194, 194),
+						new Color(225, 225, 225));
 
 				// ActionListener cambiar
 				cambiar.addActionListener(new ActionListener() {
@@ -146,10 +151,12 @@ public class OtherFrames {
 							VentanaTienda.logoutItem.setEnabled(false);
 							VentanaTienda.personalArea.setEnabled(false);
 							frameaC.dispose();
-							JOptionPane.showMessageDialog(null, "Vuelve a iniciar sesión para verificar el cambio", "Verificación", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Vuelve a iniciar sesión para verificar el cambio",
+									"Verificación", JOptionPane.WARNING_MESSAGE);
 							Login.doLogin();
 						} else {
-							JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Error",
+									JOptionPane.ERROR_MESSAGE);
 							frame.dispose();
 						}
 					}
@@ -209,10 +216,12 @@ public class OtherFrames {
 					Vector<String> nomColumnas = new Vector<String>(
 							Arrays.asList("Código de producto", "Nombre", "Precio", "Marca"));
 					JTable tabla = new JTable() {
-						public boolean editCellAt(int row, int column, java.util.EventObject e) {//Evita que la tabla se pueda editar
-				            return false;
-				         }
-					};					DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
+						public boolean editCellAt(int row, int column, java.util.EventObject e) {// Evita que la tabla
+																									// se pueda editar
+							return false;
+						}
+					};
+					DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
 					tabla.getTableHeader().setReorderingAllowed(false);
 					tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 					tabla.getTableHeader().setBackground(Color.GREEN.darker());
@@ -264,38 +273,40 @@ public class OtherFrames {
 				}
 			}
 		});
-		
-		// Ventana para la informacion de la cuenta --------------------------------------------------
+
+		// Ventana para la informacion de la cuenta
+		// --------------------------------------------------
 		informacion.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Inicializamos la ventana
 				JFrame frame = new JFrame();
 				JPanel principal = new JPanel();
-				
+
 				String nombre = VentanaTienda.loginItem.getText();
 				String mail = BaseDeDatos.getUserMail(nombre);
-				
+
 				principal.setBackground(Color.WHITE);
 				principal.setLayout(null);
-				
+
 				frame.add(principal);
-				
+
 				JTextArea txtAreaInfo = new JTextArea();
 				txtAreaInfo.setEditable(false);
 				txtAreaInfo.setForeground(Color.GRAY);
 				txtAreaInfo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-				txtAreaInfo.setText("Proporciona tu informaci\u00F3n personal. Esta informaci\u00F3n se mantendr\u00E1 privada y no se incluir\u00E1 en tu perfil p\u00FAblico.");
+				txtAreaInfo.setText(
+						"Proporciona tu informaci\u00F3n personal. Esta informaci\u00F3n se mantendr\u00E1 privada y no se incluir\u00E1 en tu perfil p\u00FAblico.");
 				txtAreaInfo.setBounds(20, 10, 356, 46);
 				txtAreaInfo.setLineWrap(true);
 				txtAreaInfo.setWrapStyleWord(true);
-				
+
 				JLabel lblMail = new JLabel("Dirección de correo electrónico");
 				lblMail.setForeground(Color.GRAY);
 				lblMail.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				lblMail.setBounds(20, 65, 200, 20);
-				
+
 				JTextField txtMail = new JTextField();
 				txtMail.setEditable(false);
 				txtMail.setForeground(Color.BLACK);
@@ -304,14 +315,14 @@ public class OtherFrames {
 				txtMail.setBorder(null);
 				txtMail.setColumns(10);
 				OtherUtils.modifyTextFieldSimple(txtMail, "Email");
-				
+
 				txtMail.setText(mail);
-				
+
 				JLabel lblNumero = new JLabel("N\u00FAmero de tel\u00E9fono");
 				lblNumero.setForeground(Color.GRAY);
 				lblNumero.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				lblNumero.setBounds(20, 245, 185, 20);
-				
+
 				try {
 					MaskFormatter masc = new MaskFormatter("#########");
 					txtTelefono = new JFormattedTextField(masc);
@@ -319,36 +330,36 @@ public class OtherFrames {
 					txtTelefono.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 					txtTelefono.setBounds(20, 270, 199, 19);
 					txtTelefono.setBorder(null);
-					
+
 					txtTelefono.setText(BaseDeDatos.getUserTelf(mail) + "");
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
-				
+
 				JLabel lblSexo = new JLabel("Sexo");
 				lblSexo.setForeground(Color.GRAY);
 				lblSexo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				lblSexo.setBounds(20, 185, 185, 20);
-				
+
 				JComboBox<Genero> genero = new JComboBox<Genero>(Genero.values());
 				genero.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 				genero.setSelectedItem(Genero.FEMENINO);
 				genero.setBackground(Color.WHITE);
 				genero.setBounds(20, 210, 199, 29);
 				genero.setSelectedItem(BaseDeDatos.getUserGenero(mail));
-				
+
 				JLabel lblFecha = new JLabel("Fecha de nacimiento");
 				lblFecha.setForeground(Color.GRAY);
 				lblFecha.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				lblFecha.setBounds(20, 365, 185, 20);
-				
+
 				try {
 					MaskFormatter modelo = new MaskFormatter("####-##-##");
 					txtDate = new JFormattedTextField(modelo);
 					sdf = new SimpleDateFormat("yyyy/MM/dd");
 					String f = BaseDeDatos.getUserDate(BaseDeDatos.getUserMail(VentanaTienda.loginItem.getText()));
 					txtDate.setText(f);
-					
+
 					txtDate.setHorizontalAlignment(SwingConstants.LEFT);
 					txtDate.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 					txtDate.setBounds(20, 390, 199, 19);
@@ -356,7 +367,7 @@ public class OtherFrames {
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
-				
+
 				JSeparator lineMail = new JSeparator();
 				lineMail.setBounds(20, 110, 250, 2);
 				lineMail.setForeground(Color.GRAY);
@@ -364,16 +375,16 @@ public class OtherFrames {
 				JSeparator lineNumero = new JSeparator();
 				lineNumero.setForeground(Color.GRAY);
 				lineNumero.setBounds(20, 290, 250, 2);
-				
+
 				JSeparator lineFecha = new JSeparator();
 				lineFecha.setForeground(Color.GRAY);
 				lineFecha.setBounds(20, 410, 250, 2);
-				
+
 				JLabel lblDir = new JLabel("Dirección");
 				lblDir.setForeground(Color.GRAY);
 				lblDir.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				lblDir.setBounds(20, 305, 185, 20);
-				
+
 				JTextField txtDireccion = new JTextField();
 				txtDireccion.setForeground(Color.BLACK);
 				txtDireccion.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -381,32 +392,31 @@ public class OtherFrames {
 				txtDireccion.setBorder(null);
 				txtDireccion.setBounds(20, 330, 250, 19);
 				OtherUtils.modifyTextFieldSimple(txtDireccion, "Escriba una direccion");
-				
+
 				txtDireccion.setText(BaseDeDatos.getUserDir(mail));
-				
+
 				JSeparator lineDireccion = new JSeparator();
 				lineDireccion.setForeground(Color.GRAY);
 				lineDireccion.setBounds(20, 350, 250, 2);
-				
+
 				JLabel lblUsuario = new JLabel("Usuario");
 				lblUsuario.setForeground(Color.GRAY);
 				lblUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				lblUsuario.setBounds(20, 130, 185, 13);
-				
+
 				JSeparator lineUsuario = new JSeparator();
 				lineUsuario.setForeground(Color.GRAY);
 				lineUsuario.setBounds(20, 170, 250, 2);
-				
+
 				JTextField txtUsuario = new JTextField();
 				txtUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 				txtUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				txtUsuario.setBorder(null);
 				txtUsuario.setBounds(20, 150, 199, 19);
 				OtherUtils.modifyTextFieldSimple(txtUsuario, "Usuario");
-				
+
 				txtUsuario.setText(nombre);
-				
-				
+
 				// Boton cambios
 				JButton btnCambios = new JButton("Aplicar cambios");
 				btnCambios.setForeground(Color.WHITE);
@@ -415,28 +425,27 @@ public class OtherFrames {
 				btnCambios.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				btnCambios.setBounds(137, 438, 135, 29);
 				btnCambios.setBorderPainted(false);
-				
+
 				// MouseListener cambios
 				btnCambios.addMouseListener(new MouseAdapter() {
-					
-					
+
 					@Override
 					public void mouseExited(MouseEvent e) {
 						btnCambios.setBackground(new Color(0, 206, 209));
-						
+
 					}
-					
+
 					@Override
 					public void mouseEntered(MouseEvent e) {
 						btnCambios.setBackground(new Color(0, 206, 209).darker());
-						
+
 					}
-					
+
 				});
-				
+
 				// ActionListener del boton para ejecutar los cambios realizados por el usuario
 				btnCambios.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -444,23 +453,28 @@ public class OtherFrames {
 						try {
 							date = sdf.parse(txtDate.getText());
 							long dateL = date.getTime();
-							BaseDeDatos.editUserSpecs(mail, txtUsuario.getText(), Integer.valueOf(txtTelefono.getText()), (Genero) genero.getSelectedItem(), new java.sql.Date(dateL), txtDireccion.getText());
-							if(VentanaTienda.loginItem.getText() != txtUsuario.getText())
-								VentanaTienda.loginItem.setText(txtUsuario.getText()); // Se cambia el nombre del loginItem con el texto de usuario, 
-																						//sino la siguiente vez que se cargue la ventana se cargaran datos erroneos
+							BaseDeDatos.editUserSpecs(mail, txtUsuario.getText(),
+									Integer.valueOf(txtTelefono.getText()), (Genero) genero.getSelectedItem(),
+									new java.sql.Date(dateL), txtDireccion.getText());
+							if (VentanaTienda.loginItem.getText() != txtUsuario.getText())
+								VentanaTienda.loginItem.setText(txtUsuario.getText()); // Se cambia el nombre del
+																						// loginItem con el texto de
+																						// usuario,
+																						// sino la siguiente vez que se
+																						// cargue la ventana se cargaran
+																						// datos erroneos
 							VentanaTienda.logger.log(Level.INFO, "Especificaciones actualizadas");
 							JOptionPane.showMessageDialog(null, "Cambios realizados correctamente", null, 1);
 						} catch (ParseException e1) {
 							e1.printStackTrace();
 						}
-						
-						
+
 					}
 				});
-				
+
 				// JTextArea
 				principal.add(txtAreaInfo);
-				
+
 				// Labels
 				principal.add(lblMail);
 				principal.add(lblNumero);
@@ -468,27 +482,27 @@ public class OtherFrames {
 				principal.add(lblFecha);
 				principal.add(lblUsuario);
 				principal.add(lblDir);
-				
+
 				// TextFields
 				principal.add(txtMail);
 				principal.add(txtTelefono);
 				principal.add(txtDate);
 				principal.add(txtDireccion);
 				principal.add(txtUsuario);
-				
-				//JComboBox
+
+				// JComboBox
 				principal.add(genero);
-				
+
 				// JSeparator
 				principal.add(lineMail);
 				principal.add(lineNumero);
 				principal.add(lineFecha);
 				principal.add(lineDireccion);
 				principal.add(lineUsuario);
-				
+
 				// Boton cambiar
 				principal.add(btnCambios);
-				
+
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				frame.setTitle("Informacion personal");
@@ -496,8 +510,7 @@ public class OtherFrames {
 				frame.setIconImage(VentanaTienda.icon);
 				frame.setLocationRelativeTo(null);
 				frame.setResizable(false);
-				
-				
+
 			}
 		});
 
@@ -509,6 +522,7 @@ public class OtherFrames {
 		frameaC.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		frameaC.setIconImage(VentanaTienda.icon);
 	}
+
 
 	/**
 	 * 
@@ -648,7 +662,7 @@ public class OtherFrames {
 						+ "Número de clientes: " + txtClientes.getText() + "\n" + "Compras totales: "
 						+ txtCompras.getText() + "\n" + "Productos totales: " + txtProductos.getText();
 				info.append(todo);
-				OtherUtils.combinaCompras(200); //NO SUBIR DE 200€
+				OtherUtils.combinaCompras(200); // NO SUBIR DE 200€
 				for (String s : OtherUtils.posiblesCompras) {
 					info.append("\n" + s);
 				}
@@ -672,7 +686,7 @@ public class OtherFrames {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						Thread escritura = new Thread(new Runnable() {
-							
+
 							@Override
 							public void run() {
 								try {
@@ -684,21 +698,28 @@ public class OtherFrames {
 										pw.println(s);
 									}
 									pw.close();
-									byte[] buffer = new byte[1024];
-									ZipOutputStream toZip = new ZipOutputStream(new FileOutputStream("stats.zip"));
-									FileInputStream in = new FileInputStream( f );
-									toZip.putNextEntry(new ZipEntry(f.getName()));
-									int dato;
-						            while ((dato = in.read(buffer)) > 0) {
-						                toZip.write(buffer, 0, dato);
-						            }
-						            
-						            toZip.closeEntry();
-						            in.close();
-									toZip.close();
-									f.delete();
-									JOptionPane.showMessageDialog(null, "¡Escritura completada!", "Escritura", JOptionPane.INFORMATION_MESSAGE);
-									
+									if (Boolean.valueOf(OtherUtils.prop.getProperty("COMPRESS-STATS"))) {
+										byte[] buffer = new byte[1024];
+										ZipOutputStream toZip = new ZipOutputStream(new FileOutputStream("stats.zip"));
+										FileInputStream in = new FileInputStream(f);
+										toZip.putNextEntry(new ZipEntry(f.getName()));
+										int dato;
+										while ((dato = in.read(buffer)) > 0) {
+											toZip.write(buffer, 0, dato);
+										}
+
+										toZip.closeEntry();
+										in.close();
+										toZip.close();
+										f.delete();
+										JOptionPane.showMessageDialog(null,
+												"¡Escritura completada! Se han comprimido las estadísticas...",
+												"Escritura", JOptionPane.INFORMATION_MESSAGE);
+									} else {
+										JOptionPane.showMessageDialog(null, "¡Escritura completada!", "Escritura",
+												JOptionPane.INFORMATION_MESSAGE);
+									}
+
 								} catch (IOException e1) {
 									JOptionPane.showMessageDialog(null, "Error en la escritura de los datos", null, 0);
 									VentanaTienda.logger.log(Level.SEVERE, "Error al escribir datos");

@@ -129,6 +129,7 @@ public class OtherUtils {
 			prop.setProperty("CLIENT-IP-DESTINATION", "localhost");
 			prop.setProperty("WINDOW-HEIGHT", "700");
 			prop.setProperty("WINDOW-WIDTH", "1000");
+			prop.setProperty("COMPRESS-STATS", "true");
 			try {
 				prop.store(new FileOutputStream(f), null);
 				VentanaTienda.logger.log(Level.INFO, "PROPERTIES RESTARTED");
