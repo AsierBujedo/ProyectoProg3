@@ -472,8 +472,6 @@ public class PanelTabla extends JPanel {
 						tablaCesta.repaint();
 						Cesta.cesta = new ArrayList<Producto>();
 						datosCesta = new ArrayList<DatoParaTabla>();
-						System.out.println(Cesta.cesta);
-						System.out.println(datosCesta);
 						vaciarCesta.setBackground(Color.GRAY.brighter());
 						eliminarProducto.setBackground(Color.GRAY.brighter());
 						realizarCompra.setBackground(Color.GRAY.brighter());

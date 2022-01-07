@@ -91,12 +91,11 @@ public class BaseDeDatos {
 
 	/**
 	 * Elimina un usuario de la tabla USER.
-	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param MAIL Correo electrónico del usuario.
 	 * @param PASS Contraseña del usuario.
-	 * @return true si el usuario elimina correctamente, false si hay algún error.
+	 * @return true si el usuario se elimina correctamente, false si hay algún error.
 	 */
-	// El usuario se identifica por su dirección de correo electrónico y su
-	// contraseña, no por su identificativo único
+	// El usuario se identifica por su correo electrónico y su contraseña, no por su identificativo único
 	public static boolean removeUser(String MAIL, String PASS) {
 		try {
 			pstmt = con.prepareStatement("DELETE FROM USER WHERE MAIL = '" + MAIL + "' AND PASS = '" + PASS + "'");
@@ -113,12 +112,11 @@ public class BaseDeDatos {
 	/**
 	 * Añade un nuevo usuario a la tabla USER.
 	 * @param USERNAME Nombre de usuario.
-	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param MAIL Correo electrónico del usuario.
 	 * @param PASS Contraseña del usuario.
 	 * @return true si el usuario se añade correctamente, false si hay algún error.
 	 */
-	// Automáticamente se le asigna un ID como código identificativo único, su
-	// PRIMARY KEY
+	// Automáticamente se le asigna un ID como código identificativo único, su PRIMARY KEY
 	public static boolean addUser(String USERNAME, String MAIL, String PASS, Integer TELF, Genero GENERO, Date date, String DIR) {
 		try {
 			pstmt = con.prepareStatement("INSERT INTO USER (USERNAME, MAIL, PASS, USER_ID, TELF, GENERO, NACIMIENTO, DIR) VALUES ('" + USERNAME + "','"
@@ -151,10 +149,10 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Lee los usuarios de la tabla USER.
-	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * Obtiene el nombre de usuario mediante su correo electrónico y su contraseña.
+	 * @param MAIL Correo electrónico del usuario.
 	 * @param PASS Contraseña del usuario.
-	 * @return "Nombre de usuario", "Error" si hay algún error.
+	 * @return nombre de usuario del usuario, "Error" si hay algún error.
 	 */
 	public static String getUser(String MAIL, String PASS) {
 		try {
@@ -169,9 +167,11 @@ public class BaseDeDatos {
 			return "Error";
 		}
 	}
-	/**Este método obtiene mediante el nombre de usuario, el mail del propietario
-	 * @param name
-	 * @return String mail
+	
+	/**
+	 * Obtiene el correo electrónico del usuario mediante su nombre de usuario.
+	 * @param name Nombre de usuario.
+	 * @return correo electrónico del usuario, "Error" si hay algún error.
 	 */
 	public static String getUserMail(String name) {
 		try {
@@ -190,12 +190,12 @@ public class BaseDeDatos {
 	/**
 	 * Edita un usuario de la tabla USER.
 	 * @param COL  Nombre de la columna de la tabla USER.
-	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param MAIL Correo electrónico del usuario.
 	 * @param PASS Contraseña del usuario.
-	 * @param NEW
+	 * @param NEW Nuevo dato para almacenar.
 	 * @return true si el cambio es efectivo, false si hay algún error.
 	 */
-	// Se permite el cambio de nombre de usuario, mail y/o password
+	// Se permite el cambio de nombre de usuario, correo electrónico y/o password
 	public static boolean editUser(COLS COL, String MAIL, String PASS, String NEW) {
 		try {
 			pstmt = con.prepareStatement("UPDATE USER SET " + COL.toString() + "= '" + NEW + "' WHERE MAIL = '" + MAIL
@@ -207,17 +207,17 @@ public class BaseDeDatos {
 			return false;
 		}
 	}
-	/**Metodo que edita varios atributos de los Usuarios, entre ellos: USERNAME, TELF, SEXO, NACIMIENTO Y LA DIRECCION.
-	 * 
-	 * @param MAIL
-	 * @param USERNAME
-	 * @param TELF
-	 * @param SEXO
-	 * @param NACIMIENTO
-	 * @param DIR
-	 * @return true, false
-	 */
 	
+	/**
+	 * Edita el nombre de usuario, el número de teléfono, el sexo, la fecha de nacimiento y la dirección del usuario mediante su correo electrónico.
+	 * @param MAIL Correo electrónico del usuario.
+	 * @param USERNAME Nombre de usuario.
+	 * @param TELF Número de teléfono del usuario.
+	 * @param SEXO Sexo del usuario.
+	 * @param NACIMIENTO Fecha de nacimiento del usuario.
+	 * @param DIR Dirección del usuario.
+	 * @return true si el cambio es efectivo, false si hay algún error.
+	 */
 	public static boolean editUserSpecs(String MAIL, String USERNAME, Integer TELF, Genero GENERO, Date NACIMIENTO, String DIR) {
 		try {
 			pstmt = con.prepareStatement("UPDATE USER SET " + "USERNAME" + "= '" + USERNAME + "' WHERE MAIL = '" + MAIL+"';");
@@ -239,8 +239,8 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Lee los productos de la tabla PRODUCTO.
-	 * @return Lista completa de productos, null si hay algún error.
+	 * Lee los productos de la tabla PRODUCTO y los almacena en una lista.
+	 * @return lista completa de productos, null si hay algún error.
 	 */
 	public static ArrayList<Producto> getProductos() {
 		try {
@@ -283,8 +283,10 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
-	/**Método que consulta en la base de datos el Producto más barato
-	 * @return Producto
+	
+	/**
+	 * Consulta en la base de datos y obtiene el producto más barato.
+	 * @return producto más barato, null si hay algún error.
 	 */
 	public static Producto getMasBarato() {
 		try {
@@ -305,9 +307,10 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
+	
 	/**
-	 * Funcion que realiza una consulta y obtiene el producto más caro.
-	 * @return Producto
+	 * Consulta en la base de datos y obtiene el producto más caro.
+	 * @return producto más caro, null si hay algún error.
 	 */
 	public static Producto getMasCaro() {
 		try {
@@ -328,9 +331,10 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
+	
 	/**
-	 * Funcion que realiza una consulta y obtiene el producto más barato.
-	 * @return Producto
+	 * Añade un nuevo producto a la tabla PRODUCTO. 
+	 * @return true si el producto se añade correctamente, false si hay algún error.
 	 */
 	public static boolean addProducto(Producto p) {
 		try {
@@ -346,11 +350,10 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * Lee los productos de la tabla PRODUCTO.
-	 * @param COD_PRODUCTO Código del producto.
+	 * Obtiene el código del producto mediante su nombre.
 	 * @param NOMBRE Nombre del producto.
-	 * @return Producto con el código y nombre que buscamos , null si hay algún error.
-	 */	
+	 * @return código del producto, null si hay algún error.
+	 */
 	public static String getProducto(String NOMBRE) {
 		try {
 			pstmt = con.prepareStatement("SELECT COD_PRODUCTO FROM PRODUCTO WHERE NOMBRE = '" + NOMBRE + "'");
@@ -367,7 +370,7 @@ public class BaseDeDatos {
 	
 	/**
 	 * Añade una nueva compra a la tabla COMPRA.
-	 * @param MAIL Dirección de correo electrónico del usuario.
+	 * @param MAIL Correo electrónico del usuario.
 	 * @return true si la compra se añade correctamente, false si hay algún error.
 	 */
 	public static boolean addCompra(String MAIL) {
@@ -388,8 +391,8 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * Lee las compras de la tabla COMPRA
-	 * @return La suma del los precios de todas las compras, 0 si hay algún error.
+	 * Obtiene la suma total de todos los precios por compra de la tabla COMPRA.
+	 * @return precio total de todas las compras, 0 si hay algún error.
 	 */
 	public static double getPrecioCompras() {
 		try {
@@ -404,8 +407,8 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * Lee las compras de la tabla COMPRA.
-	 * @return El número de compras, null si hay algún error.
+	 * Obtiene el número total de compras de la tabla COMPRA.
+	 * @return número total de compras, null si hay algún error.
 	 */
 	public static Integer getNumeroCompras() {
 		try {
@@ -420,8 +423,8 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Lee las compras de la tabla COMPRA.
-	 * @return Total de clientes/usuarios, null si hay algún error.
+	 * Obtiene el número total de usuarios de la tabla USER.
+	 * @return número total de usuarios, null si hay algún error.
 	 */
 	public static Integer getTotalClientes() {
 		try {
@@ -436,8 +439,8 @@ public class BaseDeDatos {
 	}
 		
 	/**
-	* Lee las compras de la tabla COMPRA.
-	* @return Total de productos vendidos, null si hay algún error.
+	* Obtiene la suma total de todas las cantidades de productos por compra de la tabla COMPRA.
+	* @return número total de productos vendidos, null si hay algún error.
 	*/
 	public static Integer getTotalProductos() {
 		try {
@@ -451,9 +454,10 @@ public class BaseDeDatos {
 		}
 	}
 	
-	/**Este método obtiene el teléfono mediante el mail del usuario
-	 * @param MAIL Dirección de correo electrónico del usuario.
-	 * @return Número de teléfono del usuario, null si hay algún error.
+	/**
+	 * Obtiene el número teléfono del usuario mediante su correo electrónico.
+	 * @param MAIL Correo electrónico del usuario.
+	 * @return número de teléfono del usuario, null si hay algún error.
 	 */
 	public static Integer getUserTelf(String MAIL) {
 		try {
@@ -467,9 +471,10 @@ public class BaseDeDatos {
 		}
 	}
 	
-	/**Este método obtiene el género mediante el mail del usuario
-	 * @param MAIL Dirección de correo electrónico del usuario.
-	 * @return GENERO Género del usuario, null si hay algún error.
+	/**
+	 * Obtiene el género del usuario mediante su correo electrónico.
+	 * @param MAIL Correo electrónico del usuario.
+	 * @return género del usuario, null si hay algún error.
 	 */
 	public static Genero getUserGenero(String MAIL) {
 		try {
@@ -484,9 +489,10 @@ public class BaseDeDatos {
 		}
 	}
 	
-	/**Este método obtiene la dirección mediante el mail del usuario
-	 * @param MAIL Dirección de correo electrónico del usuario.
-	 * @return DIR Dirección del usuario, null si hat algún error.
+	/**
+	 * Obtiene la dirección del usuario mediante su correo electrónico.
+	 * @param MAIL Correo electrónico del usuario.
+	 * @return dirección del usuario, null si hay algún error.
 	 */
 	public static String getUserDir(String MAIL) {
 		try {
@@ -500,9 +506,10 @@ public class BaseDeDatos {
 		}
 	}
 	
-	/**Este método obtiene la fecha de nacimiento mediante el mail del usuario
-	 * @param MAIL Dirección de correo electrónico del usuario.
-	 * @return NACIMIENTO Fecha de nacimiento del usuario.
+	/**
+	 * Obtiene la fecha de nacimiento del usuario mediante su correo electrónico.
+	 * @param MAIL Correo electrónico del usuario.
+	 * @return fecha de nacimiento del usuario.
 	 */
 	public static String getUserDate(String MAIL) {
 		try {
