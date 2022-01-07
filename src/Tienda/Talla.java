@@ -2,7 +2,6 @@ package Tienda;
 
 /**
  * Clase enum Talla.
- * 
  * @author GR08
  *
  */

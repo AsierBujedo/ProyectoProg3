@@ -2,7 +2,6 @@ package Tienda;
 
 /**
  * Clase enum Pais.
- * 
  * @author GR08
  *
  */

@@ -57,11 +57,11 @@ public class Libro extends Producto {
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
-
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}
-
+	
 	public void setTapaDura(boolean tapaDura) {
 		this.tapaDura = tapaDura;
 	}

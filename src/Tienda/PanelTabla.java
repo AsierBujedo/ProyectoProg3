@@ -28,7 +28,8 @@ import javax.swing.table.TableRowSorter;
 import BD.BaseDeDatos;
 
 /**
- * 
+ * Clase PanelCesta.
+ * Permite crear dos tipos de tablas diferentes, uno de ellos para mostrar los productos en venta y el otro para la cesta.
  * @author GR08
  *
  */

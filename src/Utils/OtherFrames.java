@@ -207,6 +207,7 @@ public class OtherFrames {
 		// Ventana para última compra --------------------------------------------------
 		historial.addActionListener(new ActionListener() {
 
+			@SuppressWarnings("serial")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String nombre = VentanaTienda.loginItem.getText();

@@ -33,7 +33,7 @@ public class Impresora extends Producto {
 	public String getModelo() {
 		return modelo;
 	}
-
+	
 	public boolean isEsColor() {
 		return esColor;
 	}
@@ -50,7 +50,7 @@ public class Impresora extends Producto {
 	public void setEsColor(boolean esColor) {
 		this.esColor = esColor;
 	}
-
+	
 	public void setEsLaser(boolean esLaser) {
 		this.esLaser = esLaser;
 	}

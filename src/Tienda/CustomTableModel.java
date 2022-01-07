@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * Clase CustomTableModel.
- * 
+ * Modelo personalizado para las tablas.
  * @author GR08
  *
  */

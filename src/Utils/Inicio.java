@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class Inicio extends JPanel {
 	private static final long serialVersionUID = -678038763364969095L;
@@ -33,7 +32,7 @@ public class Inicio extends JPanel {
 		panelSur.setBackground(new Color(0, 206, 209));
 		principal.add(panelSur, BorderLayout.SOUTH);
 		
-		JLabel lblNewLabel_1 = new JLabel("Desarrollado por: Iker L\u00F3pez, Asier Bujedo, Eduardo Larrinaga y Mikel Lambarri");
+		JLabel lblNewLabel_1 = new JLabel("Desarrollado por: Asier Bujedo, Eduardo Larrinaga, Iker López y Mikel Lambarri");
 		lblNewLabel_1.setForeground(Color.DARK_GRAY);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panelSur.add(lblNewLabel_1);
