@@ -197,6 +197,16 @@ public class Login {
 				telftf = new JTextField(20);
 				telftf = OtherUtils.modifyTextField(telftf, "Número de teléfono");
 				
+				telftf.addKeyListener(new KeyAdapter() {
+			         public void keyPressed(KeyEvent ke) {
+			            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode()==8) { //permite escribir solo números o "backspace"
+			               telftf.setEditable(true);
+			            } else {
+			               telftf.setEditable(false);
+			            }
+			         }
+			      });
+				
 				genjcb = new JComboBox<>(Genero.values());
 				genjcb.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 				genjcb.setBackground(Color.WHITE);
@@ -253,10 +263,10 @@ public class Login {
 								date = sdf.parse(datePicker.getJFormattedTextField().getText());
 								BaseDeDatos.addUser(usernametf.getText(), usertf.getText(), String.valueOf(passtf.getPassword()), Integer.valueOf(telftf.getText()), (Genero) genjcb.getSelectedItem(), new java.sql.Date(date.getTime()), dirtf.getText());
 								frameReg.dispose();
-							} catch (ParseException e1) {
+							} catch (Exception e1) {
+								JOptionPane.showMessageDialog(null, "No se ha podido registrar, asegurate de que todos los valores son validos","Error al registrar", JOptionPane.ERROR_MESSAGE);
 								VentanaTienda.logger.log(Level.SEVERE, "No se ha podido añadir el usuario || "+ e1.toString());
 							}
-
 						}
 					}
 				});

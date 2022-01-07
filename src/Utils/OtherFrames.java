@@ -205,8 +205,11 @@ public class OtherFrames {
 					JFrame frame = new JFrame();
 					Vector<String> nomColumnas = new Vector<String>(
 							Arrays.asList("Código de producto", "Nombre", "Precio", "Marca"));
-					JTable tabla = new JTable();
-					DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
+					JTable tabla = new JTable() {
+						public boolean editCellAt(int row, int column, java.util.EventObject e) {//Evita que la tabla se pueda editar
+				            return false;
+				         }
+					};					DefaultTableModel model = new DefaultTableModel(new Vector<Vector<Object>>(), nomColumnas);
 					tabla.getTableHeader().setReorderingAllowed(false);
 					tabla.setFont(new Font("Uni Sans Heavy", Font.PLAIN, 15));
 					tabla.getTableHeader().setBackground(Color.GREEN.darker());
