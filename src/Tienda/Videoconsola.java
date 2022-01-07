@@ -2,6 +2,11 @@ package Tienda;
 
 import java.util.logging.Level;
 
+/**
+ * Clase Videoconsola.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Videoconsola extends Producto {
 	protected String modelo;

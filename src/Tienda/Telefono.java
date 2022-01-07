@@ -2,6 +2,11 @@ package Tienda;
 
 import java.util.logging.Level;
 
+/**
+ * Clase Telefono.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Telefono extends Producto {
 	protected String modelo;

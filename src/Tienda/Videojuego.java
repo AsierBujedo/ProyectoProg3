@@ -2,6 +2,11 @@ package Tienda;
 
 import java.util.logging.Level;
 
+/**
+ * Clase Videojuego.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Videojuego extends Producto {
 	protected int anyo;

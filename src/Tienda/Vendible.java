@@ -1,5 +1,15 @@
 package Tienda;
 
+/**
+ * Interfaz Vendible.
+ * Explicación
+ * @author GR08
+ *
+ */
 public interface Vendible {
-public boolean inCesta();
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean inCesta();
 }

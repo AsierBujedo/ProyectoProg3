@@ -35,8 +35,7 @@ public class OtherUtils {
 	public static Popup popup;
 
 	/**
-	 * Escribe los datos creados mediante las instancias de cada uno de los
-	 * productos en el fichero datos.dat.
+	 * Escribe los datos creados mediante las instancias de cada uno de los productos en el fichero datos.dat.
 	 */
 	public static void escribeDatos() {
 		FileOutputStream fos;
@@ -80,10 +79,8 @@ public class OtherUtils {
 	}
 
 	/**
-	 * Recibe una lista de productos y el ID único como identificador de un
-	 * producto. La función recorre recursivamente la lista hasta que encuentra el
-	 * producto.
-	 * 
+	 * Recibe una lista de productos y el ID único como identificador de un producto. 
+	 * La función recorre recursivamente la lista hasta que encuentra el producto.
 	 * @param list
 	 * @param codigo
 	 * @param start
@@ -105,9 +102,7 @@ public class OtherUtils {
 	}
 
 	/**
-	 * Método que recibe un ArrayList<Producto> y lo devuelve ordenado por precio de
-	 * menor a mayor.
-	 * 
+	 * Recibe un ArrayList<Producto> y lo devuelve ordenado por precio de menor a mayor.
 	 * @param list
 	 * @return ArrayList<Producto>
 	 */
@@ -122,7 +117,10 @@ public class OtherUtils {
 		}
 		return ret;
 	}
-
+	
+	/**
+	 * 
+	 */
 	public static void restartProperties() {
 		File f = new File("config.prop");
 		if (!f.exists()) {
@@ -150,10 +148,8 @@ public class OtherUtils {
 	}
 
 	/**
-	 * Método que recibe un double (preferentemente con muchos decimales), y el
-	 * número de decimales a tener en cuenta. La función obtendrá el redondeo a x
-	 * decimales del double que le hemos pasado.
-	 * 
+	 * Método que recibe un double (preferentemente con muchos decimales), y el número de decimales a tener en cuenta. 
+	 * La función obtendrá el redondeo a x decimales del double que le hemos pasado.
 	 * @param valor
 	 * @param dec
 	 * @return double
@@ -168,12 +164,22 @@ public class OtherUtils {
 	}
 
 	public static ArrayList<String> posiblesCompras = new ArrayList<String>();
-
+	
+	/**
+	 * 
+	 * @param dineroRestante
+	 */
 	public static void combinaCompras(double dineroRestante) {
 		ArrayList<Producto> listaComprados = new ArrayList<>();
 		combina(BaseDeDatos.getProductos(), dineroRestante, listaComprados);
 	}
-
+	
+	/**
+	 * 
+	 * @param prods
+	 * @param restante
+	 * @param listaComprados
+	 */
 	private static void combina(ArrayList<Producto> prods, double restante, ArrayList<Producto> listaComprados) {
 		if (restante < 0) { // Cuando el saldo es menor que cero, no puede realizarse ninguna compra más.
 		} else if (restante < VentanaTienda.menorPrecio) { // Si el saldo es menor que el precio del producto más
@@ -189,7 +195,15 @@ public class OtherUtils {
 			}
 		}
 	}
-
+	
+	/**
+	 * Personaliza y añade los escuchadores correspondientes al botón recibido como argumento.
+	 * @param boton Botón a personalizar.
+	 * @param Foreground color para el texto del botón.
+	 * @param Background color para el fondo del botón.
+	 * @param BackgroundWhenEnetered color para el fondo del botón cuando el cursor es introducido.
+	 * @return botón personalizado.
+	 */
 	public static JButton modifyButton(JButton boton, Color Foreground, Color Background,
 			Color BackgroundWhenEnetered) {
 		boton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -223,7 +237,13 @@ public class OtherUtils {
 		});
 		return boton;
 	}
-
+	
+	/**
+	 * Personaliza y añade los escuchadores correspondientes al campo de texto recibido como argumento.
+	 * @param field Campo de texto a personalizar.
+	 * @param textoPorDefecto texto por defecto para el campo.
+	 * @return campo de texto personalizado.
+	 */
 	public static JTextField modifyTextField(JTextField field, String textoPorDefecto) {
 		Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
 		Border empty = new EmptyBorder(0, 5, 0, 0);
@@ -271,7 +291,13 @@ public class OtherUtils {
 		});
 		return field;
 	}
-
+	
+	/**
+	 * Personaliza y añade los escuchadores correspondientes al campo de contraseña recibido como argumento.
+	 * @param field Campo de contraseña a personalizar.
+	 * @param textoPorDefecto texto por defecto para el campo.
+	 * @return campo de contraseña personalizado.
+	 */
 	public static JPasswordField modifyPasswordField(JPasswordField field, String textoPorDefecto) {
 		Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
 		Border empty = new EmptyBorder(0, 5, 0, 0);
@@ -318,7 +344,12 @@ public class OtherUtils {
 		});
 		return field;
 	}
-
+	
+	/**
+	 * Personaliza y añade los escuchadores correspondientes a la etiqueta recibida como argumento.
+	 * @param label Etiqueta a personalizar.
+	 * @return etiqueta personalizada.
+	 */
 	public static JLabel JLabelWithPopup(JLabel label) {
 		label.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		label.addMouseListener(new MouseAdapter() {
@@ -348,6 +379,12 @@ public class OtherUtils {
 		return label;
 	}
 	
+	/**
+	 * Personaliza y añade los escuchadores correspondientes al campo de texto simple recibido como argumento.
+	 * @param field Campo de texto simple a personalizar.
+	 * @param textoPorDefecto texto por defecto para el campo.
+	 * @return campo de texto simple personalizado.
+	 */
 	public static JTextField modifyTextFieldSimple(JTextField field, String textoPorDefecto) {
 		field.setText(textoPorDefecto);
 

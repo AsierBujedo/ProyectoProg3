@@ -21,7 +21,12 @@ public class TextChatClient {
 	JTextArea chat = new JTextArea();
 	JTextField text = new JTextField();
 	static boolean connected;
-
+	
+	/**
+	 * 
+	 * @param HOST
+	 * @param PORT
+	 */
 	public void InitChat(String HOST, int PORT) {
 		logger.create("chatClient.log");
 		ChatWindow();
@@ -54,7 +59,10 @@ public class TextChatClient {
 		}
 
 	}
-
+	
+	/**
+	 * 
+	 */
 	public void ChatWindow() {
 		chat.setEditable(false);
 		frame.add(new JScrollPane(chat), BorderLayout.CENTER);

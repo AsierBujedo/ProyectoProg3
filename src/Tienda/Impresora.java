@@ -2,6 +2,11 @@ package Tienda;
 
 import java.util.logging.Level;
 
+/**
+ * Clase Impresora.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Impresora extends Producto {
 	protected String modelo;

@@ -3,6 +3,11 @@ package Tienda;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * Clase abstracta Producto.
+ * @author GR08
+ *
+ */
 public abstract class Producto implements Vendible, Comparable<Producto>, Serializable, DatoParaTabla {
 	Random r = new Random();
 	private static final long serialVersionUID = 1L;
@@ -80,10 +85,8 @@ public abstract class Producto implements Vendible, Comparable<Producto>, Serial
 		return "Código:\t"+codigoProducto+ " Nombre:\t"+ nombre+ "\tPrecio: "+ precio+ "€\tMarca: "+ marca;
 	}	
 
-	/**Implementación de la interfaz Comparable<Producto>
-	 * Compara por precio de menor a mayor
-	 * @param Producto p
-	 * @return Integer
+	/**
+	 * Compara por precio de menor a mayor.
 	 */
 	public int compareTo(Producto p){  
 		   if(this.precio == p.precio)  

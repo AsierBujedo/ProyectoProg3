@@ -1,11 +1,10 @@
 package Tienda;
 
 /**
- * Clase Genérica, permite la creación de productos no distinguibles usando los
- * atributos por defecto de la clase Producto.
- * 
+ * Clase Generico.
+ * Permite la creación de productos no distinguibles usando los atributos por defecto de la clase Producto.
  * @author GR08
- *
+ * 
  */
 public class Generico extends Producto {
 	String codigoProducto;

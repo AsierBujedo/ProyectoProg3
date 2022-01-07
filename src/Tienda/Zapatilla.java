@@ -3,6 +3,11 @@ package Tienda;
 import java.awt.Color;
 import java.util.logging.Level;
 
+/**
+ * Clase Zapatilla.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Zapatilla extends Producto {
 	protected String modelo;

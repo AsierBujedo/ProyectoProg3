@@ -20,6 +20,11 @@ import org.jdatepicker.impl.UtilDateModel;
 import BD.*;
 import Utils.OtherUtils;
 
+/**
+ * 
+ * @author GR08
+ *
+ */
 public class Login {
 	public static JTextField usertf;
 	public static JPasswordField passtf;
@@ -30,7 +35,9 @@ public class Login {
 	public static JTextField dirtf;
 	public static JDatePickerImpl datePicker;
 	
-	
+	/**
+	 * 
+	 */
 	public static void doLogin() {
 		// Inicializamos la ventana
 		JFrame frame = new JFrame();

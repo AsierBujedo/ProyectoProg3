@@ -3,6 +3,11 @@ package Tienda;
 import java.awt.Color;
 import java.util.logging.Level;
 
+/**
+ * Clase Pantalon.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Pantalon extends Producto {
 	protected Talla talla;

@@ -28,6 +28,7 @@ public class CustomLogger {
 			return false;
 		}
 	}
+	
 	/*Método close(), debe llamarse siempre al final
 	 * del programa para cerrar el archivo (log)
 	 * una vez cerrado, no se podrá modificar.

@@ -11,38 +11,42 @@ import Utils.OtherUtils;
 import java.awt.*;
 import java.awt.event.*;
 
-/**Clase Cesta: 
- *  Gestiona la cesta del cliente, permite añadir productos, retirarlos o buscar en el carro.
+/**
+ * Clase Cesta.
+ * Gestiona la cesta del cliente, permite añadir productos, retirarlos o buscar en el carro.
  * @author GR08
+ * 
  */
 public class Cesta {
 	public static ArrayList<Producto> cesta = new ArrayList<Producto>();
 	public static HashMap<String, ArrayList<Producto>> lastCompra = new HashMap<String, ArrayList<Producto>>();
 
-	/**Método getCesta: 
-	 *  Obtiene la cesta actual.
+	/** 
+	 * Obtiene la cesta actual.
 	 * @return ArrayList<Producto>
 	 */
 	public ArrayList<Producto> getCesta() {
 		return cesta;
 	}
 
-	/**Método setCesta:
-	 *  Sustituye la actual cesta por una nueva.
+	/**
+	 * Sustituye la actual cesta por una nueva.
 	 * @param cesta
 	 */
 	public void setCesta(ArrayList<Producto> cesta) {
 		Cesta.cesta = cesta;
 	}
-	/**Método addToCesta: 
-	 *  Añade un nuevo producto a la cesta
+	
+	/**
+	 * Añade un nuevo producto a la cesta
 	 * @param p
 	 */
 	public void addToCesta(Producto p) {
 		Cesta.cesta.add(p);
 	}
-	/**Método panelCesta: 
-	 * Devuelve un Panel con todas las características necesarias para su gestión.
+	
+	/**
+	 * Devuelve un panel con todas las características necesarias para su gestión.
 	 * @return JPanel
 	 */
 	public JPanel panelCesta() {

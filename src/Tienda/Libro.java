@@ -3,6 +3,11 @@ package Tienda;
 import java.awt.Color;
 import java.util.logging.Level;
 
+/**
+ * Clase Libro.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Libro extends Producto {
 	protected String autor;

@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+/**
+ * Clase CustomTableModel.
+ * 
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 class CustomTableModel extends AbstractTableModel {
 	String[] nomColumnas;
@@ -72,7 +78,10 @@ class CustomTableModel extends AbstractTableModel {
 		datos.remove(row);   
 	}
 	
-	
+	/**
+	 * Añade una fila nueva a la tabla.
+	 * @param data lista con los datos a añadir a la tabla.
+	 */
 	public void newRow(String[] data) {
 		String cod = data[0];
 		String nombre = data[1];

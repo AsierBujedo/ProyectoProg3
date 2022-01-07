@@ -27,6 +27,11 @@ import javax.swing.table.TableRowSorter;
 
 import BD.BaseDeDatos;
 
+/**
+ * 
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class PanelTabla extends JPanel {
 	public static ArrayList<DatoParaTabla> datosCesta = new ArrayList<DatoParaTabla>();
@@ -35,10 +40,10 @@ public class PanelTabla extends JPanel {
 	public static JButton vaciarCesta;
 
 	/**
-	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botÃ³n para aÃ±adir productos a la cesta.
+	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botón para añadir productos a la cesta.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla.
-	 * @param color Color que se le aplicarÃ¡ a la cabecera de la tabla.
+	 * @param color Color que se le aplicará a la cabecera de la tabla.
 	 * @return Panel que contiene la tabla y el panel botonera.
 	 */
 	public static JPanel getPanelTabla(String[] nomColumnas, ArrayList<DatoParaTabla> datos, Color color) {			
@@ -250,7 +255,7 @@ public class PanelTabla extends JPanel {
 	public static JTable tablaCesta;
 
 	/** 
-	 * Crea un panel que contiene un JScrollPane con una tabla y dos paneles botonera con los elementos necesarios para realizar bÃºsquedas y compras de productos.
+	 * Crea un panel que contiene un JScrollPane con una tabla y dos paneles botonera con los elementos necesarios para realizar búsquedas y compras de productos.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla.
 	 * @return Panel que contiene la tabla y los paneles botonera.

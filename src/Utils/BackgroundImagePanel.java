@@ -9,7 +9,10 @@ public class BackgroundImagePanel extends JPanel {
 
 	private static final long serialVersionUID = -678038763364969095L;
 	private Image img;
-
+	
+	/**
+	 * 
+	 */
 	public BackgroundImagePanel() {
 		JButton boton = new JButton("stats");
 		boton = OtherUtils.modifyButton(boton, new Color(67, 67, 67), new Color(194, 194, 194), new Color(225, 225, 225));

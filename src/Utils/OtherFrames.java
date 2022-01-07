@@ -40,7 +40,10 @@ public class OtherFrames {
 	public static JFormattedTextField txtDate;
 	public static JFormattedTextField txtTelefono;
 	public static SimpleDateFormat sdf;
-
+	
+	/**
+	 * 
+	 */
 	// Acceso al área personal
 	public static void areaCliente() {
 		frameaC = new JFrame();
@@ -507,9 +510,10 @@ public class OtherFrames {
 		frameaC.setIconImage(VentanaTienda.icon);
 	}
 
-	
+	/**
+	 * 
+	 */
 	// Ventana para las estadisticas de la tienda
-
 	public static void VentanaStats() {
 		JFrame frame = new JFrame();
 		JPanel principal = new JPanel();

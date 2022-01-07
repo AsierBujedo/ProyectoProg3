@@ -23,7 +23,11 @@ public class TextChat { //Creo todas las variables a usar durante el programa.
 	JTextArea chat = new JTextArea();
 	JTextField text = new JTextField();
 	static boolean connected;
-
+	
+	/**
+	 * 
+	 * @param PORT
+	 */
 	public void InitChat(int PORT) {
 		logger.create("chatHost.log"); //Creo el archivo del logger.
 		ChatWindow(); //LLamo a la ventana
@@ -58,7 +62,10 @@ public class TextChat { //Creo todas las variables a usar durante el programa.
 		}
 
 	}
-
+	
+	/**
+	 * 
+	 */
 	public void ChatWindow() {
 		chat.setEditable(false);
 		frame.add(new JScrollPane(chat), BorderLayout.CENTER);
@@ -99,7 +106,6 @@ public class TextChat { //Creo todas las variables a usar durante el programa.
 			}
 		});
 		
-
 		frame.setTitle("Chat con cliente");
 		frame.setSize(300, 350);
 		frame.setResizable(false);

@@ -2,6 +2,11 @@ package Tienda;
 
 import java.util.logging.Level;
 
+/**
+ * Clase Ordenador.
+ * @author GR08
+ *
+ */
 @SuppressWarnings("serial")
 public class Ordenador extends Producto {
 	protected String modelo;

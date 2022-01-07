@@ -17,8 +17,9 @@ import BD.BaseDeDatos;
 import Utils.*;
 
 /**
- * Clase VentanaTienda, es la clase principal, contiene la ventana
- * principal. Esta clase cuenta con el método main().
+ * Clase VentanaTienda.
+ * Es la clase principal, contiene la ventana principal. 
+ * Esta clase cuenta con el método main().
  * @author GR08
  */
 public class VentanaTienda {
@@ -30,7 +31,10 @@ public class VentanaTienda {
 	public static Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");
 	public static Logger logger;
 	public static JPanel panelTablaCesta;
-
+	
+	/**
+	 * 
+	 */
 	public void InitWindow() {
 		BaseDeDatos.InitDB();
 		cargaDatos();
@@ -306,7 +310,10 @@ public class VentanaTienda {
 		frame.setLocationRelativeTo(null);
 
 	}
-
+	
+	/**
+	 * 
+	 */
 	@SuppressWarnings("unchecked")
 	public void cargaDatos() {
 		File f = new File("datos.dat");
