@@ -463,7 +463,7 @@ public class OtherFrames {
 																						// usuario,
 																						// sino la siguiente vez que se
 																						// cargue la ventana se cargaran
-																						// datos erroneos
+																						// datos incorrectos o vacios
 							VentanaTienda.logger.log(Level.INFO, "Especificaciones actualizadas");
 							JOptionPane.showMessageDialog(null, "Cambios realizados correctamente", null, 1);
 						} catch (ParseException e1) {
@@ -501,7 +501,7 @@ public class OtherFrames {
 				principal.add(lineDireccion);
 				principal.add(lineUsuario);
 
-				// Boton cambiar
+				// Boton cambios
 				principal.add(btnCambios);
 
 				frame.setVisible(true);
@@ -530,6 +530,7 @@ public class OtherFrames {
 	 */
 	// Ventana para las estadisticas de la tienda
 	public static void VentanaStats() {
+		// Inicializamos la ventana
 		JFrame frame = new JFrame();
 		JPanel principal = new JPanel();
 		principal.setBackground(Color.WHITE);
@@ -612,6 +613,7 @@ public class OtherFrames {
 		lineProductos.setBounds(34, 235, 120, 2);
 		principal.add(lineProductos);
 
+		// Boton guardar
 		JButton btnGuardar = new JButton();
 		btnGuardar.setBackground(Color.WHITE);
 		btnGuardar.setForeground(Color.BLACK);
@@ -632,6 +634,7 @@ public class OtherFrames {
 		principal.add(titulo);
 		frame.getContentPane().add(principal);
 
+		// MouseListener boto guardar
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -642,7 +645,8 @@ public class OtherFrames {
 				btnGuardar.setBackground(Color.WHITE);
 			}
 		});
-
+		
+		// ActionListener boton guardar
 		btnGuardar.addActionListener(new ActionListener() {
 
 			@Override
@@ -678,10 +682,12 @@ public class OtherFrames {
 				principal.add(txtVistaPrevia, BorderLayout.NORTH);
 				txtVistaPrevia.setColumns(10);
 
+				// Boton confirmar
 				JButton btnConfirmar = new JButton("Confirmar");
 				principal.add(OtherUtils.modifyButton(btnConfirmar, new Color(67, 67, 67), new Color(194, 194, 194),
 						new Color(225, 225, 225)), BorderLayout.SOUTH);
 
+				// ActionListener boton confirmar
 				btnConfirmar.addActionListener(new ActionListener() {
 
 					@Override

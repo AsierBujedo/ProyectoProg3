@@ -2,10 +2,18 @@ package Utils;
 
 import javax.swing.*;
 
+import Tienda.VentanaTienda;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Clase Inicio.
+ * Creación de la ventana de presentación del proyecto.
+ * @author GR08
+ * 
+ */
 public class Inicio extends JPanel {
 	private static final long serialVersionUID = -678038763364969095L;
 	private static JTextField txtConsola;
@@ -14,14 +22,20 @@ public class Inicio extends JPanel {
 	private static JTextField txtCompraYa;
 
 	public static JPanel InitWindow() {
+		//Inicializamos la ventana
 		JPanel frame = new JPanel();
 		JPanel principal = new JPanel();
+		
 		frame.add(principal);
 		principal.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelNorte = new JPanel();
 		panelNorte.setBackground(new Color(0, 206, 209));
 		principal.add(panelNorte, BorderLayout.NORTH);
+		
+		JLabel imagen = new JLabel(new ImageIcon(VentanaTienda.icon));
+		imagen.setSize(50, 50);
+		panelNorte.add(imagen);
 		
 		JLabel lblEslogan = new JLabel("TU TIENDA DESDE CASA");
 		lblEslogan.setFont(new Font("Niagara Engraved", Font.PLAIN, 80));
@@ -67,6 +81,10 @@ public class Inicio extends JPanel {
 		lblHarry.setIcon(imDimensiones3);
 		panelCentral.add(lblHarry);
 		
+		JLabel lblNosotros = new JLabel("Acerca de nosotros");
+		lblNosotros.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNosotros.setBounds(835, 870, 114, 35);
+		panelCentral.add(lblNosotros);
 		
 		txtConsola = new JTextField();
 		txtConsola.setForeground(new Color(0, 0, 0));
@@ -93,7 +111,7 @@ public class Inicio extends JPanel {
 		panelCentral.add(txtRopa);
 		
 		txthastaTusLibros = new JTextField();
-		txthastaTusLibros.setText("\u00A1Hasta tus libros preferidos!");
+		txthastaTusLibros.setText("¡Hasta tus libros preferidos!");
 		txthastaTusLibros.setBorder(null);
 		txthastaTusLibros.setHorizontalAlignment(SwingConstants.CENTER);
 		txthastaTusLibros.setForeground(Color.BLACK);
@@ -108,18 +126,14 @@ public class Inicio extends JPanel {
 		txtCompraYa.setEditable(false);
 		txtCompraYa.setFont(new Font("Niagara Solid", Font.PLAIN, 45));
 		txtCompraYa.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCompraYa.setText("\u00A1Compra ya!");
+		txtCompraYa.setText("¡Compra ya!");
 		txtCompraYa.setForeground(new Color(255, 255, 255));
 		txtCompraYa.setBackground(new Color(176, 224, 230));
 		txtCompraYa.setBounds(580, 640, 280, 75);
 		panelCentral.add(txtCompraYa);
 		txtCompraYa.setColumns(10);
 		
-		JLabel lblNosotros = new JLabel("Acerca de nosotros");
-		lblNosotros.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNosotros.setBounds(835, 870, 114, 35);
-		panelCentral.add(lblNosotros);
-		
+		//MouseListener para el JLablel lblNosotros
 		lblNosotros.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent evt) {
 				lblNosotros.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -140,6 +154,7 @@ public class Inicio extends JPanel {
 			}
 		});
 		
+		// Hilo para el JLablel lblNosotros
 		Runnable r1 = new Runnable() {
 			
 			@Override
