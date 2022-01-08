@@ -30,6 +30,12 @@ import Tienda.Cesta;
 import Tienda.Login;
 import Tienda.Producto;
 
+/** 
+ * Clase OtherFrames.
+ * Contiene ventanas y elementos para el area personal y estadisticas.
+ * @author GR08
+ */
+
 public class OtherFrames {
 	private static double precio = 0.0;
 	public static JPasswordField contraActualtf;
@@ -41,9 +47,6 @@ public class OtherFrames {
 	public static JFormattedTextField txtTelefono;
 	public static SimpleDateFormat sdf;
 	
-	/**
-	 * 
-	 */
 	// Acceso al área personal
 	public static void areaCliente() {
 		frameaC = new JFrame();
