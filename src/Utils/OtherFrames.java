@@ -380,6 +380,14 @@ public class OtherFrames {
 				JSeparator lineFecha = new JSeparator();
 				lineFecha.setForeground(Color.GRAY);
 				lineFecha.setBounds(20, 410, 250, 2);
+				
+				JSeparator lineUsuario = new JSeparator();
+				lineUsuario.setForeground(Color.GRAY);
+				lineUsuario.setBounds(20, 170, 250, 2);
+
+				JSeparator lineDireccion = new JSeparator();
+				lineDireccion.setForeground(Color.GRAY);
+				lineDireccion.setBounds(20, 350, 250, 2);
 
 				JLabel lblDir = new JLabel("Dirección");
 				lblDir.setForeground(Color.GRAY);
@@ -396,18 +404,10 @@ public class OtherFrames {
 
 				txtDireccion.setText(BaseDeDatos.getUserDir(mail));
 
-				JSeparator lineDireccion = new JSeparator();
-				lineDireccion.setForeground(Color.GRAY);
-				lineDireccion.setBounds(20, 350, 250, 2);
-
 				JLabel lblUsuario = new JLabel("Usuario");
 				lblUsuario.setForeground(Color.GRAY);
 				lblUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 				lblUsuario.setBounds(20, 130, 185, 13);
-
-				JSeparator lineUsuario = new JSeparator();
-				lineUsuario.setForeground(Color.GRAY);
-				lineUsuario.setBounds(20, 170, 250, 2);
 
 				JTextField txtUsuario = new JTextField();
 				txtUsuario.setHorizontalAlignment(SwingConstants.LEFT);

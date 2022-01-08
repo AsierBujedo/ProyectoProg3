@@ -23,23 +23,23 @@ public class Inicio extends JPanel {
 		panelNorte.setBackground(new Color(0, 206, 209));
 		principal.add(panelNorte, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel = new JLabel("TU TIENDA DESDE CASA");
-		lblNewLabel.setFont(new Font("Niagara Engraved", Font.PLAIN, 80));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panelNorte.add(lblNewLabel);
+		JLabel lblEslogan = new JLabel("TU TIENDA DESDE CASA");
+		lblEslogan.setFont(new Font("Niagara Engraved", Font.PLAIN, 80));
+		lblEslogan.setHorizontalAlignment(SwingConstants.CENTER);
+		panelNorte.add(lblEslogan);
 		
 		JPanel panelSur = new JPanel();
 		panelSur.setBackground(new Color(0, 206, 209));
 		principal.add(panelSur, BorderLayout.SOUTH);
 		
-		JLabel lblNewLabel_1 = new JLabel("Desarrollado por: Asier Bujedo, Eduardo Larrinaga, Iker López y Mikel Lambarri");
-		lblNewLabel_1.setForeground(Color.DARK_GRAY);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		panelSur.add(lblNewLabel_1);
+		JLabel lblFrasePanelSur = new JLabel("Desarrollado por: Asier Bujedo, Eduardo Larrinaga, Iker López y Mikel Lambarri");
+		lblFrasePanelSur.setForeground(Color.DARK_GRAY);
+		lblFrasePanelSur.setFont(new Font("Tahoma", Font.BOLD, 12));
+		panelSur.add(lblFrasePanelSur);
 		
 		JPanel panelCentral = new JPanel();
 		panelCentral.setBackground(new Color(224, 255, 255));
-		panelCentral.setPreferredSize(new Dimension(985, 900));
+		panelCentral.setPreferredSize(new Dimension(957, 900));
 		panelCentral.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane(panelCentral);
@@ -117,7 +117,7 @@ public class Inicio extends JPanel {
 		
 		JLabel lblNosotros = new JLabel("Acerca de nosotros");
 		lblNosotros.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNosotros.setBounds(843, 870, 114, 35);
+		lblNosotros.setBounds(835, 870, 114, 35);
 		panelCentral.add(lblNosotros);
 		
 		lblNosotros.addMouseListener(new MouseAdapter() {
@@ -131,12 +131,12 @@ public class Inicio extends JPanel {
 			
 			public void mousePressed(MouseEvent evt) {
 				lblNosotros.setText("Alumnos de Programación III de la Universidad de Deusto");
-				lblNosotros.setBounds(615, 870, 400, 35);
+				lblNosotros.setBounds(605, 870, 400, 35);
 			}
 			
 			public void mouseReleased(MouseEvent evt) {
 				lblNosotros.setText("Acerca de nosotros");
-				lblNosotros.setBounds(843, 870, 114, 35);
+				lblNosotros.setBounds(835, 870, 114, 35);
 			}
 		});
 		
