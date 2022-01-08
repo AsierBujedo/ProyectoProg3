@@ -68,14 +68,14 @@ public class Inicio extends JPanel {
 		panelCentral.add(lblPS);
 		
 		JLabel lblNike = new JLabel(new ImageIcon("airforce1.jfif"));
-		lblNike.setBounds(567, 201, 381, 294);
+		lblNike.setBounds(547, 221, 381, 294);
 		ImageIcon im2 = new ImageIcon("airforce1.jfif");
 		ImageIcon imDimensiones2 = new ImageIcon(im2.getImage().getScaledInstance(lblNike.getWidth(), lblNike.getHeight(), Image.SCALE_DEFAULT));
 		lblNike.setIcon(imDimensiones2);
 		panelCentral.add(lblNike);
 		
 		JLabel lblHarry = new JLabel(new ImageIcon("harry.jpg"));
-		lblHarry.setBounds(74, 520, 381, 360);
+		lblHarry.setBounds(74, 510, 381, 360);
 		ImageIcon im3 = new ImageIcon("harry.jpg");
 		ImageIcon imDimensiones3 = new ImageIcon(im3.getImage().getScaledInstance(lblHarry.getWidth(), lblHarry.getHeight(), Image.SCALE_DEFAULT));
 		lblHarry.setIcon(imDimensiones3);
@@ -107,7 +107,7 @@ public class Inicio extends JPanel {
 		txtRopa.setEditable(false);
 		txtRopa.setColumns(10);
 		txtRopa.setBackground(new Color(0, 206, 209));
-		txtRopa.setBounds(541, 125, 300, 86);
+		txtRopa.setBounds(520, 145, 300, 86);
 		panelCentral.add(txtRopa);
 		
 		txthastaTusLibros = new JTextField();
@@ -119,7 +119,7 @@ public class Inicio extends JPanel {
 		txthastaTusLibros.setEditable(false);
 		txthastaTusLibros.setColumns(10);
 		txthastaTusLibros.setBackground(new Color(0, 206, 209));
-		txthastaTusLibros.setBounds(64, 447, 392, 86);
+		txthastaTusLibros.setBounds(64, 437, 392, 86);
 		panelCentral.add(txthastaTusLibros);
 		
 		txtCompraYa = new JTextField();
