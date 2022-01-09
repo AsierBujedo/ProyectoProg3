@@ -51,14 +51,16 @@ public class Inicio extends JPanel {
 		lblFrasePanelSur.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panelSur.add(lblFrasePanelSur);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
 		JPanel panelCentral = new JPanel();
 		panelCentral.setBackground(new Color(224, 255, 255));
 		panelCentral.setPreferredSize(new Dimension(957, 900));
 		panelCentral.setLayout(null);
-		
-		JScrollPane scrollPane = new JScrollPane(panelCentral);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		principal.add(scrollPane, BorderLayout.CENTER);
+		panelCentral.add(scrollPane);
+
+		principal.add(panelCentral, BorderLayout.CENTER);
 		
 		JLabel lblPS = new JLabel(new ImageIcon("ps5.jpg"));
 		lblPS.setBounds(86, 111, 381, 246);
