@@ -31,7 +31,7 @@ public class Cesta {
 
 	/**
 	 * Sustituye la actual cesta por una nueva.
-	 * @param cesta
+	 * @param cesta {@link ArrayList}
 	 */
 	public void setCesta(ArrayList<Producto> cesta) {
 		Cesta.cesta = cesta;
@@ -39,7 +39,7 @@ public class Cesta {
 	
 	/**
 	 * Añade un nuevo producto a la cesta
-	 * @param p
+	 * @param Producto
 	 */
 	public void addToCesta(Producto p) {
 		Cesta.cesta.add(p);
@@ -47,7 +47,7 @@ public class Cesta {
 	
 	/**
 	 * Devuelve un panel con todas las características necesarias para su gestión.
-	 * @return JPanel
+	 * @return {@link JPanel}
 	 */
 	public JPanel panelCesta() {
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));

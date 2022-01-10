@@ -9,7 +9,10 @@ import java.net.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.event.*;
-
+/**Chat de texto.
+ * Cliente.
+ * @author GR08
+ */
 public class TextChatClient {
 	CustomLogger logger = new CustomLogger();
 	Socket socket = null;
@@ -22,10 +25,10 @@ public class TextChatClient {
 	JTextField text = new JTextField();
 	static boolean connected;
 	
-	/**
-	 * 
-	 * @param HOST
-	 * @param PORT
+	/**Método InitChat.
+	 * Recibe la IP del servidor y su puerto para conectarse.
+	 * @param HOST {@link String}
+	 * @param PORT {@link Integer}
 	 */
 	public void InitChat(String HOST, int PORT) {
 		logger.create("chatClient.log");

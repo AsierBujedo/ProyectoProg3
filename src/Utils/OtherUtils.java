@@ -29,7 +29,11 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import BD.BaseDeDatos;
 import Tienda.*;
-
+/**Clase OtherUtils.
+ * Dispone de muchas funciones que permiten al proyecto funcionar debidamente.
+ * (Considerarse como librería)
+ * @author GR08
+ */
 public class OtherUtils {
 	public static Properties prop = new Properties();
 	public static Popup popup;
@@ -81,10 +85,10 @@ public class OtherUtils {
 	/**
 	 * Recibe una lista de productos y el ID único como identificador de un producto. 
 	 * La función recorre recursivamente la lista hasta que encuentra el producto.
-	 * @param list
-	 * @param codigo
-	 * @param start
-	 * @return Producto
+	 * @param list {@link ArrayList}
+	 * @param codigo {@link Integer}
+	 * @param start {@link Integer}
+	 * @return {@link Producto}
 	 */
 	public static Producto buscarEnLista(ArrayList<Producto> list, int codigo, int start) {
 		int cont = start;
@@ -103,7 +107,7 @@ public class OtherUtils {
 
 	/**
 	 * Recibe un ArrayList<Producto> y lo devuelve ordenado por precio de menor a mayor.
-	 * @param list
+	 * @param list {@link ArrayList}
 	 * @return ArrayList<Producto>
 	 */
 	public static ArrayList<Producto> ordenaLista(ArrayList<Producto> list) {
@@ -118,8 +122,8 @@ public class OtherUtils {
 		return ret;
 	}
 	
-	/**
-	 * 
+	/**Gestiona el archivo de configuraciones de la aplicación.
+	 * Si el archivo existe, carga los datos, si no existe, lo crea y carga los datos por defecto.
 	 */
 	public static void restartProperties() {
 		File f = new File("config.prop");
@@ -151,9 +155,9 @@ public class OtherUtils {
 	/**
 	 * Método que recibe un double (preferentemente con muchos decimales), y el número de decimales a tener en cuenta. 
 	 * La función obtendrá el redondeo a x decimales del double que le hemos pasado.
-	 * @param valor
-	 * @param dec
-	 * @return double
+	 * @param valor {@link Double} Valor al cual redondear los decimales
+	 * @param dec {@link Integer} Número de decimales
+	 * @return {@link Double}
 	 */
 	public static double round(double valor, int dec) {
 		if (dec < 0)
@@ -166,9 +170,9 @@ public class OtherUtils {
 
 	public static ArrayList<String> posiblesCompras = new ArrayList<String>();
 	
-	/**
-	 * 
-	 * @param dineroRestante
+	/**Recursividad múltiple.
+	 * Es llamado para crear las combinaciones de {@link Producto} mediante la función combina().
+	 * @param dineroRestante {@link Double}
 	 */
 	public static void combinaCompras(double dineroRestante) {
 		ArrayList<Producto> listaComprados = new ArrayList<>();
@@ -177,9 +181,9 @@ public class OtherUtils {
 	
 	/**
 	 * 
-	 * @param prods
-	 * @param restante
-	 * @param listaComprados
+	 * @param prods {@link ArrayList} Lista de productos.
+	 * @param restante {@link Double} Dinero restante (dinámico ante las combinaciones)
+	 * @param listaComprados {@link ArrayList} Lista de productos comprados (dinámica ante las combinaciones)
 	 */
 	private static void combina(ArrayList<Producto> prods, double restante, ArrayList<Producto> listaComprados) {
 		if (restante < 0) { // Cuando el saldo es menor que cero, no puede realizarse ninguna compra más.
@@ -199,11 +203,11 @@ public class OtherUtils {
 	
 	/**
 	 * Personaliza y añade los escuchadores correspondientes al botón recibido como argumento.
-	 * @param boton Botón a personalizar.
-	 * @param Foreground color para el texto del botón.
-	 * @param Background color para el fondo del botón.
-	 * @param BackgroundWhenEnetered color para el fondo del botón cuando el cursor es introducido.
-	 * @return botón personalizado.
+	 * @param boton {@link JButton} a personalizar.
+	 * @param Foreground {@link Color} para el texto del botón.
+	 * @param Background {@link Color} para el fondo del botón.
+	 * @param BackgroundWhenEnetered {@link Color} para el fondo del botón cuando el cursor es introducido.
+	 * @return {@link JButton} personalizado.
 	 */
 	public static JButton modifyButton(JButton boton, Color Foreground, Color Background,
 			Color BackgroundWhenEnetered) {
@@ -241,9 +245,9 @@ public class OtherUtils {
 	
 	/**
 	 * Personaliza y añade los escuchadores correspondientes al campo de texto recibido como argumento.
-	 * @param field Campo de texto a personalizar.
-	 * @param textoPorDefecto texto por defecto para el campo.
-	 * @return campo de texto personalizado.
+	 * @param field {@link JTextField} a personalizar.
+	 * @param textoPorDefecto {@link String} por defecto para el campo.
+	 * @return {@link JTextField} personalizado.
 	 */
 	public static JTextField modifyTextField(JTextField field, String textoPorDefecto) {
 		Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
@@ -295,9 +299,9 @@ public class OtherUtils {
 	
 	/**
 	 * Personaliza y añade los escuchadores correspondientes al campo de contraseña recibido como argumento.
-	 * @param field Campo de contraseña a personalizar.
-	 * @param textoPorDefecto texto por defecto para el campo.
-	 * @return campo de contraseña personalizado.
+	 * @param field {@link JPasswordField} a personalizar.
+	 * @param textoPorDefecto {@link String} por defecto para el campo.
+	 * @return {@link JPasswordField} personalizado.
 	 */
 	public static JPasswordField modifyPasswordField(JPasswordField field, String textoPorDefecto) {
 		Border line = BorderFactory.createLineBorder(new Color(194, 194, 194), 2);
@@ -348,8 +352,8 @@ public class OtherUtils {
 	
 	/**
 	 * Personaliza y añade los escuchadores correspondientes a la etiqueta recibida como argumento.
-	 * @param label Etiqueta a personalizar.
-	 * @return etiqueta personalizada.
+	 * @param label {@link JLabel} Etiqueta a personalizar.
+	 * @return {@link JLabel} personalizada.
 	 */
 	public static JLabel JLabelWithPopup(JLabel label) {
 		label.setFont(new Font("Segoe UI", Font.PLAIN, 15));
@@ -382,9 +386,9 @@ public class OtherUtils {
 	
 	/**
 	 * Personaliza y añade los escuchadores correspondientes al campo de texto simple recibido como argumento.
-	 * @param field Campo de texto simple a personalizar.
-	 * @param textoPorDefecto texto por defecto para el campo.
-	 * @return campo de texto simple personalizado.
+	 * @param field {@link JTextField} simple a personalizar.
+	 * @param textoPorDefecto {@link String} por defecto para el campo.
+	 * @return {@link JTextField} simple personalizado.
 	 */
 	public static JTextField modifyTextFieldSimple(JTextField field, String textoPorDefecto) {
 		field.setText(textoPorDefecto);

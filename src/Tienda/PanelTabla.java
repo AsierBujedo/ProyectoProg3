@@ -41,11 +41,11 @@ public class PanelTabla extends JPanel {
 	public static JButton vaciarCesta;
 
 	/**
-	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botón para añadir productos a la cesta.
+	 * Crea un panel que contiene un JScrollPane con una tabla y un panel botonera con un botï¿½n para aï¿½adir productos a la cesta.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla.
-	 * @param color Color que se le aplicará a la cabecera de la tabla.
-	 * @return Panel que contiene la tabla y el panel botonera.
+	 * @param color {@link Color} que se le aplicarï¿½ a la cabecera de la tabla.
+	 * @return {@link JPanel} que contiene la tabla y el panel botonera.
 	 */
 	public static JPanel getPanelTabla(String[] nomColumnas, ArrayList<DatoParaTabla> datos, Color color) {			
 		JPanel panelTabla = new PanelTabla();
@@ -102,15 +102,15 @@ public class PanelTabla extends JPanel {
 		JPanel botonera = new JPanel();
 		botonera.setBackground(Color.WHITE);
 
-		// Botón anyadir
-		JButton anyadir = new JButton("Añadir a la cesta", new ImageIcon("add.png"));
+		// Botï¿½n anyadir
+		JButton anyadir = new JButton("Aï¿½adir a la cesta", new ImageIcon("add.png"));
 		anyadir.setBorderPainted(false);
 		anyadir.setFocusPainted(false);
 		anyadir.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		anyadir.setForeground(Color.WHITE);
 		anyadir.setBackground(Color.GRAY.brighter());
 		
-		// Botón info
+		// Botï¿½n info
 		JButton info = new JButton(new ImageIcon("info.png"));
 		info.setBorderPainted(false);
 		info.setFocusPainted(false);
@@ -207,7 +207,7 @@ public class PanelTabla extends JPanel {
 					realizarCompra.setBackground(new Color(92, 156, 180));
 					vaciarCesta.setBackground(new Color(107, 41, 67));
 					
-					VentanaTienda.logger.log(Level.INFO, "Producto con código: " + codigoProducto + " añadido a la cesta");
+					VentanaTienda.logger.log(Level.INFO, "Producto con cï¿½digo: " + codigoProducto + " aï¿½adido a la cesta");
 				}
 				
 			}
@@ -219,7 +219,7 @@ public class PanelTabla extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Runnable r = () -> {
-		            String html = "<html><body width='%1s'><h1>Código de producto</h1>"
+		            String html = "<html><body width='%1s'><h1>Cï¿½digo de producto</h1>"
 		            		+ "<p style=\"text-align: justify;\"><strong>&Aacute;rea de Electr&oacute;nica&nbsp; &nbsp;</strong><strong>- &nbsp;&nbsp;</strong><strong>I:</strong> Impresora &nbsp; <strong>O:</strong> Ordenador &nbsp; <strong>T:</strong> Tel&eacute;fono</p>"
 		            		+ "<p style=\"text-align: justify;\"><strong>&Aacute;rea de Ropa</strong>&nbsp; &nbsp;<strong>-</strong>&nbsp; &nbsp;<strong>P:</strong> Pantalones &nbsp; <strong>S:</strong> Sudadera &nbsp; <strong>Z:</strong> Zapatillas</p>"
 		            		+ "<p style=\"text-align: justify;\"><strong>&Aacute;rea de Hobby</strong>&nbsp; &nbsp;<strong>-</strong>&nbsp; &nbsp;<strong>L:</strong> Libro &nbsp; <strong>VC:</strong> Videoconsola &nbsp; <strong>VJ:</strong> Videojuego</p>"
@@ -227,10 +227,10 @@ public class PanelTabla extends JPanel {
 		            
 		            int w = 400;
 
-		            JOptionPane.showMessageDialog(null, String.format(html, w, w), "Información", JOptionPane.INFORMATION_MESSAGE);
+		            JOptionPane.showMessageDialog(null, String.format(html, w, w), "Informaciï¿½n", JOptionPane.INFORMATION_MESSAGE);
 		        };
 		        SwingUtilities.invokeLater(r);
-		        VentanaTienda.logger.log(Level.INFO, "Información desplegada");
+		        VentanaTienda.logger.log(Level.INFO, "Informaciï¿½n desplegada");
 			}
 		});
 		
@@ -256,7 +256,7 @@ public class PanelTabla extends JPanel {
 	public static JTable tablaCesta;
 
 	/** 
-	 * Crea un panel que contiene un JScrollPane con una tabla y dos paneles botonera con los elementos necesarios para realizar búsquedas y compras de productos.
+	 * Crea un panel que contiene un JScrollPane con una tabla y dos paneles botonera con los elementos necesarios para realizar bï¿½squedas y compras de productos.
 	 * @param nomColumnas Array con los nombres de las columnas de la tabla.
 	 * @param datos ArrayList<DatoParaTabla> con los datos para la tabla.
 	 * @return Panel que contiene la tabla y los paneles botonera.
@@ -317,7 +317,7 @@ public class PanelTabla extends JPanel {
 		JPanel botoneraComprar = new JPanel();
 		botoneraComprar.setBackground(Color.WHITE);
 		
-		// Botón realizarCompra
+		// Botï¿½n realizarCompra
 		realizarCompra = new JButton("Realizar compra");
 		realizarCompra.setBorderPainted(false);
 		realizarCompra.setFocusPainted(false);
@@ -325,7 +325,7 @@ public class PanelTabla extends JPanel {
 		realizarCompra.setForeground(Color.WHITE);
 		realizarCompra.setBackground(Color.GRAY.brighter());
 		
-		// Botón eliminarProducto
+		// Botï¿½n eliminarProducto
 		JButton eliminarProducto = new JButton("Eliminar producto");
 		eliminarProducto.setBorderPainted(false);
 		eliminarProducto.setFocusPainted(false);
@@ -333,7 +333,7 @@ public class PanelTabla extends JPanel {
 		eliminarProducto.setForeground(Color.WHITE);
 		eliminarProducto.setBackground(Color.GRAY.brighter());
 		
-		// Botón limpiarCesta
+		// Botï¿½n limpiarCesta
 		vaciarCesta = new JButton("Limpiar cesta");
 		vaciarCesta.setBorderPainted(false);
 		vaciarCesta.setFocusPainted(false);
@@ -397,7 +397,7 @@ public class PanelTabla extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
 				if (tablaCesta.getRowCount() != 0) {
-					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					int reply = JOptionPane.showConfirmDialog(null, "ï¿½Quieres realizar la compra?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
 						
 						if (!VentanaTienda.loginItem.getText().equals("Login")) {
@@ -414,7 +414,7 @@ public class PanelTabla extends JPanel {
 							JOptionPane.showMessageDialog(null, "Compra realizada", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 							VentanaTienda.logger.log(Level.INFO, "Compra realizada");
 						} else {
-							JOptionPane.showMessageDialog(null, "Antes de comprar, debes iniciar sesión", "Advertencia",
+							JOptionPane.showMessageDialog(null, "Antes de comprar, debes iniciar sesiï¿½n", "Advertencia",
 									JOptionPane.WARNING_MESSAGE);
 						}
 					} else {
@@ -431,7 +431,7 @@ public class PanelTabla extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (tablaCesta.getRowCount() != 0) {
-					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres eliminar el producto de la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					int reply = JOptionPane.showConfirmDialog(null, "ï¿½Quieres eliminar el producto de la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
 						
 						int ID = (int) tablaCesta.getValueAt(tablaCesta.getSelectedRow(), 4);
@@ -456,7 +456,7 @@ public class PanelTabla extends JPanel {
 						VentanaTienda.logger.log(Level.INFO, "Producto con ID: " + ID + " eliminado");
 						JOptionPane.showMessageDialog(null, "Producto eliminado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					} else {
-						JOptionPane.showMessageDialog(null, "No se eliminó ningún producto", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "No se eliminï¿½ ningï¿½n producto", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					} 
 				}
 				
@@ -470,7 +470,7 @@ public class PanelTabla extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (tablaCesta.getRowCount() != 0) {
-					int reply = JOptionPane.showConfirmDialog(null, "¿Quieres vaciar la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
+					int reply = JOptionPane.showConfirmDialog(null, "ï¿½Quieres vaciar la cesta?", "Mensaje", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
 								
 						CustomTableModel model = new CustomTableModel(nomColumnas, new ArrayList<DatoParaTabla>());

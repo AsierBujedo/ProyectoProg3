@@ -20,10 +20,9 @@ import org.jdatepicker.impl.UtilDateModel;
 import BD.*;
 import Utils.OtherUtils;
 
-/**
- * 
+/**Clase Login.
+ * Gestiona el registro de nuevos uarios así como de sus nuevas altas o registros.
  * @author GR08
- *
  */
 public class Login {
 	public static JTextField usertf;
@@ -35,8 +34,7 @@ public class Login {
 	public static JTextField dirtf;
 	public static JDatePickerImpl datePicker;
 	
-	/**
-	 * 
+	/**Lanza una ventana con la que el usuario puede iniciar sesión
 	 */
 	public static void doLogin() {
 		// Inicializamos la ventana

@@ -72,7 +72,7 @@ class CustomTableModel extends AbstractTableModel {
 	
 	/** 
 	 * Elimina un dato del modelo indicado por su posición.
-	 * @param row
+	 * @param row {@link Integer}
 	 */
 	public void removeRow(int row) {
 		datos.remove(row);   

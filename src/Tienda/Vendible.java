@@ -2,14 +2,12 @@ package Tienda;
 
 /**
  * Interfaz Vendible.
- * Explicación
  * @author GR08
- *
  */
 public interface Vendible {
-	/**
-	 * 
-	 * @return
+	/**Método que devuelve un {@link Boolean} si el producto mismo está en ese momento
+	 * en la cesta.
+	 * @return {@link Boolean}
 	 */
 	public boolean inCesta();
 }

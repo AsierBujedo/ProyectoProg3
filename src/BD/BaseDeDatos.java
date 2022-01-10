@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 import Tienda.*;
-
+	/**Clase BaseDeDatos.
+	 * Gestiona la base de datos de la aplicación.
+	 * @author GR08
+	 */
 public class BaseDeDatos {
 	private static Connection con;
 	private static Statement stmt;
